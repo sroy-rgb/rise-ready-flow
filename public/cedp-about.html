@@ -361,5 +361,159 @@ a.className=v==='photo'?'on':'';
 b.className=v==='number'?'on':'';
 }
 </script>
+
+<!-- LOVABLE-WIRING -->
+<style>
+html{scroll-padding-top:80px;scroll-behavior:smooth}
+.active-nav{color:#C53030 !important;border-bottom:2px solid #C53030;padding-bottom:2px}
+body{opacity:0;transition:opacity .3s ease}
+body.page-loaded{opacity:1}
+</style>
+<script>
+(function(){
+function topNav(url){ try{ window.top.location.href = url; }catch(e){ window.location.href = url; } }
+var currentPath = '/';
+try { currentPath = window.top.location.pathname; } catch(e){}
+
+// Logo -> /
+var logoImg = document.querySelector('nav > div:first-child img');
+if(logoImg && !logoImg.closest('a')){
+  var la = document.createElement('a');
+  la.href='/'; la.target='_top';
+  la.style.cssText='display:inline-block;cursor:pointer';
+  logoImg.parentNode.insertBefore(la, logoImg);
+  la.appendChild(logoImg);
+}
+
+// Top bar phone
+document.querySelectorAll('.tb a').forEach(function(a){
+  if(/\d{3}/.test(a.textContent)){ a.href='tel:3038381200'; a.target='_top'; }
+});
+
+// Top-level nav items
+var navMap = {'About':'/about','Our work':'/our-work','Impact':'/impact','News':'/news','Careers':'/careers'};
+document.querySelectorAll('nav .ni > a').forEach(function(a){
+  var t = a.textContent.trim();
+  if(navMap[t]){
+    a.href = navMap[t]; a.target='_top';
+    if(navMap[t]===currentPath) a.classList.add('active-nav');
+  }
+});
+
+// Mega menu sublinks
+document.querySelectorAll('nav .mega a').forEach(function(a){
+  a.target='_top';
+  var t = a.textContent.trim().toLowerCase();
+  if(/career|open position|why cedp|culture/.test(t)) a.href='/careers';
+  else if(/press|news|media/.test(t)) a.href='/news';
+  else if(/legislative|impact|research/.test(t)) a.href='/impact';
+  else if(/our purpose|our team|contact|ced law/.test(t)) a.href='/about';
+  else if(/care center|just bus|statewide|programs/.test(t)) a.href='/our-work';
+  else a.href='/get-help';
+});
+
+// Donate / Get help buttons
+document.querySelectorAll('.btn-d').forEach(function(a){
+  if(currentPath==='/'){ a.href='#donateSection'; }
+  else { a.href='/#donateSection'; a.target='_top'; }
+});
+document.querySelectorAll('.btn-h').forEach(function(a){ a.href='/get-help'; a.target='_top'; });
+
+// Homepage: who section link
+document.querySelectorAll('.who-link').forEach(function(a){ a.href='/about'; a.target='_top'; });
+
+// Homepage: main help bento card
+document.querySelectorAll('.bc-m').forEach(function(el){
+  el.style.cursor='pointer';
+  el.addEventListener('click',function(){ topNav('/get-help'); });
+});
+
+// Pathway cards
+var pathMap = [
+  [/^i need/, '/get-help'],
+  [/^i want/, '/careers'],
+  [/^press/, '/news'],
+  [/^community/, '/our-work'],
+  [/^government/, '/impact'],
+  [/^funders/, '#donateSection']
+];
+document.querySelectorAll('.path-card').forEach(function(el){
+  var h = el.querySelector('h4'); if(!h) return;
+  var t = h.textContent.trim().toLowerCase();
+  var dest=null;
+  pathMap.forEach(function(p){ if(p[0].test(t)) dest=p[1]; });
+  if(!dest) return;
+  el.style.cursor='pointer';
+  el.addEventListener('click',function(){
+    if(dest.charAt(0)==='#'){
+      var tgt=document.querySelector(dest); if(tgt) tgt.scrollIntoView({behavior:'smooth'});
+    } else { topNav(dest); }
+  });
+});
+
+// Donate bento main: scroll/donate button
+document.querySelectorAll('.db-main button').forEach(function(b){
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.getElementById('donateSection'); if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.db-faq').forEach(function(a){ a.href='/about#faq'; a.target='_top'; });
+
+// Donate bento small cards (FAQs, Events & Calendar)
+document.querySelectorAll('.db-sm').forEach(function(el){
+  var h = el.querySelector('h3'); if(!h) return;
+  var t = h.textContent.toLowerCase();
+  var dest = /faq|frequently/.test(t) ? '/about#faq' : (/event|calendar/.test(t) ? '/news' : null);
+  if(!dest) return;
+  el.style.cursor='pointer';
+  el.addEventListener('click',function(){ topNav(dest); });
+});
+
+// Legislative wins / impact links
+document.querySelectorAll('.tl-link a, .growth-link a, .ib-link a').forEach(function(a){
+  a.href='/impact'; a.target='_top';
+});
+
+// Footer columns
+var ftMap = [
+  null,
+  { _default: '/get-help' },
+  { 'Our purpose':'/about','Our team':'/about','Careers':'/careers','CED law':'/about','Contact':'/about' },
+  { 'Legislative wins':'/impact','Research':'/impact','News & press':'/news','Donate':'#donateSection','Events':'/news' }
+];
+document.querySelectorAll('footer .ft-g > div').forEach(function(col, i){
+  var m = ftMap[i]; if(!m) return;
+  col.querySelectorAll('a').forEach(function(a){
+    var t = a.textContent.trim();
+    var dest = m[t] || m._default;
+    if(!dest) return;
+    if(dest.charAt(0)==='#'){
+      if(currentPath==='/'){ a.href = dest; }
+      else { a.href = '/' + dest; a.target='_top'; }
+    } else { a.href = dest; a.target='_top'; }
+  });
+});
+
+// About page-specific
+document.querySelectorAll('.mission-btn-o').forEach(function(a){ a.href='/#modelSection'; a.target='_top'; });
+document.querySelectorAll('.mission-btn-t').forEach(function(a){ a.href='/our-work'; a.target='_top'; });
+
+// Smooth scroll for in-page hash links (intercept)
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    var id = href.slice(1); if(!id) return;
+    var tgt = document.getElementById(id);
+    if(tgt){ e.preventDefault(); tgt.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+// Fade in
+requestAnimationFrame(function(){ document.body.classList.add('page-loaded'); });
+})();
+</script>
+
 </body>
 </html>
