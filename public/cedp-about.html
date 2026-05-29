@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Community Economic Defense Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Work+Sans:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heroSlam{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes heroDrift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes tlLine{from{width:0}to{width:100%}}
+@keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+
+body{font-family:'Libre Franklin',sans-serif;color:#1a1a1a;overflow-x:hidden;background:#F8F8F8}
+
+/* ---- TOP BAR ---- */
+.tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
+.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+.lng{display:flex;gap:6px}
+.lng span{padding:2px 8px;border:1px solid rgba(255,255,255,.25);cursor:pointer;font-size:11px;color:rgba(255,255,255,.6)}
+.lng .act{background:rgba(255,255,255,.12);color:#fff;font-weight:600}
+
+/* ---- NAV ---- */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
+nav img{height:56px}
+.nl{display:flex;align-items:center;gap:0;height:100%}
+.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
+.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
+.ni:hover>a{color:#C53030}
+.ni>a.active-nav{color:#C53030;border-bottom:2px solid #C53030}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:14px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:14px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+
+/* ---- HERO TOGGLE ---- */
+.ab-tog{display:inline-flex;border:1px solid rgba(255,255,255,.25);margin-left:10px;cursor:pointer}
+.ab-tog span{padding:2px 8px;font-size:11px;font-weight:700;font-family:'Work Sans',sans-serif;transition:all .2s;color:rgba(255,255,255,.5)}
+.ab-tog .on{background:rgba(255,255,255,.15);color:#E8B960}
+.ab-tog span:hover{color:#fff}
+
+/* ---- HERO ---- */
+.about-hero{background:#1B2838;min-height:85vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 64px 80px;position:relative;overflow:hidden}
+.about-hero-bg{position:absolute;inset:0;opacity:0;transition:opacity .6s}
+.about-hero-bg img{width:100%;height:100%;object-fit:cover;animation:slowZoom 25s ease-in-out infinite alternate}
+.about-hero-wm{position:absolute;right:64px;top:60px;font-family:'Bebas Neue',sans-serif;font-size:clamp(150px,22vw,260px);font-weight:400;color:rgba(255,255,255,1);line-height:.65;letter-spacing:-3px;pointer-events:none;opacity:0;text-align:right}
+.about-hero.v-photo .about-hero-bg{opacity:.18}
+.about-hero.v-photo .about-hero-wm{opacity:0}
+.about-hero.v-number .about-hero-bg{opacity:0}
+.about-hero.v-number .about-hero-wm{animation:wmReveal 2.5s ease-out 1.2s forwards}
+@keyframes wmReveal{0%{opacity:0;transform:translateY(30px)}40%{opacity:.1;transform:translateY(0)}65%{opacity:.05}100%{opacity:.1}}
+.about-hero-label{font-size:14px;font-weight:500;color:rgba(255,255,255,.5);margin-bottom:24px;animation:fadeUp .6s ease-out .1s both}
+.about-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,14vw,160px);font-weight:400;color:#FFF;line-height:.82;text-transform:uppercase;letter-spacing:1px}
+.about-hero h1 span{display:block;opacity:0;transform:translateY(60px) scale(1.05);animation:heroSlam .4s cubic-bezier(.22,1,.36,1) forwards,heroDrift 6s ease-in-out 1.5s infinite}
+.about-hero h1 span:nth-child(1){animation-delay:.2s,1.5s}
+.about-hero h1 span:nth-child(2){animation-delay:.5s,1.8s}
+.about-hero h1 span:nth-child(3){animation-delay:.8s,2.1s}
+.about-hero h1 span em{color:#E8B960;font-style:normal}
+.about-hero h1 .ember{color:#FFF;font-style:normal;animation:emberReveal .8s ease-out 1.8s forwards}
+@keyframes emberReveal{0%{color:#FFF;text-shadow:none}40%{color:#C53030;text-shadow:0 0 30px rgba(197,48,48,.4)}100%{color:#C53030;text-shadow:none}}
+.about-scroll{position:absolute;bottom:32px;right:64px;width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;animation:fadeUp 1s ease-out 1.5s both;cursor:pointer}
+.about-scroll svg{width:20px;height:20px}
+.about-scroll svg path{stroke:#E8B960;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---- MISSION ---- */
+.mission{padding:80px 64px;background:#1B2838}
+.mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.mission-img{position:relative;overflow:hidden}
+.mission-img img{width:100%;display:block}
+.mission-img-play{position:absolute;bottom:0;left:0;width:56px;height:56px;background:#C53030;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .3s}
+.mission-img-play:hover{background:#E8B960}
+.mission-img-play svg{width:20px;height:20px}
+.mission-img-play svg path{fill:#FFF;stroke:none}
+.mission-txt h3{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8B960;margin-bottom:16px}
+.mission-txt p{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;color:#FFF;line-height:1.4;margin-bottom:28px;font-style:italic}
+.mission-btns{display:flex;gap:14px;flex-wrap:wrap}
+.mission-btn-o{padding:14px 32px;border:1.5px solid rgba(255,255,255,.4);font-size:14px;font-weight:600;color:#FFF;text-decoration:none;text-transform:uppercase;letter-spacing:.8px;transition:all .3s;border-radius:40px}
+.mission-btn-o:hover{background:#FFF;color:#1B2838;border-color:#FFF}
+.mission-btn-t{padding:14px 0;font-size:14px;font-weight:600;color:rgba(255,255,255,.6);text-decoration:none;text-transform:uppercase;letter-spacing:.8px;transition:color .3s}
+.mission-btn-t:hover{color:#E8B960}
+
+/* ---- ORIGIN STORY ---- */
+.origin{position:relative;min-height:80vh;overflow:hidden;display:flex;align-items:center}
+.origin-bg{position:absolute;inset:0}
+.origin-bg img{width:100%;height:100%;object-fit:cover}
+.origin-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(27,40,56,.88) 0%,rgba(27,40,56,.6) 50%,rgba(27,40,56,.3) 100%)}
+.origin-content{position:relative;z-index:1;padding:80px 64px;max-width:640px}
+.origin h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:400;color:#FFF;line-height:.92;text-transform:uppercase;letter-spacing:2px;margin-bottom:24px}
+.origin p{font-family:'Libre Franklin',sans-serif;font-size:16px;font-style:normal;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:16px;font-weight:300}
+.origin .ar{width:70px;height:70px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-top:20px;cursor:pointer;transition:all .5s}
+.origin .ar svg{width:40px;height:40px}
+.origin .ar svg path{stroke:#E8B960;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.origin .ar:hover{background:#E8B960;border-color:#E8B960}
+.origin .ar:hover svg path{stroke:#1B2838}
+
+/* ---- FOUNDERS ---- */
+.founders{padding:80px 64px;background:#F8F8F8}
+.founders-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C53030;margin-bottom:16px}
+.founders h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;color:#1B2838;margin-bottom:40px}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.founder-card{background:#fff;display:flex;flex-direction:row;overflow:hidden;border:20px solid transparent;transition:border-color .4s ease,box-shadow .4s ease;cursor:pointer}
+.founder-card:hover{border-color:#E8B960;box-shadow:0 12px 40px rgba(232,185,96,.2)}
+.founder-img{width:40%;flex-shrink:0}
+.founder-img img{width:100%;height:100%;object-fit:cover;display:block}
+.founder-txt{padding:32px;display:flex;flex-direction:column;justify-content:center}
+.founder-txt h4{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1B2838;margin-bottom:2px}
+.founder-txt .founder-role{font-size:12px;color:#C53030;font-weight:600;letter-spacing:.5px;margin-bottom:12px}
+.founder-txt p{font-size:13px;color:#6B7A8A;line-height:1.6;font-family:'Libre Franklin',sans-serif;font-style:normal;font-weight:300}
+.founder-txt p.founder-quote{font-family:'Playfair Display',serif;font-style:italic;font-weight:400}
+
+/* ---- GROWTH NUMBERS ---- */
+.growth{background:#1B2838;padding:80px 64px}
+.growth-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8B960;margin-bottom:16px}
+.growth h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);font-weight:400;color:#FFF;line-height:.92;text-transform:uppercase;letter-spacing:2px;margin-bottom:48px}
+.growth-track{display:flex;gap:0;position:relative}
+.growth-track::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:rgba(232,185,96,.15)}
+.growth-track::after{content:'';position:absolute;top:0;left:0;height:3px;background:#E8B960;animation:tlLine 4s ease-out forwards;transform-origin:left}
+.growth-item{flex:1;padding:32px 24px 0 0;position:relative}
+.growth-dot{position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:#E8B960;border:3px solid #1B2838;z-index:1}
+.growth-year{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#E8B960;margin-top:16px;margin-bottom:4px}
+.growth-item h4{font-size:15px;font-weight:700;color:#FFF;margin-bottom:6px;line-height:1.3}
+.growth-item p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55;font-family:'Libre Franklin',sans-serif;font-weight:300}
+.growth-link{margin-top:40px}
+.growth-link a{font-size:14px;font-weight:700;color:#E8B960;text-decoration:none}
+
+/* ---- WE ARE CEDP (Robin Hood nav links style) ---- */
+.we-are{padding:60px 64px 80px;background:#F8F8F8}
+.we-are-label{font-size:14px;font-weight:500;color:#C53030;margin-bottom:8px}
+.we-are-rule{height:2px;background:#1B2838;margin-bottom:0}
+.we-are-row{display:flex;justify-content:space-between;align-items:center;padding:40px 32px;cursor:pointer;position:relative;overflow:hidden;border-bottom:1px solid #E8E8E8}
+.we-are-row::before{content:'';position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:0}
+.we-are-row:hover::before{transform:scaleY(1)}
+.we-are-row h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,7vw,90px);font-weight:400;color:#1B2838;text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1;transition:color .4s}
+.we-are-row .ar{width:80px;height:80px;border-radius:50%;border:1.5px solid rgba(27,40,56,.2);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .5s;flex-shrink:0}
+.we-are-row .ar svg{width:40px;height:40px}
+.we-are-row .ar svg path{stroke:#E8B960;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.we-are-row:hover .ar{background:#1B2838;border-color:#1B2838}
+.we-are-row:hover .ar svg path{stroke:#E8B960}
+
+/* ---- DONATE BENTO ---- */
+.donate-bento{background:#F8F8F8;padding:80px 48px}
+.donate-bento-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:12px;font-family:'Libre Franklin',sans-serif}
+.donate-bento h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;color:#1B2838;margin-bottom:40px}
+.db-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.db-main{grid-row:1/3;background:#1B2838;display:flex;flex-direction:column;padding:40px;position:relative;overflow:hidden}
+.db-main::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#E8B960;transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.db-main:hover::after{transform:scaleX(1)}
+.db-main h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);color:#FFF;line-height:.9;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.db-main>p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:28px;max-width:380px}
+.db-amounts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.db-amounts span{padding:12px 24px;border:1.5px solid rgba(255,255,255,.25);color:#FFF;font-size:16px;font-weight:600;font-family:'Libre Franklin',sans-serif;cursor:pointer;transition:all .3s}
+.db-amounts span:hover{border-color:#E8B960;color:#E8B960}
+.db-custom{display:flex;gap:0;margin-bottom:20px}
+.db-custom input{padding:12px 16px;font-size:14px;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:#FFF;width:200px;font-family:'Libre Franklin',sans-serif;outline:none}
+.db-custom input::placeholder{color:rgba(255,255,255,.35)}
+.db-custom button{padding:12px 28px;background:#C53030;color:#FFF;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:'Libre Franklin',sans-serif;letter-spacing:.5px;text-transform:uppercase}
+.db-faq{font-size:13px;color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px;font-family:'Libre Franklin',sans-serif}
+.db-main-bot{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end}
+.db-main .db-ar{width:70px;height:70px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:all .5s}
+.db-main .db-ar svg{width:40px;height:40px}
+.db-main .db-ar svg path{stroke:#E8B960;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.db-main:hover .db-ar{background:#E8B960;border-color:#E8B960}
+.db-main:hover .db-ar svg path{stroke:#1B2838}
+.db-sm{background:#1B2838;display:flex;flex-direction:row;overflow:hidden;min-height:200px;cursor:pointer;transition:background-color .5s}
+.db-sm *{transition:color .5s,background-color .5s,border-color .5s,stroke .5s}
+.db-sm-inner{display:flex;flex-direction:row;width:100%;padding:24px;gap:20px}
+.db-sm .img-wrap{width:38%;overflow:hidden}
+.db-sm .img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.db-sm-txt{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.db-sm h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:800;color:#FFF;line-height:1.08;margin-bottom:6px}
+.db-sm p{color:rgba(255,255,255,.6);line-height:1.45;font-family:'Libre Franklin',sans-serif;font-size:12px;font-weight:300}
+.db-sm-bot{display:flex;justify-content:flex-end;align-items:flex-end;margin-top:auto}
+.db-sm .db-ar{width:70px;height:70px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:all .5s}
+.db-sm .db-ar svg{width:40px;height:40px}
+.db-sm .db-ar svg path{stroke:#E8B960;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.db-sm:hover{background:#E8B960}
+.db-sm:hover h3{color:#1B2838}
+.db-sm:hover p{color:rgba(27,40,56,.6)}
+.db-sm:hover .db-ar{background:#1B2838;border-color:#1B2838}
+.db-sm:hover .db-ar svg path{stroke:#E8B960}
+.db-sm:hover .img-wrap img{transform:scale(1.05)}
+
+/* ---- NEWSLETTER STRIP ---- */
+.nl-strip{background:#C53030;padding:36px 64px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.nl-strip h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#FFF}
+.nl-strip-form{display:flex;gap:0}
+.nl-strip-form input{padding:12px 16px;font-size:14px;border:none;width:280px;outline:none}
+.nl-strip-form button{padding:12px 24px;background:#1B2838;color:#FFF;font-size:14px;font-weight:700;border:none;cursor:pointer;letter-spacing:.5px}
+
+/* ---- BRAND WATERMARK ---- */
+.brand-mark{display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:flex-end;padding:32px 0 24px}
+.brand-mark img{height:56px}
+.brand-mark-text{font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);line-height:1.25;transition:color .4s}
+.brand-mark:hover .brand-mark-text{color:#E8B960}
+.ph{font-size:9px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.15);font-style:italic;font-family:'Libre Franklin',sans-serif;vertical-align:super;margin-left:4px}
+.ph-dark{color:rgba(27,40,56,.12)}
+
+/* ---- FOOTER ---- */
+footer{background:#1B2838;padding:48px 48px 28px}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.ft-b{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#FFF;margin-bottom:12px}
+.ft-b em{color:#E8B960;font-style:normal}
+.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px;font-family:'Libre Franklin',sans-serif;font-weight:300}
+.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
+footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+</style>
+</head>
+<body>
+
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="#">(303) 838-1200</a></div><div style="display:flex;align-items:center;gap:6px"><div class="lng"><span class="act">English</span><span>Espa&ntilde;ol</span></div><div class="ab-tog"><span id="btnA" class="on" onclick="setHero('photo')">A</span><span id="btnB" onclick="setHero('number')">B</span></div></div></div>
+
+<nav><div><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></div><div class="nl">
+<div class="ni"><a href="#" class="active-nav">About</a></div>
+<div class="ni"><a href="#">Our work</a></div>
+<div class="ni"><a href="#">Impact</a></div>
+<div class="ni"><a href="#">News</a></div>
+<div class="ni"><a href="#">Careers</a></div>
+<a class="btn-d" href="#">Donate</a><a class="btn-h" href="#">Get help</a>
+</div></nav>
+
+<!-- HERO -->
+<section class="about-hero v-photo" id="aboutHero">
+<div class="about-hero-bg"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/12/cedp_bill_signing-scaled.jpeg?resize=1080%2C810&quality=100&ssl=1" alt="" loading="eager"/></div>
+<div class="about-hero-wm">68,000+<br/><span style="font-size:.4em;letter-spacing:4px;line-height:.9;display:inline-block;margin-top:-8px">FAMILIES<br/>SERVED</span></div>
+<div class="about-hero-label">About</div>
+<h1><span>Born from a</span><span><em>facebook post.</em></span><span>Built into a <em class="ember">movement.</em></span></h1>
+<div class="about-scroll" onclick="window.scrollTo({top:window.innerHeight,behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+</section>
+
+<!-- MISSION -->
+<section class="mission">
+<div class="mission-grid">
+<div class="mission-img">
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/12/renters_rights_workshop.png?resize=942%2C670&quality=100&ssl=1" alt="CEDP renters rights workshop" loading="lazy"/>
+<div class="mission-img-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+</div>
+<div class="mission-txt">
+<h3>Our Mission</h3>
+<p>We partner with low-income and working people to build economic and racial equity. We do this by confronting economic abuse and investing in community wealth &mdash; using legal, economic, and advocacy tools to challenge unjust systems.</p>
+<div class="mission-btns">
+<a href="#" class="mission-btn-o">How we work &rarr;</a>
+<a href="#" class="mission-btn-t">What we do &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="origin">
+<div class="origin-bg">
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/12/cedp_bill_signing-scaled.jpeg?resize=1080%2C810&quality=100&ssl=1" alt="CEDP bill signing" loading="lazy"/>
+</div>
+<div class="origin-content">
+<h2>The CEDP<br/>Story</h2>
+<p>In April 2020, two Colorado lawyers &mdash; Zach Neumann and Sam Gilman &mdash; posted on Facebook asking who needed help with eviction. Within weeks, thousands responded.</p>
+<p>What started as an all-volunteer community organizing effort during the pandemic has grown into a team of nearly 200 people serving 68,000 Coloradans across 59 counties, distributing more than $280 million in emergency assistance.</p>
+<p>Based on client feedback, CEDP built a model that gives people facing crisis a single point of contact &mdash; integrating intake, navigation, rapid financial aid, legal defense, and rehousing support. A financial emergency room.</p>
+<div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+</div>
+</section>
+
+<!-- FOUNDERS -->
+<section class="founders">
+<div class="founders-label">Leadership</div>
+<h2>The people behind the mission</h2>
+<div class="founders-grid">
+<div class="founder-card">
+<div class="founder-img"><img src="https://cedproject.org/wp-content/uploads/2022/11/Zach-Neumann.jpg" alt="Zach Neumann" loading="lazy"/></div>
+<div class="founder-txt">
+<h4>Zach Neumann</h4>
+<div class="founder-role">Co-Founder &amp; Co-CEO</div>
+<p>Eviction and debt defense attorney. Nonresident fellow at the Urban Institute and lecturer in law and policy at the University of Colorado. In March 2020, his Facebook post offering free legal help received hundreds of responses overnight &mdash; the crystalizing moment that launched CEDP.</p>
+</div>
+</div>
+<div class="founder-card">
+<div class="founder-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHOwf7VYsBABQ/profile-displayphoto-scale_400_400/B56Z1lZngXJsAg-/0/1775522710846?e=2147483647&v=beta&t=8YY3bJifbVYlFnQoyCNW4_HZ8ea3nsQ9wuAraq38TFs" alt="Sam Gilman" loading="lazy"/></div>
+<div class="founder-txt">
+<h4>Sam Gilman</h4>
+<div class="founder-role">Co-Founder &amp; Co-CEO</div>
+<p class="founder-quote">&ldquo;CEDP runs a financial emergency room. When someone comes to us in crisis, we meet them exactly where they are and stay with them through the solution. That's really what economic defense is about &mdash; a single point of entry, meeting a family where they are.&rdquo;</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GROWTH TIMELINE -->
+<section class="growth">
+<div class="growth-label">Key Moments From Our History</div>
+<h2>5 years<br/>of impact</h2>
+<div class="growth-track">
+<div class="growth-item"><div class="growth-dot"></div><div class="growth-year">2020</div><h4>The beginning</h4><p>Founded as COVID-19 Eviction Defense Project. All-volunteer effort serves first clients facing pandemic evictions.</p></div>
+<div class="growth-item"><div class="growth-dot"></div><div class="growth-year">2021</div><h4>Rapid scale</h4><p>Team grows to 50+. Serves 31,000 people and distributes $100 million in rental assistance during the pandemic.</p></div>
+<div class="growth-item"><div class="growth-dot"></div><div class="growth-year">2022</div><h4>Laws changed</h4><p>Passes Towing Bill of Rights and mobile home protections. Rebrands as Community Economic Defense Project. Cited by White House.</p></div>
+<div class="growth-item"><div class="growth-dot"></div><div class="growth-year">2023</div><h4>Expanded mandate</h4><p>Launches foreclosure, debt collection, and disaster response programs. Expands to 54 counties. Team grows to 123.</p></div>
+<div class="growth-item"><div class="growth-dot"></div><div class="growth-year">2024</div><h4>National model</h4><p>68,000+ served. $280M+ distributed. Fair Housing Unit established. $840K federal funding for Just Bus. Nearly 200 team members.</p></div>
+</div>
+<div class="growth-link"><a href="#">View all legislative wins &rarr;</a></div>
+</section>
+
+<!-- WE ARE CEDP -->
+<section class="we-are">
+<div class="we-are-label">We Are CEDP</div>
+<div class="we-are-rule"></div>
+<div class="we-are-row">
+<h3>Meet the team</h3>
+<div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+</div>
+<div class="we-are-row">
+<h3>Our leadership</h3>
+<div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+</div>
+<div class="we-are-row">
+<h3>Join us</h3>
+<div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+</div>
+<div class="we-are-rule"></div>
+</section>
+
+<!-- DONATE BENTO -->
+<section class="donate-bento">
+<div class="donate-bento-label">Support our mission</div>
+<h2>Get involved</h2>
+<div class="db-grid">
+
+<div class="db-main">
+<h3>Donate</h3>
+<p>Your $1,000 donation can keep a family housed for three months <span class="ph">PH</span>. Every dollar goes directly to defending Colorado communities.</p>
+<div class="db-amounts"><span>$1000</span><span>$250</span><span>$100</span><span>$50</span></div>
+<div class="db-custom"><input type="text" placeholder="$ Other Amount"/><button>Donate</button></div>
+<a href="#" class="db-faq">Frequently Asked Questions</a>
+<div class="db-main-bot"><div class="db-ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div>
+
+<div class="db-sm"><div class="db-sm-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=400&h=350&fit=crop" alt="Questions" loading="lazy"/></div><div class="db-sm-txt"><div><h3>Frequently<br/>Asked Questions</h3><span class="ph">PH</span><p>How your donation is used, tax deductibility, recurring gifts, and more</p></div><div class="db-sm-bot"><div class="db-ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+<div class="db-sm"><div class="db-sm-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=350&fit=crop" alt="Events" loading="lazy"/></div><div class="db-sm-txt"><div><h3>Events &amp;<br/>Calendar</h3><span class="ph">PH</span><p>Community events, fundraisers, advocacy days, and volunteer opportunities</p></div><div class="db-sm-bot"><div class="db-ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+</div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl-strip">
+<h3>Stay connected with our work</h3>
+<div class="nl-strip-form"><input type="email" placeholder="Your email address"/><button>Subscribe</button></div>
+</div>
+
+<footer><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="#">Eviction</a><a href="#">Foreclosure</a><a href="#">Towing</a><a href="#">Debt</a><a href="#">Disaster relief</a></div><div><h4>About</h4><a href="#">Our purpose</a><a href="#">Our team</a><a href="#">Careers</a><a href="#">CED law</a><a href="#">Contact</a></div><div><h4>Impact</h4><a href="#">Legislative wins</a><a href="#">Research</a><a href="#">News & press</a><a href="#">Donate</a><a href="#">Events</a></div></div><div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+
+<script>
+function setHero(v){
+var h=document.getElementById('aboutHero');
+var a=document.getElementById('btnA');
+var b=document.getElementById('btnB');
+h.className='about-hero v-'+v;
+a.className=v==='photo'?'on':'';
+b.className=v==='number'?'on':'';
+}
+</script>
+</body>
+</html>
