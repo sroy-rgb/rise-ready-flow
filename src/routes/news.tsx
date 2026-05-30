@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Placeholder } from "@/components/Placeholder";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -8,5 +7,15 @@ export const Route = createFileRoute("/news")({
       { name: "description", content: "Press, media coverage, events, and the latest from the Community Economic Defense Project." },
     ],
   }),
-  component: () => <Placeholder title="News & Press" currentPath="/news" />,
+  component: News,
 });
+
+function News() {
+  return (
+    <iframe
+      src="/cedp-news.html"
+      title="News & Press — CEDP"
+      style={{ border: 0, width: "100vw", height: "100vh", display: "block" }}
+    />
+  );
+}
