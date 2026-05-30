@@ -1250,6 +1250,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
   try { init(); } catch(e) { console.warn('i18n init failed', e); }
   setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 400);
   setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 1500);
+  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 3500);
 })();
 
 // ---- Lucide icon system (loaded from CDN, rendered into [data-lucide]) ----
