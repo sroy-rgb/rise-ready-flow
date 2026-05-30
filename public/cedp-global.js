@@ -1270,12 +1270,29 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
     setLang(saved);
   }
 
+  function rerunTranslations(){
+    try {
+      collected = false; originals = []; attrOrig = [];
+      wireToggle();
+      var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){}
+      setLang(s);
+    } catch(_) {}
+  }
+
   // Run after nav/footer injection (which is synchronous above) and again
   // after a tick to catch late-rendered DOM.
   try { init(); } catch(e) { console.warn('i18n init failed', e); }
-  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 400);
-  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 1500);
-  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 3500);
+  setTimeout(rerunTranslations, 400);
+  setTimeout(rerunTranslations, 1500);
+  setTimeout(rerunTranslations, 3500);
+  try {
+    var i18nTimer = null;
+    new MutationObserver(function(){
+      if (isTranslating) return;
+      clearTimeout(i18nTimer);
+      i18nTimer = setTimeout(rerunTranslations, 80);
+    }).observe(document.body, { childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:['placeholder','alt','title','aria-label'] });
+  } catch(_) {}
 })();
 
 // ---- Lucide icon system (loaded from CDN, rendered into [data-lucide]) ----
