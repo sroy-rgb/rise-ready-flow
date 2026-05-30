@@ -83,3 +83,29 @@ footer a:hover{color:#E8B960!important}
 
 /* GLOBAL — smooth scroll + scroll padding for sticky nav */
 html{scroll-behavior:smooth;scroll-padding-top:80px}
+
+/* ============================================================
+   UNIFIED NAV (mega menu) — injected on every page via cedp-global.js
+   ============================================================ */
+nav{padding:0 40px!important;display:flex!important;justify-content:space-between!important;align-items:center!important;border-bottom:1px solid #E8E8E8!important;height:72px!important}
+nav img{height:52px}
+.nl{display:flex;align-items:center;height:100%}
+.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
+.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
+.ni:hover>a{color:#C53030}
+.mega{position:absolute;top:72px;left:50%;transform:translateX(-50%);background:#1B2838;min-width:520px;padding:0;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:200;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.ni:hover .mega{opacity:1;visibility:visible}
+.mega-inner{display:flex;flex-direction:row}
+.mega-links{padding:32px 28px;flex:1;min-width:220px}
+.mega-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8B960;margin-bottom:16px;font-family:'Libre Franklin',sans-serif}
+.mega-links a{display:block;font-size:14px;color:rgba(255,255,255,.7);text-decoration:none;padding:8px 0;font-weight:400;transition:color .2s;font-family:'Libre Franklin',sans-serif;border-bottom:1px solid rgba(255,255,255,.05)}
+.mega-links a:hover{color:#FFF}
+.mega-img{width:220px;flex-shrink:0;overflow:hidden}
+.mega-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.mega-img img:hover{transform:scale(1.05)}
+.mega-stat{padding:16px 28px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:#E8B960;font-weight:700;font-family:'Libre Franklin',sans-serif}
+.mega-sm{min-width:360px}
+.mega-2col{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.mega-2col .mega-links{min-width:160px}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px;display:inline-block}
+.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px;display:inline-block}
