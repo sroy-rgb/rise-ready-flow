@@ -1095,9 +1095,6 @@ var ADD = {
   "Close menu": "Cerrar menú",
   "Close": "Cerrar",
   "Yes": "Sí",
-  "English": "Inglés",
-  "Español": "Español",
-  "English | Español": "Inglés | Español",
   "Toque aquí para español": "Toque aquí para español",
   "Cambie a Español": "Cambie a Español",
   "MODEL": "MODELO",
@@ -1176,6 +1173,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
         if (!p) return NodeFilter.FILTER_REJECT;
         var tag = (p.nodeName||'').toLowerCase();
         if (tag==='script' || tag==='style' || tag==='noscript') return NodeFilter.FILTER_REJECT;
+        if (p.closest && p.closest('.lang-toggle')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
