@@ -250,7 +250,7 @@ footer a{display:block;font-size:12px;color:rgba(255,255,255,.4);text-decoration
 @media(max-width:1024px){.hero-c{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr 1fr}.ben-grid{grid-template-columns:1fr 1fr}.ben-flip{height:180px}.proc-steps{grid-template-columns:1fr 1fr}.pos-item{grid-template-columns:1fr auto}}
 @media(max-width:768px){.hero-c,.why,.culture,.benefits,.positions,.process,.alerts,.punch,.giant-links{padding-left:24px;padding-right:24px}.why-grid,.ben-grid{grid-template-columns:1fr}.ben-flip{height:160px}.proc-steps{grid-template-columns:1fr}.proc-steps::before{display:none}.culture-grid{grid-template-columns:1fr}.culture-card.big{grid-row:auto}.pos-item{grid-template-columns:1fr}.pos-item .pos-dept,.pos-item .pos-loc,.pos-item .pos-type{display:none}.giant-row h3{font-size:28px}.giant-row .gar{width:48px;height:48px}.alerts-inner{flex-direction:column}.alerts-form{flex-direction:column}.alerts-form input{border-right:1.5px solid var(--border);width:100%}.snap-sec{min-height:60vh}}
 </style>
-</head>
+<link rel="stylesheet" href="/cedp-global.css"></head>
 <body>
 
 <!-- TOP BAR -->
@@ -588,5 +588,5 @@ setTimeout(triggerBang,800);
 // Mission punch toggle
 function setPunchC(t){var el=document.getElementById('punchCareer');el.className='punch t-'+t+' rv v';el.querySelectorAll('.punch-tog button').forEach(b=>b.classList.remove('on'));event.target.classList.add('on')}
 </script>
-</body>
+<script src="/cedp-global.js"></script></body>
 </html>
