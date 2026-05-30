@@ -4,350 +4,440 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Legislative Wins — Community Economic Defense Project</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Work+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Libre Franklin',sans-serif;font-weight:300;color:#1B2838;background:#F8F8F8;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit}
-.ph{font-size:9px;font-style:italic;color:rgba(0,0,0,.18);letter-spacing:1px;font-weight:700}
+body{font-family:'Libre Franklin',sans-serif;color:#1B2838;background:#FFF;font-weight:300;font-size:15px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{--navy:#1B2838;--red:#C53030;--gold:#E8B960;--slate:#4A6274;--bg:#F8F8F8;--border:#E8E8E8;--dim:#6B7A8A;--faint:#8A9AAA}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease-out,transform .7s ease-out}.rv.v{opacity:1;transform:translateY(0)}
+.lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+.lab-red{color:var(--red)}.lab-gold{color:var(--gold)}.lab-wh{color:rgba(255,255,255,.4)}
 
-/* TOP BAR */
+/* ---- TOP BAR ---- */
 .tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
-.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+.tb a{color:var(--gold);font-weight:700;text-decoration:none;font-size:13px}
 
-/* NAV */
-nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
-nav img{height:56px}
-.nl{display:flex;align-items:center;gap:0;height:100%}
-.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
-.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
-.ni:hover>a{color:#C53030}
-.ni>a.active-nav,.ni>a.act{color:#C53030;border-bottom:2px solid #C53030}
+/* ---- NAV ---- */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;height:68px}
+nav img{height:52px}
+.nl{display:flex;align-items:center;height:100%}
+.ni>a{font-size:14px;color:var(--slate);text-decoration:none;font-weight:500;padding:0 16px;height:68px;display:flex;align-items:center;transition:color .2s}
+.ni:hover>a{color:var(--red)}
+.ni>a.act{color:var(--red);border-bottom:2px solid var(--red)}
 .btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
-.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-d:hover{background:var(--gold);color:var(--navy)!important}
+.btn-h{background:var(--red);color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h:hover{background:#A02828}
 
-/* Common label/heading */
-.lbl{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:24px}
-.lbl.gold{color:#E8B960}
-.lbl.white{color:#E8B960}
-.sec{padding:80px 64px}
-.sec h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:24px}
-.sec p.lead{font-size:16px;line-height:1.6;color:#5A6B7A;max-width:680px}
+/* ---- HERO ---- */
+.hero-lw{min-height:100vh;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px;position:relative;overflow:hidden}
+.hero-lw::before{content:'LAWS\ACHANGED';font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,20vw,280px);color:rgba(255,255,255,.02);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:pre-line;text-align:center;line-height:.85;pointer-events:none;letter-spacing:6px}
+.hero-lw h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6vw,72px);color:#FFF;line-height:.88;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;position:relative;z-index:1}
+.hero-lw h1 em{color:var(--gold);font-style:normal}
+.hero-lw>p{font-size:16px;color:rgba(255,255,255,.5);max-width:540px;line-height:1.7;margin-bottom:48px;position:relative;z-index:1}
+.hero-stats-row{display:flex;gap:clamp(32px,6vw,80px);position:relative;z-index:1;margin-bottom:48px}
+.hero-stat{text-align:center}
+.hero-stat .hs-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,80px);color:var(--gold);line-height:1;letter-spacing:2px}
+.hero-stat .hs-lbl{font-size:12px;color:rgba(255,255,255,.4);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.hero-lw .hero-cta{padding:16px 40px;border:1.5px solid rgba(255,255,255,.3);color:#FFF;font-size:14px;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border-radius:40px;transition:all .3s;position:relative;z-index:1}
+.hero-lw .hero-cta:hover{background:#FFF;color:var(--navy)}
 
-/* Buttons */
-.btn-r{background:#C53030;color:#fff;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #C53030;display:inline-block;transition:background .2s;cursor:pointer}
-.btn-r:hover{background:#a82626}
-.btn-o{background:transparent;color:#1B2838;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #1B2838;display:inline-block;transition:all .2s;cursor:pointer;font-family:inherit}
-.btn-o:hover{background:#1B2838;color:#fff}
+/* ---- SPOTLIGHT CAROUSEL ---- */
+.spotlight{padding:0;background:var(--navy);border-top:1px solid rgba(255,255,255,.06)}
+.spot-label{padding:60px 64px 24px;display:flex;justify-content:space-between;align-items:flex-end}
+.spot-label h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:#FFF}
+.spot-nav{display:flex;align-items:center;gap:12px}
+.spot-counter{font-size:14px;color:rgba(255,255,255,.4);font-weight:500}
+.spot-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);background:none;color:#FFF;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.spot-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.3)}
+.spot-btn svg{width:18px;height:18px}
+.spot-btn svg path{stroke:#FFF;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.spot-track{overflow:hidden;padding:0 64px 80px}
+.spot-slider{display:flex;gap:0;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.spot-card{min-width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.spot-card-img{overflow:hidden;min-height:400px}
+.spot-card-img img{width:100%;height:100%;object-fit:cover;display:block}
+.spot-card-txt{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.spot-card-txt .spot-bill{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.spot-card-txt h3{font-family:'Barlow Condensed',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:700;color:#FFF;line-height:1.1;margin-bottom:16px}
+.spot-card-txt p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:24px}
+.spot-card-links{display:flex;gap:12px;flex-wrap:wrap}
+.spot-card-links a{font-size:12px;font-weight:600;color:var(--gold);text-decoration:underline;text-underline-offset:3px;transition:color .2s}
+.spot-card-links a:hover{color:#FFF}
 
-/* MISSION PUNCH */
-.punch{background:#1B2838;padding:120px 32px;text-align:center;position:relative;transition:background .5s,color .5s}
-.punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:400;color:#fff;line-height:.95;letter-spacing:1px;margin-bottom:36px;text-transform:none}
-.punch .pbtn{display:inline-block;border:1.5px solid #fff;color:#fff;padding:16px 36px;font-size:14px;font-weight:600;text-decoration:none;border-radius:40px;letter-spacing:1px;text-transform:uppercase;transition:all .25s}
-.punch .pbtn:hover{background:#fff;color:#1B2838}
-.ptog{position:absolute;top:24px;right:32px;display:flex;gap:6px}
-.ptog span{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Work Sans',sans-serif;cursor:pointer;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
-.ptog span.on{outline:2px solid #fff}
-.punch.v-n{background:#1B2838}
-.punch.v-g{background:#E8B960}
-.punch.v-g h2,.punch.v-g .pbtn{color:#1B2838}
-.punch.v-g .pbtn{border-color:#1B2838}
-.punch.v-r{background:#C53030}
-.punch.v-r h2,.punch.v-r .pbtn{color:#fff}
+/* ---- ACCORDION SECTION ---- */
+.acc-sec{padding:80px 64px;background:#FFF}
+.acc-sec h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.acc-sec>p{font-size:14px;color:var(--dim);margin-bottom:24px}
+.yr-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:0;overflow-x:auto}
+.yr-tab{padding:14px 24px;font-size:14px;font-weight:600;color:var(--faint);cursor:pointer;white-space:nowrap;position:relative;transition:color .2s;border:none;background:none;font-family:'Barlow Condensed',sans-serif;letter-spacing:.5px}
+.yr-tab:hover{color:var(--dim)}
+.yr-tab.active{color:var(--red)}
+.yr-tab.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--red)}
+.yr-panel{display:none}.yr-panel.active{display:block}
 
-/* GIANT LINKS */
-.we-are{background:#fff;padding:0 64px}
-.we-are-row{display:flex;align-items:center;justify-content:space-between;padding:48px 0;border-top:1px solid #E8E8E8;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
-.we-are-row:last-child{border-bottom:1px solid #E8E8E8}
-.we-are-row::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:0}
-.we-are-row:hover::before{transform:scaleY(1)}
-.we-are-row h2,.we-are-row .ar{position:relative;z-index:1}
-.we-are-row h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#1B2838;letter-spacing:1.5px}
-.we-are-row .ar{width:80px;height:80px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:background .3s}
-.we-are-row .ar svg{width:32px;height:32px}
-.we-are-row .ar svg path{stroke:#1B2838;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
-.we-are-row:hover .ar{background:#1B2838}
-.we-are-row:hover .ar svg path{stroke:#E8B960}
+/* Bill accordion rows */
+.bill-row{border-bottom:1px solid var(--border);overflow:hidden}
+.bill-head{padding:24px 0;display:flex;align-items:center;gap:16px;cursor:pointer}
+.bill-head:hover .bill-arrow{border-color:var(--gold)}
+.bill-head:hover .bill-arrow svg path{stroke:var(--gold)}
+.bill-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--gold);white-space:nowrap;min-width:100px}
+.bill-head h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:600;color:var(--navy);flex:1;line-height:1.2}
+.bill-arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(27,40,56,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s;cursor:pointer}
+.bill-arrow svg{width:22px;height:22px;transition:transform .3s}
+.bill-arrow svg path{stroke:var(--navy);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.bill-row.open .bill-arrow{background:var(--gold);border-color:var(--gold)}
+.bill-row.open .bill-arrow svg{transform:rotate(90deg)}
+.bill-row.open .bill-arrow svg path{stroke:var(--navy)}
+.bill-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.bill-row.open .bill-body{max-height:800px}
+.bill-inner{padding:0 0 28px 116px}
+.bill-inner p{font-size:14px;color:var(--dim);line-height:1.7;margin-bottom:12px}
+.bill-photos{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto}
+.bill-photos img{height:160px;object-fit:cover;flex-shrink:0}
+.bill-links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.bill-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--navy);color:#FFF;font-size:12px;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:.5px;transition:background .2s}
+.bill-link:hover{background:var(--gold);color:var(--navy)}
+.bill-link svg{width:14px;height:14px}
+.bill-link svg path{stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.bill-detail-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:none;border:1.5px solid var(--border);color:var(--navy);font-size:12px;font-weight:600;cursor:pointer;font-family:'Libre Franklin',sans-serif;text-transform:uppercase;letter-spacing:.5px;transition:all .2s}
+.bill-detail-btn:hover{border-color:var(--gold);background:rgba(232,185,96,.06)}
 
-/* FOOTER */
-footer{background:#1B2838;padding:48px 48px 28px;color:#fff}
-.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
-.ft-b{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:12px}
-.ft-b em{color:#E8B960;font-style:normal}
-.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
-.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
-footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
-footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
-.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+/* ---- LIGHTBOX ---- */
+.lb-overlay{position:fixed;inset:0;background:rgba(10,10,15,.75);z-index:1000;display:none;align-items:center;justify-content:center;padding:40px;backdrop-filter:blur(4px);opacity:0;transition:opacity .3s}
+.lb-overlay.open{display:flex;opacity:1}
+.lb-card{background:#FFF;max-width:800px;width:100%;max-height:85vh;overflow-y:auto;position:relative;padding:0;animation:lbIn .4s cubic-bezier(.16,1,.3,1)}
+@keyframes lbIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.lb-close{position:sticky;top:0;z-index:2;display:flex;justify-content:flex-end;padding:16px 20px;background:linear-gradient(#FFF 80%,transparent)}
+.lb-close button{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--border);background:#FFF;cursor:pointer;font-size:18px;color:var(--navy);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.lb-close button:hover{background:var(--navy);color:#FFF;border-color:var(--navy)}
+.lb-hero-img{width:100%;height:280px;object-fit:cover;display:block}
+.lb-content{padding:0 40px 40px}
+.lb-bill-num{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--gold);letter-spacing:1px;margin-bottom:4px}
+.lb-content h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.1}
+.lb-meta{font-size:12px;color:var(--dim);margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.lb-content p{font-size:14px;color:var(--dim);line-height:1.75;margin-bottom:12px}
+.lb-content ul{margin:0 0 16px 20px;list-style:none}
+.lb-content ul li{font-size:13px;color:var(--dim);line-height:1.7;padding:4px 0;position:relative;padding-left:16px}
+.lb-content ul li::before{content:'→';position:absolute;left:0;color:var(--gold)}
+.lb-content h4{font-size:14px;font-weight:700;color:var(--navy);margin:20px 0 8px}
+.lb-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:20px 0}
+.lb-photos img{width:100%;height:180px;object-fit:cover}
+.lb-sponsors{font-size:12px;color:var(--dim);font-style:italic;margin-bottom:16px}
+.lb-links{display:flex;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)}
 
-/* Scroll reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
+/* ---- MISSION PUNCH ---- */
+.punch{padding:120px 64px;text-align:center;transition:background .6s;position:relative}
+.punch.t-navy{background:var(--navy)}.punch.t-gold{background:var(--gold)}.punch.t-red{background:var(--red)}
+.punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,64px);line-height:.9;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px;transition:color .6s}
+.punch.t-navy h2{color:#FFF}.punch.t-gold h2{color:var(--navy)}.punch.t-red h2{color:#FFF}
+.punch-btn{display:inline-block;padding:16px 48px;border-radius:40px;font-size:15px;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:all .3s}
+.punch.t-navy .punch-btn{border:1.5px solid rgba(255,255,255,.35);color:#FFF}
+.punch.t-navy .punch-btn:hover{background:#FFF;color:var(--navy)}
+.punch.t-gold .punch-btn{border:1.5px solid rgba(27,40,56,.25);color:var(--navy)}
+.punch.t-gold .punch-btn:hover{background:var(--navy);color:var(--gold)}
+.punch.t-red .punch-btn{border:1.5px solid rgba(255,255,255,.35);color:#FFF}
+.punch.t-red .punch-btn:hover{background:#FFF;color:var(--red)}
+.punch-tog{position:absolute;top:20px;right:20px;display:flex;border:1px solid rgba(255,255,255,.2)}
+.punch-tog button{padding:4px 10px;font-size:10px;font-weight:700;font-family:'Libre Franklin',sans-serif;border:none;cursor:pointer;background:none;color:rgba(255,255,255,.4);transition:all .2s}
+.punch-tog button.on{background:rgba(255,255,255,.15);color:var(--gold)}
 
+/* ---- GIANT LINKS ---- */
+.giant-links{padding:60px 64px 80px;background:var(--bg)}
+.giant-rule{height:2px;background:var(--navy)}
+.giant-row{display:flex;justify-content:space-between;align-items:center;padding:32px;cursor:pointer;position:relative;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none}
+.giant-row::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s;z-index:0}
+.giant-row:hover::before{transform:scaleY(1)}
+.giant-row h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:var(--navy);text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1}
+.giant-row .gar{width:60px;height:60px;border-radius:50%;border:1.5px solid rgba(27,40,56,.15);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .5s;flex-shrink:0}
+.giant-row .gar svg{width:28px;height:28px}
+.giant-row .gar svg path{stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.giant-row:hover .gar{background:var(--navy);border-color:var(--navy)}
 
-.lw-hero{background:#1B2838;padding:96px 64px;color:#fff}
-.lw-hero .lbl{color:#E8B960}
-.lw-hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,8vw,72px);font-weight:400;color:#fff;line-height:.95;letter-spacing:1.5px;margin-bottom:20px}
-.lw-hero p{font-size:18px;color:rgba(255,255,255,.65);max-width:620px;line-height:1.55}
-.lw-years{background:#1B2838;padding:0 64px 24px;display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;border-bottom:1px solid rgba(255,255,255,.08)}
-.lw-year{padding:16px 24px;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;background:none;border-top:0;border-left:0;border-right:0;font-family:inherit}
-.lw-year.on{color:#E8B960;border-bottom-color:#E8B960}
-.lw-tl{background:#fff;padding:80px 64px;position:relative}
-.lw-tl-inner{max-width:920px;margin:0 auto;position:relative;padding-left:48px}
-.lw-tl-inner::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:#E8B960}
-.lw-entry{position:relative;margin-bottom:48px}
-.lw-entry::before{content:"";position:absolute;left:-44px;top:8px;width:18px;height:18px;border-radius:50%;background:#E8B960;border:3px solid #fff;box-shadow:0 0 0 2px #E8B960}
-.lw-card{background:#fff;border:1px solid #E8E8E8;padding:28px 32px;transition:box-shadow .2s,transform .2s}
-.lw-card:hover{box-shadow:0 8px 24px rgba(27,40,56,.08);transform:translateY(-2px)}
-.lw-year-badge{font-family:'Bebas Neue',sans-serif;font-size:24px;color:#E8B960;letter-spacing:1px}
-.lw-bill{font-size:12px;color:#8895A4;font-weight:600;letter-spacing:1px;margin-bottom:6px}
-.lw-card h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;color:#1B2838;margin-bottom:10px;line-height:1.2}
-.lw-card p{font-size:14px;line-height:1.6;color:#5A6B7A;margin-bottom:14px}
-.lw-pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-right:8px}
-.lw-pill.signed{background:#E6F4EA;color:#1E7A3E}
-.lw-pill.effect{background:#E6EEF7;color:#1E4D7A}
-.lw-pill.pending{background:#FFF4E0;color:#8A6700}
-.lw-more{font-size:13px;color:#C53030;font-weight:700;text-decoration:none;letter-spacing:.5px}
-.lw-spot{background:#F8F8F8;padding:80px 64px}
-.lw-spot-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.lw-spot-card{background:#1B2838;color:#fff;display:grid;grid-template-columns:2fr 3fr;overflow:hidden}
-.lw-spot-img{background:#0F1820 center/cover no-repeat;min-height:280px;display:flex;align-items:flex-end;padding:16px;color:rgba(255,255,255,.4)}
-.lw-spot-body{padding:32px}
-.lw-spot-body h3{font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
-.lw-spot-body p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.7);margin-bottom:16px}
-.lw-spot-stat{font-family:'Work Sans',sans-serif;font-size:32px;font-weight:700;color:#E8B960}
-.lw-spot-stat small{display:block;font-size:11px;color:rgba(255,255,255,.5);font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
-.lw-stats{background:#fff;padding:80px 64px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
-.lw-stat .n{font-family:'Bebas Neue',sans-serif;font-size:64px;color:#1B2838;line-height:1}
-.lw-stat .l{font-size:12px;color:#5A6B7A;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px}
-@media(max-width:1023px){
-  .lw-tl{padding:48px 20px !important}
-  .lw-tl-inner{padding-left:32px}
-  .lw-spot-grid{grid-template-columns:1fr}
-  .lw-spot-card{grid-template-columns:1fr}
-  .lw-stats{grid-template-columns:repeat(2,1fr);gap:32px}
-  .lw-hero h1{font-size:42px !important}
-}
+/* ---- FOOTER ---- */
+footer{background:var(--navy);padding:0 48px 28px}
+.ft-warm{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.ft-warm-txt{font-size:20px;font-weight:600;color:rgba(255,255,255,.45)}.ft-warm-txt em{color:var(--red);font-style:normal}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:28px}
+.ft-b{font-size:16px;font-weight:700;color:#FFF;margin-bottom:10px}.ft-b em{color:var(--gold);font-style:normal}
+.ft-d{font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:12px}
+.ft-c{font-size:11px;color:rgba(255,255,255,.35);line-height:1.6}
+footer h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+footer a{display:block;font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:6px}
+.brand-mark{display:flex;align-items:center;gap:10px;justify-content:flex-end;padding:24px 0 16px}
+.brand-mark img{height:48px}
+.brand-mark-text{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);line-height:1.25}
+.ft-bt{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.25)}
 
-
-html,body{overflow-x:hidden;max-width:100vw}
-input,textarea,select{font-size:16px !important}
-*{-webkit-tap-highlight-color:rgba(197,48,48,.15)}
-@media (max-width:1023px){
-  .tb{padding:6px 16px !important;font-size:11px}
-  nav{height:56px !important;padding:0 16px !important}
-  nav > div:first-child img{height:40px !important}
-  nav .nl{display:none !important}
-  .mob-burger{display:flex !important;flex-direction:column;justify-content:space-between;width:28px;height:20px;padding:0;background:none;border:0;cursor:pointer;margin-left:auto}
-  .mob-burger span{display:block;height:2px;background:#1B2838;width:100%}
-  .mob-overlay{position:fixed;inset:0;background:#1B2838;z-index:9999;display:none;flex-direction:column;padding:24px 24px 32px}
-  .mob-overlay.open{display:flex}
-  .mob-close{align-self:flex-end;width:44px;height:44px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
-  .mob-links{display:flex;flex-direction:column;margin-top:24px;flex:1}
-  .mob-links a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;height:56px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)}
-  .mob-cta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
-  .mob-cta a{display:flex;align-items:center;justify-content:center;height:56px;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
-  .mob-cta .mob-donate{background:#fff;color:#1B2838}
-  .mob-cta .mob-get{background:#C53030;color:#fff}
-  .sec,.we-are,.punch{padding:40px 20px !important}
-  .punch{padding:64px 20px !important}
-  .we-are{padding:0 20px !important}
-  .we-are-row{padding:28px 0 !important}
-  .we-are-row h2{font-size:clamp(28px,6vw,40px) !important}
-  .we-are-row .ar{width:56px !important;height:56px !important}
-  .ft-g{display:flex !important;flex-direction:column;gap:32px;text-align:center}
-  .ft-bt{flex-direction:column !important;gap:8px;text-align:center}
-  .grid-3,.grid-4,.grid-2{grid-template-columns:1fr !important}
-}
-@media (min-width:768px) and (max-width:1023px){
-  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr) !important}
-  .ft-g{display:grid !important;grid-template-columns:1fr 1fr;text-align:left}
-}
-
+@media(max-width:1024px){.spot-card{grid-template-columns:1fr}.spot-card-img{min-height:240px}.hero-stats-row{gap:32px}.bill-inner{padding-left:0}}
+@media(max-width:768px){.hero-lw,.spot-label,.spot-track,.acc-sec,.punch,.giant-links{padding-left:24px;padding-right:24px}.hero-stats-row{flex-direction:column;gap:16px}.spot-card-txt{padding:24px}.bill-photos img{height:120px}.giant-row h3{font-size:28px}.giant-row .gar{width:48px;height:48px}.punch{padding:80px 24px}.bill-num{min-width:auto}}
 </style>
-<link rel="stylesheet" href="/cedp-global.css"></head>
+</head>
 <body>
-<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>
-<nav><div><a href="/" target="_top"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
-<div class="ni"><a href="/about" target="_top">About</a></div>
-<div class="ni"><a href="/our-work" target="_top">Our work</a></div>
-<div class="ni"><a href="/ced-law" target="_top">CED Law</a></div>
-<div class="ni"><a href="/impact" target="_top" class="act">Impact</a></div>
-<div class="ni"><a href="/news" target="_top">News</a></div>
-<div class="ni"><a href="/careers" target="_top">Careers</a></div>
-<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h" href="/get-help" target="_top">Get help</a>
+
+<!-- TOP BAR -->
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Español</div></div>
+
+<!-- NAV -->
+<nav><div><a href="cedp-homepage-font-ab.html"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="cedp-about.html">About</a></div>
+<div class="ni"><a href="cedp-ourwork.html">Our work</a></div>
+<div class="ni"><a href="cedp-cedlaw.html">CED Law</a></div>
+<div class="ni"><a href="#" class="act">Impact</a></div>
+<div class="ni"><a href="cedp-careers.html">Careers</a></div>
+<a class="btn-d" href="#">Donate</a><a class="btn-h" href="cedp-gethelp.html">Get help</a>
 </div></nav>
 
-<section class="lw-hero">
-  <div class="lbl">Impact</div>
-  <h1>FROM CASE<br/>TO CAUSE</h1>
-  <p>Every law on this page started with one person's story. We turn individual cases into systemic change.</p>
+<!-- HERO -->
+<section class="hero-lw rv">
+<div class="lab lab-wh">Legislative Wins</div>
+<h1>Changing the law to<br><em>protect communities</em></h1>
+<p>Client experiences inform legislation. From case to cause — CEDP changes the systems that create injustice. During 2024, all eight of our priority bills passed and became Colorado law.</p>
+<div class="hero-stats-row">
+<div class="hero-stat"><div class="hs-num">8</div><div class="hs-lbl">Bills passed in 2024</div></div>
+<div class="hero-stat"><div class="hs-num">$1M</div><div class="hs-lbl">Wyatts settlement</div></div>
+<div class="hero-stat"><div class="hs-num">0</div><div class="hs-lbl">Cost to clients</div></div>
+</div>
+<a href="#wins" class="hero-cta">Explore Wins ↓</a>
 </section>
-<div class="lw-years" id="lwYears">
-  <button class="lw-year on" data-y="All">All</button><button class="lw-year" data-y="2020">2020</button><button class="lw-year" data-y="2021">2021</button><button class="lw-year" data-y="2022">2022</button><button class="lw-year" data-y="2023">2023</button><button class="lw-year" data-y="2024">2024</button><button class="lw-year" data-y="2025">2025</button><button class="lw-year" data-y="2026">2026</button>
-</div>
-<section class="lw-tl">
-  <div class="lw-tl-inner" id="lwTL">
-    <div class="lw-entry reveal" data-year="2022">
-  <div class="lw-card">
-    <div class="lw-year-badge">2022</div>
-    <div class="lw-bill">HB22-1314</div>
-    <h3>Towing Bill of Rights</h3>
-    <p>Colorado's first comprehensive towing consumer protection law. Limits predatory tow practices, caps fees, and requires written notice before vehicle removal.</p>
-    <span class="lw-pill signed">Signed</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2023">
-  <div class="lw-card">
-    <div class="lw-year-badge">2023</div>
-    <div class="lw-bill">SB23-184</div>
-    <h3>Expanded Renters' Rights</h3>
-    <p>Strengthened tenant protections statewide, including longer notice periods and limits on application fees.</p>
-    <span class="lw-pill effect">In Effect</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2024">
-  <div class="lw-card">
-    <div class="lw-year-badge">2024</div>
-    <div class="lw-bill">HB24-1051</div>
-    <h3>Towing Reform II</h3>
-    <p>Additional towing consumer protections: photo-evidence requirements, fee caps, and stronger enforcement.</p>
-    <span class="lw-pill signed">Signed</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2024">
-  <div class="lw-card">
-    <div class="lw-year-badge">2024</div>
-    <div class="lw-bill">Wyatts AG Settlement</div>
-    <h3>$1M Wyatt's Towing Settlement</h3>
-    <p>Landmark predatory towing case. CEDP partnered with the Colorado AG to secure $1M in restitution for impacted Coloradans.</p>
-    <span class="lw-pill effect">In Effect</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2024">
-  <div class="lw-card">
-    <div class="lw-year-badge">2024</div>
-    <div class="lw-bill">CO Supreme Court</div>
-    <h3>Jury Trial Right Ruling</h3>
-    <p>Colorado Supreme Court affirmed tenants' right to jury trial in disputed evictions — a major win for procedural fairness.</p>
-    <span class="lw-pill effect">In Effect</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2025">
-  <div class="lw-card">
-    <div class="lw-year-badge">2025</div>
-    <div class="lw-bill">HB25-XXXX</div>
-    <h3>Medical Debt Relief Act</h3>
-    <p>Caps interest rates on medical debt and prevents wage garnishment for unpaid hospital bills. <span class='ph'>PH</span></p>
-    <span class="lw-pill pending">Pending</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2025">
-  <div class="lw-card">
-    <div class="lw-year-badge">2025</div>
-    <div class="lw-bill">SB25-XXXX</div>
-    <h3>Eviction Sealing Expansion</h3>
-    <p>Expands sealing of dismissed and resolved eviction records. <span class='ph'>PH</span></p>
-    <span class="lw-pill pending">Pending</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-<div class="lw-entry reveal" data-year="2026">
-  <div class="lw-card">
-    <div class="lw-year-badge">2026</div>
-    <div class="lw-bill">HB26-XXXX</div>
-    <h3>Disaster Relief Standing Fund</h3>
-    <p>Permanent state fund for rapid economic response after wildfires and floods. <span class='ph'>PH</span></p>
-    <span class="lw-pill pending">Pending</span>
-    <a class="lw-more" href="#">Learn more &rarr;</a>
-  </div>
-</div>
-  </div>
-</section>
-<section class="lw-spot">
-  <div class="lbl">Key Wins</div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase;margin-bottom:32px">Spotlight</h2>
-  <div class="lw-spot-grid">
-    <div class="lw-spot-card reveal">
-      <div class="lw-spot-img"><span class="ph">PH photo</span></div>
-      <div class="lw-spot-body">
-        <h3>Towing Bill of Rights</h3>
-        <p>After hundreds of CEDP clients lost their cars to predatory towing, we organized impacted Coloradans, gathered data, and drafted HB22-1314 with legislators. It is now the strongest towing consumer protection law in the country.</p>
-        <div class="lw-spot-stat">12,000+<small>vehicles protected annually</small></div>
-      </div>
-    </div>
-    <div class="lw-spot-card reveal">
-      <div class="lw-spot-img"><span class="ph">PH photo</span></div>
-      <div class="lw-spot-body">
-        <h3>Wyatt's Towing Settlement</h3>
-        <p>CEDP partnered with the Colorado Attorney General to bring a landmark case against the state's largest towing operator. The $1M settlement returned money directly to families who had lost cars they could not afford to recover.</p>
-        <div class="lw-spot-stat">$1,000,000<small>returned to families</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="punch v-n" id="punch">
-  <div class="ptog"><span data-v="n" class="on">N</span><span data-v="g">G</span><span data-v="r">R</span></div>
-  <h2>FROM CASE TO CAUSE.<br/>FROM CLIENT TO LAW.</h2>
-  <a class="pbtn" href="/#donateSection" target="_top">Donate &rarr;</a>
-</section>
-<script>(function(){var p=document.getElementById('punch');if(!p)return;p.querySelectorAll('.ptog span').forEach(function(s){s.addEventListener('click',function(){p.className='punch v-'+s.dataset.v;p.querySelectorAll('.ptog span').forEach(function(x){x.classList.toggle('on',x===s)});});});})();</script>
-<div class="we-are">
-<a class="we-are-row" href="/our-work" target="_top"><h2>OUR PROGRAMS</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
-<a class="we-are-row" href="/ced-law" target="_top"><h2>CED LAW</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
-<a class="we-are-row" href="/get-help" target="_top"><h2>GET HELP</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
-</div>
-<section class="lw-stats">
-  <div class="lw-stat reveal"><div class="n">12+</div><div class="l">Laws Changed</div></div>
-  <div class="lw-stat reveal"><div class="n">$1M+</div><div class="l">Settlements Won</div></div>
-  <div class="lw-stat reveal"><div class="n">68,000+</div><div class="l">People Protected</div></div>
-  <div class="lw-stat reveal"><div class="n">59</div><div class="l">Counties Covered</div></div>
-</section>
-<script>
-(function(){
-  var tabs=document.querySelectorAll('#lwYears .lw-year');
-  var entries=document.querySelectorAll('#lwTL .lw-entry');
-  tabs.forEach(function(t){t.addEventListener('click',function(){
-    tabs.forEach(function(x){x.classList.toggle('on',x===t)});
-    var y=t.dataset.y;
-    entries.forEach(function(e){e.style.display=(y==='All'||e.dataset.year===y)?'':'none'});
-  });});
-})();
-</script>
 
-<footer><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help" target="_top">Eviction</a><a href="/get-help" target="_top">Foreclosure</a><a href="/get-help" target="_top">Towing</a><a href="/get-help" target="_top">Debt</a><a href="/get-help" target="_top">Disaster relief</a></div><div><h4>About</h4><a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED law</a><a href="/about" target="_top">Contact</a></div><div><h4>Impact</h4><a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a></div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+<!-- SPOTLIGHT CAROUSEL -->
+<section class="spotlight rv">
+<div class="spot-label">
+<h2>Landmark Wins</h2>
+<div class="spot-nav">
+<span class="spot-counter" id="spotCount">1 / 3</span>
+<button class="spot-btn" onclick="spotPrev()"><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
+<button class="spot-btn" onclick="spotNext()"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+</div>
+</div>
+<div class="spot-track"><div class="spot-slider" id="spotSlider">
+
+<div class="spot-card">
+<div class="spot-card-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/McCluskie-group-1-scaled.jpg?resize=1080%2C722&quality=100&ssl=1" alt="For Cause Eviction bill signing" loading="lazy"/></div>
+<div class="spot-card-txt"><div class="spot-bill">HB24-1098</div><h3>For Cause Eviction — Colorado's Landmark Tenant Protection</h3><p>Signed into law April 2024. Protects thousands of tenants from unjust evictions, prevents racial and gender discrimination in housing, and creates long-term stability for renters and landlords alike.</p><div class="spot-card-links"><a href="https://cedproject.org/wp-content/uploads/2024/01/FCE-One-Pager.pdf" target="_blank">Fact Sheet →</a><a href="https://leg.colorado.gov/bills/hb24-1098" target="_blank">Bill Text →</a></div></div>
+</div>
+
+<div class="spot-card">
+<div class="spot-card-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/IMG_1031-1-scaled.jpg?resize=1080%2C720&quality=100&ssl=1" alt="Safe Housing bill signing" loading="lazy"/></div>
+<div class="spot-card-txt"><div class="spot-bill">SB24-094</div><h3>Safe Housing for Residential Tenants</h3><p>Signed into law May 2024. Ensures Colorado tenants can more easily use the Warranty of Habitability Law to address health and safety hazards. Sets repair timeframes, clarifies alternative lodging requirements, and establishes cooling protections in extreme heat.</p><div class="spot-card-links"><a href="https://drive.google.com/file/d/1t4_zGUlFqcehWoCpq_aMOt2zmj8zT2OG/view" target="_blank">Fact Sheet →</a><a href="https://leg.colorado.gov/bills/sb24-094" target="_blank">Bill Text →</a></div></div>
+</div>
+
+<div class="spot-card">
+<div class="spot-card-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/07/IMG_8255-scaled.jpg?resize=1080%2C810&quality=100&ssl=1" alt="Towing reform" loading="lazy"/></div>
+<div class="spot-card-txt"><div class="spot-bill">HB24-1051</div><h3>Towing Carrier Regulation — Ending Predatory Towing</h3><p>Signed into law May 2024. Gives the PUC authority to revoke towing licenses, prohibits for-profit towing patrols on residential lots, requires written authorization for tows, and creates enforcement mechanisms for the AG.</p><div class="spot-card-links"><a href="https://cedproject.org/wp-content/uploads/2024/02/Towing-Bill-One-Pager.pdf" target="_blank">Fact Sheet →</a><a href="https://leg.colorado.gov/bills/hb24-1051" target="_blank">Bill Text →</a></div></div>
+</div>
+
+</div></div>
+</section>
+
+<!-- FULL ACCORDION -->
+<section class="acc-sec rv" id="wins">
+<div class="lab lab-red">All legislative wins</div>
+<h2>By session year</h2>
+<p>Click any bill to expand details. Arrow links to the full bill text on leg.colorado.gov.</p>
+
+<div class="yr-tabs">
+<button class="yr-tab active" onclick="setYear('2024',this)">2024</button>
+<button class="yr-tab" onclick="setYear('2023',this)">2023</button>
+<button class="yr-tab" onclick="setYear('2022',this)">2022</button>
+</div>
+
+<!-- 2024 -->
+<div class="yr-panel active" id="yr2024">
+
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">HB24-1098</span><h3>For Cause Eviction of a Tenant</h3><a class="bill-arrow" href="https://leg.colorado.gov/bills/hb24-1098" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>Protects thousands of Colorado tenants from unjust evictions. Prevents racial and gender discrimination, reduces displacement and homelessness, and creates long-term stability for tenants and landlords.</p><div class="bill-photos"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/McCluskie-group-1-scaled.jpg?resize=540%2C361&quality=100&ssl=1" alt=""/><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/Hinrichsen-Melissa-Javier-1-scaled.jpg?resize=540%2C367&quality=100&ssl=1" alt=""/></div><div class="bill-links"><a class="bill-link" href="https://cedproject.org/wp-content/uploads/2024/01/FCE-One-Pager.pdf" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Fact Sheet</a><a class="bill-link" href="https://leg.colorado.gov/bills/hb24-1098" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Bill Text</a><button class="bill-detail-btn" onclick="event.stopPropagation();openLightbox('hb1098')">View Full Details →</button></div></div></div>
+</div>
+
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">SB24-094</span><h3>Safe Housing for Residential Tenants</h3><a class="bill-arrow" href="https://leg.colorado.gov/bills/sb24-094" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>Ensures tenants can use the Warranty of Habitability Law to address health and safety hazards. Sets repair timeframes, clarifies alternative lodging, and establishes cooling protections in extreme heat.</p><div class="bill-photos"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/SB24094-scaled.jpg?resize=540%2C405&quality=100&ssl=1" alt=""/><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/07/WOH-group-photo.jpg?resize=540%2C360&quality=100&ssl=1" alt=""/></div><div class="bill-links"><a class="bill-link" href="https://drive.google.com/file/d/1t4_zGUlFqcehWoCpq_aMOt2zmj8zT2OG/view" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Fact Sheet</a><a class="bill-link" href="https://leg.colorado.gov/bills/sb24-094" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Bill Text</a><button class="bill-detail-btn" onclick="event.stopPropagation();openLightbox('sb094')">View Full Details →</button></div></div></div>
+</div>
+
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">HB24-1051</span><h3>Towing Carrier Regulation</h3><a class="bill-arrow" href="https://leg.colorado.gov/bills/hb24-1051" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>Gives the PUC authority to revoke towing licenses for violations. Prohibits for-profit towing companies from patrolling residential lots. Requires written authorization for tows. Creates enforcement mechanisms for DAs and the AG.</p><div class="bill-links"><a class="bill-link" href="https://cedproject.org/wp-content/uploads/2024/02/Towing-Bill-One-Pager.pdf" target="_blank"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Fact Sheet</a><a class="bill-link" href="https://leg.colorado.gov/bills/hb24-1051" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Bill Text</a><button class="bill-detail-btn" onclick="event.stopPropagation();openLightbox("hb1051")">View Full Details →</button></div></div></div>
+</div>
+
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">HB24-1337</span><h3>HOA Foreclosure Protections</h3><a class="bill-arrow" href="https://leg.colorado.gov/bills/hb24-1337" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>Requires HOAs to exhaust all options before initiating foreclosure. Limits homeowner liability for attorney's fees. Introduces right of redemption allowing homeowners or nonprofits to purchase at auction price — keeping community wealth in the community.</p><div class="bill-links"><a class="bill-link" href="https://leg.colorado.gov/bills/hb24-1337" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Bill Text</a></div></div></div>
+</div>
+
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">HB24-1267</span><h3>Metro District Foreclosure Protections</h3><a class="bill-arrow" href="https://leg.colorado.gov/bills/hb24-1267" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>Companion bill to HB24-1337. Requires covenant-enforcing metro districts to adopt written policies on fines and fees. Prevents metro districts from initiating foreclosures based on unpaid charges.</p><div class="bill-links"><a class="bill-link" href="https://leg.colorado.gov/bills/hb24-1267" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Bill Text</a></div></div></div>
+</div>
+
+</div>
+
+<!-- 2023 -->
+<div class="yr-panel" id="yr2023">
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">2023</span><h3>Expanded Renters' Rights Legislation</h3><a class="bill-arrow" href="https://cedproject.org/leg/" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>CEDP contributed to multiple pieces of legislation expanding protections for Colorado renters during the 2023 session. Details to be populated from CEDP's legislative archive. <em style="font-size:10px;opacity:.4">PH</em></p></div></div>
+</div>
+</div>
+
+<!-- 2022 -->
+<div class="yr-panel" id="yr2022">
+<div class="bill-row" onclick="toggleBill(this)">
+<div class="bill-head"><span class="bill-num">HB22-1314</span><h3>Towing Bill of Rights — Colorado's First Towing Consumer Protection</h3><a class="bill-arrow" href="https://leg.colorado.gov/bills/hb22-1314" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+<div class="bill-body"><div class="bill-inner"><p>CEDP's first major legislative achievement. Created Colorado's first consumer protections for people whose vehicles are towed. Established rights around notification, pricing transparency, and vehicle retrieval. This law became the foundation for the $1M Wyatts Towing settlement and subsequent HB24-1051 reforms.</p><div class="bill-links"><a class="bill-link" href="https://leg.colorado.gov/bills/hb22-1314" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Bill Text</a></div></div></div>
+</div>
+</div>
+
+</section>
+
+<!-- MISSION PUNCH -->
+<section class="punch t-navy rv" id="punchLeg">
+<div class="punch-tog"><button class="on" onclick="setPunchL('navy')">N</button><button onclick="setPunchL('gold')">G</button><button onclick="setPunchL('red')">R</button></div>
+<h2>From case to cause.<br>From client to law.</h2>
+<a href="#" class="punch-btn">Support Our Work →</a>
+</section>
+
+<!-- GIANT LINKS -->
+<section class="giant-links rv">
+<div class="giant-rule"></div>
+<a href="cedp-gethelp.html" class="giant-row"><h3>Get help now</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a href="cedp-cedlaw.html" class="giant-row"><h3>Meet CED Law</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a href="cedp-ourwork.html" class="giant-row"><h3>Our programs</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<div class="giant-rule"></div>
+</section>
+
+<!-- LIGHTBOX OVERLAY -->
+<div class="lb-overlay" id="lbOverlay" onclick="if(event.target===this)closeLightbox()">
+
+<div class="lb-card" id="lb-hb1098" style="display:none">
+<div class="lb-close"><button onclick="closeLightbox()">×</button></div>
+<img class="lb-hero-img" src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/McCluskie-group-1-scaled.jpg?resize=1080%2C722&quality=100&ssl=1" alt=""/>
+<div class="lb-content">
+<div class="lb-bill-num">HB24-1098</div>
+<h2>For Cause Eviction of a Tenant</h2>
+<div class="lb-meta">Signed by Governor Jared Polis · April 2024</div>
+<p>Governor Jared Polis signed House Majority Leader Monica Duran, Rep. Javier Mabrey, and Sens. Julie Gonzales and Nick Hinrichsen's For Cause Eviction legislation into law in April 2024. This legislation protects thousands of Colorado tenants who face unjust evictions and helps stabilize more households in their communities.</p>
+<h4>What this law does:</h4>
+<ul>
+<li>Protects against racial and gender discrimination in evictions</li>
+<li>Prevents households from unnecessarily experiencing displacement and homelessness</li>
+<li>Reduces the number of evictions in Colorado and protects against gentrification</li>
+<li>Creates long-term stability for both tenants and landlords</li>
+<li>Saves Colorado families money by keeping a roof over their heads</li>
+</ul>
+<div class="lb-sponsors">Sponsors: House Majority Leader Monica Duran, Rep. Javier Mabrey, Sens. Julie Gonzales and Nick Hinrichsen</div>
+<div class="lb-photos">
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/McCluskie-group-1-scaled.jpg?resize=540%2C361&quality=100&ssl=1" alt=""/>
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/Hinrichsen-Melissa-Javier-1-scaled.jpg?resize=540%2C367&quality=100&ssl=1" alt=""/>
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/07/IMG_8255-scaled.jpg?resize=540%2C405&quality=100&ssl=1" alt=""/>
+</div>
+<div class="lb-links"><a class="bill-link" href="https://cedproject.org/wp-content/uploads/2024/01/FCE-One-Pager.pdf" target="_blank">Fact Sheet</a><a class="bill-link" href="https://leg.colorado.gov/bills/hb24-1098" target="_blank">Bill Text</a></div>
+</div>
+</div>
+
+<div class="lb-card" id="lb-sb094" style="display:none">
+<div class="lb-close"><button onclick="closeLightbox()">×</button></div>
+<img class="lb-hero-img" src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/IMG_1031-1-scaled.jpg?resize=1080%2C720&quality=100&ssl=1" alt=""/>
+<div class="lb-content">
+<div class="lb-bill-num">SB24-094</div>
+<h2>Safe Housing for Residential Tenants</h2>
+<div class="lb-meta">Signed into law · May 2024 · Effective immediately</div>
+<p>Sponsored by Sens. Julie Gonzales and Tony Exum, along with Reps. Mandy Lindsay and Meg Froelich, SB24-094 ensures Colorado tenants can more easily use the state's Warranty of Habitability Law to address health and safety hazards in their housing.</p>
+<h4>What this law does:</h4>
+<ul>
+<li>Sets reasonable notice requirements so tenants don't need an attorney to ask for repairs</li>
+<li>Sets presumptive timeframes for completing repairs with flexibility for landlords</li>
+<li>Clarifies when landlords must provide alternative lodging during repairs</li>
+<li>Establishes policies allowing tenants to use appropriate cooling in extreme heat</li>
+<li>Outlines appropriate legal remedies if a rental becomes uninhabitable</li>
+</ul>
+<div class="lb-sponsors">Sponsors: Sens. Julie Gonzales and Tony Exum; Reps. Mandy Lindsay and Meg Froelich</div>
+<div class="lb-photos">
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/06/SB24094-scaled.jpg?resize=540%2C405&quality=100&ssl=1" alt=""/>
+<img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/07/WOH-group-photo.jpg?resize=540%2C360&quality=100&ssl=1" alt=""/>
+</div>
+<div class="lb-links"><a class="bill-link" href="https://drive.google.com/file/d/1t4_zGUlFqcehWoCpq_aMOt2zmj8zT2OG/view" target="_blank">Fact Sheet</a><a class="bill-link" href="https://leg.colorado.gov/bills/sb24-094" target="_blank">Bill Text</a></div>
+</div>
+</div>
+
+<div class="lb-card" id="lb-hb1051" style="display:none">
+<div class="lb-close"><button onclick="closeLightbox()">×</button></div>
+<img class="lb-hero-img" src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/07/IMG_8255-scaled.jpg?resize=1080%2C810&quality=100&ssl=1" alt=""/>
+<div class="lb-content">
+<div class="lb-bill-num">HB24-1051</div>
+<h2>Towing Carrier Regulation</h2>
+<div class="lb-meta">Signed into law · May 2024</div>
+<p>Addresses a growing problem CEDP encountered serving clients: Colorado's towing system needs reform. Investigations by the Colorado Attorney General's office found that one of the biggest towing companies in the state violated numerous regulations, including the Towing Bill of Rights — a CEDP priority bill passed in 2022.</p>
+<h4>What this law does:</h4>
+<ul>
+<li>Gives the Public Utilities Commission (PUC) authority to revoke towing carrier licenses for specific violations</li>
+<li>Prohibits for-profit towing companies from patrolling residential lots</li>
+<li>Requires landlords and property managers to direct tows in writing via a signed form</li>
+<li>Creates additional enforcement mechanisms for District Attorneys and the Colorado AG</li>
+</ul>
+<div class="lb-sponsors">Sponsors: Reps. Andrew Boesenecker and Tisha Mauro; Sens. Julie Gonzalez and Kevin Priola</div>
+<div class="lb-links"><a class="bill-link" href="https://cedproject.org/wp-content/uploads/2024/02/Towing-Bill-One-Pager.pdf" target="_blank">Fact Sheet</a><a class="bill-link" href="https://leg.colorado.gov/bills/hb24-1051" target="_blank">Bill Text</a></div>
+</div>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="ft-warm"><span class="ft-warm-txt">You don't have to face this <em>alone.</em></span></div>
+<div class="ft-g"><div><div class="ft-b">Community Economic<br><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br>Denver, CO 80218<br>info@cedproject.org<br>(303) 838-1200</div></div><div><h4>Get help</h4><a href="cedp-gethelp.html">Eviction</a><a href="cedp-gethelp.html">Foreclosure</a><a href="cedp-gethelp.html">Towing</a><a href="cedp-gethelp.html">Debt</a><a href="cedp-gethelp.html">Disaster relief</a></div><div><h4>About</h4><a href="cedp-about.html">Our purpose</a><a href="#">Our team</a><a href="cedp-careers.html">Careers</a><a href="cedp-cedlaw.html">CED law</a><a href="#">Contact</a></div><div><h4>Impact</h4><a href="#">Legislative wins</a><a href="#">Research</a><a href="#">News & press</a><a href="#">Donate</a><a href="#">Events</a></div></div>
+<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br>Economic<br>Defense Project</div></div>
+<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy · Terms of use · Accessibility</span></div>
+</footer>
+
 <script>
-(function(){
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(!h||h==='#')return;var t=document.getElementById(h.slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
-// Hamburger
-var nav=document.querySelector('nav');
-if(nav && !document.querySelector('.mob-burger')){
-  var burger=document.createElement('button');burger.className='mob-burger';burger.setAttribute('aria-label','Open menu');
-  burger.innerHTML='<span></span><span></span><span></span>';
-  nav.appendChild(burger);
-  var ov=document.createElement('div');ov.className='mob-overlay';
-  ov.innerHTML='<button class="mob-close" aria-label="Close">&times;</button><div class="mob-links">'+
-    '<a href="/about" target="_top">About</a><a href="/our-work" target="_top">Our Work</a>'+
-    '<a href="/ced-law" target="_top">CED Law</a><a href="/impact" target="_top">Impact</a>'+
-    '<a href="/news" target="_top">News</a><a href="/careers" target="_top">Careers</a></div>'+
-    '<div class="mob-cta"><a class="mob-donate" href="/#donateSection" target="_top">DONATE</a>'+
-    '<a class="mob-get" href="/get-help" target="_top">GET HELP</a></div>';
-  document.body.appendChild(ov);
-  burger.addEventListener('click',function(){ov.classList.add('open');document.body.style.overflow='hidden';});
-  ov.querySelector('.mob-close').addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});
-  ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});});
+// Reveal
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');ro.unobserve(x.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+// Spotlight carousel
+var spotIdx=0;var spotTotal=3;
+function spotUpdate(){
+document.getElementById('spotSlider').style.transform='translateX(-'+(spotIdx*100)+'%)';
+document.getElementById('spotCount').textContent=(spotIdx+1)+' / '+spotTotal;
 }
-})();
+function spotNext(){spotIdx=(spotIdx+1)%spotTotal;spotUpdate()}
+function spotPrev(){spotIdx=(spotIdx-1+spotTotal)%spotTotal;spotUpdate()}
+
+// Year tabs
+function setYear(yr,btn){
+document.querySelectorAll('.yr-tab').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.yr-panel').forEach(p=>p.classList.remove('active'));
+btn.classList.add('active');
+document.getElementById('yr'+yr).classList.add('active');
+}
+
+// Bill accordion
+function toggleBill(row){
+var wasOpen=row.classList.contains('open');
+row.closest('.yr-panel').querySelectorAll('.bill-row').forEach(r=>r.classList.remove('open'));
+if(!wasOpen)row.classList.add('open');
+}
+
+// Lightbox
+function openLightbox(id){
+var overlay=document.getElementById('lbOverlay');
+overlay.querySelectorAll('.lb-card').forEach(function(c){c.style.display='none'});
+var card=document.getElementById('lb-'+id);
+if(card){card.style.display='block';card.scrollTop=0}
+overlay.classList.add('open');
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lbOverlay').classList.remove('open');
+document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox()});
+
+// Mission punch
+function setPunchL(t){var el=document.getElementById('punchLeg');el.className='punch t-'+t+' rv v';el.querySelectorAll('.punch-tog button').forEach(b=>b.classList.remove('on'));event.target.classList.add('on')}
 </script>
-<script src="/cedp-global.js"></script></body>
+</body>
 </html>
