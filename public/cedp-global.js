@@ -1117,6 +1117,47 @@ var ADD = {
 };
 Object.keys(ADD).forEach(function(k){ EN_TO_ES[norm(k)] = ADD[k]; });
 
+// === Giant text-link / CTA explicit overrides (ensure every casing is covered) ===
+var GIANT = {
+  "Get help now": "Obtener ayuda ahora",
+  "Get Help Now": "Obtener ayuda ahora",
+  "GET HELP NOW": "Obtener ayuda ahora",
+  "Our programs": "Nuestros programas",
+  "Our Programs": "Nuestros programas",
+  "OUR PROGRAMS": "Nuestros programas",
+  "Explore our programs": "Explore nuestros programas",
+  "EXPLORE OUR PROGRAMS": "Explore nuestros programas",
+  "About CEDP": "Acerca de CEDP",
+  "ABOUT CEDP": "Acerca de CEDP",
+  "Meet CED Law": "Conozca CED Law",
+  "MEET CED LAW": "Conozca CED Law",
+  "Meet the team": "Conozca el equipo",
+  "MEET THE TEAM": "Conozca el equipo",
+  "Legislative wins": "Logros legislativos",
+  "Legislative Wins": "Logros legislativos",
+  "LEGISLATIVE WINS": "Logros legislativos",
+  "Research": "Investigación",
+  "RESEARCH": "Investigación",
+  "View careers": "Ver empleos",
+  "View Careers": "Ver empleos",
+  "VIEW CAREERS": "Ver empleos",
+  "Support Our Work": "Apoya nuestro trabajo",
+  "Support our work": "Apoya nuestro trabajo",
+  "SUPPORT OUR WORK": "Apoya nuestro trabajo",
+  "Support Our Work →": "Apoya nuestro trabajo →",
+  "Support Our Research →": "Apoya nuestra investigación →",
+  "Donate today": "Donar hoy",
+  "Donate Today": "Donar hoy",
+  "DONATE TODAY": "Donar hoy",
+  "Donate Today →": "Donar hoy →",
+  "View open positions": "Ver posiciones abiertas",
+  "View Open Positions": "Ver posiciones abiertas",
+  "VIEW OPEN POSITIONS": "Ver posiciones abiertas",
+  "View Open Positions ↓": "Ver posiciones abiertas ↓",
+  "View Open Positions →": "Ver posiciones abiertas →"
+};
+Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
+
 
   var originals = []; // {node, text} for text nodes
   var attrOrig = []; // {el, attr, text}
