@@ -21,61 +21,17 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResearchRoute = ResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OurWorkRoute = OurWorkRouteImport.update({
-  id: '/our-work',
-  path: '/our-work',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LegislativeWinsRoute = LegislativeWinsRouteImport.update({
-  id: '/legislative-wins',
-  path: '/legislative-wins',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImpactRoute = ImpactRouteImport.update({
-  id: '/impact',
-  path: '/impact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetHelpRoute = GetHelpRouteImport.update({
-  id: '/get-help',
-  path: '/get-help',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CedLawRoute = CedLawRouteImport.update({
-  id: '/ced-law',
-  path: '/ced-law',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareersRoute = CareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
+const TeamRoute = TeamRouteImport.update({ id: '/team', path: '/team', getParentRoute: () => rootRouteImport } as any)
+const ResearchRoute = ResearchRouteImport.update({ id: '/research', path: '/research', getParentRoute: () => rootRouteImport } as any)
+const OurWorkRoute = OurWorkRouteImport.update({ id: '/our-work', path: '/our-work', getParentRoute: () => rootRouteImport } as any)
+const NewsRoute = NewsRouteImport.update({ id: '/news', path: '/news', getParentRoute: () => rootRouteImport } as any)
+const LegislativeWinsRoute = LegislativeWinsRouteImport.update({ id: '/legislative-wins', path: '/legislative-wins', getParentRoute: () => rootRouteImport } as any)
+const ImpactRoute = ImpactRouteImport.update({ id: '/impact', path: '/impact', getParentRoute: () => rootRouteImport } as any)
+const GetHelpRoute = GetHelpRouteImport.update({ id: '/get-help', path: '/get-help', getParentRoute: () => rootRouteImport } as any)
+const CedLawRoute = CedLawRouteImport.update({ id: '/ced-law', path: '/ced-law', getParentRoute: () => rootRouteImport } as any)
+const CareersRoute = CareersRouteImport.update({ id: '/careers', path: '/careers', getParentRoute: () => rootRouteImport } as any)
+const AboutRoute = AboutRouteImport.update({ id: '/about', path: '/about', getParentRoute: () => rootRouteImport } as any)
+const IndexRoute = IndexRouteImport.update({ id: '/', path: '/', getParentRoute: () => rootRouteImport } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -175,83 +131,17 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/research': {
-      id: '/research'
-      path: '/research'
-      fullPath: '/research'
-      preLoaderRoute: typeof ResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/our-work': {
-      id: '/our-work'
-      path: '/our-work'
-      fullPath: '/our-work'
-      preLoaderRoute: typeof OurWorkRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/legislative-wins': {
-      id: '/legislative-wins'
-      path: '/legislative-wins'
-      fullPath: '/legislative-wins'
-      preLoaderRoute: typeof LegislativeWinsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impact': {
-      id: '/impact'
-      path: '/impact'
-      fullPath: '/impact'
-      preLoaderRoute: typeof ImpactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/get-help': {
-      id: '/get-help'
-      path: '/get-help'
-      fullPath: '/get-help'
-      preLoaderRoute: typeof GetHelpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ced-law': {
-      id: '/ced-law'
-      path: '/ced-law'
-      fullPath: '/ced-law'
-      preLoaderRoute: typeof CedLawRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+    '/team': { id: '/team'; path: '/team'; fullPath: '/team'; preLoaderRoute: typeof TeamRouteImport; parentRoute: typeof rootRouteImport }
+    '/research': { id: '/research'; path: '/research'; fullPath: '/research'; preLoaderRoute: typeof ResearchRouteImport; parentRoute: typeof rootRouteImport }
+    '/our-work': { id: '/our-work'; path: '/our-work'; fullPath: '/our-work'; preLoaderRoute: typeof OurWorkRouteImport; parentRoute: typeof rootRouteImport }
+    '/news': { id: '/news'; path: '/news'; fullPath: '/news'; preLoaderRoute: typeof NewsRouteImport; parentRoute: typeof rootRouteImport }
+    '/legislative-wins': { id: '/legislative-wins'; path: '/legislative-wins'; fullPath: '/legislative-wins'; preLoaderRoute: typeof LegislativeWinsRouteImport; parentRoute: typeof rootRouteImport }
+    '/impact': { id: '/impact'; path: '/impact'; fullPath: '/impact'; preLoaderRoute: typeof ImpactRouteImport; parentRoute: typeof rootRouteImport }
+    '/get-help': { id: '/get-help'; path: '/get-help'; fullPath: '/get-help'; preLoaderRoute: typeof GetHelpRouteImport; parentRoute: typeof rootRouteImport }
+    '/ced-law': { id: '/ced-law'; path: '/ced-law'; fullPath: '/ced-law'; preLoaderRoute: typeof CedLawRouteImport; parentRoute: typeof rootRouteImport }
+    '/careers': { id: '/careers'; path: '/careers'; fullPath: '/careers'; preLoaderRoute: typeof CareersRouteImport; parentRoute: typeof rootRouteImport }
+    '/about': { id: '/about'; path: '/about'; fullPath: '/about'; preLoaderRoute: typeof AboutRouteImport; parentRoute: typeof rootRouteImport }
+    '/': { id: '/'; path: '/'; fullPath: '/'; preLoaderRoute: typeof IndexRouteImport; parentRoute: typeof rootRouteImport }
   }
 }
 
@@ -271,13 +161,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
