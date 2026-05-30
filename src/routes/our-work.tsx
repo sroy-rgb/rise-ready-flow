@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Placeholder } from "@/components/Placeholder";
 
 export const Route = createFileRoute("/our-work")({
   head: () => ({
@@ -8,5 +7,15 @@ export const Route = createFileRoute("/our-work")({
       { name: "description", content: "Eviction defense, foreclosure, towing, debt collection, disaster relief, and resource navigation across Colorado." },
     ],
   }),
-  component: () => <Placeholder title="Our Work" currentPath="/our-work" />,
+  component: OurWork,
 });
+
+function OurWork() {
+  return (
+    <iframe
+      src="/cedp-our-work.html"
+      title="Our Work — CEDP"
+      style={{ border: 0, width: "100vw", height: "100vh", display: "block" }}
+    />
+  );
+}
