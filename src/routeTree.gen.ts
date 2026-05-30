@@ -21,6 +21,7 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
@@ -82,11 +83,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
@@ -96,11 +102,11 @@ export interface FileRoutesByFullPath {
   '/our-work': typeof OurWorkRoute
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
@@ -110,12 +116,13 @@ export interface FileRoutesByTo {
   '/our-work': typeof OurWorkRoute
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/admin': typeof AdminRoute
+  '/admin': typeof AdminRouteWithChildren
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
@@ -125,6 +132,7 @@ export interface FileRoutesById {
   '/our-work': typeof OurWorkRoute
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,11 +149,11 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/research'
     | '/team'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/admin'
     | '/careers'
     | '/ced-law'
     | '/get-help'
@@ -155,6 +163,7 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/research'
     | '/team'
+    | '/admin'
   id:
     | '__root__'
     | '/'
@@ -169,12 +178,13 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/research'
     | '/team'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AdminRoute: typeof AdminRoute
+  AdminRoute: typeof AdminRouteWithChildren
   CareersRoute: typeof CareersRoute
   CedLawRoute: typeof CedLawRoute
   GetHelpRoute: typeof GetHelpRoute
@@ -272,13 +282,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
+
+interface AdminRouteChildren {
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AdminRoute: AdminRoute,
+  AdminRoute: AdminRouteWithChildren,
   CareersRoute: CareersRoute,
   CedLawRoute: CedLawRoute,
   GetHelpRoute: GetHelpRoute,
