@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#C53030">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Get Help — CEDP</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Libre Franklin',sans-serif;background:#FFF;color:#2C3E50;font-size:15px;line-height:1.6;overflow-x:hidden;min-height:100vh;min-height:100dvh}
+
+/* ---- STICKY CALL BAR ---- */
+.call-bar{position:sticky;top:0;z-index:100;background:#C53030;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.call-bar a{display:flex;align-items:center;gap:10px;color:#FFF;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:.5px}
+.call-bar a svg{width:22px;height:22px;flex-shrink:0}
+.call-bar a svg path{fill:#FFF}
+.call-bar .lang-btn{padding:6px 12px;border:1.5px solid rgba(255,255,255,.35);color:#FFF;font-size:11px;font-weight:600;background:none;cursor:pointer;letter-spacing:.5px}
+
+/* ---- HERO ---- */
+.m-hero{padding:28px 20px 24px;background:#FFF;border-bottom:1px solid #F0F0F0}
+.m-hero-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#C53030;margin-bottom:6px}
+.m-hero h1{font-size:26px;font-weight:800;color:#1B2838;line-height:1.15;margin-bottom:10px}
+.m-hero p{font-size:14px;color:#6B7A8A;line-height:1.6;font-weight:300}
+.m-hero-hours{margin-top:16px;padding:14px 16px;background:#F8F8F8;display:flex;justify-content:space-between;align-items:center}
+.m-hero-hours-left{font-size:12px;color:#4A6274}
+.m-hero-hours-left strong{color:#1B2838;display:block;font-size:13px}
+.m-after-btn{padding:10px 18px;background:#1B2838;color:#FFF;font-size:12px;font-weight:600;text-decoration:none;white-space:nowrap}
+
+/* ---- BILINGUAL ---- */
+.m-bi{padding:12px 20px;background:#F8F8F8;border-bottom:1px solid #EAEAEA;font-size:13px;color:#5A6B7A}
+.m-bi a{color:#C53030;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+/* ---- FRAUD BANNER ---- */
+.m-fraud{padding:12px 20px;background:#FFF8E7;border-bottom:1px solid #F0E0B0;display:flex;align-items:flex-start;gap:10px}
+.m-fraud-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.m-fraud p{font-size:12px;color:#7A4D00;line-height:1.5}
+.m-fraud-close{width:28px;height:28px;border:none;background:none;font-size:18px;color:#92600A;cursor:pointer;flex-shrink:0;padding:0}
+
+/* ---- TRIAGE ---- */
+.m-triage{padding:24px 20px 16px}
+.m-triage-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#1B2838;margin-bottom:4px}
+.m-triage h2{font-size:20px;font-weight:700;color:#1B2838;margin-bottom:4px}
+.m-triage-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px}
+
+/* ---- TILES ---- */
+
+
+.m-card{background:#FFF;border:1px solid #E8E8E8;border-left:6px solid #1B2838;margin-bottom:0;overflow:hidden;transition:all .3s}
+.m-card:nth-child(even){background:#F7F7F5}
+.m-card.c-red{border-left-color:#C53030}
+.m-card.c-navy{border-left-color:#1B2838}
+.m-card.c-gold{border-left-color:#E8B960}
+.m-card.c-slate{border-left-color:#4A6274}
+.m-card.open{background:#1B2838;border-color:#1B2838;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.m-card.open.c-red{border-left-color:#C53030}
+.m-card.open.c-navy{border-left-color:#E8B960}
+.m-card.open.c-gold{border-left-color:#E8B960}
+.m-card.open.c-slate{border-left-color:#E8B960}
+.m-card-head{padding:18px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;min-height:64px;-webkit-user-select:none;user-select:none}
+.m-card-head h3{font-size:15px;font-weight:600;color:#1B2838;line-height:1.3;flex:1;transition:color .3s}
+.m-card.open .m-card-head h3{color:#FFF}
+.m-card-arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid rgba(27,40,56,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.m-card-arrow svg{width:24px;height:24px;transition:transform .3s}
+.m-card-arrow svg path{stroke:#1B2838;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.m-card.open .m-card-arrow{background:#E8B960;border-color:#E8B960}
+.m-card.open .m-card-arrow svg{transform:rotate(180deg)}
+.m-card.open .m-card-arrow svg path{stroke:#1B2838}
+.m-card-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.m-card.open .m-card-body{max-height:400px}
+.m-card-inner{padding:0 16px 18px}
+.m-card-inner p{font-size:13px;color:#5A6B7A;line-height:1.65;font-weight:300;margin-bottom:12px}
+.m-card.open .m-card-inner p{color:rgba(255,255,255,.65)}
+.m-cta{display:block;width:100%;padding:16px;text-align:center;font-size:14px;font-weight:700;color:#FFF;background:#C53030;text-decoration:none;border-radius:0;margin-bottom:8px;letter-spacing:.3px}
+.m-cta:active{background:#A02828}
+.m-cta-alt{display:block;width:100%;padding:16px;text-align:center;font-size:14px;font-weight:700;color:#FFF;background:rgba(255,255,255,.12);text-decoration:none;border-radius:0;letter-spacing:.3px}
+.m-cta-alt:active{background:rgba(255,255,255,.2)}
+
+/* ---- CHAT ---- */
+.m-chat{margin:8px 20px 24px;padding:18px 16px;background:#1B2838;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.m-chat-left h3{font-size:15px;font-weight:700;color:#FFF;margin-bottom:2px}
+.m-chat-left p{font-size:12px;color:rgba(255,255,255,.5);font-weight:300}
+.m-chat-right{display:flex;align-items:center;gap:8px}
+.m-chat-dot{width:8px;height:8px;border-radius:50%;background:#27C93F;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.m-chat-label{font-size:10px;font-weight:700;color:#E8B960;text-transform:uppercase;letter-spacing:1px}
+
+/* ---- WHEN TO CALL ---- */
+.m-when{padding:0 20px 24px}
+.m-when-card{padding:18px 16px;margin-bottom:8px;border:1px solid #E8E8E8;border-left:4px solid #1B2838;background:#FFF}
+.m-when-card.open-now{border-left-color:#27A04A}
+.m-when-card.closed{border-left-color:#E8B960}
+.m-when-card h4{font-size:14px;font-weight:700;color:#1B2838;margin-bottom:4px}
+.m-when-card p{font-size:12px;color:#5A6B7A;line-height:1.5;font-weight:300}
+.m-when-phone{font-size:18px;font-weight:800;color:#C53030;margin-top:8px;display:block;text-decoration:none}
+.m-when-link{display:inline-block;margin-top:10px;padding:12px 20px;background:#1B2838;color:#FFF;font-size:12px;font-weight:600;text-decoration:none}
+
+/* ---- SAFETY ---- */
+.m-safety{padding:24px 20px;background:#F8F8F8;border-top:1px solid #EAEAEA}
+.m-safety h3{font-size:14px;font-weight:700;color:#1B2838;margin-bottom:12px}
+.m-safety-item{padding:14px 0;border-bottom:1px solid #E8E8E8}
+.m-safety-item:last-child{border-bottom:none}
+.m-safety-item h4{font-size:13px;font-weight:600;color:#1B2838;margin-bottom:2px}
+.m-safety-item p{font-size:12px;color:#6B7A8A;line-height:1.5;font-weight:300}
+
+/* ---- FOOTER ---- */
+.m-footer{padding:24px 20px;background:#1B2838}
+.m-footer-phone{text-align:center;margin-bottom:20px}
+.m-footer-phone a{font-family:'Bebas Neue',sans-serif;font-size:32px;color:#E8B960;text-decoration:none;letter-spacing:2px}
+.m-footer-phone p{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px}
+.m-footer-links{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.m-footer-links a{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none}
+.m-footer-brand{text-align:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.06)}
+.m-footer-brand img{height:36px;margin:0 auto 8px;display:block}
+.m-footer-brand p{font-size:10px;color:rgba(255,255,255,.25)}
+
+/* ---- BOTTOM FIXED CALL ---- */
+.m-bottom-call{position:fixed;bottom:0;left:0;right:0;z-index:99;padding:12px 20px;background:#FFF;border-top:1px solid #E8E8E8;display:flex;gap:8px;box-shadow:0 -2px 12px rgba(0,0,0,.06)}
+.m-bottom-call a{flex:1;padding:14px;text-align:center;font-size:14px;font-weight:700;text-decoration:none}
+.m-bottom-call .call-primary{background:#C53030;color:#FFF}
+.m-bottom-call .call-secondary{background:#1B2838;color:#FFF}
+body{padding-bottom:72px}
+</style>
+</head>
+<body>
+
+<!-- STICKY CALL BAR -->
+<div class="call-bar">
+<a href="tel:3038381200"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(303) 838-1200</a>
+<button class="lang-btn" onclick="alert('Español version coming soon')">ES</button>
+</div>
+
+<!-- HERO -->
+<div class="m-hero">
+<div class="m-hero-label">Get Help</div>
+<h1>You don't have to face this alone.</h1>
+<p>Free legal aid, financial assistance, and resource navigation. All services are free. Available in English and Spanish.</p>
+<div class="m-hero-hours">
+<div class="m-hero-hours-left"><strong>CARE Center</strong>Mon–Fri, 8:30am–5:30pm MT</div>
+<a href="#" class="m-after-btn">After hours →</a>
+</div>
+</div>
+
+<!-- BILINGUAL -->
+<div class="m-bi">🌐 ¿Necesita ayuda? <a href="#">Toque aquí para español</a></div>
+
+<!-- FRAUD BANNER -->
+<div class="m-fraud" id="fraudBanner">
+<span class="m-fraud-icon">⚠️</span>
+<p><strong>CEDP never charges fees.</strong> Official emails come from @cedproject.org only. We don't use WhatsApp.</p>
+<button class="m-fraud-close" onclick="document.getElementById('fraudBanner').style.display='none'">×</button>
+</div>
+
+<!-- TRIAGE -->
+<div class="m-triage" id="triageSection">
+<div class="m-triage-label">What's happening?</div>
+<h2>Select your situation</h2>
+<div style="height:16px"></div>
+
+
+
+<div class="m-card c-red" onclick="toggleCard(this)">
+<div class="m-card-head"><h3>I'm facing eviction</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-body"><div class="m-card-inner">
+<p>If you've received an eviction notice or are behind on rent, call us immediately. Our housing lawyers provide free legal representation and can connect you with emergency rental assistance.</p>
+<a href="tel:3038381200" class="m-cta">Call CARE Center Now</a>
+<a href="#" class="m-cta-alt">Submit intake form online</a>
+</div></div>
+</div>
+
+<div class="m-card c-navy" onclick="toggleCard(this)">
+<div class="m-card-head"><h3>I'm facing foreclosure</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-body"><div class="m-card-inner">
+<p>We provide financial assistance and legal guidance for households at risk of or in the midst of a foreclosure.</p>
+<a href="#" class="m-cta">Get foreclosure help</a>
+</div></div>
+</div>
+
+<div class="m-card c-gold" onclick="toggleCard(this)">
+<div class="m-card-head"><h3>My car was towed</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-body"><div class="m-card-inner">
+<p>Predatory towing can push families into eviction. We can help you recover your vehicle, challenge unfair charges, and know your rights under Colorado's Towing Bill of Rights.</p>
+<a href="tel:3038381200" class="m-cta">Call for towing help</a>
+</div></div>
+</div>
+
+<div class="m-card c-slate" onclick="toggleCard(this)">
+<div class="m-card-head"><h3>I need help with utility bills</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-body"><div class="m-card-inner">
+<p>We partner with Energy Outreach Colorado to help with electricity, natural gas, propane, and other utility payments.</p>
+<a href="#" class="m-cta">Get utility assistance</a>
+</div></div>
+</div>
+
+<div class="m-card c-navy" onclick="toggleCard(this)">
+<div class="m-card-head"><h3>I'm dealing with debt collection</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-body"><div class="m-card-inner">
+<p>Our debt defense team provides free legal guidance to help you understand your rights and challenge unfair collection practices.</p>
+<a href="tel:3038381200" class="m-cta">Call for debt help</a>
+</div></div>
+</div>
+
+<div class="m-card c-gold" onclick="toggleCard(this)">
+<div class="m-card-head"><h3>I need other help or resources</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-body"><div class="m-card-inner">
+<p>Looking for community resources? Need help finding a job, medical services, childcare, food, or bus passes? We can connect you with local services.</p>
+<a href="#" class="m-cta">Find resources near me</a>
+<a href="#" class="m-cta-alt">Contact us</a>
+</div></div>
+</div>
+</div>
+
+<!-- CHAT -->
+<div class="m-chat">
+<div class="m-chat-left"><h3>Chat with us</h3><p>Connect with CARE Center instantly</p></div>
+<div class="m-chat-right"><div class="m-chat-dot"></div><div class="m-chat-label">Live</div></div>
+</div>
+
+<!-- WHEN TO CALL -->
+<div class="m-when">
+<div class="m-when-card open-now">
+<h4>During business hours</h4>
+<p>Call the CARE Center. A navigator will connect you with the right support.</p>
+<a href="tel:3038381200" class="m-when-phone">(303) 838-1200</a>
+<p style="font-size:11px;color:#6B7A8A;margin-top:4px">Mon–Fri, 8:30am–5:30pm MT</p>
+</div>
+<div class="m-when-card closed">
+<h4>After hours or weekends</h4>
+<p>Submit an online intake form. A team member will contact you on the next business day.</p>
+<a href="#" class="m-when-link">Submit intake form →</a>
+</div>
+</div>
+
+<!-- SAFETY -->
+<div class="m-safety">
+<h3>CEDP will never...</h3>
+<div class="m-safety-item"><h4>Charge you fees</h4><p>All services are 100% free — legal aid, financial assistance, everything.</p></div>
+<div class="m-safety-item"><h4>Contact you via WhatsApp</h4><p>Official emails come from @cedproject.org or @cedlaw.org only.</p></div>
+<div class="m-safety-item"><h4>Ask for bank details by email</h4><p>We never request SSN, bank info, or payments via email or text.</p></div>
+</div>
+
+<!-- FOOTER -->
+<div class="m-footer">
+<div class="m-footer-phone"><a href="tel:3038381200">(303) 838-1200</a><p>CARE Center · Mon–Fri 8:30am–5:30pm MT</p></div>
+<div class="m-footer-links"><a href="#">About</a><a href="#">Our Work</a><a href="#">Impact</a><a href="#">Careers</a><a href="#">News</a><a href="#">Donate</a></div>
+<div class="m-footer-brand"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><p>© 2026 Community Economic Defense Project</p></div>
+</div>
+
+<!-- FIXED BOTTOM CALL BAR -->
+<div class="m-bottom-call">
+<a href="tel:3038381200" class="call-primary">Call Now</a>
+<a href="#" class="call-secondary">Chat</a>
+</div>
+
+<script>
+function toggleCard(card){
+var wasOpen=card.classList.contains('open');
+document.querySelectorAll('.m-card').forEach(function(c){c.classList.remove('open')});
+if(!wasOpen)card.classList.add('open');
+}
+</script>
+</body>
+</html>
