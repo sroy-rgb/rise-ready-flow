@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careers — Community Economic Defense Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Work+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Libre Franklin',sans-serif;font-weight:300;color:#1B2838;background:#F8F8F8;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.ph{font-size:9px;font-style:italic;color:rgba(0,0,0,.18);letter-spacing:1px;font-weight:700}
+
+/* TOP BAR */
+.tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
+.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+
+/* NAV */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
+nav img{height:56px}
+.nl{display:flex;align-items:center;gap:0;height:100%}
+.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
+.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
+.ni:hover>a{color:#C53030}
+.ni>a.active-nav,.ni>a.act{color:#C53030;border-bottom:2px solid #C53030}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+
+/* Common label/heading */
+.lbl{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:24px}
+.lbl.gold{color:#E8B960}
+.lbl.white{color:#E8B960}
+.sec{padding:80px 64px}
+.sec h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:24px}
+.sec p.lead{font-size:16px;line-height:1.6;color:#5A6B7A;max-width:680px}
+
+/* Buttons */
+.btn-r{background:#C53030;color:#fff;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #C53030;display:inline-block;transition:background .2s;cursor:pointer}
+.btn-r:hover{background:#a82626}
+.btn-o{background:transparent;color:#1B2838;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #1B2838;display:inline-block;transition:all .2s;cursor:pointer;font-family:inherit}
+.btn-o:hover{background:#1B2838;color:#fff}
+
+/* MISSION PUNCH */
+.punch{background:#1B2838;padding:120px 32px;text-align:center;position:relative;transition:background .5s,color .5s}
+.punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:400;color:#fff;line-height:.95;letter-spacing:1px;margin-bottom:36px;text-transform:none}
+.punch .pbtn{display:inline-block;border:1.5px solid #fff;color:#fff;padding:16px 36px;font-size:14px;font-weight:600;text-decoration:none;border-radius:40px;letter-spacing:1px;text-transform:uppercase;transition:all .25s}
+.punch .pbtn:hover{background:#fff;color:#1B2838}
+.ptog{position:absolute;top:24px;right:32px;display:flex;gap:6px}
+.ptog span{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Work Sans',sans-serif;cursor:pointer;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
+.ptog span.on{outline:2px solid #fff}
+.punch.v-n{background:#1B2838}
+.punch.v-g{background:#E8B960}
+.punch.v-g h2,.punch.v-g .pbtn{color:#1B2838}
+.punch.v-g .pbtn{border-color:#1B2838}
+.punch.v-r{background:#C53030}
+.punch.v-r h2,.punch.v-r .pbtn{color:#fff}
+
+/* GIANT LINKS */
+.we-are{background:#fff;padding:0 64px}
+.we-are-row{display:flex;align-items:center;justify-content:space-between;padding:48px 0;border-top:1px solid #E8E8E8;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
+.we-are-row:last-child{border-bottom:1px solid #E8E8E8}
+.we-are-row::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:0}
+.we-are-row:hover::before{transform:scaleY(1)}
+.we-are-row h2,.we-are-row .ar{position:relative;z-index:1}
+.we-are-row h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#1B2838;letter-spacing:1.5px}
+.we-are-row .ar{width:80px;height:80px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.we-are-row .ar svg{width:32px;height:32px}
+.we-are-row .ar svg path{stroke:#1B2838;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.we-are-row:hover .ar{background:#1B2838}
+.we-are-row:hover .ar svg path{stroke:#E8B960}
+
+/* FOOTER */
+footer{background:#1B2838;padding:48px 48px 28px;color:#fff}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.ft-b{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:12px}
+.ft-b em{color:#E8B960;font-style:normal}
+.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
+.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
+footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+
+.cr-hero{background:#F8F8F8;padding:80px 64px}
+.cr-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:700;color:#1B2838;line-height:1.05;margin-bottom:20px;text-transform:uppercase}
+.cr-hero p{font-size:16px;color:#5A6B7A;max-width:620px;line-height:1.6;margin-bottom:28px}
+.cr-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+.cr-snap{padding:120px 64px;text-align:center;background:#fff;transition:background .8s ease,color .8s ease;min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px}
+.cr-snap.dark{background:#1B2838;color:#fff}
+.cr-snap-item{opacity:0;transform:scale(1.2);transition:opacity .6s ease,transform .6s ease}
+.cr-snap-item.on{opacity:1;transform:scale(1)}
+.cr-snap-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,9vw,96px);color:#1B2838;line-height:1;letter-spacing:1px;transition:color .8s ease}
+.cr-snap.dark .cr-snap-n{color:#fff}
+.cr-snap-l{font-size:14px;color:#5A6B7A;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:8px;transition:color .8s ease}
+.cr-snap.dark .cr-snap-l{color:rgba(255,255,255,.6)}
+.cr-snap-cta{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.cr-snap-cta.on{opacity:1;transform:none}
+
+.cr-why{background:#F8F8F8;padding:80px 64px}
+.cr-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+.cr-why-card{background:#fff;border:1px solid #E8E8E8;padding:32px 24px;transition:transform .25s,box-shadow .25s}
+.cr-why-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,40,56,.1)}
+.cr-why-card h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.cr-why-card p{font-size:13px;line-height:1.6;color:#5A6B7A}
+
+.cr-culture{background:#fff}
+.cr-photo{height:480px;background:url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;position:relative}
+.cr-photo span{position:absolute;bottom:12px;left:16px;color:rgba(255,255,255,.7);font-family:'Libre Franklin'}
+.cr-quote{padding:80px 64px;text-align:center;max-width:920px;margin:0 auto}
+.cr-quote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;line-height:1.5;color:#1B2838;margin-bottom:20px}
+.cr-quote cite{font-style:normal;font-size:13px;color:#5A6B7A;letter-spacing:1px;text-transform:uppercase;font-weight:600}
+
+.cr-faq{background:#F8F8F8;padding:80px 64px}
+.cr-faq-item{border-bottom:1px solid #E8E8E8}
+.cr-faq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 0;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:600;color:#1B2838;text-transform:uppercase;letter-spacing:.5px}
+.cr-faq-arr{width:36px;height:36px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:16px}
+.cr-faq-item.on .cr-faq-arr{background:#1B2838;color:#fff;transform:rotate(180deg)}
+.cr-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:#5A6B7A;font-size:14px;line-height:1.6}
+.cr-faq-item.on .cr-faq-a{max-height:300px;padding-bottom:24px}
+
+.cr-jobs{background:#fff;padding:80px 64px}
+.cr-jobs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
+.cr-job{position:relative;background:#fff;border:1px solid #E8E8E8;border-left:4px solid #E8B960;padding:24px 28px;cursor:pointer;overflow:hidden;transition:transform .2s}
+.cr-job::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .35s;z-index:0}
+.cr-job:hover::before{transform:scaleY(1)}
+.cr-job > *{position:relative;z-index:1}
+.cr-job h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:#1B2838;margin-bottom:6px;text-transform:uppercase}
+.cr-job-meta{font-size:12px;color:#5A6B7A;letter-spacing:.5px}
+.cr-job-dep{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:#F8F8F8;color:#1B2838;padding:3px 10px;text-transform:uppercase;margin-right:8px;border-radius:12px}
+.cr-job:hover .cr-job-dep{background:#fff}
+.cr-talent{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding-top:32px;border-top:1px solid #E8E8E8}
+.cr-talent p{font-size:14px;color:#5A6B7A;margin-right:auto}
+.cr-talent input{padding:12px 14px;border:1.5px solid #E8E8E8;font-family:inherit;font-size:14px;min-width:240px}
+.cr-talent button{padding:12px 22px;background:#1B2838;color:#fff;border:0;font-size:13px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.8px;font-family:inherit}
+
+.punch.red{background:#C53030}
+@media(max-width:1023px){
+  .cr-why-grid{grid-template-columns:1fr !important}
+  .cr-jobs-grid{grid-template-columns:1fr !important}
+  .cr-snap-n{font-size:48px !important}
+  .cr-photo{height:280px !important}
+}
+
+
+html,body{overflow-x:hidden;max-width:100vw}
+input,textarea,select{font-size:16px !important}
+*{-webkit-tap-highlight-color:rgba(197,48,48,.15)}
+@media (max-width:1023px){
+  .tb{padding:6px 16px !important;font-size:11px}
+  nav{height:56px !important;padding:0 16px !important}
+  nav > div:first-child img{height:40px !important}
+  nav .nl{display:none !important}
+  .mob-burger{display:flex !important;flex-direction:column;justify-content:space-between;width:28px;height:20px;padding:0;background:none;border:0;cursor:pointer;margin-left:auto}
+  .mob-burger span{display:block;height:2px;background:#1B2838;width:100%}
+  .mob-overlay{position:fixed;inset:0;background:#1B2838;z-index:9999;display:none;flex-direction:column;padding:24px 24px 32px}
+  .mob-overlay.open{display:flex}
+  .mob-close{align-self:flex-end;width:44px;height:44px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+  .mob-links{display:flex;flex-direction:column;margin-top:24px;flex:1}
+  .mob-links a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;height:56px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)}
+  .mob-cta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+  .mob-cta a{display:flex;align-items:center;justify-content:center;height:56px;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
+  .mob-cta .mob-donate{background:#fff;color:#1B2838}
+  .mob-cta .mob-get{background:#C53030;color:#fff}
+  .sec,.we-are,.punch{padding:40px 20px !important}
+  .punch{padding:64px 20px !important}
+  .we-are{padding:0 20px !important}
+  .we-are-row{padding:28px 0 !important}
+  .we-are-row h2{font-size:clamp(28px,6vw,40px) !important}
+  .we-are-row .ar{width:56px !important;height:56px !important}
+  .ft-g{display:flex !important;flex-direction:column;gap:32px;text-align:center}
+  .ft-bt{flex-direction:column !important;gap:8px;text-align:center}
+  .grid-3,.grid-4,.grid-2{grid-template-columns:1fr !important}
+}
+@media (min-width:768px) and (max-width:1023px){
+  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr) !important}
+  .ft-g{display:grid !important;grid-template-columns:1fr 1fr;text-align:left}
+}
+
+</style>
+</head>
+<body>
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>
+<nav><div><a href="/" target="_top"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="/about" target="_top">About</a></div>
+<div class="ni"><a href="/our-work" target="_top">Our work</a></div>
+<div class="ni"><a href="/ced-law" target="_top">CED Law</a></div>
+<div class="ni"><a href="/impact" target="_top">Impact</a></div>
+<div class="ni"><a href="/news" target="_top">News</a></div>
+<div class="ni"><a href="/careers" target="_top" class="act">Careers</a></div>
+<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h" href="/get-help" target="_top">Get help</a>
+</div></nav>
+
+<section class="cr-hero">
+  <div class="lbl">Join Us</div>
+  <h1>Work that prevents homelessness</h1>
+  <p>CEDP is one of the fastest-growing economic justice nonprofits in the country. We work alongside ~200 colleagues to defend Colorado families from eviction, foreclosure, towing, and debt — and to turn each case into systemic change.</p>
+  <div class="cr-cta">
+    <a class="btn-r" href="#openings">View Open Positions &darr;</a>
+    <a class="btn-o" href="/about" target="_top">Our Mission &rarr;</a>
+  </div>
+</section>
+
+<section class="cr-snap" id="snap">
+  <div class="cr-snap-item" data-i="0"><div class="cr-snap-n">~200</div><div class="cr-snap-l">team members</div></div>
+  <div class="cr-snap-item" data-i="1"><div class="cr-snap-n">68,000+</div><div class="cr-snap-l">families defended</div></div>
+  <div class="cr-snap-item" data-i="2"><div class="cr-snap-n">1</div><div class="cr-snap-l">mission</div></div>
+  <a class="cr-snap-cta btn-r" href="#openings" id="snapCTA" style="background:#C53030;border-color:#C53030">JOIN US &rarr;</a>
+</section>
+
+<section class="cr-why">
+  <div class="lbl">Why CEDP</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase">A place to do your best work</h2>
+  <div class="cr-why-grid grid-4">
+    <div class="cr-why-card reveal"><h3>Mission-Driven Work</h3><p>Every day, your work helps a real family avoid eviction, recover their car, or get out of debt.</p></div><div class="cr-why-card reveal"><h3>Rapid Growth</h3><p>From 5 to 200 in five years. Build something with a team that ships.</p></div><div class="cr-why-card reveal"><h3>Real Impact</h3><p>12+ laws changed, $1M+ in settlements, 68,000+ families defended.</p></div><div class="cr-why-card reveal"><h3>Colorado-Based</h3><p>Denver HQ with offices in Springs, Durango, and Fort Morgan. Remote-friendly.</p></div>
+  </div>
+</section>
+
+<section class="cr-culture">
+  <div class="cr-photo"><span class="ph">PH team photo</span></div>
+  <div class="cr-quote reveal">
+    <blockquote>"I have never worked anywhere that takes the dignity of clients — and of staff — this seriously. The people are the reason I stay."</blockquote>
+    <cite>Maria L., Senior Staff Attorney &bull; 3 years at CEDP</cite>
+  </div>
+</section>
+
+<section class="cr-faq">
+  <div class="lbl">Benefits</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase;margin-bottom:24px">What we offer</h2>
+  <div id="crFAQ">
+    <div class="cr-faq-item"><div class="cr-faq-q">Compensation<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Competitive nonprofit salaries benchmarked annually. Pay bands are transparent across the org.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Health Insurance<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Medical, dental, and vision with 90% employer coverage. Mental health benefits included.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">PTO<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Unlimited PTO, 12 paid holidays, plus the week between Christmas and New Year off.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Professional Development<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>$2,000/year per person for training, conferences, and continuing education. Bar dues covered for attorneys.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Remote/Hybrid<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Most roles are hybrid 2 days/week in office. Some roles fully remote within Colorado.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Equity & Inclusion<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Active DEI council. ERGs for BIPOC, LGBTQ+, and women in leadership.</p></div></div>
+  </div>
+</section>
+
+<section class="cr-jobs" id="openings">
+  <div class="lbl">Current Openings</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase">Open positions <span class="ph">PH</span></h2>
+  <div class="cr-jobs-grid">
+    <a class="cr-job reveal" href="#"><h3>Senior Staff Attorney</h3><div><span class="cr-job-dep">Legal</span><span class="cr-job-meta">Denver, CO &bull; Full-time &bull; 2 days ago</span></div></a><a class="cr-job reveal" href="#"><h3>Housing Navigator</h3><div><span class="cr-job-dep">Programs</span><span class="cr-job-meta">Colorado Springs &bull; Full-time &bull; 5 days ago</span></div></a><a class="cr-job reveal" href="#"><h3>Director of Policy</h3><div><span class="cr-job-dep">Policy & Comms</span><span class="cr-job-meta">Denver, CO (Hybrid) &bull; Full-time &bull; 1 week ago</span></div></a><a class="cr-job reveal" href="#"><h3>Spanish-language Intake Specialist</h3><div><span class="cr-job-dep">Navigation</span><span class="cr-job-meta">Fort Morgan &bull; Full-time &bull; 1 week ago</span></div></a><a class="cr-job reveal" href="#"><h3>Data Analyst</h3><div><span class="cr-job-dep">Finance & Ops</span><span class="cr-job-meta">Remote (CO) &bull; Full-time &bull; 2 weeks ago</span></div></a><a class="cr-job reveal" href="#"><h3>Communications Manager</h3><div><span class="cr-job-dep">Policy & Comms</span><span class="cr-job-meta">Denver, CO &bull; Full-time &bull; 3 weeks ago</span></div></a>
+  </div>
+  <div class="cr-talent">
+    <p>Don't see the right role? Join our talent community &rarr;</p>
+    <input type="email" placeholder="you@example.com"/>
+    <button>Subscribe</button>
+  </div>
+</section>
+
+<section class="punch v-r" id="punch">
+  <div class="ptog"><span data-v="n">N</span><span data-v="g">G</span><span data-v="r" class="on">R</span></div>
+  <h2>200 PEOPLE.<br/>68,000 FAMILIES.<br/>JOIN THE FIGHT.</h2>
+  <a class="pbtn" href="#openings">View Open Positions &uarr;</a>
+</section>
+<script>(function(){var p=document.getElementById('punch');if(!p)return;p.querySelectorAll('.ptog span').forEach(function(s){s.addEventListener('click',function(){p.className='punch v-'+s.dataset.v;p.querySelectorAll('.ptog span').forEach(function(x){x.classList.toggle('on',x===s)});});});})();</script>
+
+<div class="we-are">
+<a class="we-are-row" href="/our-work" target="_top"><h2>OUR PROGRAMS</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="we-are-row" href="/ced-law" target="_top"><h2>CED LAW</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="we-are-row" href="/about" target="_top"><h2>ABOUT CEDP</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+</div>
+
+<script>
+(function(){
+  // snap counter
+  var snap=document.getElementById('snap');
+  var items=snap.querySelectorAll('.cr-snap-item');
+  var cta=document.getElementById('snapCTA');
+  var done=false;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting && !done){done=true;
+      items.forEach(function(it,i){setTimeout(function(){it.classList.add('on');if(i===1)snap.classList.add('dark');},i*600);});
+      setTimeout(function(){cta.classList.add('on');},items.length*600+800);
+    }
+  });},{threshold:.3});
+  io.observe(snap);
+  // FAQ
+  document.querySelectorAll('#crFAQ .cr-faq-item').forEach(function(it){
+    it.querySelector('.cr-faq-q').addEventListener('click',function(){
+      var open=it.classList.contains('on');
+      document.querySelectorAll('#crFAQ .cr-faq-item').forEach(function(x){x.classList.remove('on')});
+      if(!open)it.classList.add('on');
+    });
+  });
+})();
+</script>
+
+<footer><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help" target="_top">Eviction</a><a href="/get-help" target="_top">Foreclosure</a><a href="/get-help" target="_top">Towing</a><a href="/get-help" target="_top">Debt</a><a href="/get-help" target="_top">Disaster relief</a></div><div><h4>About</h4><a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED law</a><a href="/about" target="_top">Contact</a></div><div><h4>Impact</h4><a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a></div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+<script>
+(function(){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(!h||h==='#')return;var t=document.getElementById(h.slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+// Hamburger
+var nav=document.querySelector('nav');
+if(nav && !document.querySelector('.mob-burger')){
+  var burger=document.createElement('button');burger.className='mob-burger';burger.setAttribute('aria-label','Open menu');
+  burger.innerHTML='<span></span><span></span><span></span>';
+  nav.appendChild(burger);
+  var ov=document.createElement('div');ov.className='mob-overlay';
+  ov.innerHTML='<button class="mob-close" aria-label="Close">&times;</button><div class="mob-links">'+
+    '<a href="/about" target="_top">About</a><a href="/our-work" target="_top">Our Work</a>'+
+    '<a href="/ced-law" target="_top">CED Law</a><a href="/impact" target="_top">Impact</a>'+
+    '<a href="/news" target="_top">News</a><a href="/careers" target="_top">Careers</a></div>'+
+    '<div class="mob-cta"><a class="mob-donate" href="/#donateSection" target="_top">DONATE</a>'+
+    '<a class="mob-get" href="/get-help" target="_top">GET HELP</a></div>';
+  document.body.appendChild(ov);
+  burger.addEventListener('click',function(){ov.classList.add('open');document.body.style.overflow='hidden';});
+  ov.querySelector('.mob-close').addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});
+  ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});});
+}
+})();
+</script>
+</body>
+</html>

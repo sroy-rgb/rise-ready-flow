@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Community Economic Defense Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Work+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Libre Franklin',sans-serif;font-weight:300;color:#1B2838;background:#F8F8F8;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.ph{font-size:9px;font-style:italic;color:rgba(0,0,0,.18);letter-spacing:1px;font-weight:700}
+
+/* TOP BAR */
+.tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
+.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+
+/* NAV */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
+nav img{height:56px}
+.nl{display:flex;align-items:center;gap:0;height:100%}
+.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
+.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
+.ni:hover>a{color:#C53030}
+.ni>a.active-nav,.ni>a.act{color:#C53030;border-bottom:2px solid #C53030}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+
+/* Common label/heading */
+.lbl{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:24px}
+.lbl.gold{color:#E8B960}
+.lbl.white{color:#E8B960}
+.sec{padding:80px 64px}
+.sec h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:24px}
+.sec p.lead{font-size:16px;line-height:1.6;color:#5A6B7A;max-width:680px}
+
+/* Buttons */
+.btn-r{background:#C53030;color:#fff;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #C53030;display:inline-block;transition:background .2s;cursor:pointer}
+.btn-r:hover{background:#a82626}
+.btn-o{background:transparent;color:#1B2838;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #1B2838;display:inline-block;transition:all .2s;cursor:pointer;font-family:inherit}
+.btn-o:hover{background:#1B2838;color:#fff}
+
+/* MISSION PUNCH */
+.punch{background:#1B2838;padding:120px 32px;text-align:center;position:relative;transition:background .5s,color .5s}
+.punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:400;color:#fff;line-height:.95;letter-spacing:1px;margin-bottom:36px;text-transform:none}
+.punch .pbtn{display:inline-block;border:1.5px solid #fff;color:#fff;padding:16px 36px;font-size:14px;font-weight:600;text-decoration:none;border-radius:40px;letter-spacing:1px;text-transform:uppercase;transition:all .25s}
+.punch .pbtn:hover{background:#fff;color:#1B2838}
+.ptog{position:absolute;top:24px;right:32px;display:flex;gap:6px}
+.ptog span{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Work Sans',sans-serif;cursor:pointer;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
+.ptog span.on{outline:2px solid #fff}
+.punch.v-n{background:#1B2838}
+.punch.v-g{background:#E8B960}
+.punch.v-g h2,.punch.v-g .pbtn{color:#1B2838}
+.punch.v-g .pbtn{border-color:#1B2838}
+.punch.v-r{background:#C53030}
+.punch.v-r h2,.punch.v-r .pbtn{color:#fff}
+
+/* GIANT LINKS */
+.we-are{background:#fff;padding:0 64px}
+.we-are-row{display:flex;align-items:center;justify-content:space-between;padding:48px 0;border-top:1px solid #E8E8E8;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
+.we-are-row:last-child{border-bottom:1px solid #E8E8E8}
+.we-are-row::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:0}
+.we-are-row:hover::before{transform:scaleY(1)}
+.we-are-row h2,.we-are-row .ar{position:relative;z-index:1}
+.we-are-row h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#1B2838;letter-spacing:1.5px}
+.we-are-row .ar{width:80px;height:80px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.we-are-row .ar svg{width:32px;height:32px}
+.we-are-row .ar svg path{stroke:#1B2838;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.we-are-row:hover .ar{background:#1B2838}
+.we-are-row:hover .ar svg path{stroke:#E8B960}
+
+/* FOOTER */
+footer{background:#1B2838;padding:48px 48px 28px;color:#fff}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.ft-b{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:12px}
+.ft-b em{color:#E8B960;font-style:normal}
+.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
+.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
+footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+
+.rs-hero{padding:80px 64px;background:#F8F8F8;max-width:none}
+.rs-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:700;color:#1B2838;text-transform:uppercase;margin-bottom:16px}
+.rs-hero p{font-size:16px;color:#5A6B7A;max-width:680px;line-height:1.6}
+
+.rs-feat{background:#1B2838;padding:64px;color:#fff;display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:center}
+.rs-feat-cover{aspect-ratio:3/4;background:linear-gradient(135deg,#E8B960,#C53030);display:flex;align-items:flex-end;padding:20px;color:rgba(255,255,255,.5);font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px}
+.rs-feat-body h3{font-family:'Barlow Condensed',sans-serif;font-size:32px;font-weight:700;text-transform:uppercase;margin-bottom:8px;line-height:1.1}
+.rs-feat-body .authors{color:rgba(255,255,255,.55);font-size:13px;margin-bottom:18px;letter-spacing:.5px}
+.rs-feat-body p{color:rgba(255,255,255,.7);font-size:14px;line-height:1.65;margin-bottom:24px;max-width:620px}
+.rs-feat-body .btn-r{background:#E8B960;border-color:#E8B960;color:#1B2838}
+.rs-feat-body .btn-r:hover{background:#d4a64d;border-color:#d4a64d}
+
+.rs-grid-sec{background:#F8F8F8;padding:80px 64px}
+.rs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.rs-tile{position:relative;background:#fff;border:1px solid #E8E8E8;overflow:hidden;cursor:pointer;transition:transform .25s,box-shadow .25s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.rs-tile::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .35s;z-index:0}
+.rs-tile:hover::before{transform:scaleY(1)}
+.rs-tile:hover{transform:translateY(-4px)}
+.rs-tile-cover{position:relative;z-index:1;aspect-ratio:16/9;display:flex;align-items:flex-end;padding:12px;font-family:'Bebas Neue',sans-serif;color:rgba(255,255,255,.85);font-size:14px;letter-spacing:1px}
+.rs-tile-body{position:relative;z-index:1;padding:20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.rs-tile h4{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:#1B2838;line-height:1.2;text-transform:uppercase}
+.rs-tile .authors{font-size:11px;color:#5A6B7A;letter-spacing:.5px}
+.rs-tile-meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;font-size:11px;color:#8895A4;letter-spacing:.5px}
+.rs-tile-type{background:#F8F8F8;padding:3px 10px;border-radius:10px;font-weight:700;text-transform:uppercase;color:#1B2838}
+.rs-tile:hover .rs-tile-type{background:#fff}
+
+.rs-partners{background:#fff;padding:64px}
+.rs-partners h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:24px;text-align:center}
+.rs-p-row{display:flex;gap:48px;justify-content:center;align-items:center;flex-wrap:wrap}
+.rs-p-row .logo{height:48px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;color:#5A6B7A;font-size:16px;filter:grayscale(1);opacity:.65;transition:filter .3s,opacity .3s;padding:0 16px}
+.rs-p-row .logo:hover{filter:none;opacity:1;color:#1B2838}
+@media(max-width:1023px){
+  .rs-feat{grid-template-columns:1fr !important;padding:40px 20px !important}
+  .rs-feat-cover{max-width:240px;margin:0 auto}
+  .rs-grid{grid-template-columns:1fr !important}
+}
+
+
+html,body{overflow-x:hidden;max-width:100vw}
+input,textarea,select{font-size:16px !important}
+*{-webkit-tap-highlight-color:rgba(197,48,48,.15)}
+@media (max-width:1023px){
+  .tb{padding:6px 16px !important;font-size:11px}
+  nav{height:56px !important;padding:0 16px !important}
+  nav > div:first-child img{height:40px !important}
+  nav .nl{display:none !important}
+  .mob-burger{display:flex !important;flex-direction:column;justify-content:space-between;width:28px;height:20px;padding:0;background:none;border:0;cursor:pointer;margin-left:auto}
+  .mob-burger span{display:block;height:2px;background:#1B2838;width:100%}
+  .mob-overlay{position:fixed;inset:0;background:#1B2838;z-index:9999;display:none;flex-direction:column;padding:24px 24px 32px}
+  .mob-overlay.open{display:flex}
+  .mob-close{align-self:flex-end;width:44px;height:44px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+  .mob-links{display:flex;flex-direction:column;margin-top:24px;flex:1}
+  .mob-links a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;height:56px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)}
+  .mob-cta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+  .mob-cta a{display:flex;align-items:center;justify-content:center;height:56px;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
+  .mob-cta .mob-donate{background:#fff;color:#1B2838}
+  .mob-cta .mob-get{background:#C53030;color:#fff}
+  .sec,.we-are,.punch{padding:40px 20px !important}
+  .punch{padding:64px 20px !important}
+  .we-are{padding:0 20px !important}
+  .we-are-row{padding:28px 0 !important}
+  .we-are-row h2{font-size:clamp(28px,6vw,40px) !important}
+  .we-are-row .ar{width:56px !important;height:56px !important}
+  .ft-g{display:flex !important;flex-direction:column;gap:32px;text-align:center}
+  .ft-bt{flex-direction:column !important;gap:8px;text-align:center}
+  .grid-3,.grid-4,.grid-2{grid-template-columns:1fr !important}
+}
+@media (min-width:768px) and (max-width:1023px){
+  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr) !important}
+  .ft-g{display:grid !important;grid-template-columns:1fr 1fr;text-align:left}
+}
+
+</style>
+</head>
+<body>
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>
+<nav><div><a href="/" target="_top"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="/about" target="_top">About</a></div>
+<div class="ni"><a href="/our-work" target="_top">Our work</a></div>
+<div class="ni"><a href="/ced-law" target="_top">CED Law</a></div>
+<div class="ni"><a href="/impact" target="_top" class="act">Impact</a></div>
+<div class="ni"><a href="/news" target="_top">News</a></div>
+<div class="ni"><a href="/careers" target="_top">Careers</a></div>
+<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h" href="/get-help" target="_top">Get help</a>
+</div></nav>
+
+<section class="rs-hero">
+  <div class="lbl">Research</div>
+  <h1>Data-driven defense</h1>
+  <p>CEDP publishes research on housing instability, economic abuse, and the intersection of medical debt and eviction. Our work is cited by federal agencies, universities, and the White House.</p>
+</section>
+
+<section class="rs-feat reveal">
+  <div class="rs-feat-cover">Featured Report 2024</div>
+  <div class="rs-feat-body">
+    <div class="lbl gold">Featured Research</div>
+    <h3>The Hidden Link Between Medical Debt &amp; Eviction</h3>
+    <div class="authors">Zach Neumann, Sam Gilman, Priya Patel &bull; June 2024</div>
+    <p>A two-year study of 24,000 Colorado eviction filings finds that 41% of households facing eviction had unpaid medical debt in the prior 18 months — and that medical debt was the strongest single predictor of housing loss. This report outlines policy interventions tested in three Colorado counties.</p>
+    <a class="btn-r" href="#">Download PDF &darr;</a>
+  </div>
+</section>
+
+<section class="rs-grid-sec">
+  <div class="lbl">All Publications</div>
+  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase">Reports &amp; briefs <span class="ph">PH</span></h2>
+  <div class="rs-grid">
+    <a class="rs-tile reveal" href="#"><div class="rs-tile-cover" style="background:linear-gradient(135deg,#1B2838,#4A6274)">EVICTION</div><div class="rs-tile-body"><h4>Eviction & Medical Debt</h4><div class="authors">Neumann, Gilman et al.</div><div class="rs-tile-meta"><span>2024</span><span class="rs-tile-type">Report</span></div></div></a><a class="rs-tile reveal" href="#"><div class="rs-tile-cover" style="background:linear-gradient(135deg,#C53030,#E8B960)">COLORADO</div><div class="rs-tile-body"><h4>Colorado Towing Industry Audit</h4><div class="authors">CEDP Research</div><div class="rs-tile-meta"><span>2024</span><span class="rs-tile-type">Report</span></div></div></a><a class="rs-tile reveal" href="#"><div class="rs-tile-cover" style="background:linear-gradient(135deg,#4A6274,#1B2838)">ECONOMIC</div><div class="rs-tile-body"><h4>Economic Abuse in Housing</h4><div class="authors">Gilman, Patel</div><div class="rs-tile-meta"><span>2023</span><span class="rs-tile-type">White Paper</span></div></div></a><a class="rs-tile reveal" href="#"><div class="rs-tile-cover" style="background:linear-gradient(135deg,#E8B960,#C53030)">RENTERS'</div><div class="rs-tile-body"><h4>Renters' Rights Survey</h4><div class="authors">CEDP &amp; Urban Institute</div><div class="rs-tile-meta"><span>2023</span><span class="rs-tile-type">Survey</span></div></div></a><a class="rs-tile reveal" href="#"><div class="rs-tile-cover" style="background:linear-gradient(135deg,#1B2838,#C53030)">FORECLOSURE</div><div class="rs-tile-body"><h4>Foreclosure Disparity Report</h4><div class="authors">CEDP Data Team</div><div class="rs-tile-meta"><span>2022</span><span class="rs-tile-type">Brief</span></div></div></a><a class="rs-tile reveal" href="#"><div class="rs-tile-cover" style="background:linear-gradient(135deg,#4A6274,#E8B960)">COVID</div><div class="rs-tile-body"><h4>COVID Eviction Crisis Retrospective</h4><div class="authors">Neumann et al.</div><div class="rs-tile-meta"><span>2022</span><span class="rs-tile-type">White Paper</span></div></div></a>
+  </div>
+</section>
+
+<section class="rs-partners">
+  <h3>Research partners</h3>
+  <div class="rs-p-row">
+    <div class="logo">Urban Institute</div>
+    <div class="logo">The White House</div>
+    <div class="logo">CU Denver</div>
+    <div class="logo">Harvard JCHS</div>
+    <div class="logo">Brookings</div>
+    <div class="logo">Aspen Institute</div>
+  </div>
+</section>
+
+<section class="punch v-n" id="punch">
+  <div class="ptog"><span data-v="n" class="on">N</span><span data-v="g">G</span><span data-v="r">R</span></div>
+  <h2>RESEARCH<br/>THAT BECOMES LAW.</h2>
+  <a class="pbtn" href="/#donateSection" target="_top">Donate &rarr;</a>
+</section>
+<script>(function(){var p=document.getElementById('punch');if(!p)return;p.querySelectorAll('.ptog span').forEach(function(s){s.addEventListener('click',function(){p.className='punch v-'+s.dataset.v;p.querySelectorAll('.ptog span').forEach(function(x){x.classList.toggle('on',x===s)});});});})();</script>
+
+<div class="we-are">
+<a class="we-are-row" href="/our-work" target="_top"><h2>OUR PROGRAMS</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="we-are-row" href="/legislative-wins" target="_top"><h2>LEGISLATIVE WINS</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="we-are-row" href="/ced-law" target="_top"><h2>CED LAW</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+</div>
+
+<footer><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help" target="_top">Eviction</a><a href="/get-help" target="_top">Foreclosure</a><a href="/get-help" target="_top">Towing</a><a href="/get-help" target="_top">Debt</a><a href="/get-help" target="_top">Disaster relief</a></div><div><h4>About</h4><a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED law</a><a href="/about" target="_top">Contact</a></div><div><h4>Impact</h4><a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a></div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+<script>
+(function(){
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(!h||h==='#')return;var t=document.getElementById(h.slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+// Hamburger
+var nav=document.querySelector('nav');
+if(nav && !document.querySelector('.mob-burger')){
+  var burger=document.createElement('button');burger.className='mob-burger';burger.setAttribute('aria-label','Open menu');
+  burger.innerHTML='<span></span><span></span><span></span>';
+  nav.appendChild(burger);
+  var ov=document.createElement('div');ov.className='mob-overlay';
+  ov.innerHTML='<button class="mob-close" aria-label="Close">&times;</button><div class="mob-links">'+
+    '<a href="/about" target="_top">About</a><a href="/our-work" target="_top">Our Work</a>'+
+    '<a href="/ced-law" target="_top">CED Law</a><a href="/impact" target="_top">Impact</a>'+
+    '<a href="/news" target="_top">News</a><a href="/careers" target="_top">Careers</a></div>'+
+    '<div class="mob-cta"><a class="mob-donate" href="/#donateSection" target="_top">DONATE</a>'+
+    '<a class="mob-get" href="/get-help" target="_top">GET HELP</a></div>';
+  document.body.appendChild(ov);
+  burger.addEventListener('click',function(){ov.classList.add('open');document.body.style.overflow='hidden';});
+  ov.querySelector('.mob-close').addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});
+  ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});});
+}
+})();
+</script>
+</body>
+</html>
