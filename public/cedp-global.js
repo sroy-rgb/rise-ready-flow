@@ -1173,6 +1173,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
         if (!p) return NodeFilter.FILTER_REJECT;
         var tag = (p.nodeName||'').toLowerCase();
         if (tag==='script' || tag==='style' || tag==='noscript') return NodeFilter.FILTER_REJECT;
+        if (p.closest && p.closest('.lang-toggle')) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       }
     });
