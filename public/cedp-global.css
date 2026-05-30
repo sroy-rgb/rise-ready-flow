@@ -1,3 +1,9 @@
+/* Hide mobile-only nav elements on desktop (overlay/burger are injected on every page) */
+.mob-overlay,.mob-burger{display:none!important}
+@media (max-width:1023px){
+  .mob-burger{display:flex!important}
+  .mob-overlay.open{display:flex!important}
+}
 /* ============================================================
    CEDP GLOBAL FIXES — overrides for all pages
    ============================================================ */
