@@ -12,6 +12,7 @@
     var impactAct = IMPACT_PATHS.indexOf(path)>=0 ? ' act' : '';
     var TB = '<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>';
     var NAV = '<nav><div><a href="/"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">'+
+      '<div class="ni"><a href="/" class="'+act('/').trim()+'">Home</a></div>'+
       '<div class="ni"><a href="/about" class="'+act('/about').trim()+'">About</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">About CEDP</div>'+
