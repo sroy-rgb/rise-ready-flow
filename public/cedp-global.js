@@ -53,17 +53,15 @@
       '<a class="btn-d" href="/#donateSection">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help">Get help</a>'+
       '</div></nav>';
 
-    // Only inject if not the home page (home already has its own canonical nav)
-    var isHome = path === '/' || /cedp-home\.html$/.test(location.pathname);
-    if (!isHome) {
-      var existingNav = document.querySelector('body > nav, body > header > nav');
-      if (!existingNav) existingNav = document.querySelector('nav');
-      var existingTb  = document.querySelector('body > .tb');
-      if (existingNav) {
-        if (existingTb) existingTb.outerHTML = TB + NAV;
-        else existingNav.outerHTML = TB + NAV;
-        if (existingTb && existingNav.parentNode) existingNav.remove();
-      }
+    // Inject unified nav on every page (including home) for consistency.
+    // Skip dot-nav <nav> elements.
+    var existingNav = document.querySelector('body > nav:not(.dot-nav), body > header > nav:not(.dot-nav)');
+    if (!existingNav) existingNav = document.querySelector('nav:not(.dot-nav)');
+    var existingTb  = document.querySelector('body > .tb');
+    if (existingNav) {
+      if (existingTb) existingTb.outerHTML = TB + NAV;
+      else existingNav.outerHTML = TB + NAV;
+      if (existingTb && existingNav.parentNode) existingNav.remove();
     }
   } catch(e) { console.warn('nav inject failed', e); }
 
