@@ -128,7 +128,7 @@ footer a{display:block;font-size:12px;color:rgba(255,255,255,.4);text-decoration
 @media(max-width:1024px){.feat-card{grid-template-columns:1fr}.feat-card-img{min-height:240px}.pub-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:768px){.hero-r,.featured,.grid-sec,.partners,.punch,.giant-links{padding-left:24px;padding-right:24px}.pub-grid{grid-template-columns:1fr}.giant-row h3{font-size:28px}.giant-row .gar{width:48px;height:48px}.punch{padding:80px 24px}.partners-row{gap:24px}}
 </style>
-</head>
+<link rel="stylesheet" href="/cedp-global.css"></head>
 <body>
 
 <!-- TOP BAR -->
@@ -269,5 +269,5 @@ else{tile.style.display=tile.dataset.topic.includes(topic)?'':'none';}
 // Mission punch
 function setPunchR(t){var el=document.getElementById('punchRes');el.className='punch t-'+t+' rv v';el.querySelectorAll('.punch-tog button').forEach(b=>b.classList.remove('on'));event.target.classList.add('on')}
 </script>
-</body>
+<script src="/cedp-global.js"></script></body>
 </html>
