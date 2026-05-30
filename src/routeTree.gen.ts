@@ -18,8 +18,13 @@ import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GetHelpRouteImport } from './routes/get-help'
 import { Route as CedLawRouteImport } from './routes/ced-law'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminTeamRouteImport } from './routes/admin.team'
+import { Route as AdminLegislationRouteImport } from './routes/admin.legislation'
+import { Route as AdminJobsRouteImport } from './routes/admin.jobs'
 
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
@@ -66,6 +71,11 @@ const CareersRoute = CareersRouteImport.update({
   path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -76,10 +86,31 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminTeamRoute = AdminTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLegislationRoute = AdminLegislationRouteImport.update({
+  id: '/legislation',
+  path: '/legislation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminJobsRoute = AdminJobsRouteImport.update({
+  id: '/jobs',
+  path: '/jobs',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
@@ -89,6 +120,10 @@ export interface FileRoutesByFullPath {
   '/our-work': typeof OurWorkRoute
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
+  '/admin/jobs': typeof AdminJobsRoute
+  '/admin/legislation': typeof AdminLegislationRoute
+  '/admin/team': typeof AdminTeamRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -102,11 +137,16 @@ export interface FileRoutesByTo {
   '/our-work': typeof OurWorkRoute
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
+  '/admin/jobs': typeof AdminJobsRoute
+  '/admin/legislation': typeof AdminLegislationRoute
+  '/admin/team': typeof AdminTeamRoute
+  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/admin': typeof AdminRouteWithChildren
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
@@ -116,12 +156,17 @@ export interface FileRoutesById {
   '/our-work': typeof OurWorkRoute
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
+  '/admin/jobs': typeof AdminJobsRoute
+  '/admin/legislation': typeof AdminLegislationRoute
+  '/admin/team': typeof AdminTeamRoute
+  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/admin'
     | '/careers'
     | '/ced-law'
     | '/get-help'
@@ -131,6 +176,10 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/research'
     | '/team'
+    | '/admin/jobs'
+    | '/admin/legislation'
+    | '/admin/team'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -144,10 +193,15 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/research'
     | '/team'
+    | '/admin/jobs'
+    | '/admin/legislation'
+    | '/admin/team'
+    | '/admin'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/admin'
     | '/careers'
     | '/ced-law'
     | '/get-help'
@@ -157,11 +211,16 @@ export interface FileRouteTypes {
     | '/our-work'
     | '/research'
     | '/team'
+    | '/admin/jobs'
+    | '/admin/legislation'
+    | '/admin/team'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdminRoute: typeof AdminRouteWithChildren
   CareersRoute: typeof CareersRoute
   CedLawRoute: typeof CedLawRoute
   GetHelpRoute: typeof GetHelpRoute
@@ -238,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -252,12 +318,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/team': {
+      id: '/admin/team'
+      path: '/team'
+      fullPath: '/admin/team'
+      preLoaderRoute: typeof AdminTeamRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/legislation': {
+      id: '/admin/legislation'
+      path: '/legislation'
+      fullPath: '/admin/legislation'
+      preLoaderRoute: typeof AdminLegislationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/jobs': {
+      id: '/admin/jobs'
+      path: '/jobs'
+      fullPath: '/admin/jobs'
+      preLoaderRoute: typeof AdminJobsRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
+
+interface AdminRouteChildren {
+  AdminJobsRoute: typeof AdminJobsRoute
+  AdminLegislationRoute: typeof AdminLegislationRoute
+  AdminTeamRoute: typeof AdminTeamRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteChildren: AdminRouteChildren = {
+  AdminJobsRoute: AdminJobsRoute,
+  AdminLegislationRoute: AdminLegislationRoute,
+  AdminTeamRoute: AdminTeamRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdminRoute: AdminRouteWithChildren,
   CareersRoute: CareersRoute,
   CedLawRoute: CedLawRoute,
   GetHelpRoute: GetHelpRoute,
