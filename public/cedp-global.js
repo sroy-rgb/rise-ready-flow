@@ -1127,6 +1127,8 @@ var GIANT = {
   "OUR PROGRAMS": "Nuestros programas",
   "Explore our programs": "Explore nuestros programas",
   "EXPLORE OUR PROGRAMS": "Explore nuestros programas",
+  "Policymakers": "Formuladores de políticas",
+  "POLICYMAKERS": "Formuladores de políticas",
   "About CEDP": "Acerca de CEDP",
   "ABOUT CEDP": "Acerca de CEDP",
   "Meet CED Law": "Conozca CED Law",
@@ -1162,6 +1164,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
   var originals = []; // {node, text} for text nodes
   var attrOrig = []; // {el, attr, text}
   var collected = false;
+  var isTranslating = false;
 
   function collect(){
     if (collected) return;
@@ -1176,41 +1179,64 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
       }
     });
     var n;
-    while ((n = walker.nextNode())) originals.push({node:n, text:n.nodeValue});
+    while ((n = walker.nextNode())) {
+      if (!n.__cedpOriginalText) n.__cedpOriginalText = n.nodeValue;
+      originals.push({node:n, text:n.__cedpOriginalText});
+    }
     // attribute-bearing elements
     document.querySelectorAll('[placeholder],[alt],[title],[aria-label]').forEach(function(el){
       ['placeholder','alt','title','aria-label'].forEach(function(a){
-        if (el.hasAttribute(a)) attrOrig.push({el:el, attr:a, text:el.getAttribute(a)});
+        if (el.hasAttribute(a)) {
+          if (!el.__cedpAttrOriginals) el.__cedpAttrOriginals = {};
+          if (!el.__cedpAttrOriginals[a]) el.__cedpAttrOriginals[a] = el.getAttribute(a);
+          attrOrig.push({el:el, attr:a, text:el.__cedpAttrOriginals[a]});
+        }
       });
     });
     collected = true;
   }
 
+  function translateTextPreservingDecor(text){
+    var direct = EN_TO_ES[norm(text)];
+    if (direct) return direct;
+    var trimmed = text.replace(/\s+/g,' ').trim();
+    var leading = trimmed.match(/^([^A-Za-zÁÉÍÓÚáéíóúÑñ¿¡]*)([\s\S]*)$/);
+    var prefix = leading ? leading[1] : '';
+    var rest = leading ? leading[2] : trimmed;
+    var trailing = rest.match(/^([\s\S]*?)([^A-Za-zÁÉÍÓÚáéíóúÑñ?.!)]*)$/);
+    var core = trailing ? trailing[1].trim() : rest.trim();
+    var suffix = trailing ? trailing[2] : '';
+    var translated = EN_TO_ES[norm(core)];
+    return translated ? prefix + translated + suffix : null;
+  }
+
   function translateOnce(lang){
-    collect();
-    originals.forEach(function(o){
-      if (lang === 'es') {
-        var key = norm(o.text);
-        if (EN_TO_ES[key]) {
-          // preserve leading/trailing whitespace
-          var m = o.text.match(/^(\s*)([\s\S]*?)(\s*)$/);
-          o.node.nodeValue = (m?m[1]:'') + EN_TO_ES[key] + (m?m[3]:'');
+    isTranslating = true;
+    try {
+      collect();
+      originals.forEach(function(o){
+        if (lang === 'es') {
+          var translated = translateTextPreservingDecor(o.text);
+          if (translated) {
+            // preserve leading/trailing whitespace
+            var m = o.text.match(/^(\s*)([\s\S]*?)(\s*)$/);
+            var nextText = (m?m[1]:'') + translated + (m?m[3]:'');
+            if (o.node.nodeValue !== nextText) o.node.nodeValue = nextText;
+          } else if (o.node.nodeValue !== o.text) {
+            o.node.nodeValue = o.text;
+          }
         } else {
-          o.node.nodeValue = o.text;
+          if (o.node.nodeValue !== o.text) o.node.nodeValue = o.text;
         }
-      } else {
-        o.node.nodeValue = o.text;
-      }
-    });
-    attrOrig.forEach(function(o){
-      if (lang === 'es') {
-        var key = norm(o.text);
-        o.el.setAttribute(o.attr, EN_TO_ES[key] || o.text);
-      } else {
-        o.el.setAttribute(o.attr, o.text);
-      }
-    });
-    document.documentElement.setAttribute('lang', lang);
+      });
+      attrOrig.forEach(function(o){
+        var nextAttr = lang === 'es' ? (translateTextPreservingDecor(o.text) || o.text) : o.text;
+        if (o.el.getAttribute(o.attr) !== nextAttr) o.el.setAttribute(o.attr, nextAttr);
+      });
+      document.documentElement.setAttribute('lang', lang);
+    } finally {
+      isTranslating = false;
+    }
   }
 
   function updateToggleUI(lang){
@@ -1245,12 +1271,29 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
     setLang(saved);
   }
 
+  function rerunTranslations(){
+    try {
+      collected = false; originals = []; attrOrig = [];
+      wireToggle();
+      var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){}
+      setLang(s);
+    } catch(_) {}
+  }
+
   // Run after nav/footer injection (which is synchronous above) and again
   // after a tick to catch late-rendered DOM.
   try { init(); } catch(e) { console.warn('i18n init failed', e); }
-  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 400);
-  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 1500);
-  setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 3500);
+  setTimeout(rerunTranslations, 400);
+  setTimeout(rerunTranslations, 1500);
+  setTimeout(rerunTranslations, 3500);
+  try {
+    var i18nTimer = null;
+    new MutationObserver(function(){
+      if (isTranslating) return;
+      clearTimeout(i18nTimer);
+      i18nTimer = setTimeout(rerunTranslations, 80);
+    }).observe(document.body, { childList:true, subtree:true, characterData:true, attributes:true, attributeFilter:['placeholder','alt','title','aria-label'] });
+  } catch(_) {}
 })();
 
 // ---- Lucide icon system (loaded from CDN, rendered into [data-lucide]) ----
