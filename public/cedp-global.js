@@ -92,6 +92,37 @@
     }
   } catch(e) { console.warn('dot-nav inject failed', e); }
 
+  // ---- Unified Footer injection (all non-home pages) ----
+  try {
+    var fp = (location.pathname || '/').replace(/\/$/, '') || '/';
+    var isHomeF = fp === '/' || /cedp-home\.html$/.test(location.pathname);
+    var isMobileHelp = /cedp-gethelp-mobile\.html$/.test(location.pathname);
+    if (!isHomeF && !isMobileHelp) {
+      var FOOTER = '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>'+
+        '<div class="ft-g">'+
+          '<div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div>'+
+            '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>'+
+            '<div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div>'+
+          '</div>'+
+          '<div><h4>Get help</h4>'+
+            '<a href="/get-help" target="_top">Eviction</a><a href="/get-help" target="_top">Foreclosure</a><a href="/get-help" target="_top">Towing</a><a href="/get-help" target="_top">Debt</a><a href="/get-help" target="_top">Disaster relief</a>'+
+          '</div>'+
+          '<div><h4>About</h4>'+
+            '<a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED Law</a><a href="/about" target="_top">Contact</a>'+
+          '</div>'+
+          '<div><h4>Impact</h4>'+
+            '<a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a>'+
+          '</div>'+
+        '</div>'+
+        '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
+        '<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div>'+
+      '</footer>';
+      var existingFooter = document.querySelector('body > footer') || document.querySelector('footer');
+      if (existingFooter) existingFooter.outerHTML = FOOTER;
+      else document.body.insertAdjacentHTML('beforeend', FOOTER);
+    }
+  } catch(e) { console.warn('footer inject failed', e); }
+
   // Fix accordion arrow SVG to full down arrow (line + head)
   document.querySelectorAll('.cl-acc-circle svg').forEach(function(svg){
     svg.setAttribute('viewBox','0 0 24 24');
