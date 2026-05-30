@@ -247,6 +247,7 @@
     "Get Help": "Obtener ayuda",
     "Get Help Now": "Obtener ayuda ahora",
     "Get help now": "Obtener ayuda ahora",
+    "Our teams are on the ground across Colorado right now — in courtrooms, communities, and the legislature.": "Nuestros equipos están trabajando en todo Colorado ahora mismo: en tribunales, comunidades y la legislatura.",
     // Footer
     "You don't have to face this": "No tiene que enfrentar esto",
     "You don\u2019t have to face this": "No tiene que enfrentar esto",
