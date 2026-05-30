@@ -13,6 +13,7 @@ import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GetHelpRouteImport } from './routes/get-help'
+import { Route as CedLawRouteImport } from './routes/ced-law'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -37,6 +38,11 @@ const GetHelpRoute = GetHelpRouteImport.update({
   path: '/get-help',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CedLawRoute = CedLawRouteImport.update({
+  id: '/ced-law',
+  path: '/ced-law',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
+  '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
+  '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
+  '/ced-law': typeof CedLawRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/careers'
+    | '/ced-law'
     | '/get-help'
     | '/impact'
     | '/news'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/careers'
+    | '/ced-law'
     | '/get-help'
     | '/impact'
     | '/news'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/careers'
+    | '/ced-law'
     | '/get-help'
     | '/impact'
     | '/news'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   CareersRoute: typeof CareersRoute
+  CedLawRoute: typeof CedLawRoute
   GetHelpRoute: typeof GetHelpRoute
   ImpactRoute: typeof ImpactRoute
   NewsRoute: typeof NewsRoute
@@ -151,6 +164,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GetHelpRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ced-law': {
+      id: '/ced-law'
+      path: '/ced-law'
+      fullPath: '/ced-law'
+      preLoaderRoute: typeof CedLawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/careers': {
       id: '/careers'
       path: '/careers'
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   CareersRoute: CareersRoute,
+  CedLawRoute: CedLawRoute,
   GetHelpRoute: GetHelpRoute,
   ImpactRoute: ImpactRoute,
   NewsRoute: NewsRoute,
@@ -187,3 +208,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
