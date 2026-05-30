@@ -1127,6 +1127,8 @@ var GIANT = {
   "OUR PROGRAMS": "Nuestros programas",
   "Explore our programs": "Explore nuestros programas",
   "EXPLORE OUR PROGRAMS": "Explore nuestros programas",
+  "Policymakers": "Formuladores de políticas",
+  "POLICYMAKERS": "Formuladores de políticas",
   "About CEDP": "Acerca de CEDP",
   "ABOUT CEDP": "Acerca de CEDP",
   "Meet CED Law": "Conozca CED Law",
@@ -1162,6 +1164,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
   var originals = []; // {node, text} for text nodes
   var attrOrig = []; // {el, attr, text}
   var collected = false;
+  var isTranslating = false;
 
   function collect(){
     if (collected) return;
@@ -1176,11 +1179,18 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
       }
     });
     var n;
-    while ((n = walker.nextNode())) originals.push({node:n, text:n.nodeValue});
+    while ((n = walker.nextNode())) {
+      if (!n.__cedpOriginalText) n.__cedpOriginalText = n.nodeValue;
+      originals.push({node:n, text:n.__cedpOriginalText});
+    }
     // attribute-bearing elements
     document.querySelectorAll('[placeholder],[alt],[title],[aria-label]').forEach(function(el){
       ['placeholder','alt','title','aria-label'].forEach(function(a){
-        if (el.hasAttribute(a)) attrOrig.push({el:el, attr:a, text:el.getAttribute(a)});
+        if (el.hasAttribute(a)) {
+          if (!el.__cedpAttrOriginals) el.__cedpAttrOriginals = {};
+          if (!el.__cedpAttrOriginals[a]) el.__cedpAttrOriginals[a] = el.getAttribute(a);
+          attrOrig.push({el:el, attr:a, text:el.__cedpAttrOriginals[a]});
+        }
       });
     });
     collected = true;
@@ -1201,6 +1211,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
   }
 
   function translateOnce(lang){
+    isTranslating = true;
     collect();
     originals.forEach(function(o){
       if (lang === 'es') {
@@ -1224,6 +1235,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
       }
     });
     document.documentElement.setAttribute('lang', lang);
+    isTranslating = false;
   }
 
   function updateToggleUI(lang){
