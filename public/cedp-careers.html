@@ -4,316 +4,589 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Careers — Community Economic Defense Project</title>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Work+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Libre Franklin',sans-serif;font-weight:300;color:#1B2838;background:#F8F8F8;overflow-x:hidden}
-img{max-width:100%;display:block}
-a{color:inherit}
-.ph{font-size:9px;font-style:italic;color:rgba(0,0,0,.18);letter-spacing:1px;font-weight:700}
+body{font-family:'Libre Franklin',sans-serif;color:#1B2838;background:#FFF;font-weight:300;font-size:15px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{--navy:#1B2838;--red:#C53030;--gold:#E8B960;--slate:#4A6274;--bg:#F8F8F8;--border:#E8E8E8;--dim:#6B7A8A;--faint:#8A9AAA}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease-out,transform .7s ease-out}.rv.v{opacity:1;transform:translateY(0)}
+.lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:14px}
+.lab-red{color:var(--red)}.lab-gold{color:var(--gold)}
 
-/* TOP BAR */
+/* ---- TOP BAR ---- */
 .tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
-.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+.tb a{color:var(--gold);font-weight:700;text-decoration:none;font-size:13px}
 
-/* NAV */
-nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
-nav img{height:56px}
-.nl{display:flex;align-items:center;gap:0;height:100%}
-.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
-.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
-.ni:hover>a{color:#C53030}
-.ni>a.active-nav,.ni>a.act{color:#C53030;border-bottom:2px solid #C53030}
+/* ---- NAV ---- */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;height:68px}
+nav img{height:52px}
+.nl{display:flex;align-items:center;height:100%}
+.ni>a{font-size:14px;color:var(--slate);text-decoration:none;font-weight:500;padding:0 16px;height:68px;display:flex;align-items:center;transition:color .2s}
+.ni:hover>a{color:var(--red)}
+.ni>a.act{color:var(--red);border-bottom:2px solid var(--red)}
 .btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
-.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-d:hover{background:var(--gold);color:var(--navy)!important}
+.btn-h{background:var(--red);color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h:hover{background:#A02828}
 
-/* Common label/heading */
-.lbl{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:24px}
-.lbl.gold{color:#E8B960}
-.lbl.white{color:#E8B960}
-.sec{padding:80px 64px}
-.sec h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:24px}
-.sec p.lead{font-size:16px;line-height:1.6;color:#5A6B7A;max-width:680px}
+/* ---- HERO TOGGLE ---- */
+.hero-tog{position:absolute;top:20px;right:20px;display:flex;border:1px solid rgba(255,255,255,.2);z-index:10}
+.hero-tog button{padding:5px 12px;font-size:10px;font-weight:600;font-family:'Libre Franklin',sans-serif;border:none;cursor:pointer;background:none;color:rgba(255,255,255,.4);transition:all .2s;letter-spacing:.5px}
+.hero-tog button.on{background:rgba(255,255,255,.15);color:var(--gold)}
+.hero-static-tog .hero-tog{border-color:rgba(27,40,56,.15)}
+.hero-static-tog .hero-tog button{color:var(--dim)}
+.hero-static-tog .hero-tog button.on{background:rgba(27,40,56,.06);color:var(--red)}
 
-/* Buttons */
-.btn-r{background:#C53030;color:#fff;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #C53030;display:inline-block;transition:background .2s;cursor:pointer}
-.btn-r:hover{background:#a82626}
-.btn-o{background:transparent;color:#1B2838;padding:14px 28px;font-size:13px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;border:1.5px solid #1B2838;display:inline-block;transition:all .2s;cursor:pointer;font-family:inherit}
-.btn-o:hover{background:#1B2838;color:#fff}
-
-/* MISSION PUNCH */
-.punch{background:#1B2838;padding:120px 32px;text-align:center;position:relative;transition:background .5s,color .5s}
-.punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);font-weight:400;color:#fff;line-height:.95;letter-spacing:1px;margin-bottom:36px;text-transform:none}
-.punch .pbtn{display:inline-block;border:1.5px solid #fff;color:#fff;padding:16px 36px;font-size:14px;font-weight:600;text-decoration:none;border-radius:40px;letter-spacing:1px;text-transform:uppercase;transition:all .25s}
-.punch .pbtn:hover{background:#fff;color:#1B2838}
-.ptog{position:absolute;top:24px;right:32px;display:flex;gap:6px}
-.ptog span{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Work Sans',sans-serif;cursor:pointer;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
-.ptog span.on{outline:2px solid #fff}
-.punch.v-n{background:#1B2838}
-.punch.v-g{background:#E8B960}
-.punch.v-g h2,.punch.v-g .pbtn{color:#1B2838}
-.punch.v-g .pbtn{border-color:#1B2838}
-.punch.v-r{background:#C53030}
-.punch.v-r h2,.punch.v-r .pbtn{color:#fff}
-
-/* GIANT LINKS */
-.we-are{background:#fff;padding:0 64px}
-.we-are-row{display:flex;align-items:center;justify-content:space-between;padding:48px 0;border-top:1px solid #E8E8E8;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
-.we-are-row:last-child{border-bottom:1px solid #E8E8E8}
-.we-are-row::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:0}
-.we-are-row:hover::before{transform:scaleY(1)}
-.we-are-row h2,.we-are-row .ar{position:relative;z-index:1}
-.we-are-row h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#1B2838;letter-spacing:1.5px}
-.we-are-row .ar{width:80px;height:80px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:background .3s}
-.we-are-row .ar svg{width:32px;height:32px}
-.we-are-row .ar svg path{stroke:#1B2838;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
-.we-are-row:hover .ar{background:#1B2838}
-.we-are-row:hover .ar svg path{stroke:#E8B960}
-
-/* FOOTER */
-footer{background:#1B2838;padding:48px 48px 28px;color:#fff}
-.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
-.ft-b{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:12px}
-.ft-b em{color:#E8B960;font-style:normal}
-.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
-.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
-footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
-footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
-.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
-
-/* Scroll reveal */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
-.reveal.in{opacity:1;transform:none}
-
-
-.cr-hero{background:#F8F8F8;padding:80px 64px}
-.cr-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:700;color:#1B2838;line-height:1.05;margin-bottom:20px;text-transform:uppercase}
-.cr-hero p{font-size:16px;color:#5A6B7A;max-width:620px;line-height:1.6;margin-bottom:28px}
-.cr-cta{display:flex;gap:12px;flex-wrap:wrap}
-
-.cr-snap{padding:120px 64px;text-align:center;background:#fff;transition:background .8s ease,color .8s ease;min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px}
-.cr-snap.dark{background:#1B2838;color:#fff}
-.cr-snap-item{opacity:0;transform:scale(1.2);transition:opacity .6s ease,transform .6s ease}
-.cr-snap-item.on{opacity:1;transform:scale(1)}
-.cr-snap-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(56px,9vw,96px);color:#1B2838;line-height:1;letter-spacing:1px;transition:color .8s ease}
-.cr-snap.dark .cr-snap-n{color:#fff}
-.cr-snap-l{font-size:14px;color:#5A6B7A;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-top:8px;transition:color .8s ease}
-.cr-snap.dark .cr-snap-l{color:rgba(255,255,255,.6)}
-.cr-snap-cta{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
-.cr-snap-cta.on{opacity:1;transform:none}
-
-.cr-why{background:#F8F8F8;padding:80px 64px}
-.cr-why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
-.cr-why-card{background:#fff;border:1px solid #E8E8E8;padding:32px 24px;transition:transform .25s,box-shadow .25s}
-.cr-why-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,40,56,.1)}
-.cr-why-card h3{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
-.cr-why-card p{font-size:13px;line-height:1.6;color:#5A6B7A}
-
-.cr-culture{background:#fff}
-.cr-photo{height:480px;background:url('https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;position:relative}
-.cr-photo span{position:absolute;bottom:12px;left:16px;color:rgba(255,255,255,.7);font-family:'Libre Franklin'}
-.cr-quote{padding:80px 64px;text-align:center;max-width:920px;margin:0 auto}
-.cr-quote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:24px;line-height:1.5;color:#1B2838;margin-bottom:20px}
-.cr-quote cite{font-style:normal;font-size:13px;color:#5A6B7A;letter-spacing:1px;text-transform:uppercase;font-weight:600}
-
-.cr-faq{background:#F8F8F8;padding:80px 64px}
-.cr-faq-item{border-bottom:1px solid #E8E8E8}
-.cr-faq-q{display:flex;justify-content:space-between;align-items:center;padding:24px 0;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:600;color:#1B2838;text-transform:uppercase;letter-spacing:.5px}
-.cr-faq-arr{width:36px;height:36px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:all .25s;font-size:16px}
-.cr-faq-item.on .cr-faq-arr{background:#1B2838;color:#fff;transform:rotate(180deg)}
-.cr-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:#5A6B7A;font-size:14px;line-height:1.6}
-.cr-faq-item.on .cr-faq-a{max-height:300px;padding-bottom:24px}
-
-.cr-jobs{background:#fff;padding:80px 64px}
-.cr-jobs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px}
-.cr-job{position:relative;background:#fff;border:1px solid #E8E8E8;border-left:4px solid #E8B960;padding:24px 28px;cursor:pointer;overflow:hidden;transition:transform .2s}
-.cr-job::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .35s;z-index:0}
-.cr-job:hover::before{transform:scaleY(1)}
-.cr-job > *{position:relative;z-index:1}
-.cr-job h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:#1B2838;margin-bottom:6px;text-transform:uppercase}
-.cr-job-meta{font-size:12px;color:#5A6B7A;letter-spacing:.5px}
-.cr-job-dep{display:inline-block;font-size:10px;font-weight:700;letter-spacing:1px;background:#F8F8F8;color:#1B2838;padding:3px 10px;text-transform:uppercase;margin-right:8px;border-radius:12px}
-.cr-job:hover .cr-job-dep{background:#fff}
-.cr-talent{margin-top:48px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding-top:32px;border-top:1px solid #E8E8E8}
-.cr-talent p{font-size:14px;color:#5A6B7A;margin-right:auto}
-.cr-talent input{padding:12px 14px;border:1.5px solid #E8E8E8;font-family:inherit;font-size:14px;min-width:240px}
-.cr-talent button{padding:12px 22px;background:#1B2838;color:#fff;border:0;font-size:13px;font-weight:700;cursor:pointer;text-transform:uppercase;letter-spacing:.8px;font-family:inherit}
-
-.punch.red{background:#C53030}
-@media(max-width:1023px){
-  .cr-why-grid{grid-template-columns:1fr !important}
-  .cr-jobs-grid{grid-template-columns:1fr !important}
-  .cr-snap-n{font-size:48px !important}
-  .cr-photo{height:280px !important}
+/* ---- ANIMATED HERO ---- */
+.hero-anim{min-height:100vh;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#0A0A0F}
+.hero-anim video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;clip-path:polygon(48% 0%,52% 0%,52% 100%,48% 100%);transform:rotate(5deg) scale(1.2);transition:none}
+.hero-anim.loaded video{animation:videoReveal .8s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes videoReveal{
+0%{opacity:.6;clip-path:polygon(48% 0%,52% 0%,52% 100%,48% 100%);transform:rotate(5deg) scale(1.2)}
+100%{opacity:1;clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%);transform:rotate(0deg) scale(1)}
 }
+.hero-anim-content{position:relative;z-index:2;text-align:center;padding:0 32px}
+.hero-anim-content .h-word{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,12vw,140px);color:#FFF;line-height:.85;letter-spacing:4px;text-transform:uppercase;display:block;opacity:0;transform:translateY(40px) scale(.85);transition:none;text-shadow:0 4px 30px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.3)}
+.hero-anim-content .h-word.slam{opacity:1;transform:translateY(0) scale(1);transition:opacity .25s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1)}
+.hero-anim-content .h-word.accent{color:var(--gold)}
+.hero-anim-content .h-word.accent-red{color:var(--red)}
+.hero-anim-bottom-grad{position:absolute;bottom:0;left:0;right:0;height:45%;background:linear-gradient(to top,rgba(10,10,15,.7) 0%,rgba(10,10,15,.3) 50%,transparent 100%);pointer-events:none;z-index:1}
+.hero-anim-sub{font-size:clamp(14px,2vw,18px);color:rgba(255,255,255,.5);margin-top:24px;opacity:0;transform:translateY(16px);transition:all .6s ease-out .3s;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.6}
+.hero-anim-sub.show{opacity:1;transform:translateY(0)}
+.hero-anim-btns{margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(16px);transition:all .6s ease-out .5s}
+.hero-anim-btns.show{opacity:1;transform:translateY(0)}
+.hero-anim-btns a{padding:16px 36px;font-size:14px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.8px}
+.hero-anim-btns .ha-pri{background:var(--red);color:#FFF}
+.hero-anim-btns .ha-pri:hover{background:#A02828}
+.hero-anim-btns .ha-sec{border:1.5px solid rgba(255,255,255,.3);color:#FFF}
+.hero-anim-btns .ha-sec:hover{background:rgba(255,255,255,.1)}
+.hero-anim-stats{display:flex;gap:40px;justify-content:center;margin-top:40px;opacity:0;transition:opacity .6s ease-out .8s}
+.hero-anim-stats.show{opacity:1}
+.hero-anim-stats .has-num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);line-height:1}
+.hero-anim-stats .has-lbl{font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.5px}
 
+/* ---- STATIC HERO ---- */
+.hero-c{padding:80px 64px 60px;background:#FFF;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative}
+.hero-c-txt h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(32px,5vw,48px);font-weight:700;color:var(--navy);line-height:1.08;margin-bottom:14px}
+.hero-c-txt h1 em{color:var(--red);font-style:normal}
+.hero-c-txt p{font-size:16px;color:var(--dim);max-width:480px;line-height:1.7;margin-bottom:24px}
+.hero-c-txt .hero-stats{display:flex;gap:32px;margin-bottom:24px}
+.hero-stat-i .hs-num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--red);line-height:1}
+.hero-stat-i .hs-lbl{font-size:11px;color:var(--dim);letter-spacing:.5px}
+.hero-c-img{position:relative;overflow:hidden;aspect-ratio:4/3}
+.hero-c-img img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-c-img .ph{position:absolute;top:8px;right:8px;font-size:9px;color:rgba(255,255,255,.3);font-style:italic}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.hero-btns a{padding:14px 32px;font-size:14px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:.5px}
+.hero-btns .pri{background:var(--red);color:#FFF}
+.hero-btns .pri:hover{background:#A02828}
+.hero-btns .sec{border:1.5px solid var(--navy);color:var(--navy)}
+.hero-btns .sec:hover{background:var(--navy);color:#FFF}
 
-html,body{overflow-x:hidden;max-width:100vw}
-input,textarea,select{font-size:16px !important}
-*{-webkit-tap-highlight-color:rgba(197,48,48,.15)}
-@media (max-width:1023px){
-  .tb{padding:6px 16px !important;font-size:11px}
-  nav{height:56px !important;padding:0 16px !important}
-  nav > div:first-child img{height:40px !important}
-  nav .nl{display:none !important}
-  .mob-burger{display:flex !important;flex-direction:column;justify-content:space-between;width:28px;height:20px;padding:0;background:none;border:0;cursor:pointer;margin-left:auto}
-  .mob-burger span{display:block;height:2px;background:#1B2838;width:100%}
-  .mob-overlay{position:fixed;inset:0;background:#1B2838;z-index:9999;display:none;flex-direction:column;padding:24px 24px 32px}
-  .mob-overlay.open{display:flex}
-  .mob-close{align-self:flex-end;width:44px;height:44px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
-  .mob-links{display:flex;flex-direction:column;margin-top:24px;flex:1}
-  .mob-links a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;height:56px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)}
-  .mob-cta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
-  .mob-cta a{display:flex;align-items:center;justify-content:center;height:56px;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
-  .mob-cta .mob-donate{background:#fff;color:#1B2838}
-  .mob-cta .mob-get{background:#C53030;color:#fff}
-  .sec,.we-are,.punch{padding:40px 20px !important}
-  .punch{padding:64px 20px !important}
-  .we-are{padding:0 20px !important}
-  .we-are-row{padding:28px 0 !important}
-  .we-are-row h2{font-size:clamp(28px,6vw,40px) !important}
-  .we-are-row .ar{width:56px !important;height:56px !important}
-  .ft-g{display:flex !important;flex-direction:column;gap:32px;text-align:center}
-  .ft-bt{flex-direction:column !important;gap:8px;text-align:center}
-  .grid-3,.grid-4,.grid-2{grid-template-columns:1fr !important}
-}
-@media (min-width:768px) and (max-width:1023px){
-  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr) !important}
-  .ft-g{display:grid !important;grid-template-columns:1fr 1fr;text-align:left}
-}
+/* ---- WHY CEDP ---- */
+.why{padding:80px 64px;background:var(--bg);border-top:1px solid var(--border)}
+.why h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:var(--navy);margin-bottom:32px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-card{background:#FFF;border:1px solid var(--border);padding:28px 24px;transition:all .3s;cursor:default}
+.why-card:hover{border-color:var(--navy);background:var(--navy)}
+.why-card .wc-icon{font-size:28px;margin-bottom:12px;transition:filter .3s}
+.why-card h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;color:var(--navy);margin-bottom:6px;transition:color .3s}
+.why-card p{font-size:13px;color:var(--dim);line-height:1.6;transition:color .3s}
+.why-card:hover h3{color:#FFF}
+.why-card:hover p{color:rgba(255,255,255,.6)}
 
+/* ---- SNAP COUNTER ---- */
+.snap-sec{padding:0;background:#FFF;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;transition:min-height .8s cubic-bezier(.4,0,.2,1),padding .8s cubic-bezier(.4,0,.2,1),background .6s}
+.snap-sec.phase-dark{background:var(--navy);min-height:110vh;padding:80px 0}
+.snap-sec.phase-settle{background:var(--navy);min-height:100vh;padding:0;display:flex;align-items:center;justify-content:center}
+.snap-display{position:relative;z-index:2}
+
+/* Slam numbers */
+.snap-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(80px,15vw,180px);line-height:.85;letter-spacing:4px;color:var(--navy);transition:color .4s;opacity:0;transform:scale(.7);transition:all .5s cubic-bezier(.4,0,.2,1)}
+.snap-num.show{opacity:1;transform:scale(1)}
+.snap-sec.phase-dark .snap-num,.snap-sec.phase-settle .snap-num{color:#FFF}
+.snap-sub{font-size:clamp(14px,2vw,18px);color:var(--dim);font-weight:400;letter-spacing:1px;text-transform:uppercase;margin-top:4px;opacity:0;transition:opacity .4s .2s}
+.snap-sub.show{opacity:1}
+.snap-sec.phase-dark .snap-sub{color:rgba(255,255,255,.5)}
+
+/* Final state: horizontal stats + red line + CTA */
+.snap-final{opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity .6s;width:100%;position:absolute;inset:0;padding:0 24px}
+.snap-final.show{opacity:1;display:flex;align-items:center;justify-content:center}
+.snap-stats-row{display:flex;align-items:center;justify-content:center;gap:clamp(32px,6vw,80px);width:100%}
+.snap-stat-item{text-align:center}
+.snap-stat-item .ss-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,10vw,120px);color:var(--gold);line-height:.9;letter-spacing:3px;opacity:0;transform:translateY(24px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.snap-stat-item .ss-lbl{font-size:clamp(11px,1.2vw,14px);color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;margin-top:6px;opacity:0;transition:opacity .5s .2s}
+.snap-stat-item.show .ss-num{opacity:1;transform:translateY(0)}
+.snap-stat-item.show .ss-lbl{opacity:1}
+.snap-red-line{width:0;height:3px;background:var(--red);transition:width 1s cubic-bezier(.4,0,.2,1)}
+.snap-red-line.show{width:min(80%,600px)}
+.snap-cta{opacity:0;transform:translateY(12px);transition:all .5s .2s}
+.snap-cta.show{opacity:1;transform:translateY(0)}
+.snap-cta a{display:inline-block;padding:18px 48px;font-size:16px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1px;border:2px solid #FFF;color:#FFF;transition:all .3s}
+.snap-cta a:hover{background:#FFF;color:var(--navy)}
+
+/* ---- CULTURE ---- */
+.culture{padding:80px 64px;background:#FFF}
+.culture h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.culture>p{font-size:14px;color:var(--dim);margin-bottom:32px;max-width:540px}
+.culture-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.culture-card{position:relative;overflow:hidden;cursor:default;min-height:220px}
+.culture-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.culture-card:hover img{transform:scale(1.05)}
+.culture-card.big{grid-row:1/3}
+.culture-overlay{position:absolute;bottom:0;left:0;right:0;padding:20px;background:linear-gradient(transparent,rgba(27,40,56,.85))}
+.culture-overlay span{font-size:12px;color:rgba(255,255,255,.7);font-weight:400}
+.culture-quote{grid-column:2/4;background:var(--navy);padding:32px;display:flex;flex-direction:column;justify-content:center}
+.culture-quote p{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.5;margin-bottom:8px}
+.culture-quote span{font-size:12px;color:var(--gold);font-weight:600}
+
+/* ---- BENEFITS ---- */
+.benefits{padding:80px 64px;background:var(--bg)}
+.benefits h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:32px}
+.ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ben-flip{perspective:1000px;cursor:pointer;height:200px}
+.ben-flip-inner{transition:transform .6s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d;position:relative;height:100%}
+.ben-flip.flipped .ben-flip-inner{transform:rotateY(180deg)}
+.ben-front,.ben-back{backface-visibility:hidden;-webkit-backface-visibility:hidden;position:absolute;inset:0;padding:28px 24px;display:flex;flex-direction:column;justify-content:center}
+.ben-front{background:#FFF;border:1px solid var(--border);transition:all .3s}
+.ben-front h4{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.ben-front p{font-size:12px;color:var(--dim);line-height:1.6}
+.ben-front .ben-hint{position:absolute;bottom:12px;right:16px;font-size:9px;color:var(--faint);letter-spacing:.5px}
+.ben-front::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.ben-flip:hover .ben-front::after{transform:scaleX(1)}
+.ben-flip:hover .ben-front{border-color:var(--gold)}
+.ben-back{transform:rotateY(180deg);background:var(--navy)}
+.ben-back h4{font-size:15px;font-weight:700;color:var(--gold);margin-bottom:8px}
+.ben-back p{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6}
+.ben-back .ben-back-hint{position:absolute;bottom:12px;right:16px;font-size:9px;color:rgba(255,255,255,.2)}
+
+/* ---- OPEN POSITIONS ---- */
+.positions{padding:80px 64px;background:#FFF}
+.positions h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.positions>p{font-size:14px;color:var(--dim);margin-bottom:24px}
+.pos-filters{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+.pos-filter{padding:8px 16px;font-size:12px;font-weight:600;border:1px solid var(--border);background:#FFF;color:var(--dim);cursor:pointer;font-family:'Libre Franklin',sans-serif;transition:all .2s}
+.pos-filter.active{background:var(--navy);color:#FFF;border-color:var(--navy)}
+.pos-filter:hover{border-color:var(--navy)}
+.pos-list{display:flex;flex-direction:column}
+.pos-item{padding:24px 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr auto auto auto;gap:24px;align-items:center;cursor:pointer;transition:background .2s}
+.pos-item:hover{background:rgba(232,185,96,.03);padding-left:16px;padding-right:16px}
+.pos-item h3{font-size:16px;font-weight:600;color:var(--navy)}
+.pos-item .pos-dept{font-size:12px;color:var(--dim);background:var(--bg);padding:4px 12px;border:1px solid var(--border);white-space:nowrap}
+.pos-item .pos-loc{font-size:12px;color:var(--dim);white-space:nowrap}
+.pos-item .pos-type{font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap}
+.pos-arrow{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.pos-arrow svg{width:14px;height:14px}
+.pos-arrow svg path{stroke:var(--navy);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.pos-item:hover .pos-arrow{background:var(--gold);border-color:var(--gold)}
+
+/* ---- PROCESS ---- */
+.process{padding:80px 64px;background:var(--bg)}
+.process h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:var(--navy);margin-bottom:32px}
+.proc-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.proc-steps::before{content:'';position:absolute;top:28px;left:0;right:0;height:2px;background:var(--border);z-index:0}
+.proc-step{position:relative;z-index:1;text-align:center;padding:0 16px}
+.proc-dot{width:56px;height:56px;border-radius:50%;background:#FFF;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Bebas Neue',sans-serif;font-size:24px;color:var(--navy);transition:all .3s}
+.proc-step:hover .proc-dot{background:var(--navy);border-color:var(--navy);color:var(--gold)}
+.proc-step h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px}
+.proc-step p{font-size:11px;color:var(--dim);line-height:1.5}
+
+/* ---- ALERTS ---- */
+.alerts{padding:48px 64px;background:#FFF;border-top:1px solid var(--border)}
+.alerts-inner{display:flex;justify-content:space-between;align-items:center;gap:32px}
+.alerts-inner h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:600;color:var(--navy)}
+.alerts-inner p{font-size:13px;color:var(--dim)}
+.alerts-form{display:flex;gap:0}
+.alerts-form input{padding:14px 20px;font-size:14px;border:1.5px solid var(--border);border-right:none;width:280px;font-family:'Libre Franklin',sans-serif;outline:none}
+.alerts-form input:focus{border-color:var(--navy)}
+.alerts-form button{padding:14px 28px;background:var(--navy);color:#FFF;font-size:13px;font-weight:700;border:none;font-family:'Libre Franklin',sans-serif;cursor:pointer;white-space:nowrap;text-transform:uppercase;letter-spacing:.5px;transition:background .2s}
+.alerts-form button:hover{background:var(--gold);color:var(--navy)}
+
+/* ---- MISSION PUNCH ---- */
+.punch{padding:120px 64px;text-align:center;transition:background .6s;position:relative}
+.punch.t-navy{background:var(--navy)}.punch.t-gold{background:var(--gold)}.punch.t-red{background:var(--red)}
+.punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,64px);line-height:.9;letter-spacing:3px;text-transform:uppercase;margin-bottom:40px;transition:color .6s}
+.punch.t-navy h2{color:#FFF}.punch.t-gold h2{color:var(--navy)}.punch.t-red h2{color:#FFF}
+.punch-btn{display:inline-block;padding:16px 48px;border-radius:40px;font-size:15px;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:all .3s}
+.punch.t-navy .punch-btn{border:1.5px solid rgba(255,255,255,.35);color:#FFF}
+.punch.t-navy .punch-btn:hover{background:#FFF;color:var(--navy)}
+.punch.t-gold .punch-btn{border:1.5px solid rgba(27,40,56,.25);color:var(--navy)}
+.punch.t-gold .punch-btn:hover{background:var(--navy);color:var(--gold)}
+.punch.t-red .punch-btn{border:1.5px solid rgba(255,255,255,.35);color:#FFF}
+.punch.t-red .punch-btn:hover{background:#FFF;color:var(--red)}
+.punch-tog{position:absolute;top:20px;right:20px;display:flex;border:1px solid rgba(255,255,255,.2)}
+.punch-tog button{padding:4px 10px;font-size:10px;font-weight:700;font-family:'Libre Franklin',sans-serif;border:none;cursor:pointer;background:none;color:rgba(255,255,255,.4);transition:all .2s}
+.punch-tog button.on{background:rgba(255,255,255,.15);color:var(--gold)}
+
+/* ---- GIANT LINKS ---- */
+.giant-links{padding:60px 64px 80px;background:var(--bg)}
+.giant-rule{height:2px;background:var(--navy)}
+.giant-row{display:flex;justify-content:space-between;align-items:center;padding:32px;cursor:pointer;position:relative;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none}
+.giant-row::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s;z-index:0}
+.giant-row:hover::before{transform:scaleY(1)}
+.giant-row h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:var(--navy);text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1}
+.giant-row .gar{width:60px;height:60px;border-radius:50%;border:1.5px solid rgba(27,40,56,.15);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .5s;flex-shrink:0}
+.giant-row .gar svg{width:28px;height:28px}
+.giant-row .gar svg path{stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.giant-row:hover .gar{background:var(--navy);border-color:var(--navy)}
+
+/* ---- FOOTER ---- */
+footer{background:var(--navy);padding:0 48px 28px}
+.ft-warm{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.ft-warm-txt{font-size:20px;font-weight:600;color:rgba(255,255,255,.45)}
+.ft-warm-txt em{color:var(--red);font-style:normal}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:28px}
+.ft-b{font-size:16px;font-weight:700;color:#FFF;margin-bottom:10px}.ft-b em{color:var(--gold);font-style:normal}
+.ft-d{font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:12px}
+.ft-c{font-size:11px;color:rgba(255,255,255,.35);line-height:1.6}
+footer h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+footer a{display:block;font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:6px}
+.brand-mark{display:flex;align-items:center;gap:10px;justify-content:flex-end;padding:24px 0 16px}
+.brand-mark img{height:48px}
+.brand-mark-text{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);line-height:1.25}
+.ft-bt{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.25)}
+
+@media(max-width:1024px){.hero-c{grid-template-columns:1fr}.why-grid{grid-template-columns:1fr 1fr}.ben-grid{grid-template-columns:1fr 1fr}.ben-flip{height:180px}.proc-steps{grid-template-columns:1fr 1fr}.pos-item{grid-template-columns:1fr auto}}
+@media(max-width:768px){.hero-c,.why,.culture,.benefits,.positions,.process,.alerts,.punch,.giant-links{padding-left:24px;padding-right:24px}.why-grid,.ben-grid{grid-template-columns:1fr}.ben-flip{height:160px}.proc-steps{grid-template-columns:1fr}.proc-steps::before{display:none}.culture-grid{grid-template-columns:1fr}.culture-card.big{grid-row:auto}.pos-item{grid-template-columns:1fr}.pos-item .pos-dept,.pos-item .pos-loc,.pos-item .pos-type{display:none}.giant-row h3{font-size:28px}.giant-row .gar{width:48px;height:48px}.alerts-inner{flex-direction:column}.alerts-form{flex-direction:column}.alerts-form input{border-right:1.5px solid var(--border);width:100%}.snap-sec{min-height:60vh}}
 </style>
-<link rel="stylesheet" href="/cedp-global.css"></head>
+</head>
 <body>
-<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>
-<nav><div><a href="/" target="_top"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
-<div class="ni"><a href="/about" target="_top">About</a></div>
-<div class="ni"><a href="/our-work" target="_top">Our work</a></div>
-<div class="ni"><a href="/ced-law" target="_top">CED Law</a></div>
-<div class="ni"><a href="/impact" target="_top">Impact</a></div>
-<div class="ni"><a href="/news" target="_top">News</a></div>
-<div class="ni"><a href="/careers" target="_top" class="act">Careers</a></div>
-<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h" href="/get-help" target="_top">Get help</a>
+
+<!-- TOP BAR -->
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Español</div></div>
+
+<!-- NAV -->
+<nav><div><a href="cedp-homepage-font-ab.html"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="cedp-about.html">About</a></div>
+<div class="ni"><a href="cedp-ourwork.html">Our work</a></div>
+<div class="ni"><a href="cedp-cedlaw.html">CED Law</a></div>
+<div class="ni"><a href="#">News</a></div>
+<div class="ni"><a href="cedp-careers.html" class="act">Careers</a></div>
+<a class="btn-d" href="#">Donate</a><a class="btn-h" href="cedp-gethelp.html">Get help</a>
 </div></nav>
 
-<section class="cr-hero">
-  <div class="lbl">Join Us</div>
-  <h1>Work that prevents homelessness</h1>
-  <p>CEDP is one of the fastest-growing economic justice nonprofits in the country. We work alongside ~200 colleagues to defend Colorado families from eviction, foreclosure, towing, and debt — and to turn each case into systemic change.</p>
-  <div class="cr-cta">
-    <a class="btn-r" href="#openings">View Open Positions &darr;</a>
-    <a class="btn-o" href="/about" target="_top">Our Mission &rarr;</a>
-  </div>
+<!-- ANIMATED HERO -->
+<section class="hero-anim" id="heroAnim">
+<div class="hero-tog"><button class="on" onclick="setHero('anim')">Animated</button><button onclick="setHero('static')">Static</button></div>
+<video muted loop playsinline autoplay poster="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1280&h=720&fit=crop">
+<source src="https://videos.pexels.com/video-files/7691549/7691549-hd_1920_1080_25fps.mp4" type="video/mp4">
+</video>
+<div class="hero-anim-bottom-grad"></div>
+<div class="hero-anim-content">
+<span class="h-word" id="hw1">Work</span>
+<span class="h-word" id="hw2">That</span>
+<span class="h-word accent-red" id="hw3">Defends</span>
+<span class="h-word accent" id="hw4">Communities</span>
+<p class="hero-anim-sub" id="heroAnimSub">Join the team that turned a Facebook post into Colorado's most comprehensive economic defense organization.</p>
+<div class="hero-anim-btns" id="heroAnimBtns"><a href="#positions" class="ha-pri">View Open Positions ↓</a><a href="cedp-about.html" class="ha-sec">About CEDP</a></div>
+<div class="hero-anim-stats" id="heroAnimStats"><div><div class="has-num">~200</div><div class="has-lbl">Team members</div></div><div><div class="has-num">4</div><div class="has-lbl">Offices</div></div><div><div class="has-num">68K+</div><div class="has-lbl">Families served</div></div></div>
+</div>
 </section>
 
-<section class="cr-snap" id="snap">
-  <div class="cr-snap-item" data-i="0"><div class="cr-snap-n">~200</div><div class="cr-snap-l">team members</div></div>
-  <div class="cr-snap-item" data-i="1"><div class="cr-snap-n">68,000+</div><div class="cr-snap-l">families defended</div></div>
-  <div class="cr-snap-item" data-i="2"><div class="cr-snap-n">1</div><div class="cr-snap-l">mission</div></div>
-  <a class="cr-snap-cta btn-r" href="#openings" id="snapCTA" style="background:#C53030;border-color:#C53030">JOIN US &rarr;</a>
+<!-- STATIC HERO -->
+<section class="hero-c rv hero-static-tog" id="heroStatic" style="display:none">
+<div class="hero-tog"><button onclick="setHero('anim')">Animated</button><button class="on" onclick="setHero('static')">Static</button></div>
+<div class="hero-c-txt">
+<div class="lab lab-red">Careers</div>
+<h1>Work that <em>defends</em><br>communities</h1>
+<div class="hero-stats"><div class="hero-stat-i"><div class="hs-num">~200</div><div class="hs-lbl">Team members</div></div><div class="hero-stat-i"><div class="hs-num">4</div><div class="hs-lbl">Offices</div></div><div class="hero-stat-i"><div class="hs-num">68K+</div><div class="hs-lbl">Families served</div></div></div>
+<p>Join the team that turned a Facebook post into Colorado's most comprehensive economic defense organization. Every role here directly prevents homelessness.</p>
+<div class="hero-btns"><a href="#positions" class="pri">View Open Positions ↓</a><a href="cedp-about.html" class="sec">About CEDP</a></div>
+</div>
+<div class="hero-c-img"><img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop" alt="CEDP Team" loading="lazy"/><span class="ph">PH</span></div>
 </section>
 
-<section class="cr-why">
-  <div class="lbl">Why CEDP</div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase">A place to do your best work</h2>
-  <div class="cr-why-grid grid-4">
-    <div class="cr-why-card reveal"><h3>Mission-Driven Work</h3><p>Every day, your work helps a real family avoid eviction, recover their car, or get out of debt.</p></div><div class="cr-why-card reveal"><h3>Rapid Growth</h3><p>From 5 to 200 in five years. Build something with a team that ships.</p></div><div class="cr-why-card reveal"><h3>Real Impact</h3><p>12+ laws changed, $1M+ in settlements, 68,000+ families defended.</p></div><div class="cr-why-card reveal"><h3>Colorado-Based</h3><p>Denver HQ with offices in Springs, Durango, and Fort Morgan. Remote-friendly.</p></div>
-  </div>
+<!-- WHY CEDP -->
+<section class="why rv">
+<div class="lab lab-gold">Why join us</div>
+<h2>Why people choose CEDP</h2>
+<div class="why-grid">
+<div class="why-card"><div class="wc-icon">⚖️</div><h3>Mission-driven work</h3><p>Your work directly prevents eviction, defends families, and changes laws. Not metrics on a dashboard — real impact you can see.</p></div>
+<div class="why-card"><div class="wc-icon">🚀</div><h3>Unprecedented growth</h3><p>From 3 volunteers in 2020 to ~200 in 2024. A startup pace with nonprofit purpose. Build something that didn't exist before.</p></div>
+<div class="why-card"><div class="wc-icon">🏔️</div><h3>Colorado-based</h3><p>4 offices: Denver, Colorado Springs, Durango, Fort Morgan. Hybrid options available. Serve your own community.</p></div>
+<div class="why-card"><div class="wc-icon">📈</div><h3>Systemic change</h3><p>We don't just serve clients — we pass laws. The Towing Bill of Rights, expanded renters' protections, and the $1M Wyatts settlement all started here.</p></div>
+</div>
 </section>
 
-<section class="cr-culture">
-  <div class="cr-photo"><span class="ph">PH team photo</span></div>
-  <div class="cr-quote reveal">
-    <blockquote>"I have never worked anywhere that takes the dignity of clients — and of staff — this seriously. The people are the reason I stay."</blockquote>
-    <cite>Maria L., Senior Staff Attorney &bull; 3 years at CEDP</cite>
-  </div>
+<!-- SNAP COUNTER -->
+<section class="snap-sec" id="snapCounter">
+<div class="snap-display">
+<div class="snap-num" id="snapNum">200</div>
+<div class="snap-sub" id="snapSub">team members</div>
+</div>
+<div class="snap-final" id="snapFinal">
+<div class="snap-stats-row">
+<div class="snap-stat-item" id="ss1"><div class="ss-num">200</div><div class="ss-lbl">Team members</div></div>
+<div class="snap-stat-item" id="ss2"><div class="ss-num">68,000+</div><div class="ss-lbl">Families defended</div></div>
+<div class="snap-stat-item" id="ss3"><div class="ss-num">1</div><div class="ss-lbl">Mission</div></div>
+</div>
+<div class="snap-red-line" id="snapLine"></div>
+<div class="snap-cta" id="snapCta"><a href="#positions">Join Us →</a></div>
+</div>
 </section>
 
-<section class="cr-faq">
-  <div class="lbl">Benefits</div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase;margin-bottom:24px">What we offer</h2>
-  <div id="crFAQ">
-    <div class="cr-faq-item"><div class="cr-faq-q">Compensation<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Competitive nonprofit salaries benchmarked annually. Pay bands are transparent across the org.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Health Insurance<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Medical, dental, and vision with 90% employer coverage. Mental health benefits included.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">PTO<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Unlimited PTO, 12 paid holidays, plus the week between Christmas and New Year off.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Professional Development<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>$2,000/year per person for training, conferences, and continuing education. Bar dues covered for attorneys.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Remote/Hybrid<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Most roles are hybrid 2 days/week in office. Some roles fully remote within Colorado.</p></div></div><div class="cr-faq-item"><div class="cr-faq-q">Equity & Inclusion<div class="cr-faq-arr">&#9662;</div></div><div class="cr-faq-a"><p>Active DEI council. ERGs for BIPOC, LGBTQ+, and women in leadership.</p></div></div>
-  </div>
+<!-- CULTURE -->
+<section class="culture rv">
+<div class="lab lab-red">Culture</div>
+<h2>What it's like here</h2>
+<p>CEDP was built by people who refused to accept that eviction was inevitable. That urgency is in everything we do.</p>
+<div class="culture-grid">
+<div class="culture-card big"><img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=600&h=800&fit=crop" alt="Team" loading="lazy"/><div class="culture-overlay"><span>Team strategy session · Denver HQ <em style="font-size:8px;opacity:.5">PH</em></span></div></div>
+<div class="culture-card"><img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Community" loading="lazy"/><div class="culture-overlay"><span>Community outreach <em style="font-size:8px;opacity:.5">PH</em></span></div></div>
+<div class="culture-card"><img src="https://images.pexels.com/photos/7551442/pexels-photo-7551442.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Legal team" loading="lazy"/><div class="culture-overlay"><span>CED Law team meeting <em style="font-size:8px;opacity:.5">PH</em></span></div></div>
+<div class="culture-quote"><p>"I've never worked at a place where every single person — from the receptionist to the CEO — genuinely cares about the same mission."</p><span>— CEDP Team Member <em style="font-size:8px;opacity:.5">PH</em></span></div>
+</div>
 </section>
 
-<section class="cr-jobs" id="openings">
-  <div class="lbl">Current Openings</div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;text-transform:uppercase">Open positions <span class="ph">PH</span></h2>
-  <div class="cr-jobs-grid">
-    <a class="cr-job reveal" href="#"><h3>Senior Staff Attorney</h3><div><span class="cr-job-dep">Legal</span><span class="cr-job-meta">Denver, CO &bull; Full-time &bull; 2 days ago</span></div></a><a class="cr-job reveal" href="#"><h3>Housing Navigator</h3><div><span class="cr-job-dep">Programs</span><span class="cr-job-meta">Colorado Springs &bull; Full-time &bull; 5 days ago</span></div></a><a class="cr-job reveal" href="#"><h3>Director of Policy</h3><div><span class="cr-job-dep">Policy & Comms</span><span class="cr-job-meta">Denver, CO (Hybrid) &bull; Full-time &bull; 1 week ago</span></div></a><a class="cr-job reveal" href="#"><h3>Spanish-language Intake Specialist</h3><div><span class="cr-job-dep">Navigation</span><span class="cr-job-meta">Fort Morgan &bull; Full-time &bull; 1 week ago</span></div></a><a class="cr-job reveal" href="#"><h3>Data Analyst</h3><div><span class="cr-job-dep">Finance & Ops</span><span class="cr-job-meta">Remote (CO) &bull; Full-time &bull; 2 weeks ago</span></div></a><a class="cr-job reveal" href="#"><h3>Communications Manager</h3><div><span class="cr-job-dep">Policy & Comms</span><span class="cr-job-meta">Denver, CO &bull; Full-time &bull; 3 weeks ago</span></div></a>
-  </div>
-  <div class="cr-talent">
-    <p>Don't see the right role? Join our talent community &rarr;</p>
-    <input type="email" placeholder="you@example.com"/>
-    <button>Subscribe</button>
-  </div>
+<!-- BENEFITS -->
+<section class="benefits rv">
+<div class="lab lab-gold">Benefits</div>
+<h2>What we offer</h2>
+<div class="ben-grid">
+<div class="ben-flip" onclick="this.classList.toggle('flipped')"><div class="ben-flip-inner">
+<div class="ben-front"><h4>Competitive salary</h4><p>Benchmarked annually against Colorado nonprofit and legal sector standards.</p><span class="ben-hint">tap to learn more</span></div>
+<div class="ben-back"><h4>Competitive salary</h4><p>Salaries reviewed annually using Colorado nonprofit compensation surveys. We publish salary ranges in all job postings. Pay equity audits conducted yearly. Signing bonuses available for hard-to-fill legal roles.</p><span class="ben-back-hint">tap to flip back</span></div>
+</div></div>
+<div class="ben-flip" onclick="this.classList.toggle('flipped')"><div class="ben-flip-inner">
+<div class="ben-front"><h4>Health & dental insurance</h4><p>Comprehensive coverage for employees and dependents.</p><span class="ben-hint">tap to learn more</span></div>
+<div class="ben-back"><h4>Health & dental</h4><p>CEDP covers 90% of employee premiums and 75% of dependent premiums. Plans include medical, dental, and vision. Coverage starts on your first day — no waiting period. FSA and HSA options available.</p><span class="ben-back-hint">tap to flip back</span></div>
+</div></div>
+<div class="ben-flip" onclick="this.classList.toggle('flipped')"><div class="ben-flip-inner">
+<div class="ben-front"><h4>Generous PTO</h4><p>Paid vacation, sick leave, personal days, and 11+ holidays. <em style="font-size:9px;opacity:.4">PH</em></p><span class="ben-hint">tap to learn more</span></div>
+<div class="ben-back"><h4>Time off</h4><p>15 days PTO in year one, increasing to 20 days by year three. Unlimited sick leave. 11 federal holidays plus a week-long office closure between Christmas and New Year's. Paid parental leave for all parents.</p><span class="ben-back-hint">tap to flip back</span></div>
+</div></div>
+<div class="ben-flip" onclick="this.classList.toggle('flipped')"><div class="ben-flip-inner">
+<div class="ben-front"><h4>Hybrid / remote options</h4><p>Flexible work arrangements depending on role and team.</p><span class="ben-hint">tap to learn more</span></div>
+<div class="ben-back"><h4>Flexible work</h4><p>Most roles offer 2-3 days remote per week. Fully remote available for select positions. Home office stipend for equipment. Core collaboration hours 10am-3pm MT — flex outside that window.</p><span class="ben-back-hint">tap to flip back</span></div>
+</div></div>
+<div class="ben-flip" onclick="this.classList.toggle('flipped')"><div class="ben-flip-inner">
+<div class="ben-front"><h4>Professional development</h4><p>CLE credits, training budgets, conference attendance, and growth paths.</p><span class="ben-hint">tap to learn more</span></div>
+<div class="ben-back"><h4>Growth</h4><p>$2,000 annual professional development stipend per employee. Full CLE credit coverage for attorneys. Annual team retreats. Leadership development track for managers. Cross-department rotation opportunities.</p><span class="ben-back-hint">tap to flip back</span></div>
+</div></div>
+<div class="ben-flip" onclick="this.classList.toggle('flipped')"><div class="ben-flip-inner">
+<div class="ben-front"><h4>401(k) retirement</h4><p>Employer-sponsored plan with organizational contribution. <em style="font-size:9px;opacity:.4">PH</em></p><span class="ben-hint">tap to learn more</span></div>
+<div class="ben-back"><h4>Retirement</h4><p>401(k) with 4% employer match starting day one. No vesting period — the match is yours immediately. Access to financial wellness workshops and one-on-one financial planning sessions.</p><span class="ben-back-hint">tap to flip back</span></div>
+</div></div>
+</div>
 </section>
 
-<section class="punch v-r" id="punch">
-  <div class="ptog"><span data-v="n">N</span><span data-v="g">G</span><span data-v="r" class="on">R</span></div>
-  <h2>200 PEOPLE.<br/>68,000 FAMILIES.<br/>JOIN THE FIGHT.</h2>
-  <a class="pbtn" href="#openings">View Open Positions &uarr;</a>
-</section>
-<script>(function(){var p=document.getElementById('punch');if(!p)return;p.querySelectorAll('.ptog span').forEach(function(s){s.addEventListener('click',function(){p.className='punch v-'+s.dataset.v;p.querySelectorAll('.ptog span').forEach(function(x){x.classList.toggle('on',x===s)});});});})();</script>
+<!-- OPEN POSITIONS -->
+<section class="positions rv" id="positions">
+<div class="lab lab-red">Open positions</div>
+<h2>Current openings</h2>
+<p>All positions are based in Colorado unless noted. Click any role for full details.</p>
 
-<div class="we-are">
-<a class="we-are-row" href="/our-work" target="_top"><h2>OUR PROGRAMS</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
-<a class="we-are-row" href="/ced-law" target="_top"><h2>CED LAW</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
-<a class="we-are-row" href="/about" target="_top"><h2>ABOUT CEDP</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<div class="pos-filters">
+<button class="pos-filter active" onclick="filterJobs('all',this)">All</button>
+<button class="pos-filter" onclick="filterJobs('legal',this)">Legal</button>
+<button class="pos-filter" onclick="filterJobs('nav',this)">Navigation</button>
+<button class="pos-filter" onclick="filterJobs('policy',this)">Policy</button>
+<button class="pos-filter" onclick="filterJobs('ops',this)">Operations</button>
 </div>
 
-<script>
-(function(){
-  // snap counter
-  var snap=document.getElementById('snap');
-  var items=snap.querySelectorAll('.cr-snap-item');
-  var cta=document.getElementById('snapCTA');
-  var done=false;
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){
-    if(e.isIntersecting && !done){done=true;
-      items.forEach(function(it,i){setTimeout(function(){it.classList.add('on');if(i===1)snap.classList.add('dark');},i*600);});
-      setTimeout(function(){cta.classList.add('on');},items.length*600+800);
-    }
-  });},{threshold:.3});
-  io.observe(snap);
-  // FAQ
-  document.querySelectorAll('#crFAQ .cr-faq-item').forEach(function(it){
-    it.querySelector('.cr-faq-q').addEventListener('click',function(){
-      var open=it.classList.contains('on');
-      document.querySelectorAll('#crFAQ .cr-faq-item').forEach(function(x){x.classList.remove('on')});
-      if(!open)it.classList.add('on');
-    });
-  });
-})();
-</script>
+<div class="pos-list">
+<div class="pos-item" data-dept="legal" onclick="window.open('#','_blank')"><h3>Housing Attorney</h3><span class="pos-dept">Legal — CED Law</span><span class="pos-loc">Denver, CO</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="pos-item" data-dept="legal" onclick="window.open('#','_blank')"><h3>Appellate Attorney</h3><span class="pos-dept">Legal — CED Law</span><span class="pos-loc">Denver, CO</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="pos-item" data-dept="nav" onclick="window.open('#','_blank')"><h3>CARE Center Navigator</h3><span class="pos-dept">Navigation</span><span class="pos-loc">Denver, CO</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="pos-item" data-dept="nav" onclick="window.open('#','_blank')"><h3>Bilingual Intake Specialist</h3><span class="pos-dept">Navigation</span><span class="pos-loc">Colorado Springs</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="pos-item" data-dept="policy" onclick="window.open('#','_blank')"><h3>Policy & Communications Manager</h3><span class="pos-dept">Policy</span><span class="pos-loc">Denver, CO</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="pos-item" data-dept="ops" onclick="window.open('#','_blank')"><h3>Data & Impact Analyst</h3><span class="pos-dept">Operations</span><span class="pos-loc">Remote / Denver</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="pos-item" data-dept="nav" onclick="window.open('#','_blank')"><h3>Just Bus Field Navigator</h3><span class="pos-dept">Navigation</span><span class="pos-loc">Durango / Fort Morgan</span><span class="pos-type">Full-time</span><div class="pos-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div>
+<p style="margin-top:24px;font-size:12px;color:var(--faint);font-style:italic">PH — Placeholder job listings. Actual positions will be managed via CMS with BambooHR integration.</p>
+</section>
 
-<footer><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help" target="_top">Eviction</a><a href="/get-help" target="_top">Foreclosure</a><a href="/get-help" target="_top">Towing</a><a href="/get-help" target="_top">Debt</a><a href="/get-help" target="_top">Disaster relief</a></div><div><h4>About</h4><a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED law</a><a href="/about" target="_top">Contact</a></div><div><h4>Impact</h4><a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a></div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+<!-- PROCESS -->
+<section class="process rv">
+<div class="lab lab-gold">How it works</div>
+<h2>Application process</h2>
+<div class="proc-steps">
+<div class="proc-step"><div class="proc-dot">1</div><h4>Apply</h4><p>Submit your application via BambooHR</p></div>
+<div class="proc-step"><div class="proc-dot">2</div><h4>Phone Screen</h4><p>30-minute conversation with HR</p></div>
+<div class="proc-step"><div class="proc-dot">3</div><h4>Interview</h4><p>Meet the team and discuss the role</p></div>
+<div class="proc-step"><div class="proc-dot">4</div><h4>Offer</h4><p>Welcome to CEDP</p></div>
+</div>
+</section>
+
+<!-- JOB ALERTS -->
+<section class="alerts rv">
+<div class="alerts-inner">
+<div><h3>Don't see the right role?</h3><p>Join our talent community. We'll notify you when new positions open.</p></div>
+<div class="alerts-form"><input type="email" placeholder="Your email address"/><button>Subscribe</button></div>
+</div>
+</section>
+
+<!-- MISSION PUNCH -->
+<section class="punch t-red rv" id="punchCareer">
+<div class="punch-tog"><button onclick="setPunchC('navy')">N</button><button onclick="setPunchC('gold')">G</button><button class="on" onclick="setPunchC('red')">R</button></div>
+<h2>200 people. 68,000 families.<br>Join the fight.</h2>
+<a href="#positions" class="punch-btn">View Open Positions →</a>
+</section>
+
+<!-- GIANT LINKS -->
+<section class="giant-links rv">
+<div class="giant-rule"></div>
+<a href="cedp-gethelp.html" class="giant-row"><h3>Get help now</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a href="cedp-ourwork.html" class="giant-row"><h3>Our programs</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a href="cedp-about.html" class="giant-row"><h3>About CEDP</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<div class="giant-rule"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="ft-warm"><span class="ft-warm-txt">You don't have to face this <em>alone.</em></span></div>
+<div class="ft-g"><div><div class="ft-b">Community Economic<br><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br>Denver, CO 80218<br>info@cedproject.org<br>(303) 838-1200</div></div><div><h4>Get help</h4><a href="cedp-gethelp.html">Eviction</a><a href="cedp-gethelp.html">Foreclosure</a><a href="cedp-gethelp.html">Towing</a><a href="cedp-gethelp.html">Debt</a><a href="cedp-gethelp.html">Disaster relief</a></div><div><h4>About</h4><a href="cedp-about.html">Our purpose</a><a href="#">Our team</a><a href="cedp-careers.html">Careers</a><a href="cedp-cedlaw.html">CED law</a><a href="#">Contact</a></div><div><h4>Impact</h4><a href="#">Legislative wins</a><a href="#">Research</a><a href="#">News & press</a><a href="#">Donate</a><a href="#">Events</a></div></div>
+<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br>Economic<br>Defense Project</div></div>
+<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy · Terms of use · Accessibility</span></div>
+</footer>
+
 <script>
+// Reveal
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');ro.unobserve(x.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+// Snap counter animation - only retriggers when page scrolled to top
 (function(){
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
-document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(!h||h==='#')return;var t=document.getElementById(h.slice(1));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
-// Hamburger
-var nav=document.querySelector('nav');
-if(nav && !document.querySelector('.mob-burger')){
-  var burger=document.createElement('button');burger.className='mob-burger';burger.setAttribute('aria-label','Open menu');
-  burger.innerHTML='<span></span><span></span><span></span>';
-  nav.appendChild(burger);
-  var ov=document.createElement('div');ov.className='mob-overlay';
-  ov.innerHTML='<button class="mob-close" aria-label="Close">&times;</button><div class="mob-links">'+
-    '<a href="/about" target="_top">About</a><a href="/our-work" target="_top">Our Work</a>'+
-    '<a href="/ced-law" target="_top">CED Law</a><a href="/impact" target="_top">Impact</a>'+
-    '<a href="/news" target="_top">News</a><a href="/careers" target="_top">Careers</a></div>'+
-    '<div class="mob-cta"><a class="mob-donate" href="/#donateSection" target="_top">DONATE</a>'+
-    '<a class="mob-get" href="/get-help" target="_top">GET HELP</a></div>';
-  document.body.appendChild(ov);
-  burger.addEventListener('click',function(){ov.classList.add('open');document.body.style.overflow='hidden';});
-  ov.querySelector('.mob-close').addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});
-  ov.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){ov.classList.remove('open');document.body.style.overflow='';});});
+var sec=document.getElementById('snapCounter');
+var numEl=document.getElementById('snapNum');
+var subEl=document.getElementById('snapSub');
+var finalEl=document.getElementById('snapFinal');
+var display=sec.querySelector('.snap-display');
+var running=false;
+var completed=false;
+
+function resetSnap(){
+sec.className='snap-sec';
+display.style.display='';
+finalEl.classList.remove('show');
+numEl.classList.remove('show');
+subEl.classList.remove('show');
+document.getElementById('snapLine').classList.remove('show');
+document.getElementById('snapCta').classList.remove('show');
+['ss1','ss2','ss3'].forEach(function(id){document.getElementById(id).classList.remove('show')});
+completed=false;
+}
+
+function runSnap(){
+if(running)return;
+running=true;
+
+var sequence=[
+{num:'200',sub:'team members',at:300},
+{num:'68,000+',sub:'families defended',at:1800},
+{num:'1',sub:'mission',at:3300}
+];
+
+sequence.forEach(function(s,i){
+setTimeout(function(){
+numEl.textContent=s.num;
+subEl.textContent=s.sub;
+numEl.classList.add('show');
+setTimeout(function(){subEl.classList.add('show')},150);
+},s.at);
+if(i<sequence.length-1){
+setTimeout(function(){
+numEl.classList.remove('show');
+subEl.classList.remove('show');
+},s.at+1200);
+}
+});
+
+setTimeout(function(){
+numEl.classList.remove('show');
+subEl.classList.remove('show');
+sec.classList.add('phase-dark');
+},4500);
+
+setTimeout(function(){
+display.style.display='none';
+sec.classList.remove('phase-dark');
+sec.classList.add('phase-settle');
+finalEl.classList.add('show');
+},5300);
+
+setTimeout(function(){document.getElementById('ss1').classList.add('show')},5500);
+setTimeout(function(){document.getElementById('ss2').classList.add('show')},5800);
+setTimeout(function(){document.getElementById('ss3').classList.add('show')},6100);
+setTimeout(function(){document.getElementById('snapLine').classList.add('show')},6400);
+setTimeout(function(){
+document.getElementById('snapCta').classList.add('show');
+running=false;
+completed=true;
+},6800);
+}
+
+// Only trigger when section enters viewport AND animation hasn't completed
+var snapObs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting&&!completed&&!running){runSnap();}
+});
+},{threshold:.4});
+snapObs.observe(sec);
+
+// Reset only when user scrolls back to very top of page
+window.addEventListener('scroll',function(){
+if(window.scrollY<100&&completed){resetSnap();}
+},{passive:true});
+})();
+
+// Job filter
+function filterJobs(dept,btn){
+document.querySelectorAll('.pos-filter').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+document.querySelectorAll('.pos-item').forEach(item=>{
+item.style.display=(dept==='all'||item.dataset.dept===dept)?'':'none';
+});
+}
+
+// Hero toggle
+function setHero(mode){
+var anim=document.getElementById('heroAnim');
+var stat=document.getElementById('heroStatic');
+if(mode==='anim'){anim.style.display='';stat.style.display='none';triggerBang();}
+else{anim.style.display='none';stat.style.display='';}
+}
+
+// Cinematic video load
+(function(){
+var heroAnim=document.getElementById('heroAnim');
+if(!heroAnim)return;
+var vid=heroAnim.querySelector('video');
+if(vid){
+vid.addEventListener('canplay',function(){heroAnim.classList.add('loaded')});
+// Fallback if video already loaded
+if(vid.readyState>=3)heroAnim.classList.add('loaded');
+// Fallback timeout
+setTimeout(function(){heroAnim.classList.add('loaded')},2000);
 }
 })();
+
+// Bang bang bang text animation
+var bangTriggered=false;
+function triggerBang(){
+if(bangTriggered)return;
+bangTriggered=true;
+var words=['hw1','hw2','hw3','hw4'];
+var delays=[1000,1400,1800,2200];
+words.forEach(function(id,i){
+setTimeout(function(){document.getElementById(id).classList.add('slam')},delays[i]);
+});
+setTimeout(function(){document.getElementById('heroAnimSub').classList.add('show')},2800);
+setTimeout(function(){document.getElementById('heroAnimBtns').classList.add('show')},2800);
+setTimeout(function(){document.getElementById('heroAnimStats').classList.add('show')},3200);
+}
+
+// Auto-trigger bang on load
+(function(){
+var heroAnim=document.getElementById('heroAnim');
+if(heroAnim&&heroAnim.style.display!=='none'){
+setTimeout(triggerBang,800);
+}
+})();
+
+// Mission punch toggle
+function setPunchC(t){var el=document.getElementById('punchCareer');el.className='punch t-'+t+' rv v';el.querySelectorAll('.punch-tog button').forEach(b=>b.classList.remove('on'));event.target.classList.add('on')}
 </script>
-<script src="/cedp-global.js"></script></body>
+</body>
 </html>
