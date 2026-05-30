@@ -1,0 +1,79 @@
+/* ============================================================
+   CEDP GLOBAL FIXES — overrides for all pages
+   ============================================================ */
+
+/* TOP BAR — make sure phone is gold + clickable */
+.tb{background:#2C3E50!important;padding:6px 40px!important;height:32px}
+.tb a[href^="tel:"]{color:#E8B960!important;text-decoration:none;font-weight:600}
+
+/* STICKY NAV + HOVER */
+nav{position:sticky!important;top:0!important;z-index:100!important;background:#fff!important}
+.nl .ni>a,.nav-link{color:#4A6274!important;transition:color .2s,border-color .2s!important}
+.nl .ni>a:hover,.nav-link:hover{color:#C53030!important}
+.nl .ni>a.act,.nl .ni>a.active-nav,.nav-link.active{color:#C53030!important;border-bottom:2px solid #C53030!important}
+
+/* Buttons in nav */
+.btn-d{transition:background .2s,color .2s!important}
+.btn-d:hover{background:#E8B960!important;color:#1B2838!important}
+.btn-h{transition:background .2s!important}
+.btn-h:hover{background:#A02828!important}
+
+/* MISSION PUNCH — default navy */
+.cl-punch,.ow-punch,.punch{background:#1B2838}
+.cl-punch:not(.v-g):not(.v-r),
+.ow-punch:not(.v-g):not(.v-r),
+.punch:not(.v-g):not(.v-r){background:#1B2838!important}
+
+/* PRACTICE AREAS + FAQ ACCORDION — clean restyle */
+.cl-acc{border-top:2px solid #1B2838!important;max-width:980px}
+.cl-acc-item{border:0!important;border-bottom:1px solid #E8E8E8!important;background:transparent!important}
+.cl-acc-item.open{border:0!important;border-bottom:1px solid #E8E8E8!important;background:transparent!important;outline:none!important}
+.cl-acc-head{background:none!important;border:0!important;outline:none!important;box-shadow:none!important;padding:28px 0!important}
+.cl-acc-head:focus,.cl-acc-head:focus-visible{outline:none!important;box-shadow:none!important}
+.cl-acc-head h3{font-family:'Barlow Condensed',sans-serif!important;font-size:22px!important;font-weight:600!important;color:#1B2838!important;text-transform:uppercase!important;letter-spacing:.5px!important}
+.cl-acc-circle{width:48px!important;height:48px!important;border-radius:50%!important;border:1.5px solid #E8E8E8!important;background:transparent!important;transition:all .3s!important}
+.cl-acc-circle svg{width:18px;height:18px}
+.cl-acc-circle svg path{stroke:#1B2838!important;stroke-width:1.5!important;fill:none!important;stroke-linecap:round;stroke-linejoin:round}
+.cl-acc-item.open .cl-acc-circle{background:#E8B960!important;border-color:#E8B960!important}
+.cl-acc-item.open .cl-acc-circle svg{transform:rotate(180deg)}
+.cl-acc-content p{font-family:'Libre Franklin',sans-serif!important;font-size:14px!important;font-weight:300!important;color:#6B7A8A!important;line-height:1.6!important;max-width:680px}
+.cl-acc-stat{color:#E8B960!important;font-weight:600!important}
+.cl-acc-link{color:#C53030!important;text-decoration:underline!important;text-underline-offset:3px}
+
+/* FAQ — slightly smaller */
+.cl-faq .cl-acc-head{padding:24px 0!important}
+.cl-faq .cl-acc-head h3{font-size:20px!important}
+.cl-faq .cl-acc-circle{width:44px!important;height:44px!important}
+
+/* TRACK RECORD STATS — hover inversion */
+.cl-stats{gap:0!important}
+.cl-stat{background:#F8F8F8;border:1px solid #E8E8E8;padding:32px 24px;transition:all .3s;cursor:pointer;text-align:center}
+.cl-stat .n{color:#C53030!important;transition:color .3s}
+.cl-stat .l{color:#6B7A8A!important;transition:color .3s}
+.cl-stat:hover{background:#1B2838;border-color:#1B2838}
+.cl-stat:hover .n{color:#E8B960!important}
+.cl-stat:hover .l{color:rgba(255,255,255,.6)!important}
+
+/* TEAM TILES — gold fills ONLY name/title area, photo zooms */
+.cl-mem,.tm-card{perspective:1000px}
+.cl-mem-inner,.tm-card-inner{transition:transform .6s;transform-style:preserve-3d;position:relative}
+.cl-mem-front,.cl-mem-back,.tm-card-front,.tm-card-back{-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.cl-mem-front,.tm-card-front{position:relative;overflow:hidden}
+.cl-mem-front img,.tm-card-front img{transition:transform .6s}
+.cl-mem-front:hover img,.tm-card-front:hover img{transform:scale(1.05)}
+/* Name area gold fill */
+.cl-mem-meta,.tm-card-meta,.cl-mem-front .meta,.tm-card-front .meta{position:relative;overflow:hidden;z-index:1}
+.cl-mem-meta::before,.tm-card-meta::before,.cl-mem-front .meta::before,.tm-card-front .meta::before{
+  content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:-1
+}
+.cl-mem:hover .cl-mem-meta::before,
+.tm-card:hover .tm-card-meta::before,
+.cl-mem:hover .cl-mem-front .meta::before,
+.tm-card:hover .tm-card-front .meta::before{transform:scaleY(1)}
+
+/* FOOTER hover */
+footer a{transition:color .2s}
+footer a:hover{color:#E8B960!important}
+
+/* GLOBAL — smooth scroll + scroll padding for sticky nav */
+html{scroll-behavior:smooth;scroll-padding-top:80px}
