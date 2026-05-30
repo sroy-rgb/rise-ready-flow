@@ -67,6 +67,31 @@
     }
   } catch(e) { console.warn('nav inject failed', e); }
 
+  // ---- Inject sticky dot-nav on all non-home pages ----
+  try {
+    var p = (location.pathname || '/').replace(/\/$/, '') || '/';
+    var isHomePage = p === '/' || /cedp-home\.html$/.test(location.pathname);
+    if (!isHomePage && !document.getElementById('dotNav')) {
+      var dn = document.createElement('nav');
+      dn.className = 'dot-nav';
+      dn.id = 'dotNav';
+      dn.innerHTML =
+        '<div class="dot-top" id="dotTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>'+
+        '<a href="/#whoSection" target="_top"><span class="dot-label">Who We Are</span><span class="dot"></span></a>'+
+        '<a href="/#hlpSection" target="_top"><span class="dot-label">How We Can Help</span><span class="dot"></span></a>'+
+        '<a href="/#modelSection" target="_top"><span class="dot-label">How We Work</span><span class="dot"></span></a>'+
+        '<a href="/#impactSection" target="_top"><span class="dot-label">Our Impact</span><span class="dot"></span></a>'+
+        '<a href="/#pathsSection" target="_top"><span class="dot-label">What You\'re Looking For</span><span class="dot"></span></a>'+
+        '<a href="/#donateSection" target="_top"><span class="dot-label">Donate</span><span class="dot"></span></a>';
+      document.body.appendChild(dn);
+      var top = dn.querySelector('#dotTop');
+      top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+      window.addEventListener('scroll', function(){
+        if (window.scrollY > 400) top.classList.add('show'); else top.classList.remove('show');
+      }, { passive: true });
+    }
+  } catch(e) { console.warn('dot-nav inject failed', e); }
+
   // Fix accordion arrow SVG to full down arrow (line + head)
   document.querySelectorAll('.cl-acc-circle svg').forEach(function(svg){
     svg.setAttribute('viewBox','0 0 24 24');
