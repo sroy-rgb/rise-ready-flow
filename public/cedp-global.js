@@ -1212,30 +1212,31 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
 
   function translateOnce(lang){
     isTranslating = true;
-    collect();
-    originals.forEach(function(o){
-      if (lang === 'es') {
-        var translated = translateTextPreservingDecor(o.text);
-        if (translated) {
-          // preserve leading/trailing whitespace
-          var m = o.text.match(/^(\s*)([\s\S]*?)(\s*)$/);
-          o.node.nodeValue = (m?m[1]:'') + translated + (m?m[3]:'');
+    try {
+      collect();
+      originals.forEach(function(o){
+        if (lang === 'es') {
+          var translated = translateTextPreservingDecor(o.text);
+          if (translated) {
+            // preserve leading/trailing whitespace
+            var m = o.text.match(/^(\s*)([\s\S]*?)(\s*)$/);
+            var nextText = (m?m[1]:'') + translated + (m?m[3]:'');
+            if (o.node.nodeValue !== nextText) o.node.nodeValue = nextText;
+          } else if (o.node.nodeValue !== o.text) {
+            o.node.nodeValue = o.text;
+          }
         } else {
-          o.node.nodeValue = o.text;
+          if (o.node.nodeValue !== o.text) o.node.nodeValue = o.text;
         }
-      } else {
-        o.node.nodeValue = o.text;
-      }
-    });
-    attrOrig.forEach(function(o){
-      if (lang === 'es') {
-        o.el.setAttribute(o.attr, translateTextPreservingDecor(o.text) || o.text);
-      } else {
-        o.el.setAttribute(o.attr, o.text);
-      }
-    });
-    document.documentElement.setAttribute('lang', lang);
-    isTranslating = false;
+      });
+      attrOrig.forEach(function(o){
+        var nextAttr = lang === 'es' ? (translateTextPreservingDecor(o.text) || o.text) : o.text;
+        if (o.el.getAttribute(o.attr) !== nextAttr) o.el.setAttribute(o.attr, nextAttr);
+      });
+      document.documentElement.setAttribute('lang', lang);
+    } finally {
+      isTranslating = false;
+    }
   }
 
   function updateToggleUI(lang){
