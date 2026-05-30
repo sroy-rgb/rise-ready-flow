@@ -1186,15 +1186,29 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
     collected = true;
   }
 
+  function translateTextPreservingDecor(text){
+    var direct = EN_TO_ES[norm(text)];
+    if (direct) return direct;
+    var trimmed = text.replace(/\s+/g,' ').trim();
+    var leading = trimmed.match(/^([^A-Za-zÁÉÍÓÚáéíóúÑñ¿¡]*)([\s\S]*)$/);
+    var prefix = leading ? leading[1] : '';
+    var rest = leading ? leading[2] : trimmed;
+    var trailing = rest.match(/^([\s\S]*?)([^A-Za-zÁÉÍÓÚáéíóúÑñ?.!)]*)$/);
+    var core = trailing ? trailing[1].trim() : rest.trim();
+    var suffix = trailing ? trailing[2] : '';
+    var translated = EN_TO_ES[norm(core)];
+    return translated ? prefix + translated + suffix : null;
+  }
+
   function translateOnce(lang){
     collect();
     originals.forEach(function(o){
       if (lang === 'es') {
-        var key = norm(o.text);
-        if (EN_TO_ES[key]) {
+        var translated = translateTextPreservingDecor(o.text);
+        if (translated) {
           // preserve leading/trailing whitespace
           var m = o.text.match(/^(\s*)([\s\S]*?)(\s*)$/);
-          o.node.nodeValue = (m?m[1]:'') + EN_TO_ES[key] + (m?m[3]:'');
+          o.node.nodeValue = (m?m[1]:'') + translated + (m?m[3]:'');
         } else {
           o.node.nodeValue = o.text;
         }
@@ -1204,8 +1218,7 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
     });
     attrOrig.forEach(function(o){
       if (lang === 'es') {
-        var key = norm(o.text);
-        o.el.setAttribute(o.attr, EN_TO_ES[key] || o.text);
+        o.el.setAttribute(o.attr, translateTextPreservingDecor(o.text) || o.text);
       } else {
         o.el.setAttribute(o.attr, o.text);
       }
