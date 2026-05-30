@@ -23,6 +23,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminTeamRouteImport } from './routes/admin.team'
+import { Route as AdminLegislationRouteImport } from './routes/admin.legislation'
 import { Route as AdminJobsRouteImport } from './routes/admin.jobs'
 
 const TeamRoute = TeamRouteImport.update({
@@ -95,6 +96,11 @@ const AdminTeamRoute = AdminTeamRouteImport.update({
   path: '/team',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminLegislationRoute = AdminLegislationRouteImport.update({
+  id: '/legislation',
+  path: '/legislation',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminJobsRoute = AdminJobsRouteImport.update({
   id: '/jobs',
   path: '/jobs',
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
   '/admin/jobs': typeof AdminJobsRoute
+  '/admin/legislation': typeof AdminLegislationRoute
   '/admin/team': typeof AdminTeamRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -131,6 +138,7 @@ export interface FileRoutesByTo {
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
   '/admin/jobs': typeof AdminJobsRoute
+  '/admin/legislation': typeof AdminLegislationRoute
   '/admin/team': typeof AdminTeamRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/research': typeof ResearchRoute
   '/team': typeof TeamRoute
   '/admin/jobs': typeof AdminJobsRoute
+  '/admin/legislation': typeof AdminLegislationRoute
   '/admin/team': typeof AdminTeamRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -168,6 +177,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/team'
     | '/admin/jobs'
+    | '/admin/legislation'
     | '/admin/team'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -184,6 +194,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/team'
     | '/admin/jobs'
+    | '/admin/legislation'
     | '/admin/team'
     | '/admin'
   id:
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/research'
     | '/team'
     | '/admin/jobs'
+    | '/admin/legislation'
     | '/admin/team'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -320,6 +332,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTeamRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/legislation': {
+      id: '/admin/legislation'
+      path: '/legislation'
+      fullPath: '/admin/legislation'
+      preLoaderRoute: typeof AdminLegislationRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/jobs': {
       id: '/admin/jobs'
       path: '/jobs'
@@ -332,12 +351,14 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminJobsRoute: typeof AdminJobsRoute
+  AdminLegislationRoute: typeof AdminLegislationRoute
   AdminTeamRoute: typeof AdminTeamRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminJobsRoute: AdminJobsRoute,
+  AdminLegislationRoute: AdminLegislationRoute,
   AdminTeamRoute: AdminTeamRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
