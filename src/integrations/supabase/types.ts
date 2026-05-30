@@ -14,7 +14,138 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      job_listings: {
+        Row: {
+          apply_url: string
+          created_at: string
+          department: string
+          id: string
+          location: string
+          posted_date: string
+          status: string
+          title: string
+          type: string
+          updated_at: string
+        }
+        Insert: {
+          apply_url?: string
+          created_at?: string
+          department?: string
+          id?: string
+          location?: string
+          posted_date?: string
+          status?: string
+          title: string
+          type?: string
+          updated_at?: string
+        }
+        Update: {
+          apply_url?: string
+          created_at?: string
+          department?: string
+          id?: string
+          location?: string
+          posted_date?: string
+          status?: string
+          title?: string
+          type?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      legislative_wins: {
+        Row: {
+          bill_number: string
+          bill_url: string
+          created_at: string
+          factsheet_url: string
+          full_description: string
+          id: string
+          is_spotlight: boolean
+          photo_url: string
+          short_description: string
+          sort_order: number
+          title: string
+          updated_at: string
+          year: number
+        }
+        Insert: {
+          bill_number: string
+          bill_url?: string
+          created_at?: string
+          factsheet_url?: string
+          full_description?: string
+          id?: string
+          is_spotlight?: boolean
+          photo_url?: string
+          short_description?: string
+          sort_order?: number
+          title: string
+          updated_at?: string
+          year?: number
+        }
+        Update: {
+          bill_number?: string
+          bill_url?: string
+          created_at?: string
+          factsheet_url?: string
+          full_description?: string
+          id?: string
+          is_spotlight?: boolean
+          photo_url?: string
+          short_description?: string
+          sort_order?: number
+          title?: string
+          updated_at?: string
+          year?: number
+        }
+        Relationships: []
+      }
+      team_members: {
+        Row: {
+          bio: string
+          created_at: string
+          department: string
+          id: string
+          is_leadership: boolean
+          linkedin_url: string
+          name: string
+          photo_url: string
+          sort_order: number
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          bio?: string
+          created_at?: string
+          department?: string
+          id?: string
+          is_leadership?: boolean
+          linkedin_url?: string
+          name: string
+          photo_url?: string
+          sort_order?: number
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Update: {
+          bio?: string
+          created_at?: string
+          department?: string
+          id?: string
+          is_leadership?: boolean
+          linkedin_url?: string
+          name?: string
+          photo_url?: string
+          sort_order?: number
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
