@@ -1210,3 +1210,67 @@ Object.keys(ADD).forEach(function(k){ EN_TO_ES[norm(k)] = ADD[k]; });
   setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 400);
   setTimeout(function(){ try { collected = false; originals = []; attrOrig = []; wireToggle(); var s='en'; try{s=localStorage.getItem('cedp_lang')||'en';}catch(_){} setLang(s);} catch(_){} }, 1500);
 })();
+
+// ---- Lucide icon system (loaded from CDN, rendered into [data-lucide]) ----
+(function(){
+  try {
+    // Inject base icon styling once
+    if (!document.getElementById('cedp-lucide-css')) {
+      var st = document.createElement('style');
+      st.id = 'cedp-lucide-css';
+      st.textContent = [
+        '[data-lucide]{display:inline-flex;vertical-align:middle;line-height:0}',
+        '.icon-inline{width:20px;height:20px;stroke-width:1.5;vertical-align:middle;margin-right:6px;opacity:.6}',
+        '.icon-card{width:28px;height:28px;stroke-width:1.5;color:var(--gold,#E8B960);margin-bottom:12px;display:block}',
+        '.icon-hero{width:48px;height:48px;stroke-width:1.25;color:var(--red,#C53030);margin-bottom:16px;display:block}',
+        '.wc-icon [data-lucide], .wc-icon svg{width:36px;height:36px;stroke-width:1.5;color:var(--gold,#E8B960)}',
+        '.m-fraud-icon [data-lucide], .m-fraud-icon svg{width:18px;height:18px;stroke-width:1.5;color:var(--red,#C53030)}',
+        '.fraud-txt [data-lucide]{width:16px;height:16px;stroke-width:1.5;color:var(--red,#C53030);margin-right:4px}',
+        'h3 [data-lucide]{width:18px;height:18px;stroke-width:1.5;margin-right:6px;opacity:.7}',
+        'svg.lucide{stroke-width:1.5}'
+      ].join('\n');
+      document.head.appendChild(st);
+    }
+    function render(){
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        try { window.lucide.createIcons(); } catch(_) {}
+      }
+    }
+    function loadLucide(cb){
+      if (window.lucide) return cb();
+      if (document.getElementById('cedp-lucide-js')) {
+        var t = setInterval(function(){ if (window.lucide){ clearInterval(t); cb(); } }, 50);
+        return;
+      }
+      var s = document.createElement('script');
+      s.id = 'cedp-lucide-js';
+      s.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js';
+      s.async = true;
+      s.onload = cb;
+      document.head.appendChild(s);
+    }
+    function start(){
+      loadLucide(function(){
+        render();
+        // Re-render on DOM mutations (i18n / dynamic content)
+        try {
+          var mo = new MutationObserver(function(muts){
+            for (var i=0;i<muts.length;i++){
+              var m = muts[i];
+              for (var j=0;j<m.addedNodes.length;j++){
+                var n = m.addedNodes[j];
+                if (n.nodeType===1 && (n.matches && n.matches('[data-lucide]') || n.querySelector && n.querySelector('[data-lucide]'))){
+                  render(); return;
+                }
+              }
+            }
+          });
+          mo.observe(document.body, {childList:true, subtree:true});
+        } catch(_){}
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', start);
+    } else { start(); }
+  } catch(e) { /* no-op */ }
+})();
