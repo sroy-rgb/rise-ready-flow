@@ -138,3 +138,88 @@
     }
   });
 })();
+
+// ---- Global link normalizer (runs after injections) ----
+(function(){
+  var HTML_MAP = {
+    'cedp-home.html': '/',
+    'cedp-about.html': '/about',
+    'cedp-our-work.html': '/our-work',
+    'cedp-ced-law.html': '/ced-law',
+    'cedp-gethelp.html': '/get-help',
+    'cedp-gethelp-mobile.html': '/get-help',
+    'cedp-careers.html': '/careers',
+    'cedp-legislative-wins.html': '/legislative-wins',
+    'cedp-news.html': '/news',
+    'cedp-research.html': '/research',
+    'cedp-team.html': '/team'
+  };
+  var DONATE_URL = 'https://cedproject.org/donate/';
+  var HOST = location.hostname;
+
+  function normalize(){
+    document.querySelectorAll('a[href]').forEach(function(a){
+      if (a.closest('.dot-nav')) return;
+      var href = a.getAttribute('href') || '';
+      var txt = (a.textContent || '').trim().toLowerCase();
+
+      // .html -> route
+      Object.keys(HTML_MAP).forEach(function(k){
+        if (href === k || href === '/' + k || href.indexOf(k) === 0 || href.indexOf('/' + k) === 0) {
+          var rest = href.split(k)[1] || '';
+          a.setAttribute('href', HTML_MAP[k] + rest);
+          href = a.getAttribute('href');
+        }
+      });
+
+      // tel: normalize
+      if (href.indexOf('tel:') === 0) {
+        a.setAttribute('href', 'tel:3038381200');
+        href = 'tel:3038381200';
+      }
+      // mailto normalize (only if obviously CEDP-related or empty mailto)
+      if (href === 'mailto:' || href === 'mailto:info@') {
+        a.setAttribute('href', 'mailto:info@cedproject.org');
+        href = 'mailto:info@cedproject.org';
+      }
+
+      // Donate buttons -> external
+      var isDonate = a.classList.contains('btn-d') || /\bdonate\b/.test(txt);
+      if (isDonate && href !== DONATE_URL && !/cedproject\.org\/donate/.test(href)) {
+        // Only rewrite when href looks like a donate placeholder/anchor
+        if (href === '#' || /donateSection/.test(href) || href.indexOf('#') === 0 || href.indexOf('/#') === 0 || href.indexOf('cedp-') >= 0) {
+          a.setAttribute('href', DONATE_URL);
+          a.setAttribute('target', '_blank');
+          a.setAttribute('rel', 'noopener');
+          href = DONATE_URL;
+        }
+      }
+
+      // Get Help buttons -> /get-help (when text says "get help" and not already there)
+      if (a.classList.contains('btn-h') || /^get help( now)?$/.test(txt)) {
+        if (href === '#' || /cedp-gethelp/.test(href)) {
+          a.setAttribute('href', '/get-help');
+          href = '/get-help';
+        }
+      }
+
+      // External links -> new tab
+      if (/^https?:\/\//i.test(href)) {
+        try {
+          var u = new URL(href);
+          if (u.hostname && u.hostname !== HOST) {
+            if (!a.getAttribute('target')) a.setAttribute('target', '_blank');
+            var rel = (a.getAttribute('rel') || '').split(/\s+/);
+            if (rel.indexOf('noopener') < 0) rel.push('noopener');
+            a.setAttribute('rel', rel.filter(Boolean).join(' '));
+          }
+        } catch(_){}
+      }
+    });
+  }
+
+  // Run now and again shortly after to catch any late DOM mutations
+  try { normalize(); } catch(e) { console.warn('link normalize failed', e); }
+  setTimeout(function(){ try { normalize(); } catch(_){} }, 300);
+  setTimeout(function(){ try { normalize(); } catch(_){} }, 1200);
+})();
