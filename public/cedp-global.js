@@ -50,7 +50,7 @@
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
         '</div></div>'+
       '</div>'+
-      '<a class="btn-d" href="https://cedproject.org/donate/" target="_blank" rel="noopener">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help">Get help</a>'+
+      '<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help">Get help</a>'+
       '</div></nav>';
 
     // Inject unified nav on every page (including home) for consistency.
@@ -109,7 +109,7 @@
             '<a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
           '</div>'+
           '<div><h4>Impact</h4>'+
-            '<a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="https://cedproject.org/donate/" target="_blank" rel="noopener">Donate</a><a href="#" title="Coming soon">Events</a>'+
+            '<a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="#" title="Coming soon">Events</a>'+
           '</div>'+
         '</div>'+
         '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
@@ -154,7 +154,7 @@
     'cedp-research.html': '/research',
     'cedp-team.html': '/team'
   };
-  var DONATE_URL = 'https://cedproject.org/donate/';
+  var DONATE_HASH = '#donateSection';
   var HOST = location.hostname;
 
   function normalize(){
@@ -183,15 +183,16 @@
         href = 'mailto:info@cedproject.org';
       }
 
-      // Donate buttons -> external
-      var isDonate = a.classList.contains('btn-d') || /\bdonate\b/.test(txt);
-      if (isDonate && href !== DONATE_URL && !/cedproject\.org\/donate/.test(href)) {
-        // Only rewrite when href looks like a donate placeholder/anchor
-        if (href === '#' || /donateSection/.test(href) || href.indexOf('#') === 0 || href.indexOf('/#') === 0 || href.indexOf('cedp-') >= 0) {
-          a.setAttribute('href', DONATE_URL);
-          a.setAttribute('target', '_blank');
-          a.setAttribute('rel', 'noopener');
-          href = DONATE_URL;
+      // Donate / Give buttons -> homepage Support our mission section
+      var isDonate = a.classList.contains('btn-d') || /\b(donate|donar|give)\b/.test(txt);
+      if (isDonate) {
+        var onHome = (location.pathname === '/' || /cedp-home\.html$/.test(location.pathname));
+        var target = onHome ? DONATE_HASH : '/' + DONATE_HASH;
+        if (href !== target) {
+          a.setAttribute('href', target);
+          a.setAttribute('target', '_top');
+          a.removeAttribute('rel');
+          href = target;
         }
       }
 
