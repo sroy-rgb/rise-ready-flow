@@ -225,6 +225,49 @@
   setTimeout(function(){ try { normalize(); } catch(_){} }, 1200);
 })();
 
+// ==================== Donate scroll handler (iframe-aware) ====================
+(function(){
+  function isDonateHref(h){
+    if (!h) return false;
+    return h === '#donateSection' || h === '/#donateSection'
+      || /\/?#donateSection$/.test(h);
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target && e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (!isDonateHref(href)) return;
+    var el = document.getElementById('donateSection');
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      try { history.replaceState(null, '', '#donateSection'); } catch(_){}
+      return;
+    }
+    // Not on home iframe — navigate top to home and remember to scroll
+    e.preventDefault();
+    try { (window.top || window).localStorage.setItem('cedp_scroll_donate', '1'); } catch(_){}
+    try { (window.top || window).location.href = '/'; } catch(_){ location.href = '/'; }
+  }, true);
+
+  // On home iframe load, honor the deferred scroll request
+  function maybeScrollDonate(){
+    var el = document.getElementById('donateSection');
+    if (!el) return;
+    var flag = null;
+    try { flag = (window.top || window).localStorage.getItem('cedp_scroll_donate'); } catch(_){}
+    if (flag === '1') {
+      try { (window.top || window).localStorage.removeItem('cedp_scroll_donate'); } catch(_){}
+      setTimeout(function(){ el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 250);
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', maybeScrollDonate);
+  } else {
+    maybeScrollDonate();
+  }
+})();
+
 // ==================== Bilingual EN/ES translation engine ====================
 (function(){
   // Dictionary: English text -> Spanish text. Matched case-insensitively after
