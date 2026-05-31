@@ -14,6 +14,9 @@
 
 /* STICKY NAV + HOVER */
 nav{position:sticky!important;top:0!important;z-index:100!important;background:#fff!important}
+/* Ensure sticky nav works even when pages set body overflow-x:hidden (which creates a scroll container and breaks sticky). overflow:clip clips overflow without becoming a scroll container. */
+html,body{overflow-x:clip!important}
+body{overflow-y:visible!important}
 .nl .ni>a,.nav-link{color:#4A6274!important;transition:color .2s,border-color .2s!important}
 .nl .ni>a:hover,.nav-link:hover{color:#C53030!important}
 .nl .ni>a.act,.nl .ni>a.active-nav,.nav-link.active{color:#C53030!important;border-bottom:2px solid #C53030!important}
