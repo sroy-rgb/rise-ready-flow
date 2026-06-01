@@ -18,7 +18,7 @@
           '<div class="mega-links"><div class="mega-label">About CEDP</div>'+
             '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a>'+
           '</div>'+
-          '<div class="mega-img"><img src="https://images.pexels.com/photos/2098427/pexels-photo-2098427.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
+          '<div class="mega-img"><img src="/__l5e/assets-v1/feb48bc5-8bd3-47a9-9cbe-08cf17d60aed/about-cedp-hover.png" alt="" loading="lazy"/></div>'+
         '</div><div class="mega-stat">100+ professionals &middot; 4 offices across Colorado</div></div>'+
       '</div>'+
       '<div class="ni"><a href="/our-work" class="'+act('/our-work').trim()+'">Our work</a>'+
