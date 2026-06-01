@@ -16,7 +16,7 @@
       '<div class="ni"><a href="/about" class="'+act('/about').trim()+'">About</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">About CEDP</div>'+
-            '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a><a href="/events">Events</a>'+
+            '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a>'+
           '</div>'+
           '<div class="mega-img"><img src="/__l5e/assets-v1/feb48bc5-8bd3-47a9-9cbe-08cf17d60aed/about-cedp-hover.png" alt="" loading="lazy"/></div>'+
         '</div><div class="mega-stat">100+ professionals &middot; 4 offices across Colorado</div></div>'+
@@ -70,192 +70,101 @@
     var p = (location.pathname || '/').replace(/\/$/, '') || '/';
     var isHomePage = p === '/' || /cedp-home\.html$/.test(location.pathname);
     if (!isHomePage && !document.getElementById('dotNav')) {
-      // Per-page section maps: links scroll within the current page (hash only)
-      var DOT_MAP = {
-        '/about': [
-          ['mission','Mission'],
-          ['origin','Our Story'],
-          ['leadership','Leadership'],
-          ['growth','5 Years of Impact'],
-          ['weAre','We Are CEDP'],
-          ['donate','Get Involved']
-        ],
-        '/our-work': [
-          ['model','How We Work'],
-          ['missionPunch','Our Mission'],
-          ['programs','Programs'],
-          ['where','Where We Work'],
-          ['explore','Explore'],
-          ['donate','Donate']
-        ],
-        '/careers': [
-          ['why','Why CEDP'],
-          ['snapCounter','By the Numbers'],
-          ['culture','Culture'],
-          ['benefits','Benefits'],
-          ['positions','Open Positions'],
-          ['process','Hiring Process'],
-          ['alerts','Job Alerts']
-        ],
-        '/legislative-wins': [
-          ['spotlight','Spotlight'],
-          ['wins','Legislative Wins'],
-          ['punchLeg','Our Approach'],
-          ['explore','Explore']
-        ],
-        '/impact': [
-          ['spotlight','Spotlight'],
-          ['wins','Legislative Wins'],
-          ['punchLeg','Our Approach'],
-          ['explore','Explore']
-        ],
-        '/research': [
-          ['featured','Featured'],
-          ['research','Research'],
-          ['partners','Partners'],
-          ['punchRes','Our Approach'],
-          ['explore','Explore']
-        ],
-        '/news': [
-          ['featured','Featured'],
-          ['latest','Latest'],
-          ['press','Press Resources'],
-          ['media','Media Contact'],
-          ['explore','Explore']
-        ],
-        '/ced-law': [
-          ['eligSection','Eligibility'],
-          ['practice','Practice Areas'],
-          ['team','Legal Team'],
-          ['resources','Resources'],
-          ['faq','FAQ'],
-          ['donate','Support']
-        ],
-        '/team': [
-          ['teamHero','Our Team'],
-          ['join','Join Us'],
-          ['explore','Explore']
-        ],
-        '/events': [
-          ['upcoming','Upcoming'],
-          ['calendar','Calendar'],
-          ['past','Past']
-        ]
-      };
-      var key = p;
-      // Pages are served as static .html inside an iframe, so location.pathname
-      // can be /cedp-about.html instead of /about. Normalize both shapes.
-      if (!DOT_MAP[key]) {
-        var m = location.pathname.match(/cedp-([a-z0-9-]+)\.html$/i);
-        if (m) {
-          var slug = m[1];
-          var aliases = { 'gethelp':'get-help' };
-          var logical = '/' + (aliases[slug] || slug);
-          if (DOT_MAP[logical]) key = logical;
-        }
-        if (!DOT_MAP[key]) {
-          var base = '/' + (p.split('/')[1] || '');
-          if (DOT_MAP[base]) key = base;
-        }
-      }
-      var items = DOT_MAP[key];
-      if (items && items.length) {
-        var dn = document.createElement('nav');
-        dn.className = 'dot-nav';
-        dn.id = 'dotNav';
-        var html = '<div class="dot-top" id="dotTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>';
-        items.forEach(function(it){
-          html += '<a href="#'+it[0]+'"><span class="dot-label">'+it[1]+'</span><span class="dot"></span></a>';
-        });
-        dn.innerHTML = html;
-        document.body.appendChild(dn);
-        var top = dn.querySelector('#dotTop');
-        top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
-        // Smooth scroll for in-page anchors
-        dn.querySelectorAll('a[href^="#"]').forEach(function(a){
-          a.addEventListener('click', function(ev){
-            var id = a.getAttribute('href').slice(1);
-            var el = document.getElementById(id);
-            if (el) { ev.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.replaceState(null,'','#'+id); }
-          });
-        });
-        window.addEventListener('scroll', function(){
-          if (window.scrollY > 400) top.classList.add('show'); else top.classList.remove('show');
-        }, { passive: true });
-      }
+      var dn = document.createElement('nav');
+      dn.className = 'dot-nav';
+      dn.id = 'dotNav';
+      dn.innerHTML =
+        '<div class="dot-top" id="dotTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>'+
+        '<a href="/#whoSection" target="_parent"><span class="dot-label">Who We Are</span><span class="dot"></span></a>'+
+        '<a href="/#hlpSection" target="_parent"><span class="dot-label">How We Can Help</span><span class="dot"></span></a>'+
+        '<a href="/#modelSection" target="_parent"><span class="dot-label">How We Work</span><span class="dot"></span></a>'+
+        '<a href="/#impactSection" target="_parent"><span class="dot-label">Our Impact</span><span class="dot"></span></a>'+
+        '<a href="/#pathsSection" target="_parent"><span class="dot-label">What You\'re Looking For</span><span class="dot"></span></a>'+
+        '<a href="/#donateSection" target="_parent"><span class="dot-label">Donate</span><span class="dot"></span></a>';
+      document.body.appendChild(dn);
+      var top = dn.querySelector('#dotTop');
+      top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+      window.addEventListener('scroll', function(){
+        if (window.scrollY > 400) top.classList.add('show'); else top.classList.remove('show');
+      }, { passive: true });
     }
   } catch(e) { console.warn('dot-nav inject failed', e); }
 
   // ---- Unified Footer injection (all non-home pages) ----
-  try {
-    var fp = (location.pathname || '/').replace(/\/$/, '') || '/';
-    var isHomeF = fp === '/' || /cedp-home\.html$/.test(location.pathname);
-    var isMobileHelp = /cedp-gethelp-mobile\.html$/.test(location.pathname);
-    if (!isHomeF && !isMobileHelp) {
-      var FOOTER = '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>'+
-        '<div class="ft-g">'+
-          '<div><div class="ft-brand-row"><a href="/" target="_parent" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
-            '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_parent">Get help</a></div>'+
-          '</div>'+
-            '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>'+
-            '<div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/><a href="mailto:info@cedproject.org" style="color:inherit">info@cedproject.org</a><br/><a href="tel:3038381200" style="color:inherit">(303) 838-1200</a></div>'+
-          '</div>'+
-          '<div><h4>Get help</h4>'+
-          '<a href="/get-help#eviction" target="_parent">Eviction</a><a href="/get-help#foreclosure" target="_parent">Foreclosure</a><a href="/get-help#towing" target="_parent">Towing</a><a href="/get-help#debt" target="_parent">Debt</a><a href="/our-work#programsGrid" target="_parent">Disaster relief</a>'+
-          '</div>'+
-          '<div><h4>About</h4>'+
-          '<a href="/about" target="_parent">Our purpose</a><a href="/team" target="_parent">Our team</a><a href="/about#leadership" target="_parent">Leadership</a><a href="/careers" target="_parent">Careers</a><a href="/careers#positions" target="_parent">Join Us</a><a href="/ced-law" target="_parent">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
-          '</div>'+
-          '<div><h4>Impact</h4>'+
-          '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/events" target="_parent">Events</a>'+
-          '</div>'+
-        '</div>'+
-        '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
-        '<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span><a href="#" title="Coming soon">Privacy policy</a> &bull; <a href="#" title="Coming soon">Terms of use</a> &bull; <a href="#" title="Coming soon">Accessibility</a></span></div>'+
+try {
+  var fp = (location.pathname || '/').replace(/\/$/, '') || '/';
+  var isHomeF = fp === '/' || /cedp-home\.html$/.test(location.pathname);
+  var isMobileHelp = /cedp-gethelp-mobile\.html$/.test(location.pathname);
+  if (!isHomeF && !isMobileHelp) {
+    var FOOTER =
+      '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>' +
+      '<div class="ft-g">' +
+      '<div><a href="/" target="_parent" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>' +
+      '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>' +
+      '<div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/><a href="mailto:info@cedproject.org" style="color:inherit">info@cedproject.org</a><br/><a href="tel:3038381200" style="color:inherit">(303) 838-1200</a></div>' +
+      '</div>' +
+      '<div><h4>Get help</h4>' +
+      '<a href="/get-help#eviction" target="_parent">Eviction</a><a href="/get-help#foreclosure" target="_parent">Foreclosure</a><a href="/get-help#towing" target="_parent">Towing</a><a href="/get-help#debt" target="_parent">Debt</a><a href="/our-work#programsGrid" target="_parent">Disaster relief</a>' +
+      '</div>' +
+      '<div><h4>About</h4>' +
+      '<a href="/about" target="_parent">Our purpose</a><a href="/team" target="_parent">Our team</a><a href="/about#leadership" target="_parent">Leadership</a><a href="/careers" target="_parent">Careers</a><a href="/careers#positions" target="_parent">Join Us</a><a href="/ced-law" target="_parent">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>' +
+      '</div>' +
+      '<div><h4>Impact</h4>' +
+      '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/news" target="_parent">Events</a>' +
+      '</div>' +
+      '</div>' +
+      '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>' +
+      '<div class="ft-actions" style="margin-top:20px;display:flex;gap:10px;justify-content:flex-start">' +
+      '<a class="btn-d" href="/#donateSection" target="_parent">Donate</a>' +
+      '<a class="btn-h ' + act('/get-help').trim() + '" href="/get-help" target="_parent">Get help</a>' +
+      '</div>' +
+      '<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span><a href="#" title="Coming soon">Privacy policy</a> &bull; <a href="#" title="Coming soon">Terms of use</a> &bull; <a href="#" title="Coming soon">Accessibility</a></span></div>' +
       '</footer>';
-      var existingFooter = document.querySelector('body > footer') || document.querySelector('footer');
-      if (existingFooter) existingFooter.outerHTML = FOOTER;
-      else document.body.insertAdjacentHTML('beforeend', FOOTER);
-    }
-  } catch(e) { console.warn('footer inject failed', e); }
 
-  // Footer: mark active link based on parent URL (handles iframe context)
-  try {
-    var parentLoc = (window.top && window.top.location) ? window.top.location : window.location;
-    var pPath = (parentLoc.pathname || '/').replace(/\/$/, '') || '/';
-    var pHash = parentLoc.hash || '';
-    var current = pPath + pHash;
-    document.querySelectorAll('footer a').forEach(function(a){
-      var href = a.getAttribute('href') || '';
-      if(!href || href === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
-      var normalized = href.replace(/\/$/, '') || '/';
-      if(normalized === current || (pHash && href.indexOf(pHash) !== -1 && href.indexOf(pPath) !== -1)){
-        a.classList.add('is-active');
-      }
-      a.addEventListener('click', function(){
-        document.querySelectorAll('footer a.is-active').forEach(function(x){ x.classList.remove('is-active'); });
-        a.classList.add('is-active');
-      });
+    var existingFooter = document.querySelector('body > footer') || document.querySelector('footer');
+    if (existingFooter) existingFooter.outerHTML = FOOTER;
+    else document.body.insertAdjacentHTML('beforeend', FOOTER);
+  }
+} catch (e) {
+  console.warn('footer inject failed', e);
+}
+
+// Footer active link logic
+try {
+  var parentLoc = (window.top && window.top.location) ? window.top.location : window.location;
+  var pPath = (parentLoc.pathname || '/').replace(/\/$/, '') || '/';
+  var pHash = parentLoc.hash || '';
+  var current = pPath + pHash;
+  document.querySelectorAll('footer a').forEach(function (a) {
+    var href = a.getAttribute('href') || '';
+    if (!href || href === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+    var normalized = href.replace(/\/$/, '') || '/';
+    if (normalized === current || (pHash && href.indexOf(pHash) !== -1 && href.indexOf(pPath) !== -1)) {
+      a.classList.add('is-active');
+    }
+    a.addEventListener('click', function () {
+      document.querySelectorAll('footer a.is-active').forEach(function (x) { x.classList.remove('is-active'); });
+      a.classList.add('is-active');
     });
-  } catch(e) {}
+  });
+} catch (e) {}
 
-  // Fix accordion arrow SVG to full down arrow (line + head)
-  document.querySelectorAll('.cl-acc-circle svg').forEach(function(svg){
-    svg.setAttribute('viewBox','0 0 24 24');
-    svg.innerHTML = '<path d="M12 5v14M6 13l6 6 6-6" />';
-  });
-  // Ensure mission punch defaults to navy variant
-  document.querySelectorAll('.cl-punch,.ow-punch,.punch').forEach(function(p){
-    if(!p.classList.contains('v-g') && !p.classList.contains('v-r') && !p.classList.contains('v-n')){
-      p.classList.add('v-n');
-    }
-    var tog = p.querySelector('.cl-punch-tog,.ow-punch-tog,.punch-tog');
-    if(tog){
-      var nbtn = tog.querySelector('[data-v="n"]');
-      if(nbtn && !tog.querySelector('.on')) nbtn.classList.add('on');
-    }
-  });
-})();
+// SVG and punch defaults
+document.querySelectorAll('.cl-acc-circle svg').forEach(function (svg) {
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.innerHTML = '<path d="M12 5v14M6 13l6 6 6-6" />';
+});
+document.querySelectorAll('.cl-punch,.ow-punch,.punch').forEach(function (p) {
+  if (!p.classList.contains('v-g') && !p.classList.contains('v-r') && !p.classList.contains('v-n')) {
+    p.classList.add('v-n');
+  }
+  var tog = p.querySelector('.cl-punch-tog,.ow-punch-tog,.punch-tog');
+  if (tog) {
+    var nbtn = tog.querySelector('[data-v="n"]');
+    if (nbtn && !tog.querySelector('.on')) nbtn.classList.add('on');
+  }
+});
+
 
 // ---- Global link normalizer (runs after injections) ----
 (function(){
@@ -270,8 +179,7 @@
     'cedp-legislative-wins.html': '/legislative-wins',
     'cedp-news.html': '/news',
     'cedp-research.html': '/research',
-    'cedp-team.html': '/team',
-    'cedp-events.html': '/events'
+    'cedp-team.html': '/team'
   };
   var DONATE_HASH = '#donateSection';
   var HOST = location.hostname;
