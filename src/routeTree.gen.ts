@@ -16,6 +16,7 @@ import { Route as NewsRouteImport } from './routes/news'
 import { Route as LegislativeWinsRouteImport } from './routes/legislative-wins'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GetHelpRouteImport } from './routes/get-help'
+import { Route as EventsRouteImport } from './routes/events'
 import { Route as CedLawRouteImport } from './routes/ced-law'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -60,6 +61,11 @@ const ImpactRoute = ImpactRouteImport.update({
 const GetHelpRoute = GetHelpRouteImport.update({
   id: '/get-help',
   path: '/get-help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsRoute = EventsRouteImport.update({
+  id: '/events',
+  path: '/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CedLawRoute = CedLawRouteImport.update({
@@ -119,6 +125,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
+  '/events': typeof EventsRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
   '/legislative-wins': typeof LegislativeWinsRoute
@@ -137,6 +144,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
+  '/events': typeof EventsRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
   '/legislative-wins': typeof LegislativeWinsRoute
@@ -157,6 +165,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/careers': typeof CareersRoute
   '/ced-law': typeof CedLawRoute
+  '/events': typeof EventsRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
   '/legislative-wins': typeof LegislativeWinsRoute
@@ -178,6 +187,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/careers'
     | '/ced-law'
+    | '/events'
     | '/get-help'
     | '/impact'
     | '/legislative-wins'
@@ -196,6 +206,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/careers'
     | '/ced-law'
+    | '/events'
     | '/get-help'
     | '/impact'
     | '/legislative-wins'
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/careers'
     | '/ced-law'
+    | '/events'
     | '/get-help'
     | '/impact'
     | '/legislative-wins'
@@ -235,6 +247,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   CareersRoute: typeof CareersRoute
   CedLawRoute: typeof CedLawRoute
+  EventsRoute: typeof EventsRoute
   GetHelpRoute: typeof GetHelpRoute
   ImpactRoute: typeof ImpactRoute
   LegislativeWinsRoute: typeof LegislativeWinsRoute
@@ -293,6 +306,13 @@ declare module '@tanstack/react-router' {
       path: '/get-help'
       fullPath: '/get-help'
       preLoaderRoute: typeof GetHelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events': {
+      id: '/events'
+      path: '/events'
+      fullPath: '/events'
+      preLoaderRoute: typeof EventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/ced-law': {
@@ -392,6 +412,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   CareersRoute: CareersRoute,
   CedLawRoute: CedLawRoute,
+  EventsRoute: EventsRoute,
   GetHelpRoute: GetHelpRoute,
   ImpactRoute: ImpactRoute,
   LegislativeWinsRoute: LegislativeWinsRoute,
