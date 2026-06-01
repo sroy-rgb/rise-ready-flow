@@ -16,11 +16,7 @@
       '<div class="ni"><a href="/about" class="'+act('/about').trim()+'">About</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">About CEDP</div>'+
-            '<a href="/about#mission" target="_parent">Our purpose</a>'+
-            '<a href="/about#leadership" target="_parent">Leadership</a>'+
-            '<a href="/team" target="_parent">Our team</a>'+
-            '<a href="/ced-law" target="_parent">CED Law</a>'+
-            '<a href="/careers" target="_parent">Careers</a>'+
+            '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a>'+
           '</div>'+
           '<div class="mega-img"><img src="/__l5e/assets-v1/feb48bc5-8bd3-47a9-9cbe-08cf17d60aed/about-cedp-hover.png" alt="" loading="lazy"/></div>'+
         '</div><div class="mega-stat">100+ professionals &middot; 4 offices across Colorado</div></div>'+
@@ -29,18 +25,10 @@
         '<div class="mega"><div class="mega-inner">'+
           '<div class="mega-2col">'+
             '<div class="mega-links"><div class="mega-label">Services</div>'+
-              '<a href="/our-work#programs" target="_parent">Eviction defense</a>'+
-              '<a href="/our-work#programs" target="_parent">Foreclosure</a>'+
-              '<a href="/our-work#programs" target="_parent">Unjust towing</a>'+
-              '<a href="/our-work#programs" target="_parent">Debt collection</a>'+
-              '<a href="/our-work#programs" target="_parent">Disaster relief</a>'+
-              '<a href="/our-work#programs" target="_parent">Resource navigation</a>'+
+              '<a href="/our-work">Eviction defense</a><a href="/our-work">Foreclosure</a><a href="/our-work">Unjust towing</a><a href="/our-work">Debt collection</a><a href="/our-work">Disaster relief</a><a href="/our-work">Resource navigation</a>'+
             '</div>'+
             '<div class="mega-links"><div class="mega-label">Programs</div>'+
-              '<a href="/our-work#programs" target="_parent">Programs overview</a>'+
-              '<a href="/our-work#model" target="_parent">CARE Center</a>'+
-              '<a href="/our-work#programs" target="_parent">Just Bus mobile aid</a>'+
-              '<a href="/our-work#where" target="_parent">Statewide coverage</a>'+
+              '<a href="/our-work">Programs overview</a><a href="/our-work">CARE Center</a><a href="/our-work">Just Bus mobile aid</a><a href="/our-work">Statewide coverage</a>'+
             '</div>'+
           '</div>'+
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
@@ -49,9 +37,7 @@
       '<div class="ni"><a href="/legislative-wins" class="'+impactAct.trim()+'">Impact</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">Our impact</div>'+
-            '<a href="/legislative-wins#wins" target="_parent">Legislative wins</a>'+
-            '<a href="/research#research" target="_parent">Research</a>'+
-            '<a href="/news#latest" target="_parent">News &amp; press</a>'+
+            '<a href="/legislative-wins">Legislative wins</a><a href="/research">Research</a><a href="/news">News &amp; press</a>'+
           '</div>'+
           '<div class="mega-img"><img src="https://images.pexels.com/photos/8761744/pexels-photo-8761744.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
         '</div><div class="mega-stat">12+ state laws passed &middot; Cited by White House &amp; HUD</div></div>'+
@@ -59,9 +45,7 @@
       '<div class="ni"><a href="/careers" class="'+act('/careers').trim()+'">Careers</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">Join CEDP</div>'+
-            '<a href="/careers#why" target="_parent">Why CEDP</a>'+
-            '<a href="/careers#positions" target="_parent">Open positions</a>'+
-            '<a href="/careers#culture" target="_parent">Culture &amp; benefits</a>'+
+            '<a href="/careers">Why CEDP</a><a href="/careers">Open positions</a><a href="/careers">Culture &amp; benefits</a>'+
           '</div>'+
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
         '</div></div>'+
