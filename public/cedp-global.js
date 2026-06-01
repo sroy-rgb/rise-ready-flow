@@ -193,9 +193,10 @@
     var isMobileHelp = /cedp-gethelp-mobile\.html$/.test(location.pathname);
     if (!isHomeF && !isMobileHelp) {
       var FOOTER = '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>'+
-        '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_parent">Get help</a></div>'+
         '<div class="ft-g">'+
-          '<div><a href="/" target="_parent" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
+          '<div><div class="ft-brand-row"><a href="/" target="_parent" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
+            '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_parent">Get help</a></div>'+
+          '</div>'+
             '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>'+
             '<div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/><a href="mailto:info@cedproject.org" style="color:inherit">info@cedproject.org</a><br/><a href="tel:3038381200" style="color:inherit">(303) 838-1200</a></div>'+
           '</div>'+
