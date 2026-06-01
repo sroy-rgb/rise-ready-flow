@@ -110,7 +110,7 @@
           '<a href="/about" target="_parent">Our purpose</a><a href="/team" target="_parent">Our team</a><a href="/about#leadership" target="_parent">Leadership</a><a href="/careers" target="_parent">Careers</a><a href="/careers#positions" target="_parent">Join Us</a><a href="/ced-law" target="_parent">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
           '</div>'+
           '<div><h4>Impact</h4>'+
-          '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/about#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/news" target="_parent">Events</a>'+
+          '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/news" target="_parent">Events</a>'+
           '</div>'+
         '</div>'+
         '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
