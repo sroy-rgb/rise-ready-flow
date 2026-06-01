@@ -81,6 +81,26 @@ body{overflow-y:visible!important}
 .tm-card:hover .tm-card-front .meta::before{transform:scaleY(1)}
 
 /* FOOTER hover */
+footer{background:#1B2838;padding:0 48px 28px;font-family:'Libre Franklin',sans-serif;color:rgba(255,255,255,.5)}
+.ft-warm{padding:36px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:36px}
+.ft-warm-txt{font-family:'Libre Franklin',sans-serif;font-size:22px;font-weight:600;color:rgba(255,255,255,.5)}
+.ft-warm-txt em{color:#C53030;font-style:normal}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.ft-b{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#FFF;margin-bottom:12px;letter-spacing:.5px;text-transform:capitalize}
+.ft-b em{color:#E8B960;font-style:normal}
+.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
+.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
+footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:12px}
+.brand-mark{display:flex;align-items:center;gap:14px;padding:24px 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:24px}
+.brand-mark img{height:64px;width:auto}
+.brand-mark-text{font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);line-height:1.25}
+.btn-d,.btn-h{display:inline-flex;align-items:center;padding:12px 22px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .2s;margin:0!important}
+.btn-d{background:#1B2838;color:#FFF;border:1px solid rgba(255,255,255,.2)}
+.btn-d:hover{background:#FFF;color:#1B2838}
+.btn-h{background:#C53030;color:#FFF}
+.btn-h:hover{background:#E8B960;color:#1B2838}
 footer a{transition:color .2s}
 footer a:hover{color:#E8B960!important}
 footer a.is-active{color:#E8B960!important;font-weight:600}
