@@ -67,4 +67,41 @@
 
   function go(){ renderTeam(); renderJobs(); renderLegislation(); }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",go); else go();
+
+  // === Realtime sync (Admin → Frontend live updates) ===
+  // Subscribe to Supabase Realtime over WebSocket and re-render on any change.
+  function startRealtime(){
+    try{
+      var wsUrl = SUPA.replace(/^http/,"ws") + "/realtime/v1/websocket?apikey=" + KEY + "&vsn=1.0.0";
+      var ws = new WebSocket(wsUrl);
+      var ref = 0;
+      var topics = [
+        { topic: "realtime:public:team_members", render: renderTeam },
+        { topic: "realtime:public:job_listings", render: renderJobs },
+        { topic: "realtime:public:legislative_wins", render: renderLegislation }
+      ];
+      ws.onopen = function(){
+        topics.forEach(function(t){
+          ws.send(JSON.stringify({ topic: t.topic, event: "phx_join",
+            payload: { config: { postgres_changes: [{ event: "*", schema: "public", table: t.topic.split(":")[2] }] } },
+            ref: String(++ref) }));
+        });
+        // Heartbeat
+        setInterval(function(){
+          if(ws.readyState===1) ws.send(JSON.stringify({topic:"phoenix",event:"heartbeat",payload:{},ref:String(++ref)}));
+        }, 25000);
+      };
+      ws.onmessage = function(ev){
+        try{
+          var msg = JSON.parse(ev.data);
+          if(msg.event === "postgres_changes" || (msg.payload && msg.payload.data)){
+            var match = topics.filter(function(t){return t.topic===msg.topic;})[0];
+            if(match) match.render();
+          }
+        }catch(_){}
+      };
+      ws.onclose = function(){ setTimeout(startRealtime, 3000); }; // auto-reconnect
+    }catch(e){ console.warn("Realtime init failed", e); }
+  }
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",startRealtime); else startRealtime();
 })();
