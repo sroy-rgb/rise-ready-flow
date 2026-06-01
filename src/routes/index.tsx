@@ -55,20 +55,18 @@ function AccessOverlay() {
         .access-btn svg{flex-shrink:0}
       `}</style>
       <div className="access-overlay" role="dialog" aria-label="Access options">
-        <div className="access-card">
-          {options.map(({ label, href, Icon }) => (
-            <a
-              key={label}
-              className="access-btn"
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Icon size={22} color={gold} strokeWidth={2} />
-              <span>{label}</span>
-            </a>
-          ))}
-        </div>
+        {options.map(({ label, href, Icon }) => (
+          <a
+            key={label}
+            className="access-btn"
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon size={22} color={gold} strokeWidth={2} />
+            <span>{label}</span>
+          </a>
+        ))}
       </div>
     </>
   );
