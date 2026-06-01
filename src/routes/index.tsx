@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Laptop, FileText, PlayCircle } from "lucide-react";
-import pdfProposal from "@/assets/PDF_Proposal.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -44,7 +43,7 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
     },
     {
       label: "Access PDF Proposal",
-      href: pdfProposal.url,
+      href: "/PDF_Proposal.pdf",
       Icon: FileText,
     },
     {
