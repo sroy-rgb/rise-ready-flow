@@ -555,6 +555,65 @@ footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration
 
 <section class="sec reveal" id="whoSection"><div class="who"><div class="who-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/12/cedp_bill_signing-scaled.jpeg?resize=1080%2C810&quality=100&ssl=1" alt="CEDP bill signing ceremony" loading="lazy"/></div><div class="who-txt"><div class="sec-lab">Who we are</div><h2>Born from a Facebook post. Built into Colorado's economic defense.</h2><p class="ld">In April 2020, two lawyers asked on Facebook who needed help with eviction. Thousands responded. What started as a volunteer effort has grown into a team of 200 serving 68,000 people across 59 counties.</p><p class="ld">We run a financial emergency room — integrating legal defense, financial aid, and resource navigation in a single point of contact.</p><div class="qb"><q>When someone comes to us in crisis, we don't send them to five different offices. We meet them where they are.</q><cite><strong>Sam Gilman</strong> — Co-Founder & Co-CEO</cite></div><a href="#" class="who-link">Learn more about CEDP &rarr;</a></div></div></section>
 
+<style>
+.video-feature{max-width:900px;margin:48px auto 64px;padding:0 24px;box-sizing:border-box}
+@media(min-width:768px){.video-feature{padding:0 48px}}
+@media(min-width:1000px){.video-feature{padding:0}}
+.vf-poster{position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;cursor:pointer;background:#1b2838}
+.vf-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.vf-overlay{position:absolute;inset:0;background:rgba(27,40,56,.3);display:flex;align-items:center;justify-content:center;transition:background .3s}
+.vf-play{width:72px;height:72px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.vf-play svg{width:24px;height:24px;margin-left:4px;fill:#fff;transition:fill .3s}
+.vf-poster:hover .vf-play{border-color:#E8B960;background:rgba(232,185,96,.15);transform:scale(1.08)}
+.vf-poster:hover .vf-play svg{fill:#E8B960}
+.vf-caption{margin-top:14px;text-align:center;font-size:12px;color:#6B7A8A;letter-spacing:.05em}
+.vf-lightbox{position:fixed;inset:0;background:rgba(10,10,15,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:99999;display:none;align-items:center;justify-content:center;padding:24px}
+.vf-lightbox.open{display:flex}
+.vf-frame{position:relative;width:100%;max-width:900px;aspect-ratio:16/9}
+.vf-frame iframe{width:100%;height:100%;border:0;border-radius:4px}
+.vf-close{position:absolute;top:-44px;right:0;width:36px;height:36px;background:none;border:0;color:#fff;font-size:32px;line-height:1;cursor:pointer;opacity:.8}
+.vf-close:hover{opacity:1;color:#E8B960}
+</style>
+<div class="video-feature reveal">
+  <div class="vf-poster" id="vfPoster" role="button" tabindex="0" aria-label="Play video: The CEDP Story">
+    <img src="https://vumbnail.com/786939169.jpg" alt="The CEDP Story video poster" loading="lazy"/>
+    <div class="vf-overlay">
+      <div class="vf-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+    </div>
+  </div>
+  <div class="vf-caption">Watch: The CEDP Story</div>
+</div>
+<div class="vf-lightbox" id="vfLightbox" aria-hidden="true">
+  <div class="vf-frame">
+    <button class="vf-close" id="vfClose" aria-label="Close video">&times;</button>
+    <div id="vfPlayer"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var poster=document.getElementById('vfPoster');
+  var lb=document.getElementById('vfLightbox');
+  var closeBtn=document.getElementById('vfClose');
+  var player=document.getElementById('vfPlayer');
+  var SRC='https://player.vimeo.com/video/786939169?autoplay=1&title=0&byline=0&portrait=0';
+  function open(){
+    player.innerHTML='<iframe src="'+SRC+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    lb.classList.add('open');lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function close(){
+    lb.classList.remove('open');lb.setAttribute('aria-hidden','true');
+    player.innerHTML='';
+    document.body.style.overflow='';
+  }
+  poster.addEventListener('click',open);
+  poster.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  closeBtn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+})();
+</script>
+
 <section class="hlp reveal" id="hlpSection">
 <div class="sec-lab">How we can help</div>
 <h2>Facing a crisis? You're not alone.</h2>
