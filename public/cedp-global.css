@@ -84,6 +84,8 @@ body{overflow-y:visible!important}
 footer a{transition:color .2s}
 footer a:hover{color:#E8B960!important}
 footer a.is-active{color:#E8B960!important;font-weight:600}
+.ft-actions{display:flex;gap:14px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.ft-actions a{display:inline-flex;align-items:center}
 
 /* GLOBAL — smooth scroll + scroll padding for sticky nav */
 html{scroll-behavior:smooth;scroll-padding-top:80px}
