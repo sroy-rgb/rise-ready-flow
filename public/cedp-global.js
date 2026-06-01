@@ -65,6 +65,57 @@
     }
   } catch(e) { console.warn('nav inject failed', e); }
 
+  // ---- Mobile hamburger + CTA injection (all pages) ----
+  try {
+    var navEl = document.querySelector('body > nav:not(.dot-nav)') ||
+                document.querySelector('header > nav:not(.dot-nav)') ||
+                document.querySelector('nav:not(.dot-nav)');
+    if (navEl && !navEl.querySelector('.mob-burger')) {
+      // Mobile CTA buttons next to logo
+      var mobCta = document.createElement('div');
+      mobCta.className = 'mob-cta-inline';
+      mobCta.innerHTML =
+        '<a class="btn-d mob-btn-d" href="/#donateSection" target="_parent">Donate</a>'+
+        '<a class="btn-h mob-btn-h" href="/get-help" target="_parent">Get help</a>';
+      navEl.appendChild(mobCta);
+
+      // Burger button
+      var burger = document.createElement('button');
+      burger.className = 'mob-burger';
+      burger.setAttribute('aria-label','Open menu');
+      burger.innerHTML = '<span></span><span></span><span></span>';
+      navEl.appendChild(burger);
+
+      // Overlay menu
+      var overlay = document.createElement('div');
+      overlay.className = 'mob-overlay';
+      overlay.innerHTML =
+        '<button class="mob-close" aria-label="Close menu">&times;</button>'+
+        '<div class="mob-links">'+
+          '<a href="/" target="_parent">Home</a>'+
+          '<a href="/about" target="_parent">About</a>'+
+          '<a href="/our-work" target="_parent">Our work</a>'+
+          '<a href="/legislative-wins" target="_parent">Impact</a>'+
+          '<a href="/careers" target="_parent">Careers</a>'+
+          '<a href="/events" target="_parent">Events</a>'+
+          '<a href="/get-help" target="_parent">Get help</a>'+
+        '</div>'+
+        '<div class="mob-cta">'+
+          '<a class="mob-donate" href="/#donateSection" target="_parent">DONATE</a>'+
+          '<a class="mob-get" href="/get-help" target="_parent">GET HELP</a>'+
+        '</div>';
+      document.body.appendChild(overlay);
+
+      function openMenu(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+      function closeMenu(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+      burger.addEventListener('click', openMenu);
+      overlay.querySelector('.mob-close').addEventListener('click', closeMenu);
+      overlay.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', closeMenu);
+      });
+    }
+  } catch(e) { console.warn('mobile nav inject failed', e); }
+
   // ---- Inject sticky dot-nav on all non-home pages ----
   try {
     var p = (location.pathname || '/').replace(/\/$/, '') || '/';
