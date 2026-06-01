@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import { Laptop, FileText, PlayCircle } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -15,6 +16,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [showOverlay, setShowOverlay] = useState(true);
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <iframe
@@ -22,27 +24,31 @@ function Index() {
         title="CEDP Homepage"
         style={{ border: 0, width: "100vw", height: "100vh", display: "block" }}
       />
-      <AccessOverlay />
+      {showOverlay && <AccessOverlay onEnterPrototype={() => setShowOverlay(false)} />}
     </div>
   );
 }
 
-function AccessOverlay() {
+function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
   const gold = "#E8B960";
   const options = [
     {
       label: "Access Live Prototype",
-      href: "https://rise-ready-flow.lovable.app",
+      href: "#",
       Icon: Laptop,
+      onClick: (e: React.MouseEvent) => {
+        e.preventDefault();
+        onEnterPrototype();
+      },
     },
     {
       label: "Access PDF Proposal",
-      href: "file:///C:/Users/2000018/AppData/Local/Microsoft/Windows/INetCache/Content.Outlook/4OLR5RS5/CEDP-Website_Redesign_Proposal-XTS_30May26_V1.html",
+      href: "/CEDP-Website_Redesign_Proposal-XTS_30May26_V1.pdf",
       Icon: FileText,
     },
     {
       label: "Access Interactive Proposal",
-      href: "file:///C:/Users/2000018/AppData/Local/Microsoft/Windows/INetCache/Content.Outlook/4OLR5RS5/cedp-ourwork_2.html",
+      href: "/cedp-ourwork_2.html",
       Icon: PlayCircle,
     },
   ];
@@ -55,11 +61,12 @@ function AccessOverlay() {
         .access-btn svg{flex-shrink:0}
       `}</style>
       <div className="access-overlay" role="dialog" aria-label="Access options">
-        {options.map(({ label, href, Icon }) => (
+        {options.map(({ label, href, Icon, onClick }) => (
           <a
             key={label}
             className="access-btn"
             href={href}
+            onClick={onClick}
             target="_blank"
             rel="noopener noreferrer"
           >
