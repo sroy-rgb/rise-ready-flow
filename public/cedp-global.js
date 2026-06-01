@@ -79,6 +79,51 @@
       else existingNav.outerHTML = TB + NAV;
       if (existingTb && existingNav.parentNode) existingNav.remove();
     }
+
+    // ---- Mega-menu interactions (click/keyboard/touch) ----
+    try {
+      var navEl = document.querySelector('nav:not(.dot-nav)');
+      if (navEl) {
+        var items = navEl.querySelectorAll('.ni');
+        function closeAll(){
+          items.forEach(function(it){
+            it.classList.remove('open');
+            var t = it.querySelector('a[aria-haspopup]');
+            if (t) t.setAttribute('aria-expanded','false');
+          });
+        }
+        items.forEach(function(it){
+          var trig = it.querySelector('a[aria-haspopup]');
+          if (!trig) return;
+          // toggle on click for keyboard/touch
+          trig.addEventListener('click', function(e){
+            if (window.matchMedia('(hover:none)').matches || e.detail === 0) {
+              e.preventDefault();
+              var isOpen = it.classList.contains('open');
+              closeAll();
+              if (!isOpen) { it.classList.add('open'); trig.setAttribute('aria-expanded','true'); }
+            }
+          });
+        });
+        document.addEventListener('keydown', function(e){ if (e.key==='Escape') closeAll(); });
+        document.addEventListener('click', function(e){
+          if (!navEl.contains(e.target)) closeAll();
+        });
+
+        // Intercept program lightbox links when already on /our-work
+        navEl.querySelectorAll('[data-prog-lb]').forEach(function(a){
+          a.addEventListener('click', function(e){
+            var lb = a.getAttribute('data-prog-lb');
+            var onOurWork = /\/our-work(\b|$|\/)/.test(location.pathname);
+            if (onOurWork && typeof window.openDetail === 'function') {
+              e.preventDefault();
+              closeAll();
+              window.openDetail(lb);
+            }
+          });
+        });
+      }
+    } catch(e) { console.warn('nav interactions failed', e); }
   } catch(e) { console.warn('nav inject failed', e); }
 
   // ---- Inject sticky dot-nav on all non-home pages ----
