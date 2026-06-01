@@ -129,8 +129,8 @@ nav .ni .dd a:hover{color:#E8B960;border-left-color:#E8B960;padding-left:10px}
 
 /* Our Work mega-v2 (full-width) */
 nav .ni-ow{position:static}
-nav .mega-v2{position:absolute;left:0;right:0;top:100%;width:100vw;background:#1B2838;opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;z-index:200;box-shadow:0 16px 50px rgba(0,0,0,.25)}
-nav .ni-ow:hover .mega-v2,nav .ni-ow.open .mega-v2{opacity:1;visibility:visible;transform:translateY(0)}
+nav .mega-v2{position:absolute;left:50%;top:100%;width:100vw;background:#1B2838;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-10px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;z-index:200;box-shadow:0 16px 50px rgba(0,0,0,.25)}
+nav .ni-ow:hover .mega-v2,nav .ni-ow.open .mega-v2{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .mv2-inner{max-width:1200px;margin:0 auto}
 .mv2-grid{display:grid;grid-template-columns:58% 42%;gap:32px;padding:40px 48px}
 .mv2-left{display:flex;flex-direction:column}
