@@ -108,6 +108,33 @@
           ['wins','Legislative Wins'],
           ['punchLeg','Our Approach'],
           ['explore','Explore']
+        ],
+        '/research': [
+          ['featured','Featured'],
+          ['research','Research'],
+          ['partners','Partners'],
+          ['punchRes','Our Approach'],
+          ['explore','Explore']
+        ],
+        '/news': [
+          ['featured','Featured'],
+          ['latest','Latest'],
+          ['press','Press Resources'],
+          ['media','Media Contact'],
+          ['explore','Explore']
+        ],
+        '/ced-law': [
+          ['eligSection','Eligibility'],
+          ['practice','Practice Areas'],
+          ['team','Legal Team'],
+          ['resources','Resources'],
+          ['faq','FAQ'],
+          ['donate','Support']
+        ],
+        '/team': [
+          ['teamHero','Our Team'],
+          ['join','Join Us'],
+          ['explore','Explore']
         ]
       };
       var key = p;
