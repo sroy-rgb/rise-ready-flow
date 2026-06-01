@@ -49,10 +49,8 @@ function AccessOverlay() {
   return (
     <>
       <style>{`
-        .access-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(27,40,56,.55);backdrop-filter:blur(6px);z-index:9998;pointer-events:auto}
-        .access-card{display:flex;flex-direction:column;gap:18px;padding:40px 44px;border-radius:20px;background:rgba(27,40,56,.78);border:1px solid rgba(232,185,96,.35);box-shadow:0 20px 60px rgba(0,0,0,.45)}
-        
-        .access-btn{display:flex;align-items:center;gap:14px;padding:14px 22px;min-width:340px;border-radius:999px;border:1.5px solid #E8B960;background:transparent;color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+        .access-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;gap:18px;background:rgba(27,40,56,.55);backdrop-filter:blur(6px);z-index:9998;pointer-events:auto}
+        .access-btn{display:flex;align-items:center;gap:14px;padding:14px 22px;border-radius:999px;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
         .access-btn:hover{transform:translateY(-2px) scale(1.02);background:rgba(232,185,96,.12);box-shadow:0 0 24px rgba(232,185,96,.45)}
         .access-btn svg{flex-shrink:0}
       `}</style>
