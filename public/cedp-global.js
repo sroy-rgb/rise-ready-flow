@@ -97,6 +97,7 @@
     var isMobileHelp = /cedp-gethelp-mobile\.html$/.test(location.pathname);
     if (!isHomeF && !isMobileHelp) {
       var FOOTER = '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>'+
+        '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_top">Get help</a></div>'+
         '<div class="ft-g">'+
           '<div><a href="/" target="_top" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
             '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>'+
