@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Laptop, FileText, PlayCircle } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -16,7 +16,19 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(false);
+  useEffect(() => {
+    try {
+      const skip = sessionStorage.getItem("cedp_skip_overlay") === "1";
+      if (!skip) setShowOverlay(true);
+    } catch {
+      setShowOverlay(true);
+    }
+  }, []);
+  const enterPrototype = () => {
+    try { sessionStorage.setItem("cedp_skip_overlay", "1"); } catch {}
+    setShowOverlay(false);
+  };
   return (
     <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <iframe
@@ -24,7 +36,7 @@ function Index() {
         title="CEDP Homepage"
         style={{ border: 0, width: "100vw", height: "100vh", display: "block" }}
       />
-      {showOverlay && <AccessOverlay onEnterPrototype={() => setShowOverlay(false)} />}
+      {showOverlay && <AccessOverlay onEnterPrototype={enterPrototype} />}
     </div>
   );
 }
