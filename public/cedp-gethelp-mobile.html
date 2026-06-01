@@ -14,6 +14,10 @@ body{font-family:'Libre Franklin',sans-serif;background:#FFF;color:#2C3E50;font-
 
 /* ---- STICKY CALL BAR ---- */
 .call-bar{position:sticky;top:0;z-index:100;background:#C53030;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.call-bar-left{display:flex;align-items:center;gap:12px}
+.call-bar .home-btn{display:flex;align-items:center;gap:6px;color:#FFF;text-decoration:none;font-weight:700;font-size:18px}
+.call-bar .home-btn svg{width:22px;height:22px;flex-shrink:0}
+.call-bar .home-btn svg path{fill:#FFF}
 .call-bar a{display:flex;align-items:center;gap:10px;color:#FFF;text-decoration:none;font-weight:700;font-size:18px;letter-spacing:.5px}
 .call-bar a svg{width:22px;height:22px;flex-shrink:0}
 .call-bar a svg path{fill:#FFF}
@@ -128,7 +132,10 @@ body{padding-bottom:72px}
 
 <!-- STICKY CALL BAR -->
 <div class="call-bar">
-<a href="tel:3038381200" data-cms-phone><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span data-cms-phone-text>(303) 838-1200</span></a>
+<div class="call-bar-left">
+  <a href="/" class="home-btn" target="_parent" aria-label="Home"><svg viewBox="0 0 24 24"><path d="M3 10l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V10z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></a>
+  <a href="tel:3038381200" data-cms-phone><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span data-cms-phone-text>(303) 838-1200</span></a>
+</div>
 <button class="lang-btn" data-lang-toggle data-lang-toggle-label aria-label="Toggle language">ES</button>
 </div>
 
