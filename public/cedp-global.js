@@ -121,6 +121,26 @@
     }
   } catch(e) { console.warn('footer inject failed', e); }
 
+  // Footer: mark active link based on parent URL (handles iframe context)
+  try {
+    var parentLoc = (window.top && window.top.location) ? window.top.location : window.location;
+    var pPath = (parentLoc.pathname || '/').replace(/\/$/, '') || '/';
+    var pHash = parentLoc.hash || '';
+    var current = pPath + pHash;
+    document.querySelectorAll('footer a').forEach(function(a){
+      var href = a.getAttribute('href') || '';
+      if(!href || href === '#' || href.indexOf('mailto:') === 0 || href.indexOf('tel:') === 0) return;
+      var normalized = href.replace(/\/$/, '') || '/';
+      if(normalized === current || (pHash && href.indexOf(pHash) !== -1 && href.indexOf(pPath) !== -1)){
+        a.classList.add('is-active');
+      }
+      a.addEventListener('click', function(){
+        document.querySelectorAll('footer a.is-active').forEach(function(x){ x.classList.remove('is-active'); });
+        a.classList.add('is-active');
+      });
+    });
+  } catch(e) {}
+
   // Fix accordion arrow SVG to full down arrow (line + head)
   document.querySelectorAll('.cl-acc-circle svg').forEach(function(svg){
     svg.setAttribute('viewBox','0 0 24 24');
