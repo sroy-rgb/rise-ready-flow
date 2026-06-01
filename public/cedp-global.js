@@ -16,7 +16,7 @@
       '<div class="ni"><a href="/about" class="'+act('/about').trim()+'">About</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">About CEDP</div>'+
-            '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a>'+
+            '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a><a href="/events">Events</a>'+
           '</div>'+
           '<div class="mega-img"><img src="/__l5e/assets-v1/feb48bc5-8bd3-47a9-9cbe-08cf17d60aed/about-cedp-hover.png" alt="" loading="lazy"/></div>'+
         '</div><div class="mega-stat">100+ professionals &middot; 4 offices across Colorado</div></div>'+
@@ -135,6 +135,11 @@
           ['teamHero','Our Team'],
           ['join','Join Us'],
           ['explore','Explore']
+        ],
+        '/events': [
+          ['upcoming','Upcoming'],
+          ['calendar','Calendar'],
+          ['past','Past']
         ]
       };
       var key = p;
@@ -201,7 +206,7 @@
           '<a href="/about" target="_parent">Our purpose</a><a href="/team" target="_parent">Our team</a><a href="/about#leadership" target="_parent">Leadership</a><a href="/careers" target="_parent">Careers</a><a href="/careers#positions" target="_parent">Join Us</a><a href="/ced-law" target="_parent">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
           '</div>'+
           '<div><h4>Impact</h4>'+
-          '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/news" target="_parent">Events</a>'+
+          '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/events" target="_parent">Events</a>'+
           '</div>'+
         '</div>'+
         '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
@@ -264,7 +269,8 @@
     'cedp-legislative-wins.html': '/legislative-wins',
     'cedp-news.html': '/news',
     'cedp-research.html': '/research',
-    'cedp-team.html': '/team'
+    'cedp-team.html': '/team',
+    'cedp-events.html': '/events'
   };
   var DONATE_HASH = '#donateSection';
   var HOST = location.hostname;
