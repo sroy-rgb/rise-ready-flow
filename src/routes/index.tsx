@@ -58,7 +58,6 @@ function AccessOverlay() {
       `}</style>
       <div className="access-overlay" role="dialog" aria-label="Access options">
         <div className="access-card">
-          <h2 className="access-title">CEDP Redesign Access</h2>
           {options.map(({ label, href, Icon }) => (
             <a
               key={label}
