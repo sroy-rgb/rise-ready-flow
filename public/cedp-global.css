@@ -86,7 +86,9 @@ footer a:hover{color:#E8B960!important}
 footer a.is-active{color:#E8B960!important;font-weight:600}
 .ft-bt a{display:inline!important;margin:0!important}
 .ft-bt span{white-space:nowrap}
-.ft-actions{display:flex;gap:14px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.ft-brand-row{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+.ft-brand-row .ft-b{flex:0 1 auto}
+.ft-actions{display:flex;gap:12px;margin:0}
 .ft-actions a{display:inline-flex;align-items:center}
 
 /* GLOBAL — smooth scroll + scroll padding for sticky nav */
