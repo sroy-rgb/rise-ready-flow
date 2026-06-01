@@ -195,6 +195,7 @@
       var FOOTER = '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>'+
         '<div class="ft-g">'+
           '<div><div class="ft-brand-row"><a href="/" target="_parent" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
+            '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_parent">Get help</a></div>'+
           '</div>'+
             '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>'+
             '<div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/><a href="mailto:info@cedproject.org" style="color:inherit">info@cedproject.org</a><br/><a href="tel:3038381200" style="color:inherit">(303) 838-1200</a></div>'+
@@ -209,10 +210,7 @@
           '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/events" target="_parent">Events</a>'+
           '</div>'+
         '</div>'+
-        '<div class="brand-mark">
-        <a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_parent">Get help</a>
-        
-        <img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
+        '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
         '<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span><a href="#" title="Coming soon">Privacy policy</a> &bull; <a href="#" title="Coming soon">Terms of use</a> &bull; <a href="#" title="Coming soon">Accessibility</a></span></div>'+
       '</footer>';
       var existingFooter = document.querySelector('body > footer') || document.querySelector('footer');
