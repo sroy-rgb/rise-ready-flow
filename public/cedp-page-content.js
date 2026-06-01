@@ -121,6 +121,16 @@
       var label = (el.textContent || '').trim();
       el.style.display = label ? '' : 'none';
     });
+
+    // Bilingual switch links: show the OPPOSITE language prompt
+    // data-cms-switch="keyForEn|keyForEs" -> use first when lang==en, second when lang==es
+    document.querySelectorAll('[data-cms-switch]').forEach(function(el){
+      var spec = el.getAttribute('data-cms-switch') || '';
+      var pair = spec.split('|');
+      var key = lang === 'es' ? pair[1] : pair[0];
+      var val = readContent(content, key, lang);
+      if(val !== undefined && val !== null) el.textContent = val;
+    });
   }
 
   function updateToggleUI(){
@@ -130,8 +140,8 @@
       btn.classList.toggle('act', t === lang);
       btn.setAttribute('aria-pressed', t === lang ? 'true' : 'false');
     });
-    // single-button mobile toggle text
-    document.querySelectorAll('[data-lang-toggle]').forEach(function(btn){
+    // single-button mobile toggle text — only update elements explicitly opted in
+    document.querySelectorAll('[data-lang-toggle-label]').forEach(function(btn){
       btn.textContent = lang === 'en' ? 'ES' : 'EN';
     });
   }
