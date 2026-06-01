@@ -69,19 +69,31 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
         }
       `}</style>
       <div className="access-overlay" role="dialog" aria-label="Access options">
-        {options.map(({ label, href, Icon, onClick }) => (
-          <a
-            key={label}
-            className="access-card"
-            href={href}
-            onClick={onClick}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon size={32} color={gold} strokeWidth={1.5} />
-            <span>{label}</span>
-          </a>
-        ))}
+        {options.map(({ label, href, Icon, onClick }) =>
+          onClick ? (
+            <button
+              key={label}
+              type="button"
+              className="access-card"
+              onClick={onClick}
+              style={{ cursor: "pointer", font: "inherit" }}
+            >
+              <Icon size={32} color={gold} strokeWidth={1.5} />
+              <span>{label}</span>
+            </button>
+          ) : (
+            <a
+              key={label}
+              className="access-card"
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Icon size={32} color={gold} strokeWidth={1.5} />
+              <span>{label}</span>
+            </a>
+          ),
+        )}
       </div>
     </>
   );
