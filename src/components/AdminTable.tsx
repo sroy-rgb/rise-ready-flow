@@ -37,7 +37,10 @@ export function AdminTable({ table, fields, title, orderBy = "sort_order" }: {
   function blank() {
     const o: any = {};
     fields.forEach(f => {
-      o[f.key] = f.type === "checkbox" ? false : f.type === "number" ? 0 : "";
+      if (f.type === "checkbox") o[f.key] = false;
+      else if (f.type === "number") o[f.key] = 0;
+      else if (f.type === "select") o[f.key] = f.options?.[0]?.value ?? "";
+      else o[f.key] = "";
     });
     return o;
   }
