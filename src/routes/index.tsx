@@ -56,9 +56,17 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
     <>
       <style>{`
         .access-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;gap:18px;background:rgba(27,40,56,.55);backdrop-filter:blur(6px);z-index:9998;pointer-events:auto}
-        .access-btn{display:flex;align-items:center;gap:14px;padding:14px 22px;border-radius:999px;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+        .access-btn{display:flex;align-items:center;gap:14px;padding:14px 22px;border-radius:999px;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:15px;text-decoration:none;transition:transform .25s ease, box-shadow .25s ease, background .25s ease;white-space:nowrap}
         .access-btn:hover{transform:translateY(-2px) scale(1.02);background:rgba(232,185,96,.12);box-shadow:0 0 24px rgba(232,185,96,.45)}
         .access-btn svg{flex-shrink:0}
+        @media (max-width:640px){
+          .access-overlay{flex-direction:column;gap:12px;padding:16px}
+          .access-btn{width:100%;max-width:320px;justify-content:center;padding:12px 18px;font-size:14px}
+        }
+        @media (min-width:641px) and (max-width:1024px){
+          .access-overlay{flex-wrap:wrap;gap:14px;padding:16px}
+          .access-btn{padding:12px 20px;font-size:14px}
+        }
       `}</style>
       <div className="access-overlay" role="dialog" aria-label="Access options">
         {options.map(({ label, href, Icon, onClick }) => (
