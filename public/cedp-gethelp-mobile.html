@@ -124,134 +124,138 @@ body{font-family:'Libre Franklin',sans-serif;background:#FFF;color:#2C3E50;font-
 body{padding-bottom:72px}
 </style>
 </head>
-<body>
+<body data-cms-page="get-help" data-cms-mobile>
 
 <!-- STICKY CALL BAR -->
 <div class="call-bar">
-<a href="tel:3038381200"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(303) 838-1200</a>
-<button class="lang-btn" onclick="alert('Español version coming soon')">ES</button>
+<a href="tel:3038381200" data-cms-phone><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg><span data-cms-phone-text>(303) 838-1200</span></a>
+<button class="lang-btn" data-lang-toggle aria-label="Toggle language">ES</button>
 </div>
 
 <!-- HERO -->
 <div class="m-hero">
-<div class="m-hero-label">Get Help</div>
-<h1>You don't have to face this alone.</h1>
-<p>Free legal aid, financial assistance, and resource navigation. All services are free. Available in English and Spanish.</p>
+<div class="m-hero-label" data-cms="hero.label">Get Help</div>
+<h1 data-cms="hero.title">You don't have to face this alone.</h1>
+<p data-cms="hero.subtitle">Free legal aid, financial assistance, and resource navigation. All services are free. Available in English and Spanish.</p>
 <div class="m-hero-hours">
-<div class="m-hero-hours-left"><strong>CARE Center</strong>Mon–Fri, 8:30am–5:30pm MT</div>
-<a href="#" class="m-after-btn">After hours →</a>
+<div class="m-hero-hours-left"><strong data-cms="hero.hours_label">CARE Center</strong><span data-cms="hero.hours_text">Mon–Fri, 8:30am–5:30pm MT</span></div>
+<a href="#" class="m-after-btn" data-cms="hero.after_hours_short" data-cms-href="hero.after_hours_href">After hours →</a>
 </div>
 </div>
 
 <!-- BILINGUAL -->
-<div class="m-bi"><i data-lucide="globe" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"></i>¿Necesita ayuda? <a href="#">Toque aquí para español</a></div>
+<div class="m-bi"><i data-lucide="globe" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"></i><span data-cms="bilingual.mobile_to_es.text">¿Necesita ayuda?</span> <a href="#" data-lang-toggle data-cms="bilingual.mobile_to_es.link">Toque aquí para español</a></div>
 
 <!-- FRAUD BANNER -->
 <div class="m-fraud" id="fraudBanner">
 <span class="m-fraud-icon"><i data-lucide="alert-triangle"></i></span>
-<p><strong>CEDP never charges fees.</strong> Official emails come from @cedproject.org only. We don't use WhatsApp.</p>
+<p data-cms="fraud.mobile_body">CEDP never charges fees. Official emails come from @cedproject.org only. We don't use WhatsApp.</p>
 <button class="m-fraud-close" onclick="document.getElementById('fraudBanner').style.display='none'">×</button>
 </div>
 
 <!-- TRIAGE -->
 <div class="m-triage" id="triageSection">
-<div class="m-triage-label">What's happening?</div>
-<h2>Select your situation</h2>
+<div class="m-triage-label" data-cms="triage.label">What's happening?</div>
+<h2 data-cms="triage.title">Select your situation</h2>
 <div style="height:16px"></div>
 
 
 
-<div class="m-card c-red" onclick="toggleCard(this)">
-<div class="m-card-head"><h3>I'm facing eviction</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card c-red" id="eviction" onclick="toggleCard(this)">
+<div class="m-card-head"><h3 data-cms="cards.0.title">I'm facing eviction</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
 <div class="m-card-body"><div class="m-card-inner">
-<p>If you've received an eviction notice or are behind on rent, call us immediately. Our housing lawyers provide free legal representation and can connect you with emergency rental assistance.</p>
-<a href="tel:3038381200" class="m-cta">Call CARE Center Now</a>
-<a href="#" class="m-cta-alt">Submit intake form online</a>
+<p data-cms="cards.0.body">If you've received an eviction notice or are behind on rent, call us immediately. Our housing lawyers provide free legal representation and can connect you with emergency rental assistance.</p>
+<a class="m-cta" data-cms="cards.0.cta_primary_label" data-cms-href="cards.0.cta_primary_href" data-cms-hide-if-empty>Call CARE Center Now</a>
+<a class="m-cta-alt" data-cms="cards.0.cta_alt_label" data-cms-href="cards.0.cta_alt_href" data-cms-hide-if-empty>Submit intake form online</a>
 </div></div>
 </div>
 
-<div class="m-card c-navy" onclick="toggleCard(this)">
-<div class="m-card-head"><h3>I'm facing foreclosure</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card c-navy" id="foreclosure" onclick="toggleCard(this)">
+<div class="m-card-head"><h3 data-cms="cards.1.title">I'm facing foreclosure</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
 <div class="m-card-body"><div class="m-card-inner">
-<p>We provide financial assistance and legal guidance for households at risk of or in the midst of a foreclosure.</p>
-<a href="#" class="m-cta">Get foreclosure help</a>
+<p data-cms="cards.1.body">We provide financial assistance and legal guidance for households at risk of or in the midst of a foreclosure.</p>
+<a class="m-cta" data-cms="cards.1.cta_primary_label" data-cms-href="cards.1.cta_primary_href" data-cms-hide-if-empty>Get foreclosure help</a>
+<a class="m-cta-alt" data-cms="cards.1.cta_alt_label" data-cms-href="cards.1.cta_alt_href" data-cms-hide-if-empty></a>
 </div></div>
 </div>
 
-<div class="m-card c-gold" onclick="toggleCard(this)">
-<div class="m-card-head"><h3>My car was towed</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card c-gold" id="towing" onclick="toggleCard(this)">
+<div class="m-card-head"><h3 data-cms="cards.2.title">My car was towed</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
 <div class="m-card-body"><div class="m-card-inner">
-<p>Predatory towing can push families into eviction. We can help you recover your vehicle, challenge unfair charges, and know your rights under Colorado's Towing Bill of Rights.</p>
-<a href="tel:3038381200" class="m-cta">Call for towing help</a>
+<p data-cms="cards.2.body">Predatory towing can push families into eviction. We can help you recover your vehicle, challenge unfair charges, and know your rights under Colorado's Towing Bill of Rights.</p>
+<a class="m-cta" data-cms="cards.2.cta_primary_label" data-cms-href="cards.2.cta_primary_href" data-cms-hide-if-empty>Call for towing help</a>
+<a class="m-cta-alt" data-cms="cards.2.cta_alt_label" data-cms-href="cards.2.cta_alt_href" data-cms-hide-if-empty></a>
 </div></div>
 </div>
 
 <div class="m-card c-slate" onclick="toggleCard(this)">
-<div class="m-card-head"><h3>I need help with utility bills</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-head"><h3 data-cms="cards.3.title">I need help with utility bills</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
 <div class="m-card-body"><div class="m-card-inner">
-<p>We partner with Energy Outreach Colorado to help with electricity, natural gas, propane, and other utility payments.</p>
-<a href="#" class="m-cta">Get utility assistance</a>
+<p data-cms="cards.3.body">We partner with Energy Outreach Colorado to help with electricity, natural gas, propane, and other utility payments.</p>
+<a class="m-cta" data-cms="cards.3.cta_primary_label" data-cms-href="cards.3.cta_primary_href" data-cms-hide-if-empty>Get utility assistance</a>
+<a class="m-cta-alt" data-cms="cards.3.cta_alt_label" data-cms-href="cards.3.cta_alt_href" data-cms-hide-if-empty></a>
 </div></div>
 </div>
 
-<div class="m-card c-navy" onclick="toggleCard(this)">
-<div class="m-card-head"><h3>I'm dealing with debt collection</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card c-navy" id="debt" onclick="toggleCard(this)">
+<div class="m-card-head"><h3 data-cms="cards.4.title">I'm dealing with debt collection</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
 <div class="m-card-body"><div class="m-card-inner">
-<p>Our debt defense team provides free legal guidance to help you understand your rights and challenge unfair collection practices.</p>
-<a href="tel:3038381200" class="m-cta">Call for debt help</a>
+<p data-cms="cards.4.body">Our debt defense team provides free legal guidance to help you understand your rights and challenge unfair collection practices.</p>
+<a class="m-cta" data-cms="cards.4.cta_primary_label" data-cms-href="cards.4.cta_primary_href" data-cms-hide-if-empty>Call for debt help</a>
+<a class="m-cta-alt" data-cms="cards.4.cta_alt_label" data-cms-href="cards.4.cta_alt_href" data-cms-hide-if-empty></a>
 </div></div>
 </div>
 
 <div class="m-card c-gold" onclick="toggleCard(this)">
-<div class="m-card-head"><h3>I need other help or resources</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
+<div class="m-card-head"><h3 data-cms="cards.5.title">I need other help or resources</h3><div class="m-card-arrow"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div></div>
 <div class="m-card-body"><div class="m-card-inner">
-<p>Looking for community resources? Need help finding a job, medical services, childcare, food, or bus passes? We can connect you with local services.</p>
-<a href="#" class="m-cta">Find resources near me</a>
-<a href="#" class="m-cta-alt">Contact us</a>
+<p data-cms="cards.5.body">Looking for community resources? Need help finding a job, medical services, childcare, food, or bus passes? We can connect you with local services.</p>
+<a class="m-cta" data-cms="cards.5.cta_primary_label" data-cms-href="cards.5.cta_primary_href" data-cms-hide-if-empty>Find resources near me</a>
+<a class="m-cta-alt" data-cms="cards.5.cta_alt_label" data-cms-href="cards.5.cta_alt_href" data-cms-hide-if-empty>Contact us</a>
 </div></div>
 </div>
 </div>
 
 <!-- CHAT -->
-<div class="m-chat">
-<div class="m-chat-left"><h3>Chat with us</h3><p>Connect with CARE Center instantly</p></div>
-<div class="m-chat-right"><div class="m-chat-dot"></div><div class="m-chat-label">Live</div></div>
+<div class="m-chat" onclick="var h=window.__cedpContent&&window.__cedpContent.chat&&window.__cedpContent.chat.href;if(h)window.open(h,'_blank')">
+<div class="m-chat-left"><h3 data-cms="chat.title">Chat with us</h3><p data-cms="chat.subtitle">Connect with CARE Center instantly</p></div>
+<div class="m-chat-right"><div class="m-chat-dot"></div><div class="m-chat-label" data-cms="chat.status">Live</div></div>
 </div>
 
 <!-- WHEN TO CALL -->
 <div class="m-when">
 <div class="m-when-card open-now">
-<h4>During business hours</h4>
-<p>Call the CARE Center. A navigator will connect you with the right support.</p>
-<a href="tel:3038381200" class="m-when-phone">(303) 838-1200</a>
-<p style="font-size:11px;color:#6B7A8A;margin-top:4px">Mon–Fri, 8:30am–5:30pm MT</p>
+<h4 data-cms="hours.during_title">During business hours</h4>
+<p data-cms="hours.during_body">Call the CARE Center. A navigator will connect you with the right support.</p>
+<a data-cms-phone class="m-when-phone" data-cms-phone-text>(303) 838-1200</a>
+<p style="font-size:11px;color:#6B7A8A;margin-top:4px" data-cms="hours.during_hours">Mon–Fri, 8:30am–5:30pm MT</p>
 </div>
 <div class="m-when-card closed">
-<h4>After hours or weekends</h4>
-<p>Submit an online intake form. A team member will contact you on the next business day.</p>
-<a href="#" class="m-when-link">Submit intake form →</a>
+<h4 data-cms="hours.after_title">After hours or weekends</h4>
+<p data-cms="hours.after_body">Submit an online intake form. A team member will contact you on the next business day.</p>
+<a class="m-when-link" data-cms="hours.after_cta" data-cms-href="hours.after_cta_href">Submit intake form →</a>
 </div>
 </div>
 
 <!-- SAFETY -->
 <div class="m-safety">
-<h3>CEDP will never...</h3>
-<div class="m-safety-item"><h4>Charge you fees</h4><p>All services are 100% free — legal aid, financial assistance, everything.</p></div>
-<div class="m-safety-item"><h4>Contact you via WhatsApp</h4><p>Official emails come from @cedproject.org or @cedlaw.org only.</p></div>
-<div class="m-safety-item"><h4>Ask for bank details by email</h4><p>We never request SSN, bank info, or payments via email or text.</p></div>
+<h3 data-cms="safety.title">CEDP will never...</h3>
+<div class="m-safety-item"><h4 data-cms="safety.items.0.title">Charge you fees</h4><p data-cms="safety.items.0.body">All services are 100% free — legal aid, financial assistance, everything.</p></div>
+<div class="m-safety-item"><h4 data-cms="safety.items.1.title">Contact you via WhatsApp</h4><p data-cms="safety.items.1.body">Official emails come from @cedproject.org or @cedlaw.org only.</p></div>
+<div class="m-safety-item"><h4 data-cms="safety.items.2.title">Ask for bank details by email</h4><p data-cms="safety.items.2.body">We never request SSN, bank info, or payments via email or text.</p></div>
 </div>
 
 <!-- FOOTER -->
 <div class="m-footer">
-<div class="m-footer-phone"><a href="tel:3038381200">(303) 838-1200</a><p>CARE Center · Mon–Fri 8:30am–5:30pm MT</p></div>
+<div class="m-footer-phone"><a data-cms-phone data-cms-phone-text>(303) 838-1200</a><p data-cms="footer.phone_caption">CARE Center · Mon–Fri 8:30am–5:30pm MT</p></div>
 <div class="m-footer-links"><a href="#">About</a><a href="#">Our Work</a><a href="#">Impact</a><a href="#">Careers</a><a href="#">News</a><a href="/#donateSection" target="_top">Donate</a></div>
-<div class="m-footer-brand"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><p>© 2026 Community Economic Defense Project</p></div>
+<div class="m-footer-brand"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><p data-cms="footer.copyright">© 2026 Community Economic Defense Project</p></div>
 </div>
 
 <!-- FIXED BOTTOM CALL BAR -->
 <div class="m-bottom-call">
-<a href="tel:3038381200" class="call-primary">Call Now</a>
-<a href="#" class="call-secondary">Chat</a>
+<a data-cms-phone class="call-primary" data-cms="bottom_call.call_label">Call Now</a>
+<a href="#" class="call-secondary" data-cms="bottom_call.chat_label" data-cms-href="chat.href">Chat</a>
 </div>
 
 <script>
@@ -261,5 +265,6 @@ document.querySelectorAll('.m-card').forEach(function(c){c.classList.remove('ope
 if(!wasOpen)card.classList.add('open');
 }
 </script>
+<script src="/cedp-page-content.js"></script>
 </body>
 </html>
