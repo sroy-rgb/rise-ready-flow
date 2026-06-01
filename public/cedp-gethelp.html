@@ -142,10 +142,10 @@ footer{padding:32px 24px 20px}
 }
 </style>
 <link rel="stylesheet" href="/cedp-global.css"></head>
-<body>
+<body data-cms-page="get-help">
 
 <!-- TOP BAR -->
-<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div><div class="lng"><span class="act">English</span><span>Espa&ntilde;ol</span></div></div></div>
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; <span data-cms="topbar.need_help">Need help now?</span></span> <a data-cms-phone data-cms-phone-text>(303) 838-1200</a></div><div><div class="lng"><span class="act" data-lang-btn="en">English</span><span data-lang-btn="es">Espa&ntilde;ol</span></div></div></div>
 
 <!-- NAV -->
 <nav>
@@ -163,112 +163,110 @@ footer{padding:32px 24px 20px}
 
 <!-- FRAUD BANNER -->
 <div class="fraud" id="fraudBanner">
-<div class="fraud-txt"><strong><i data-lucide="alert-triangle"></i>Important:</strong> CEDP does not charge fees for assistance. All official communications come from @cedproject.org or @cedlaw.org. We do not use WhatsApp or personal email.</div>
+<div class="fraud-txt"><strong><i data-lucide="alert-triangle"></i><span data-cms="fraud.label">Important:</span></strong> <span data-cms="fraud.body">CEDP does not charge fees for assistance. All official communications come from @cedproject.org or @cedlaw.org. We do not use WhatsApp or personal email.</span></div>
 <button class="fraud-close" onclick="document.getElementById('fraudBanner').style.display='none'">×</button>
 </div>
 
 <!-- CRISIS HERO -->
 <div class="crisis-hero">
 <div class="crisis-hero-left">
-<div class="crisis-hero-label">Get Help Now</div>
-<h1>You don't have to<br/>face this alone</h1>
-<p>Free legal aid, financial assistance, and resource navigation for eviction, foreclosure, towing, debt, and economic crisis.</p>
+<div class="crisis-hero-label" data-cms="hero.label">Get Help Now</div>
+<h1 data-cms="hero.title">You don't have to face this alone</h1>
+<p data-cms="hero.subtitle">Free legal aid, financial assistance, and resource navigation for eviction, foreclosure, towing, debt, and economic crisis.</p>
 </div>
 <div class="crisis-hero-right">
-<a href="tel:3038381200" class="crisis-phone">(303) 838-1200</a>
-<div class="crisis-hours"><strong>CARE Center</strong><br/>Mon–Fri, 8:30 AM – 5:30 PM MT</div>
-<a href="#" class="crisis-after">After hours? Submit intake online →</a>
+<a data-cms-phone data-cms-phone-text class="crisis-phone">(303) 838-1200</a>
+<div class="crisis-hours"><strong data-cms="hero.hours_label">CARE Center</strong><br/><span data-cms="hero.hours_text">Mon–Fri, 8:30 AM – 5:30 PM MT</span></div>
+<a class="crisis-after" data-cms="hero.after_hours_label" data-cms-href="hero.after_hours_href">After hours? Submit intake online →</a>
 </div>
 </div>
 
 <!-- BILINGUAL STRIP -->
-<div class="bi-strip"><i data-lucide="globe" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"></i>¿Necesita ayuda en español? <a href="#">Cambie a Español</a> — Todos nuestros servicios están disponibles en español.</div>
+<div class="bi-strip"><i data-lucide="globe" style="width:14px;height:14px;vertical-align:middle;margin-right:4px"></i><span id="biStripText">¿Necesita ayuda en español? <a href="#" data-lang-btn="es">Cambie a Español</a> — Todos nuestros servicios están disponibles en español.</span></div>
 
 <!-- TRIAGE -->
 <section class="triage">
-<div class="triage-label">What are you facing?</div>
-<h2>Tell us what's happening</h2>
-<p class="triage-sub">Select your situation below. We'll show you exactly how we can help and the fastest way to reach us.</p>
+<div class="triage-label" data-cms="triage.label">What are you facing?</div>
+<h2 data-cms="triage.title">Tell us what's happening</h2>
+<p class="triage-sub" data-cms="triage.subtitle">Select your situation below. We'll show you exactly how we can help and the fastest way to reach us.</p>
 
 <div class="triage-grid">
 
 <div class="triage-card" id="eviction" onclick="toggleTriage(this)">
 <div class="triage-head">
-<h3>I'm facing eviction or at risk of being evicted</h3>
+<h3 data-cms="cards.0.title">I'm facing eviction or at risk of being evicted</h3>
 <div class="triage-plus">+</div>
 </div>
 <div class="triage-body"><div class="triage-inner">
-<p>If you've received an eviction notice or are behind on rent, call us immediately. Our housing lawyers provide free legal representation and our team can connect you with emergency rental assistance.</p>
-<p class="triage-phone-inline">Call now: (303) 838-1200</p>
-<p>Monday–Friday, 8:30 AM – 5:30 PM MT. After hours, submit an intake form online.</p>
-<div><a href="tel:3038381200" class="triage-cta">&#9742; Call CARE Center</a><a href="#" class="triage-cta-alt">Online intake form</a></div>
+<p data-cms="cards.0.body">If you've received an eviction notice or are behind on rent, call us immediately. Our housing lawyers provide free legal representation and our team can connect you with emergency rental assistance.</p>
+<div><a class="triage-cta" data-cms-phone data-cms="cards.0.cta_primary_label" data-cms-hide-if-empty>&#9742; Call CARE Center</a><a class="triage-cta-alt" data-cms="cards.0.cta_alt_label" data-cms-href="cards.0.cta_alt_href" data-cms-hide-if-empty>Online intake form</a></div>
 </div></div>
 </div>
 
 <div class="triage-card" id="foreclosure" onclick="toggleTriage(this)">
 <div class="triage-head">
-<h3>I'm facing foreclosure or at risk of losing my home</h3>
+<h3 data-cms="cards.1.title">I'm facing foreclosure or at risk of losing my home</h3>
 <div class="triage-plus">+</div>
 </div>
 <div class="triage-body"><div class="triage-inner">
-<p>We provide financial assistance for households at risk of or in the midst of a foreclosure. Our team can help you understand your options and connect you with legal support.</p>
-<div><a href="#" class="triage-cta">I need help with a foreclosure</a></div>
+<p data-cms="cards.1.body">We provide financial assistance for households at risk of or in the midst of a foreclosure. Our team can help you understand your options and connect you with legal support.</p>
+<div><a class="triage-cta" data-cms="cards.1.cta_primary_label" data-cms-href="cards.1.cta_primary_href" data-cms-hide-if-empty>I need help with a foreclosure</a><a class="triage-cta-alt" data-cms="cards.1.cta_alt_label" data-cms-href="cards.1.cta_alt_href" data-cms-hide-if-empty></a></div>
 </div></div>
 </div>
 
 <div class="triage-card" id="towing" onclick="toggleTriage(this)">
 <div class="triage-head">
-<h3>My car was towed or I'm dealing with a towing issue</h3>
+<h3 data-cms="cards.2.title">My car was towed or I'm dealing with a towing issue</h3>
 <div class="triage-plus">+</div>
 </div>
 <div class="triage-body"><div class="triage-inner">
-<p>Predatory towing can push families into eviction. CEDP helped pass Colorado's Towing Bill of Rights and can help you recover your vehicle, challenge unfair towing charges, and know your rights.</p>
-<div><a href="tel:3038381200" class="triage-cta">&#9742; Call for towing help</a></div>
+<p data-cms="cards.2.body">Predatory towing can push families into eviction. CEDP helped pass Colorado's Towing Bill of Rights and can help you recover your vehicle, challenge unfair towing charges, and know your rights.</p>
+<div><a class="triage-cta" data-cms-phone data-cms="cards.2.cta_primary_label" data-cms-hide-if-empty>&#9742; Call for towing help</a><a class="triage-cta-alt" data-cms="cards.2.cta_alt_label" data-cms-href="cards.2.cta_alt_href" data-cms-hide-if-empty></a></div>
 </div></div>
 </div>
 
 <div class="triage-card" onclick="toggleTriage(this)">
 <div class="triage-head">
-<h3>I need help with utility bills</h3>
+<h3 data-cms="cards.3.title">I need help with utility bills</h3>
 <div class="triage-plus">+</div>
 </div>
 <div class="triage-body"><div class="triage-inner">
-<p>We partner with Energy Outreach Colorado to help eligible households with utility payments — electricity, natural gas, propane, oil, kerosene, coal, firewood, and pellets. Currently processing applications for Xcel Energy, Atmos Energy, Colorado Natural Gas, and Black Hills Energy.</p>
-<div><a href="#" class="triage-cta">I need help paying my utility bills</a></div>
+<p data-cms="cards.3.body">We partner with Energy Outreach Colorado to help eligible households with utility payments — electricity, natural gas, propane, oil, kerosene, coal, firewood, and pellets. Currently processing applications for Xcel Energy, Atmos Energy, Colorado Natural Gas, and Black Hills Energy.</p>
+<div><a class="triage-cta" data-cms="cards.3.cta_primary_label" data-cms-href="cards.3.cta_primary_href" data-cms-hide-if-empty>I need help paying my utility bills</a><a class="triage-cta-alt" data-cms="cards.3.cta_alt_label" data-cms-href="cards.3.cta_alt_href" data-cms-hide-if-empty></a></div>
 </div></div>
 </div>
 
 <div class="triage-card" id="debt" onclick="toggleTriage(this)">
 <div class="triage-head">
-<h3>I'm dealing with debt collection or financial hardship</h3>
+<h3 data-cms="cards.4.title">I'm dealing with debt collection or financial hardship</h3>
 <div class="triage-plus">+</div>
 </div>
 <div class="triage-body"><div class="triage-inner">
-<p>Our debt defense team can help you understand your rights, challenge unfair collection practices, and find a path to financial stability. Free legal guidance and financial navigation.</p>
-<div><a href="tel:3038381200" class="triage-cta">&#9742; Call for debt help</a></div>
+<p data-cms="cards.4.body">Our debt defense team can help you understand your rights, challenge unfair collection practices, and find a path to financial stability. Free legal guidance and financial navigation.</p>
+<div><a class="triage-cta" data-cms-phone data-cms="cards.4.cta_primary_label" data-cms-hide-if-empty>&#9742; Call for debt help</a><a class="triage-cta-alt" data-cms="cards.4.cta_alt_label" data-cms-href="cards.4.cta_alt_href" data-cms-hide-if-empty></a></div>
 </div></div>
 </div>
 
 <div class="triage-card" onclick="toggleTriage(this)">
 <div class="triage-head">
-<h3>I'm a homeowner or mobile homeowner seeking legal info</h3>
+<h3 data-cms="cards.5.title">I'm a homeowner or mobile homeowner seeking legal info</h3>
 <div class="triage-plus">+</div>
 </div>
 <div class="triage-body"><div class="triage-inner">
-<p>We offer free virtual legal information sessions covering property rights, mobile home evictions, the foreclosure process, and HOA issues. Learn about your rights as a homeowner.</p>
-<div><a href="#" class="triage-cta">Learn about my rights</a></div>
+<p data-cms="cards.5.body">We offer free virtual legal information sessions covering property rights, mobile home evictions, the foreclosure process, and HOA issues. Learn about your rights as a homeowner.</p>
+<div><a class="triage-cta" data-cms="cards.5.cta_primary_label" data-cms-href="cards.5.cta_primary_href" data-cms-hide-if-empty>Learn about my rights</a><a class="triage-cta-alt" data-cms="cards.5.cta_alt_label" data-cms-href="cards.5.cta_alt_href" data-cms-hide-if-empty></a></div>
 </div></div>
 </div>
 
 <!-- CHAT CARD -->
-<div class="chat-card" onclick="window.open('#','_blank')">
+<div class="chat-card" onclick="var h=window.__cedpContent&&window.__cedpContent.chat&&window.__cedpContent.chat.href;if(h)window.open(h,'_blank')">
 <div class="chat-card-left">
-<h3>Chat with us now</h3>
-<p>Connect with the CARE Center team instantly. Available during business hours.</p>
+<h3 data-cms="chat.title">Chat with us now</h3>
+<p data-cms="chat.subtitle">Connect with the CARE Center team instantly. Available during business hours.</p>
 </div>
 <div class="chat-card-right">
 <div class="chat-dot"></div>
-<div class="chat-label">Live now</div>
+<div class="chat-label" data-cms="chat.status">Live now</div>
 </div>
 </div>
 
@@ -279,27 +277,27 @@ footer{padding:32px 24px 20px}
 <section class="after-hours">
 <div class="after-grid">
 <div class="after-card during">
-<h3><i data-lucide="sun"></i>During business hours</h3>
-<p>Call the CARE Center directly. A navigator will assess your situation and connect you with the right support — legal, financial, or both.</p>
-<span class="after-phone">(303) 838-1200</span>
-<p style="margin-top:8px;font-size:12px;color:#6B7A8A">Mon–Fri, 8:30 AM – 5:30 PM MT</p>
+<h3><i data-lucide="sun"></i><span data-cms="hours.during_title">During business hours</span></h3>
+<p data-cms="hours.during_body">Call the CARE Center directly. A navigator will assess your situation and connect you with the right support — legal, financial, or both.</p>
+<span class="after-phone" data-cms-phone-text>(303) 838-1200</span>
+<p style="margin-top:8px;font-size:12px;color:#6B7A8A" data-cms="hours.during_hours">Mon–Fri, 8:30 AM – 5:30 PM MT</p>
 </div>
 <div class="after-card after">
-<h3><i data-lucide="moon"></i>After hours or weekends</h3>
-<p>Submit an online intake form and a team member will contact you on the next business day. For emergencies, dial 911.</p>
-<a href="#" class="after-link">Submit online intake form →</a>
+<h3><i data-lucide="moon"></i><span data-cms="hours.after_title">After hours or weekends</span></h3>
+<p data-cms="hours.after_body">Submit an online intake form and a team member will contact you on the next business day. For emergencies, dial 911.</p>
+<a class="after-link" data-cms="hours.after_cta" data-cms-href="hours.after_cta_href">Submit online intake form →</a>
 </div>
 </div>
 </section>
 
 <!-- SAFETY INFO -->
 <section class="safety">
-<div class="safety-label">Protecting you</div>
-<h2>CEDP will never...</h2>
+<div class="safety-label" data-cms="safety.label">Protecting you</div>
+<h2 data-cms="safety.title">CEDP will never...</h2>
 <div class="safety-grid">
-<div class="safety-item"><h4>Charge you fees</h4><p>All CEDP services — legal representation, financial assistance, navigation — are completely free. We will never ask for payment.</p></div>
-<div class="safety-item"><h4>Contact you via WhatsApp</h4><p>Official communications come from @cedproject.org or @cedlaw.org email addresses only. Never personal email or messaging apps.</p></div>
-<div class="safety-item"><h4>Ask for sensitive info by email</h4><p>We will never request Social Security numbers, bank details, or payment information via email or text message.</p></div>
+<div class="safety-item"><h4 data-cms="safety.items.0.title">Charge you fees</h4><p data-cms="safety.items.0.body">All CEDP services — legal representation, financial assistance, navigation — are completely free. We will never ask for payment.</p></div>
+<div class="safety-item"><h4 data-cms="safety.items.1.title">Contact you via WhatsApp</h4><p data-cms="safety.items.1.body">Official communications come from @cedproject.org or @cedlaw.org email addresses only. Never personal email or messaging apps.</p></div>
+<div class="safety-item"><h4 data-cms="safety.items.2.title">Ask for sensitive info by email</h4><p data-cms="safety.items.2.body">We will never request Social Security numbers, bank details, or payment information via email or text message.</p></div>
 </div>
 </section>
 
@@ -323,5 +321,6 @@ document.querySelectorAll('.triage-card').forEach(function(c){c.classList.remove
 if(!wasOpen){card.classList.add('open');card.querySelector('.triage-plus').textContent='+';}
 }
 </script>
-<script src="/cedp-global.js"></script></body>
+<script src="/cedp-global.js"></script>
+<script src="/cedp-page-content.js"></script></body>
 </html>
