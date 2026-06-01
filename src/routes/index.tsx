@@ -56,7 +56,7 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
     <>
       <style>{`
         .access-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;gap:24px;background:rgba(27,40,56,.55);backdrop-filter:blur(6px);z-index:9998;pointer-events:auto}
-        .access-card{display:flex;flex-direction:column;align-items:center;gap:10px;width:260px;padding:22px 24px;border-radius:14px;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:16px;text-decoration:none;text-align:center;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+        .access-card{display:flex;flex-direction:column;align-items:center;gap:8px;width:260px;padding:18px 24px;border-radius:14px;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:16px;text-decoration:none;text-align:center;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
         .access-card:hover{transform:translateY(-4px) scale(1.02);background:rgba(232,185,96,.12);box-shadow:0 8px 32px rgba(232,185,96,.45)}
         .access-card svg{flex-shrink:0}
         @media (max-width:640px){
