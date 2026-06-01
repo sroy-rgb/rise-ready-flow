@@ -50,7 +50,7 @@
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
         '</div></div>'+
       '</div>'+
-      '<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help">Get help</a>'+
+      '<a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help">Get help</a>'+
       '</div></nav>';
 
     // Inject unified nav on every page (including home) for consistency.
@@ -75,12 +75,12 @@
       dn.id = 'dotNav';
       dn.innerHTML =
         '<div class="dot-top" id="dotTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>'+
-        '<a href="/#whoSection" target="_top"><span class="dot-label">Who We Are</span><span class="dot"></span></a>'+
-        '<a href="/#hlpSection" target="_top"><span class="dot-label">How We Can Help</span><span class="dot"></span></a>'+
-        '<a href="/#modelSection" target="_top"><span class="dot-label">How We Work</span><span class="dot"></span></a>'+
-        '<a href="/#impactSection" target="_top"><span class="dot-label">Our Impact</span><span class="dot"></span></a>'+
-        '<a href="/#pathsSection" target="_top"><span class="dot-label">What You\'re Looking For</span><span class="dot"></span></a>'+
-        '<a href="/#donateSection" target="_top"><span class="dot-label">Donate</span><span class="dot"></span></a>';
+        '<a href="/#whoSection" target="_parent"><span class="dot-label">Who We Are</span><span class="dot"></span></a>'+
+        '<a href="/#hlpSection" target="_parent"><span class="dot-label">How We Can Help</span><span class="dot"></span></a>'+
+        '<a href="/#modelSection" target="_parent"><span class="dot-label">How We Work</span><span class="dot"></span></a>'+
+        '<a href="/#impactSection" target="_parent"><span class="dot-label">Our Impact</span><span class="dot"></span></a>'+
+        '<a href="/#pathsSection" target="_parent"><span class="dot-label">What You\'re Looking For</span><span class="dot"></span></a>'+
+        '<a href="/#donateSection" target="_parent"><span class="dot-label">Donate</span><span class="dot"></span></a>';
       document.body.appendChild(dn);
       var top = dn.querySelector('#dotTop');
       top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
@@ -97,20 +97,20 @@
     var isMobileHelp = /cedp-gethelp-mobile\.html$/.test(location.pathname);
     if (!isHomeF && !isMobileHelp) {
       var FOOTER = '<footer><div class="ft-warm"><span class="ft-warm-txt">You don\'t have to face this <em>alone.</em></span></div>'+
-        '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_top">Get help</a></div>'+
+        '<div class="ft-actions"><a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help" target="_parent">Get help</a></div>'+
         '<div class="ft-g">'+
-          '<div><a href="/" target="_top" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
+          '<div><a href="/" target="_parent" class="ft-b" style="text-decoration:none;color:inherit;display:block">Community Economic<br/><em>Defense Project</em></a>'+
             '<div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div>'+
             '<div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/><a href="mailto:info@cedproject.org" style="color:inherit">info@cedproject.org</a><br/><a href="tel:3038381200" style="color:inherit">(303) 838-1200</a></div>'+
           '</div>'+
           '<div><h4>Get help</h4>'+
-          '<a href="/get-help#eviction" target="_top">Eviction</a><a href="/get-help#foreclosure" target="_top">Foreclosure</a><a href="/get-help#towing" target="_top">Towing</a><a href="/get-help#debt" target="_top">Debt</a><a href="/our-work#programsGrid" target="_top">Disaster relief</a>'+
+          '<a href="/get-help#eviction" target="_parent">Eviction</a><a href="/get-help#foreclosure" target="_parent">Foreclosure</a><a href="/get-help#towing" target="_parent">Towing</a><a href="/get-help#debt" target="_parent">Debt</a><a href="/our-work#programsGrid" target="_parent">Disaster relief</a>'+
           '</div>'+
           '<div><h4>About</h4>'+
-          '<a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/about#leadership" target="_top">Leadership</a><a href="/careers" target="_top">Careers</a><a href="/careers#positions" target="_top">Join Us</a><a href="/ced-law" target="_top">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
+          '<a href="/about" target="_parent">Our purpose</a><a href="/team" target="_parent">Our team</a><a href="/about#leadership" target="_parent">Leadership</a><a href="/careers" target="_parent">Careers</a><a href="/careers#positions" target="_parent">Join Us</a><a href="/ced-law" target="_parent">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
           '</div>'+
           '<div><h4>Impact</h4>'+
-          '<a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/about#faq" target="_top">FAQ</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a>'+
+          '<a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/about#faq" target="_parent">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/news" target="_parent">Events</a>'+
           '</div>'+
         '</div>'+
         '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
