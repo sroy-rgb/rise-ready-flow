@@ -78,7 +78,7 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Icon size={40} color={gold} strokeWidth={1.5} />
+            <Icon size={32} color={gold} strokeWidth={1.5} />
             <span>{label}</span>
           </a>
         ))}
