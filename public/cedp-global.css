@@ -1,14 +1,139 @@
 /* Hide mobile-only nav elements on desktop (overlay/burger are injected on every page) */
 .mob-overlay,
-.mob-burger {
+.mob-burger,
+.mob-cta-inline {
   display: none !important;
 }
 @media (max-width: 1023px) {
+  nav {
+    height: 60px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px;
+  }
+  nav > div:first-child img {
+    height: 36px !important;
+    width: auto !important;
+  }
+  nav .nl {
+    display: none !important;
+  }
+  .mob-cta-inline {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .mob-cta-inline .mob-btn-d,
+  .mob-cta-inline .mob-btn-h {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 4px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .mob-cta-inline .mob-btn-d {
+    background: #1b2838 !important;
+    color: #fff !important;
+    border: 1px solid #1b2838 !important;
+  }
+  .mob-cta-inline .mob-btn-h {
+    background: #c53030 !important;
+    color: #fff !important;
+    border: 1px solid #c53030 !important;
+  }
   .mob-burger {
     display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    padding: 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  .mob-burger span {
+    display: block;
+    height: 2px;
+    background: #1b2838;
+    width: 100%;
+    border-radius: 2px;
+  }
+  .mob-overlay {
+    position: fixed;
+    inset: 0;
+    background: #1b2838;
+    z-index: 9999;
+    display: none;
+    flex-direction: column;
+    padding: 24px 24px 32px;
   }
   .mob-overlay.open {
     display: flex !important;
+  }
+  .mob-close {
+    align-self: flex-end;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .mob-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+    flex: 1;
+  }
+  .mob-links a {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Libre Franklin', sans-serif;
+  }
+  .mob-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .mob-cta a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .mob-cta .mob-donate {
+    background: #fff;
+    color: #1b2838;
+  }
+  .mob-cta .mob-get {
+    background: #c53030;
+    color: #fff;
   }
 }
 /* ============================================================
