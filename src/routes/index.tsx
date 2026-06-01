@@ -43,7 +43,7 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
     },
     {
       label: "Access PDF Proposal",
-      href: "/PDF_Proposal.pdf",
+      href: "/pdf-proposal.html",
       Icon: FileText,
     },
     {
