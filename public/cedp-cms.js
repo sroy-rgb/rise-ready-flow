@@ -76,7 +76,7 @@
     ov.id="cmsBillLb";
     ov.className="lb-overlay";
     ov.onclick=function(e){if(e.target===ov) closeBillLightbox();};
-    ov.innerHTML='<div class="lb-box"><div class="lb-close"><button type="button" aria-label="Close">×</button></div><div class="lb-content" id="cmsBillLbBody"></div></div>';
+    ov.innerHTML='<div class="lb-card"><div class="lb-close"><button type="button" aria-label="Close">×</button></div><div id="cmsBillLbBody"></div></div>';
     document.body.appendChild(ov);
     ov.querySelector(".lb-close button").onclick=closeBillLightbox;
     document.addEventListener("keydown",function(e){if(e.key==="Escape") closeBillLightbox();});
@@ -85,19 +85,21 @@
     var b=(window.__bills||{})[key]; if(!b) return;
     ensureBillLightbox();
     var body=document.getElementById("cmsBillLbBody");
-    var img=b.photo_url?'<img src="'+esc(b.photo_url)+'" alt="" style="width:100%;display:block"/>':'';
+    var img=b.photo_url?'<img class="lb-hero-img" src="'+esc(b.photo_url)+'" alt=""/>':'';
     var fs=b.factsheet_url?'<a class="bill-link" href="'+esc(b.factsheet_url)+'" target="_blank">Fact Sheet</a>':'';
     var bt=b.bill_url?'<a class="bill-link" href="'+esc(b.bill_url)+'" target="_blank">Bill Text</a>':'';
-    body.innerHTML=img+'<div style="padding:40px 48px">'+
-      '<div style="font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;color:#E8B960;font-size:18px;margin-bottom:10px">'+esc(b.bill_number||'')+'</div>'+
-      '<h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:34px;color:#1B2838;margin-bottom:18px;letter-spacing:.5px">'+esc(b.title||'')+'</h2>'+
-      '<div style="color:#4A6274;font-size:15px;line-height:1.7;white-space:pre-wrap;margin-bottom:24px">'+esc(b.full_description||b.short_description||'')+'</div>'+
-      '<div class="bill-links" style="display:flex;gap:12px;flex-wrap:wrap">'+fs+bt+'</div></div>';
-    document.getElementById("cmsBillLb").classList.add("active");
+    var desc=esc(b.full_description||b.short_description||'').replace(/\n/g,'<br>');
+    body.innerHTML=img+'<div class="lb-content">'+
+      '<div class="lb-bill-num">'+esc(b.bill_number||'')+'</div>'+
+      '<h2>'+esc(b.title||'')+'</h2>'+
+      '<div class="lb-meta">'+esc(b.year||'')+'</div>'+
+      '<p>'+desc+'</p>'+
+      '<div class="lb-links">'+fs+bt+'</div></div>';
+    document.getElementById("cmsBillLb").classList.add("open");
     document.body.style.overflow="hidden";
   };
   window.closeBillLightbox=function(){
-    var ov=document.getElementById("cmsBillLb"); if(ov) ov.classList.remove("active");
+    var ov=document.getElementById("cmsBillLb"); if(ov) ov.classList.remove("open");
     document.body.style.overflow="";
   };
 
