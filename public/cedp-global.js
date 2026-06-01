@@ -106,10 +106,10 @@
             '<a href="/get-help" target="_top">Call CARE Center</a><a href="/our-work#programsGrid" target="_top">Eviction defense</a><a href="/our-work#programsGrid" target="_top">Foreclosure</a><a href="/our-work#programsGrid" target="_top">Unjust towing</a><a href="/our-work#programsGrid" target="_top">Debt collection</a><a href="/our-work#programsGrid" target="_top">Disaster relief</a>'+
           '</div>'+
           '<div><h4>About</h4>'+
-            '<a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/careers" target="_top">Careers</a><a href="/ced-law" target="_top">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
+          '<a href="/about" target="_top">Our purpose</a><a href="/team" target="_top">Our team</a><a href="/about#leadership" target="_top">Leadership</a><a href="/careers" target="_top">Careers</a><a href="/careers#positions" target="_top">Join Us</a><a href="/ced-law" target="_top">CED Law</a><a href="mailto:info@cedproject.org">Contact</a>'+
           '</div>'+
           '<div><h4>Impact</h4>'+
-            '<a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a>'+
+          '<a href="/legislative-wins" target="_top">Legislative wins</a><a href="/research" target="_top">Research</a><a href="/news" target="_top">News &amp; press</a><a href="/about#faq" target="_top">FAQ</a><a href="/#donateSection" target="_top">Donate</a><a href="/news" target="_top">Events</a>'+
           '</div>'+
         '</div>'+
         '<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div>'+
