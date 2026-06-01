@@ -42,19 +42,23 @@
     var wins=document.getElementById("wins"); if(!wins) return;
     fetchTable("legislative_wins","sort_order.asc").then(function(rows){
       if(!Array.isArray(rows)||!rows.length) return;
+      window.__bills = {};
       var years={}; rows.forEach(function(b){(years[b.year]=years[b.year]||[]).push(b);});
       var yrs=Object.keys(years).sort(function(a,b){return Number(b)-Number(a);});
       var tabs='<div class="yr-tabs">'+yrs.map(function(y,i){return '<button class="yr-tab'+(i===0?" active":"")+'" onclick="setYear(\''+y+'\',this)">'+y+'</button>';}).join("")+'</div>';
       var panels=yrs.map(function(y,i){
         return '<div class="yr-panel'+(i===0?" active":"")+'" id="yr'+y+'">'+years[y].map(function(b){
+          var key = (b.bill_number||('bill'+b.id)).replace(/[^a-z0-9]/gi,'').toLowerCase();
+          window.__bills[key] = b;
           var photos = b.photo_url ? '<div class="bill-photos"><img src="'+esc(b.photo_url)+'" alt=""/></div>' : '';
           var fs = b.factsheet_url ? '<a class="bill-link" href="'+esc(b.factsheet_url)+'" target="_blank">Fact Sheet</a>' : '';
           var bt = b.bill_url ? '<a class="bill-link" href="'+esc(b.bill_url)+'" target="_blank">Bill Text</a>' : '';
+          var vd = '<button class="bill-detail-btn" onclick="event.stopPropagation();openBillLightbox(\''+key+'\')">View Full Details →</button>';
           return '<div class="bill-row" onclick="toggleBill(this)">'+
             '<div class="bill-head"><span class="bill-num">'+esc(b.bill_number)+'</span><h3>'+esc(b.title)+'</h3>'+
             '<a class="bill-arrow" href="'+esc(b.bill_url||"#")+'" target="_blank" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>'+
             '<div class="bill-body"><div class="bill-inner"><p>'+esc(b.full_description||b.short_description)+'</p>'+photos+
-            '<div class="bill-links">'+fs+bt+'</div></div></div></div>';
+            '<div class="bill-links">'+fs+bt+vd+'</div></div></div></div>';
         }).join("")+'</div>';
       }).join("");
       // Keep heading/intro untouched: replace from yr-tabs onward
@@ -62,8 +66,40 @@
       if(head) head.remove();
       wins.querySelectorAll(".yr-panel").forEach(function(n){n.remove();});
       wins.insertAdjacentHTML("beforeend", tabs+panels);
+      ensureBillLightbox();
     }).catch(function(e){console.warn("CMS legislation load failed",e);});
   }
+
+  function ensureBillLightbox(){
+    if(document.getElementById("cmsBillLb")) return;
+    var ov=document.createElement("div");
+    ov.id="cmsBillLb";
+    ov.className="lb-overlay";
+    ov.onclick=function(e){if(e.target===ov) closeBillLightbox();};
+    ov.innerHTML='<div class="lb-box"><div class="lb-close"><button type="button" aria-label="Close">×</button></div><div class="lb-content" id="cmsBillLbBody"></div></div>';
+    document.body.appendChild(ov);
+    ov.querySelector(".lb-close button").onclick=closeBillLightbox;
+    document.addEventListener("keydown",function(e){if(e.key==="Escape") closeBillLightbox();});
+  }
+  window.openBillLightbox=function(key){
+    var b=(window.__bills||{})[key]; if(!b) return;
+    ensureBillLightbox();
+    var body=document.getElementById("cmsBillLbBody");
+    var img=b.photo_url?'<img src="'+esc(b.photo_url)+'" alt="" style="width:100%;display:block"/>':'';
+    var fs=b.factsheet_url?'<a class="bill-link" href="'+esc(b.factsheet_url)+'" target="_blank">Fact Sheet</a>':'';
+    var bt=b.bill_url?'<a class="bill-link" href="'+esc(b.bill_url)+'" target="_blank">Bill Text</a>':'';
+    body.innerHTML=img+'<div style="padding:40px 48px">'+
+      '<div style="font-family:\'Bebas Neue\',sans-serif;letter-spacing:2px;color:#E8B960;font-size:18px;margin-bottom:10px">'+esc(b.bill_number||'')+'</div>'+
+      '<h2 style="font-family:\'Bebas Neue\',sans-serif;font-size:34px;color:#1B2838;margin-bottom:18px;letter-spacing:.5px">'+esc(b.title||'')+'</h2>'+
+      '<div style="color:#4A6274;font-size:15px;line-height:1.7;white-space:pre-wrap;margin-bottom:24px">'+esc(b.full_description||b.short_description||'')+'</div>'+
+      '<div class="bill-links" style="display:flex;gap:12px;flex-wrap:wrap">'+fs+bt+'</div></div>';
+    document.getElementById("cmsBillLb").classList.add("active");
+    document.body.style.overflow="hidden";
+  };
+  window.closeBillLightbox=function(){
+    var ov=document.getElementById("cmsBillLb"); if(ov) ov.classList.remove("active");
+    document.body.style.overflow="";
+  };
 
   function go(){ renderTeam(); renderJobs(); renderLegislation(); }
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",go); else go();
