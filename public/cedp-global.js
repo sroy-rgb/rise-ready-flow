@@ -138,10 +138,20 @@
         ]
       };
       var key = p;
-      // Match base path (strip sub-paths and html names)
+      // Pages are served as static .html inside an iframe, so location.pathname
+      // can be /cedp-about.html instead of /about. Normalize both shapes.
       if (!DOT_MAP[key]) {
-        var base = '/' + (p.split('/')[1] || '');
-        if (DOT_MAP[base]) key = base;
+        var m = location.pathname.match(/cedp-([a-z0-9-]+)\.html$/i);
+        if (m) {
+          var slug = m[1];
+          var aliases = { 'gethelp':'get-help' };
+          var logical = '/' + (aliases[slug] || slug);
+          if (DOT_MAP[logical]) key = logical;
+        }
+        if (!DOT_MAP[key]) {
+          var base = '/' + (p.split('/')[1] || '');
+          if (DOT_MAP[base]) key = base;
+        }
       }
       var items = DOT_MAP[key];
       if (items && items.length) {
