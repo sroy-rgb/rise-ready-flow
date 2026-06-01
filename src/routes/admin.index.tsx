@@ -7,6 +7,7 @@ function Dashboard() {
     { to: "/admin/team", label: "Team Members", desc: "Add, edit, or remove team members shown on /team and CED Law." },
     { to: "/admin/jobs", label: "Job Listings", desc: "Manage open positions shown on /careers." },
     { to: "/admin/legislation", label: "Legislative Wins", desc: "Manage bills shown on /legislative-wins." },
+    { to: "/admin/get-help", label: "Get Help Page", desc: "Edit every text element on /get-help (desktop + mobile) in English and Spanish." },
   ];
   return (
     <div>
