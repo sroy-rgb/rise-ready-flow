@@ -102,14 +102,17 @@
       if(typeof val === 'string' && val) el.setAttribute('href', val);
     });
 
-    // tel: links built from contact.phone_tel
+    // tel: links built from contact.phone_tel (with fallback to element text)
     var phoneTel = get(content, 'contact.phone_tel');
     var phoneDisplay = get(content, 'contact.phone_display');
-    if(phoneTel){
-      document.querySelectorAll('[data-cms-phone]').forEach(function(el){
-        el.setAttribute('href', 'tel:' + phoneTel);
-      });
-    }
+    document.querySelectorAll('[data-cms-phone]').forEach(function(el){
+      var tel = phoneTel;
+      if(!tel){
+        var txt = (el.textContent || '').replace(/\D/g, '');
+        if(txt) tel = txt;
+      }
+      if(tel) el.setAttribute('href', 'tel:' + tel);
+    });
     if(phoneDisplay){
       document.querySelectorAll('[data-cms-phone-text]').forEach(function(el){
         el.textContent = phoneDisplay;
