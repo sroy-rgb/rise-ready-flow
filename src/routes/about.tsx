@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -14,9 +15,16 @@ export const Route = createFileRoute("/about")({
 });
 
 function About() {
+  const [hash, setHash] = useState("");
+  useEffect(() => {
+    setHash(window.location.hash || "");
+    const onHash = () => setHash(window.location.hash || "");
+    window.addEventListener("hashchange", onHash);
+    return () => window.removeEventListener("hashchange", onHash);
+  }, []);
   return (
     <iframe
-      src="/cedp-about.html"
+      src={`/cedp-about.html${hash}`}
       title="About CEDP"
       style={{ border: 0, width: "100vw", height: "100vh", display: "block" }}
     />
