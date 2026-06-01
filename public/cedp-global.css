@@ -115,46 +115,6 @@ nav img{height:52px}
 .btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px;display:inline-block}
 
 /* ============================================================
-   NAV V2 — Our Work mega-menu (two-line) + compact dropdowns
-   ============================================================ */
-nav .ni > a[aria-haspopup]{cursor:pointer}
-/* hover bridge to prevent flicker */
-nav .ni .mega-v2::before,nav .ni .dd::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
-
-/* Compact dropdown (About, Impact) */
-nav .ni .dd{position:absolute;top:100%;left:16px;min-width:240px;background:#1B2838;padding:20px;border-radius:4px;box-shadow:0 12px 40px rgba(0,0,0,.25);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;z-index:200;display:flex;flex-direction:column;gap:2px}
-nav .ni:hover .dd,nav .ni.open .dd{opacity:1;visibility:visible;transform:translateY(0)}
-nav .ni .dd a{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:#EDF1F4;text-decoration:none;padding:8px 0 8px 0;border-left:3px solid transparent;transition:color .2s,border-color .2s,padding-left .2s}
-nav .ni .dd a:hover{color:#E8B960;border-left-color:#E8B960;padding-left:10px}
-
-/* Our Work mega-v2 (full-width) */
-nav .ni-ow{position:static}
-nav .mega-v2{position:absolute;left:50%;top:100%;width:100vw;background:#1B2838;opacity:0;visibility:hidden;transform:translateX(-50%) translateY(-10px);transition:opacity .25s ease,transform .25s ease,visibility .25s ease;z-index:200;box-shadow:0 16px 50px rgba(0,0,0,.25)}
-nav .ni-ow:hover .mega-v2,nav .ni-ow.open .mega-v2{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-.mv2-inner{max-width:1200px;margin:0 auto}
-.mv2-grid{display:grid;grid-template-columns:58% 42%;gap:32px;padding:40px 48px}
-.mv2-left{display:flex;flex-direction:column}
-.mv2-label{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
-.mv2-row{display:flex;flex-wrap:wrap}
-.mv2-row-1{gap:30px}
-.mv2-row-1 .ow-it{font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:#EDF1F4;text-decoration:none;border-left:3px solid transparent;padding:2px 0 2px 0;transition:color .2s,border-color .2s,padding-left .2s;cursor:pointer}
-.mv2-row-1 .ow-it:hover{color:#E8B960;border-left-color:#E8B960;padding-left:10px}
-.mv2-div{height:1px;background:rgba(232,185,96,.6);margin:22px 0}
-.mv2-row-2{gap:16px 22px}
-.mv2-row-2 .gh-it{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:rgba(255,255,255,.6);font-family:'Libre Franklin',sans-serif;font-size:12px;font-weight:400;transition:color .2s}
-.mv2-row-2 .gh-it svg{color:rgba(255,255,255,.6);transition:color .2s;flex-shrink:0}
-.mv2-row-2 .gh-it:hover,.mv2-row-2 .gh-it:hover svg{color:#E8B960}
-.mv2-photo{overflow:hidden;border-radius:4px}
-.mv2-photo img{width:100%;height:100%;object-fit:cover;display:block;min-height:280px}
-.mv2-stat{border-top:1px solid rgba(232,185,96,.3);padding:16px 48px;color:#E8B960;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;max-width:none;text-align:center}
-
-@media (max-width:900px){
-  .mv2-grid{grid-template-columns:1fr;padding:24px 20px}
-  .mv2-photo{display:none}
-  .mv2-stat{padding:14px 20px;font-size:13px}
-}
-
-/* ============================================================
    GLOBAL DOT NAV (sticky right-side) — injected on every non-home page
    ============================================================ */
 nav.dot-nav{position:fixed!important;right:24px!important;top:50%!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;z-index:9999;display:flex!important;flex-direction:column;align-items:flex-end;gap:14px;background:none!important;border:none!important;border-bottom:none!important;padding:0!important;margin:0!important;width:auto!important;height:auto!important;box-shadow:none!important;pointer-events:auto}

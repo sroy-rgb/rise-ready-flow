@@ -11,61 +11,45 @@
     }
     var impactAct = IMPACT_PATHS.indexOf(path)>=0 ? ' act' : '';
     var TB = '<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; <span data-i18n="topbar_help">Need help now?</span></span> <a href="tel:3038381200">(303) 838-1200</a></div><div class="lang-toggle" style="font-size:11px;color:rgba(255,255,255,.5)"><a href="#" data-lang="en" style="color:inherit;text-decoration:none">English</a> <span style="opacity:.5">|</span> <a href="#" data-lang="es" style="color:inherit;text-decoration:none">Espa&ntilde;ol</a></div></div>';
-    // Lucide icon SVGs (14px) — stroke currentColor
-    var ic = {
-      home:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
-      building:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg>',
-      car:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2l-1.5-5.5A2 2 0 0 0 17.6 10H6.4a2 2 0 0 0-1.9 1.5L3 17h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>',
-      card:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>',
-      shield:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
-      compass:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>',
-      phone:'<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>'
-    };
-    function ghItem(icon,label){return '<a href="/get-help" target="_top" class="gh-it">'+ic[icon]+'<span>'+label+'</span></a>';}
-    function progBtn(lb,label){return '<a href="/our-work?lb='+lb+'" target="_top" data-prog-lb="'+lb+'" class="ow-it">'+label+'</a>';}
-    var owActive = act('/our-work').trim();
     var NAV = '<nav><div><a href="/"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">'+
       '<div class="ni"><a href="/" class="'+act('/').trim()+'">Home</a></div>'+
-      '<div class="ni"><a href="/about" class="'+act('/about').trim()+'" aria-haspopup="true" aria-expanded="false">About</a>'+
-        '<div class="dd"><a href="/about">Our Purpose</a><a href="/team">Our Team</a><a href="/careers">Careers</a><a href="/ced-law">CED Law</a></div>'+
-      '</div>'+
-      '<div class="ni ni-ow"><a href="/our-work" class="'+owActive+'" aria-haspopup="true" aria-expanded="false">Our work</a>'+
-        '<div class="mega-v2"><div class="mv2-inner">'+
-          '<div class="mv2-grid">'+
-            '<div class="mv2-left">'+
-              '<div class="mv2-line">'+
-                '<div class="mv2-label">EXPLORE</div>'+
-                '<div class="mv2-row mv2-row-1">'+
-                  '<a href="/our-work#programs" class="ow-it">Our Programs</a>'+
-                  '<a href="/our-work#model" class="ow-it">How We Work</a>'+
-                  '<a href="/our-work#where" class="ow-it">Where We Work</a>'+
-                  progBtn('d7','Just Bus')+
-                  progBtn('d9','Pet Deposit Program')+
-                '</div>'+
-              '</div>'+
-              '<div class="mv2-div"></div>'+
-              '<div class="mv2-line">'+
-                '<div class="mv2-label">GET HELP</div>'+
-                '<div class="mv2-row mv2-row-2">'+
-                  ghItem('home','Eviction Defense')+
-                  ghItem('building','Foreclosure Prevention')+
-                  ghItem('car','Towing Recovery')+
-                  ghItem('card','Debt Defense')+
-                  ghItem('shield','Disaster Response')+
-                  ghItem('compass','Resource Navigation')+
-                  ghItem('phone','CARE Center')+
-                '</div>'+
-              '</div>'+
-            '</div>'+
-            '<div class="mv2-photo"><img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=640&h=520&fit=crop" alt="" loading="lazy"/></div>'+
+      '<div class="ni"><a href="/about" class="'+act('/about').trim()+'">About</a>'+
+        '<div class="mega mega-sm"><div class="mega-inner">'+
+          '<div class="mega-links"><div class="mega-label">About CEDP</div>'+
+            '<a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/ced-law">CED Law</a><a href="/careers">Careers</a>'+
           '</div>'+
-          '<div class="mv2-stat">68,000+ Coloradans served &middot; $280M+ distributed</div>'+
-        '</div>'+
+          '<div class="mega-img"><img src="https://images.pexels.com/photos/2098427/pexels-photo-2098427.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
+        '</div><div class="mega-stat">100+ professionals &middot; 4 offices across Colorado</div></div>'+
       '</div>'+
-      '<div class="ni"><a href="/legislative-wins" class="'+impactAct.trim()+'" aria-haspopup="true" aria-expanded="false">Impact</a>'+
-        '<div class="dd"><a href="/legislative-wins">Legislative Wins</a><a href="/research">Research</a><a href="/news">News &amp; Press</a></div>'+
+      '<div class="ni"><a href="/our-work" class="'+act('/our-work').trim()+'">Our work</a>'+
+        '<div class="mega"><div class="mega-inner">'+
+          '<div class="mega-2col">'+
+            '<div class="mega-links"><div class="mega-label">Services</div>'+
+              '<a href="/our-work">Eviction defense</a><a href="/our-work">Foreclosure</a><a href="/our-work">Unjust towing</a><a href="/our-work">Debt collection</a><a href="/our-work">Disaster relief</a><a href="/our-work">Resource navigation</a>'+
+            '</div>'+
+            '<div class="mega-links"><div class="mega-label">Programs</div>'+
+              '<a href="/our-work">Programs overview</a><a href="/our-work">CARE Center</a><a href="/our-work">Just Bus mobile aid</a><a href="/our-work">Statewide coverage</a>'+
+            '</div>'+
+          '</div>'+
+          '<div class="mega-img"><img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
+        '</div><div class="mega-stat">68,000+ Coloradans served &middot; $280M+ distributed</div></div>'+
       '</div>'+
-      '<div class="ni"><a href="/careers" class="'+act('/careers').trim()+'">Careers</a></div>'+
+      '<div class="ni"><a href="/legislative-wins" class="'+impactAct.trim()+'">Impact</a>'+
+        '<div class="mega mega-sm"><div class="mega-inner">'+
+          '<div class="mega-links"><div class="mega-label">Our impact</div>'+
+            '<a href="/legislative-wins">Legislative wins</a><a href="/research">Research</a><a href="/news">News &amp; press</a>'+
+          '</div>'+
+          '<div class="mega-img"><img src="https://images.pexels.com/photos/8761744/pexels-photo-8761744.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
+        '</div><div class="mega-stat">12+ state laws passed &middot; Cited by White House &amp; HUD</div></div>'+
+      '</div>'+
+      '<div class="ni"><a href="/careers" class="'+act('/careers').trim()+'">Careers</a>'+
+        '<div class="mega mega-sm"><div class="mega-inner">'+
+          '<div class="mega-links"><div class="mega-label">Join CEDP</div>'+
+            '<a href="/careers">Why CEDP</a><a href="/careers">Open positions</a><a href="/careers">Culture &amp; benefits</a>'+
+          '</div>'+
+          '<div class="mega-img"><img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
+        '</div></div>'+
+      '</div>'+
       '<a class="btn-d" href="/#donateSection" target="_top">Donate</a><a class="btn-h '+act('/get-help').trim()+'" href="/get-help">Get help</a>'+
       '</div></nav>';
 
@@ -79,51 +63,6 @@
       else existingNav.outerHTML = TB + NAV;
       if (existingTb && existingNav.parentNode) existingNav.remove();
     }
-
-    // ---- Mega-menu interactions (click/keyboard/touch) ----
-    try {
-      var navEl = document.querySelector('nav:not(.dot-nav)');
-      if (navEl) {
-        var items = navEl.querySelectorAll('.ni');
-        function closeAll(){
-          items.forEach(function(it){
-            it.classList.remove('open');
-            var t = it.querySelector('a[aria-haspopup]');
-            if (t) t.setAttribute('aria-expanded','false');
-          });
-        }
-        items.forEach(function(it){
-          var trig = it.querySelector('a[aria-haspopup]');
-          if (!trig) return;
-          // toggle on click for keyboard/touch
-          trig.addEventListener('click', function(e){
-            if (window.matchMedia('(hover:none)').matches || e.detail === 0) {
-              e.preventDefault();
-              var isOpen = it.classList.contains('open');
-              closeAll();
-              if (!isOpen) { it.classList.add('open'); trig.setAttribute('aria-expanded','true'); }
-            }
-          });
-        });
-        document.addEventListener('keydown', function(e){ if (e.key==='Escape') closeAll(); });
-        document.addEventListener('click', function(e){
-          if (!navEl.contains(e.target)) closeAll();
-        });
-
-        // Intercept program lightbox links when already on /our-work
-        navEl.querySelectorAll('[data-prog-lb]').forEach(function(a){
-          a.addEventListener('click', function(e){
-            var lb = a.getAttribute('data-prog-lb');
-            var onOurWork = /\/our-work(\b|$|\/)/.test(location.pathname);
-            if (onOurWork && typeof window.openDetail === 'function') {
-              e.preventDefault();
-              closeAll();
-              window.openDetail(lb);
-            }
-          });
-        });
-      }
-    } catch(e) { console.warn('nav interactions failed', e); }
   } catch(e) { console.warn('nav inject failed', e); }
 
   // ---- Inject sticky dot-nav on all non-home pages ----

@@ -600,14 +600,6 @@ document.getElementById('plbOverlay').classList.remove('open');
 document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePLB()});
-
-// Auto-open program lightbox via ?lb=d7 (from nav)
-(function(){
-  try {
-    var m = location.search.match(/[?&]lb=(d\d+)/);
-    if (m) { setTimeout(function(){ openDetail(m[1]); }, 60); }
-  } catch(e){}
-})();
 </script>
 <script src="/cedp-global.js"></script><script src="/cedp-cms.js"></script></body>
 </html>
