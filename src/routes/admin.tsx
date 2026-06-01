@@ -36,6 +36,7 @@ function AdminLayout() {
           <Link to="/admin/team" style={{color:"#fff",textDecoration:"none"}} activeProps={{style:{color:"#c9a84c",textDecoration:"none"}}}>Team</Link>
           <Link to="/admin/jobs" style={{color:"#fff",textDecoration:"none"}} activeProps={{style:{color:"#c9a84c",textDecoration:"none"}}}>Jobs</Link>
           <Link to="/admin/legislation" style={{color:"#fff",textDecoration:"none"}} activeProps={{style:{color:"#c9a84c",textDecoration:"none"}}}>Legislation</Link>
+          <Link to="/admin/get-help" style={{color:"#fff",textDecoration:"none"}} activeProps={{style:{color:"#c9a84c",textDecoration:"none"}}}>Get Help</Link>
         </nav>
         <div style={{marginLeft:"auto",display:"flex",gap:12,fontSize:13}}>
           <a href="/" style={{color:"#aaa"}}>View site →</a>
