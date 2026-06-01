@@ -143,47 +143,7 @@
     margin: 0;
   }
 
-  html,
-  body,
-  #root {
+  html, body, #root {
     height: 100%;
-  }
-}
-
-.ft-bottom {
-  @apply flex justify-end items-center gap-6 mt-6;
-}
-
-.ft-actions {
-  @apply flex gap-3;
-}
-
-.ft-actions a {
-  @apply px-4 py-2 rounded-md font-semibold uppercase text-center transition;
-}
-
-.btn-d {
-  @apply bg-primary text-primary-foreground hover:opacity-85;
-}
-
-.btn-h {
-  @apply bg-destructive text-destructive-foreground hover:opacity-85;
-}
-
-.brand-mark {
-  @apply flex items-center gap-3;
-}
-
-.brand-mark-text {
-  @apply text-foreground font-bold leading-tight;
-}
-
-/* Responsive stacking */
-@media (max-width: 640px) {
-  .ft-bottom {
-    @apply flex-col items-center;
-  }
-  .ft-actions {
-    @apply flex-col items-center;
   }
 }
