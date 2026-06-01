@@ -25,6 +25,15 @@ export function AdminTable({ table, fields, title, orderBy = "sort_order" }: {
   }
   useEffect(() => { load(); }, [table]);
 
+  // Realtime: refresh when anyone (admin or frontend) changes this table
+  useEffect(() => {
+    const channel = (supabase as any)
+      .channel(`admin-${table}`)
+      .on("postgres_changes", { event: "*", schema: "public", table }, () => load())
+      .subscribe();
+    return () => { (supabase as any).removeChannel(channel); };
+  }, [table]);
+
   function blank() {
     const o: any = {};
     fields.forEach(f => {
