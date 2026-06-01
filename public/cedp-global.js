@@ -1158,6 +1158,7 @@ var ADD = {
   "press@cedproject.org": "press@cedproject.org"
 };
 Object.keys(ADD).forEach(function(k){ EN_TO_ES[norm(k)] = ADD[k]; });
+EN_TO_ES[norm("Watch: The CEDP Story")] = "Ver: La historia de CEDP";
 
 // === Giant text-link / CTA explicit overrides (ensure every casing is covered) ===
 var GIANT = {
