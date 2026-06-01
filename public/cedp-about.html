@@ -462,6 +462,23 @@ document.querySelectorAll('.db-main button').forEach(function(b){
 });
 document.querySelectorAll('.db-faq').forEach(function(a){ a.href='/about#faq'; a.target='_top'; });
 
+// "We Are CEDP" rows — make navigable
+document.querySelectorAll('.we-are-row').forEach(function(row){
+  var h = row.querySelector('h3'); if(!h) return;
+  var t = h.textContent.trim().toLowerCase();
+  var dest = null;
+  if(/meet the team/.test(t)) dest='/team';
+  else if(/leadership/.test(t)) dest='#leadership';
+  else if(/join/.test(t)) dest='/careers#positions';
+  if(!dest) return;
+  row.style.cursor='pointer';
+  row.addEventListener('click',function(){
+    if(dest.charAt(0)==='#'){
+      var tgt=document.querySelector(dest); if(tgt) tgt.scrollIntoView({behavior:'smooth'});
+    } else { window.top.location.href = dest; }
+  });
+});
+
 // Donate bento small cards (FAQs, Events & Calendar)
 document.querySelectorAll('.db-sm').forEach(function(el){
   var h = el.querySelector('h3'); if(!h) return;
@@ -481,8 +498,8 @@ document.querySelectorAll('.tl-link a, .growth-link a, .ib-link a').forEach(func
 var ftMap = [
   null,
   { _default: '/get-help' },
-  { 'Our purpose':'/about','Our team':'/about','Careers':'/careers','CED law':'/about','Contact':'/about' },
-  { 'Legislative wins':'/impact','Research':'/impact','News & press':'/news','Donate':'#donateSection','Events':'/news' }
+  { 'Our purpose':'/about','Our team':'/team','Leadership':'/about#leadership','Careers':'/careers','Join Us':'/careers#positions','CED law':'/ced-law','Contact':'mailto:info@cedproject.org' },
+  { 'Legislative wins':'/legislative-wins','Research':'/research','News & press':'/news','Donate':'#donateSection','Events':'/news' }
 ];
 document.querySelectorAll('footer .ft-g > div').forEach(function(col, i){
   var m = ftMap[i]; if(!m) return;
