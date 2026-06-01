@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Laptop, FileText, PlayCircle } from "lucide-react";
+import pdfProposal from "@/assets/PDF_Proposal.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,12 +44,12 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
     },
     {
       label: "Access PDF Proposal",
-      href: "/CEDP-Website_Redesign_Proposal-XTS_30May26_V1.pdf",
+      href: pdfProposal.url,
       Icon: FileText,
     },
     {
       label: "Access Interactive Proposal",
-      href: "/cedp-ourwork_2.html",
+      href: "/Interactive_Proposal.html",
       Icon: PlayCircle,
     },
   ];
