@@ -70,23 +70,77 @@
     var p = (location.pathname || '/').replace(/\/$/, '') || '/';
     var isHomePage = p === '/' || /cedp-home\.html$/.test(location.pathname);
     if (!isHomePage && !document.getElementById('dotNav')) {
-      var dn = document.createElement('nav');
-      dn.className = 'dot-nav';
-      dn.id = 'dotNav';
-      dn.innerHTML =
-        '<div class="dot-top" id="dotTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>'+
-        '<a href="/#whoSection" target="_parent"><span class="dot-label">Who We Are</span><span class="dot"></span></a>'+
-        '<a href="/#hlpSection" target="_parent"><span class="dot-label">How We Can Help</span><span class="dot"></span></a>'+
-        '<a href="/#modelSection" target="_parent"><span class="dot-label">How We Work</span><span class="dot"></span></a>'+
-        '<a href="/#impactSection" target="_parent"><span class="dot-label">Our Impact</span><span class="dot"></span></a>'+
-        '<a href="/#pathsSection" target="_parent"><span class="dot-label">What You\'re Looking For</span><span class="dot"></span></a>'+
-        '<a href="/#donateSection" target="_parent"><span class="dot-label">Donate</span><span class="dot"></span></a>';
-      document.body.appendChild(dn);
-      var top = dn.querySelector('#dotTop');
-      top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
-      window.addEventListener('scroll', function(){
-        if (window.scrollY > 400) top.classList.add('show'); else top.classList.remove('show');
-      }, { passive: true });
+      // Per-page section maps: links scroll within the current page (hash only)
+      var DOT_MAP = {
+        '/about': [
+          ['mission','Mission'],
+          ['origin','Our Story'],
+          ['leadership','Leadership'],
+          ['growth','5 Years of Impact'],
+          ['weAre','We Are CEDP'],
+          ['donate','Get Involved']
+        ],
+        '/our-work': [
+          ['model','How We Work'],
+          ['missionPunch','Our Mission'],
+          ['programs','Programs'],
+          ['where','Where We Work'],
+          ['explore','Explore'],
+          ['donate','Donate']
+        ],
+        '/careers': [
+          ['why','Why CEDP'],
+          ['snapCounter','By the Numbers'],
+          ['culture','Culture'],
+          ['benefits','Benefits'],
+          ['positions','Open Positions'],
+          ['process','Hiring Process'],
+          ['alerts','Job Alerts']
+        ],
+        '/legislative-wins': [
+          ['spotlight','Spotlight'],
+          ['wins','Legislative Wins'],
+          ['punchLeg','Our Approach'],
+          ['explore','Explore']
+        ],
+        '/impact': [
+          ['spotlight','Spotlight'],
+          ['wins','Legislative Wins'],
+          ['punchLeg','Our Approach'],
+          ['explore','Explore']
+        ]
+      };
+      var key = p;
+      // Match base path (strip sub-paths and html names)
+      if (!DOT_MAP[key]) {
+        var base = '/' + (p.split('/')[1] || '');
+        if (DOT_MAP[base]) key = base;
+      }
+      var items = DOT_MAP[key];
+      if (items && items.length) {
+        var dn = document.createElement('nav');
+        dn.className = 'dot-nav';
+        dn.id = 'dotNav';
+        var html = '<div class="dot-top" id="dotTop"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>';
+        items.forEach(function(it){
+          html += '<a href="#'+it[0]+'"><span class="dot-label">'+it[1]+'</span><span class="dot"></span></a>';
+        });
+        dn.innerHTML = html;
+        document.body.appendChild(dn);
+        var top = dn.querySelector('#dotTop');
+        top.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+        // Smooth scroll for in-page anchors
+        dn.querySelectorAll('a[href^="#"]').forEach(function(a){
+          a.addEventListener('click', function(ev){
+            var id = a.getAttribute('href').slice(1);
+            var el = document.getElementById(id);
+            if (el) { ev.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); history.replaceState(null,'','#'+id); }
+          });
+        });
+        window.addEventListener('scroll', function(){
+          if (window.scrollY > 400) top.classList.add('show'); else top.classList.remove('show');
+        }, { passive: true });
+      }
     }
   } catch(e) { console.warn('dot-nav inject failed', e); }
 
