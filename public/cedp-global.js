@@ -1589,3 +1589,28 @@ Object.keys(GIANT).forEach(function(k){ EN_TO_ES[norm(k)] = GIANT[k]; });
     } else { start(); }
   } catch(e) { /* no-op */ }
 })();
+
+/* Global: route any "intake form" link to /intake-form */
+(function(){
+  function wire(){
+    try {
+      var links = document.querySelectorAll('a');
+      for (var i=0;i<links.length;i++){
+        var a = links[i];
+        var txt = (a.textContent||'').toLowerCase();
+        if (txt.indexOf('intake form') !== -1){
+          a.setAttribute('href','/intake-form');
+          a.setAttribute('target','_top');
+        }
+      }
+    } catch(_){}
+  }
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', wire);
+  } else { wire(); }
+  window.addEventListener('load', wire);
+  try {
+    var mo = new MutationObserver(function(){ wire(); });
+    mo.observe(document.documentElement, {childList:true, subtree:true});
+  } catch(_){}
+})();
