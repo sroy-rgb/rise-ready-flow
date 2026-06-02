@@ -378,6 +378,24 @@ body.form-submitting .hs-form__actions__submit::after {
               document.body.classList.add('form-submitting');
             } else if (eventName === 'onFormSubmitted') {
               document.body.classList.remove('form-submitting');
+              try {
+                var overlay = document.createElement('div');
+                overlay.setAttribute('role', 'status');
+                overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.97);display:flex;align-items:center;justify-content:center;z-index:2147483646;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;';
+                overlay.innerHTML = '<div style="max-width:480px;text-align:center;padding:32px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.08);background:#fff;">\
+                  <div style="font-size:48px;line-height:1;margin-bottom:12px;">✅</div>\
+                  <h2 style="margin:0 0 8px;font-size:22px;color:#0d2c47;">Form submitted successfully</h2>\
+                  <p style="margin:0 0 16px;color:#33475b;font-size:14px;">Thank you. Redirecting you back to Get Help…</p>\
+                </div>';
+                document.body.appendChild(overlay);
+              } catch (e) {}
+              setTimeout(function () {
+                try {
+                  (window.top || window.parent || window).location.href = '/get-help';
+                } catch (e) {
+                  window.location.href = '/get-help';
+                }
+              }, 1800);
             } else if (eventName === 'onFormError') {
               document.body.classList.remove('form-submitting');
             }
