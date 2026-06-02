@@ -7,8 +7,9 @@
 
 import { useEffect, useState } from "react";
 import {
-  Wifi, ArrowLeft, Lock, Info, Check, CheckCircle2, ChevronDown, Phone,
+  Wifi, ArrowLeft, Lock, Info, Check, CheckCircle2, ChevronDown, Phone, Home,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { steps, ui, type Field, type Lang, type Step } from "@/lib/intakeConfig";
 import { submitIntake } from "@/lib/submitIntake";
 
@@ -249,6 +250,12 @@ function Done({ lang }: { lang: Lang }) {
       <div className="mt-5 flex items-center justify-center gap-1.5 text-[13px] text-[#33485A]">
         <Phone size={15} /> {t("needHelp")} {t("helpPhone")}
       </div>
+      <Link
+        to="/"
+        className="mt-6 inline-flex items-center gap-2 rounded-[12px] bg-[#1B2838] px-5 py-2.5 text-[14px] font-medium text-white"
+      >
+        <Home size={16} /> {lang === "es" ? "Inicio" : "Home"}
+      </Link>
     </div>
   );
 }
@@ -298,7 +305,9 @@ export default function IntakeForm() {
       return (
         <div className="mx-auto flex min-h-screen max-w-md flex-col">
           <header className="flex items-center justify-between bg-[#1B2838] px-4 py-3.5 text-white">
-            <span className="text-[12px] font-medium">CEDP</span>
+            <Link to="/" aria-label="Home" className="flex items-center gap-1.5 text-[12px] font-medium">
+              <Home size={16} /> {lang === "es" ? "Inicio" : "Home"}
+            </Link>
             <LangToggle lang={lang} setLang={setLang} onNavy />
           </header>
           <div className="flex flex-1 flex-col px-5 py-7">
@@ -335,7 +344,10 @@ export default function IntakeForm() {
         <header className="flex items-center justify-between bg-[#1B2838] px-4 py-3.5 text-white">
           <button type="button" aria-label={t("back")} onClick={() => setStepIdx(stepIdx - 1)}><ArrowLeft size={18} /></button>
           <span className="text-[13px] font-medium">{L(step.title)}</span>
-          <LangToggle lang={lang} setLang={setLang} onNavy />
+          <div className="flex items-center gap-3">
+            <Link to="/" aria-label="Home" className="text-white"><Home size={16} /></Link>
+            <LangToggle lang={lang} setLang={setLang} onNavy />
+          </div>
         </header>
         <div className="px-4 pt-3.5">
           <div className="mb-1.5 text-[11px] text-[#7A8B96]">{t("step")} {stepIdx + 1} {t("of")} {steps.length}</div>
@@ -363,7 +375,12 @@ export default function IntakeForm() {
     <div className="min-h-screen bg-[#FBFCFD]">
       <header className="flex items-center justify-between bg-[#1B2838] px-8 py-4 text-white">
         <span className="text-[13px] font-medium tracking-wide">{t("brand")}</span>
-        <LangToggle lang={lang} setLang={setLang} onNavy />
+        <div className="flex items-center gap-4">
+          <Link to="/" className="flex items-center gap-1.5 text-[13px] font-medium text-white hover:opacity-80">
+            <Home size={15} /> {lang === "es" ? "Inicio" : "Home"}
+          </Link>
+          <LangToggle lang={lang} setLang={setLang} onNavy />
+        </div>
       </header>
 
       <div className="mx-auto max-w-5xl px-8">
