@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  ArrowLeft, ArrowRight, Lock, Info, Check, CheckCircle2, ChevronDown, Phone, Home,
+  ArrowLeft, ArrowRight, Lock, Info, Check, CheckCircle2, Phone, Home,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { steps, ui, type Field, type Lang, type Step } from "@/lib/intakeConfig";
@@ -267,7 +267,6 @@ export default function IntakeForm() {
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [stepIdx, setStepIdx] = useState(-1); // -1 = welcome (mobile only)
-  const [howOpen, setHowOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [topError, setTopError] = useState("");
