@@ -7,7 +7,7 @@
 
 import { useEffect, useState } from "react";
 import {
-  Wifi, ArrowLeft, Lock, Info, Check, CheckCircle2, ChevronDown, Phone, Home,
+  ArrowLeft, ArrowRight, Lock, Info, Check, CheckCircle2, Phone, Home,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { steps, ui, type Field, type Lang, type Step } from "@/lib/intakeConfig";
@@ -267,7 +267,6 @@ export default function IntakeForm() {
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [stepIdx, setStepIdx] = useState(-1); // -1 = welcome (mobile only)
-  const [howOpen, setHowOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [topError, setTopError] = useState("");
@@ -311,17 +310,13 @@ export default function IntakeForm() {
             <LangToggle lang={lang} setLang={setLang} onNavy />
           </header>
           <div className="flex flex-1 flex-col px-5 py-7">
-            <div className="mb-4 flex h-13 w-13 items-center justify-center rounded-[14px] bg-[#FDF3DC] p-3">
-              <Wifi size={26} className="text-[#B5862B]" />
-            </div>
             <h1 className="mb-2.5 text-[21px] font-medium leading-snug text-[#1B2838]">{t("welcomeTitle")}</h1>
             <p className="mb-4 text-[14px] leading-relaxed text-[#5B7180]">{t("welcomeSub")}</p>
-            <button type="button" onClick={() => setHowOpen((v) => !v)} className="flex items-center justify-between rounded-[12px] border border-[#E2E8EC] px-3.5 py-3 text-left text-[13px] text-[#33485A]">
-              {t("howItWorks")}
-              <ChevronDown size={18} className={"text-[#8497A3] transition " + (howOpen ? "rotate-180" : "")} />
-            </button>
-            {howOpen && <p className="mt-2 rounded-[12px] bg-[#F7F9FA] p-3 text-[12px] leading-relaxed text-[#5B7180]">{t("howItWorksBody")}</p>}
-            <div className="mt-auto pt-6">
+            <div className="rounded-[14px] border border-[#E2E8EC] bg-[#F7F9FA] p-4">
+              <h2 className="mb-2 text-[14px] font-semibold text-[#1B2838]">{t("howItWorks")}</h2>
+              <p className="text-[13px] leading-relaxed text-[#5B7180]">{t("howItWorksBody")}</p>
+            </div>
+            <div className="pt-5">
               <button type="button" onClick={() => setStepIdx(0)} className="w-full rounded-[12px] bg-[#1B2838] py-3.5 text-[15px] font-medium text-white">{t("getStarted")}</button>
               <p className="mt-3 flex items-center justify-center gap-1.5 text-[11px] text-[#8497A3]"><Lock size={14} /> {t("privateSecure")}</p>
             </div>
@@ -360,9 +355,23 @@ export default function IntakeForm() {
           ))}
           {topError && <p className="text-[13px] text-[#C53030]">{topError}</p>}
           <div className="mt-auto pt-2">
-            <button type="button" onClick={goNext} disabled={submitting} className="w-full rounded-[12px] bg-[#1B2838] py-3.5 text-[15px] font-medium text-white disabled:opacity-60">
-              {last ? (submitting ? t("submitting") : t("submit")) : t("continue")}
-            </button>
+            <div className="flex gap-2.5">
+              <button
+                type="button"
+                onClick={() => (stepIdx === 0 ? setStepIdx(-1) : setStepIdx(stepIdx - 1))}
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-[12px] border border-[#D6DEE3] bg-white py-3.5 text-[14px] font-medium text-[#1B2838]"
+              >
+                <ArrowLeft size={16} /> {t("back") || "Previous"}
+              </button>
+              <button
+                type="button"
+                onClick={goNext}
+                disabled={submitting}
+                className="flex flex-1 items-center justify-center gap-1.5 rounded-[12px] bg-[#1B2838] py-3.5 text-[15px] font-medium text-white disabled:opacity-60"
+              >
+                {last ? (submitting ? t("submitting") : t("submit")) : (<>{t("continue")} <ArrowRight size={16} /></>)}
+              </button>
+            </div>
             {step.note && <button type="button" onClick={() => (last ? handleSubmit() : setStepIdx(stepIdx + 1))} className="mt-3 w-full text-center text-[12px] text-[#7A8B96]">{t("skipStep")}</button>}
           </div>
         </div>
@@ -385,13 +394,12 @@ export default function IntakeForm() {
 
       <div className="mx-auto max-w-5xl px-8">
         <div className="border-b border-[#E2E8EC] py-9">
-          <div className="mb-4 flex h-13 w-13 items-center justify-center rounded-[14px] bg-[#FDF3DC] p-3"><Wifi size={26} className="text-[#B5862B]" /></div>
           <h1 className="mb-2 max-w-2xl text-[26px] font-medium leading-snug text-[#1B2838]">{t("welcomeTitle")}</h1>
           <p className="mb-3 max-w-2xl text-[15px] leading-relaxed text-[#5B7180]">{t("welcomeSub")}</p>
-          <button type="button" onClick={() => setHowOpen((v) => !v)} className="flex items-center gap-1.5 text-[13px] text-[#2E6CB6]">
-            {t("howItWorks")} <ChevronDown size={16} className={"transition " + (howOpen ? "rotate-180" : "")} />
-          </button>
-          {howOpen && <p className="mt-2 max-w-2xl rounded-[12px] bg-[#F2F5F7] p-3.5 text-[13px] leading-relaxed text-[#5B7180]">{t("howItWorksBody")}</p>}
+          <div className="mt-3 max-w-2xl rounded-[14px] border border-[#E2E8EC] bg-[#F7F9FA] p-4">
+            <h2 className="mb-1.5 text-[14px] font-semibold text-[#1B2838]">{t("howItWorks")}</h2>
+            <p className="text-[13px] leading-relaxed text-[#5B7180]">{t("howItWorksBody")}</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-[200px_1fr] gap-10 py-9">
