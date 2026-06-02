@@ -24,11 +24,11 @@
       '<div class="ni"><a href="/our-work" class="'+act('/our-work').trim()+'">Our work</a>'+
         '<div class="mega"><div class="mega-inner">'+
           '<div class="mega-2col">'+
-            '<div class="mega-links"><div class="mega-label">Services</div>'+
-              '<a href="/our-work#programs">Eviction defense</a><a href="/our-work#programs">Foreclosure</a><a href="/our-work#programs">Unjust towing</a><a href="/our-work#programs">Debt collection</a><a href="/our-work#programs">Disaster relief</a><a href="/our-work#programs">Resource navigation</a>'+
-            '</div>'+
             '<div class="mega-links"><div class="mega-label">Programs</div>'+
-              '<a href="/our-work#programs">Programs overview</a><a href="/our-work#programs">CARE Center</a><a href="/our-work#programs">Just Bus mobile aid</a><a href="/our-work#where">Statewide coverage</a>'+
+              '<a href="/our-work#program-d1">Eviction Defense</a><a href="/our-work#program-d2">Foreclosure Prevention</a><a href="/our-work#program-d3">Towing Recovery</a><a href="/our-work#program-d4">Debt Defense</a><a href="/our-work#program-d5">Disaster Response</a>'+
+            '</div>'+
+            '<div class="mega-links"><div class="mega-label">&nbsp;</div>'+
+              '<a href="/our-work#program-d6">Resource Navigation</a><a href="/our-work#program-d7">Just Bus</a><a href="/our-work#program-d8">CARE Center</a><a href="/our-work#program-d9">Pet Deposit Assistance</a><a href="/our-work#where">Statewide coverage</a>'+
             '</div>'+
           '</div>'+
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
