@@ -271,6 +271,16 @@ var wasOpen=card.classList.contains('open');
 document.querySelectorAll('.m-card').forEach(function(c){c.classList.remove('open')});
 if(!wasOpen)card.classList.add('open');
 }
+function wireIntakeLinks(){
+  var sels=['a.m-after-btn','a.m-cta-alt','a.m-when-link'];
+  document.querySelectorAll(sels.join(',')).forEach(function(a){
+    var h=a.getAttribute('href');
+    if(!h||h==='#'||h===''){a.setAttribute('href','/intake-form');}
+    a.setAttribute('target','_top');
+  });
+}
+window.addEventListener('load',wireIntakeLinks);
+setTimeout(wireIntakeLinks,800);
 </script>
 <script src="/cedp-page-content.js"></script>
 </body>
