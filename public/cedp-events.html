@@ -1,236 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Events — Community Economic Defense Project</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/cedp-global.css">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Libre Franklin',sans-serif;color:#1B2838;background:#FFF;font-weight:300;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
-:root{--navy:#1B2838;--red:#C53030;--gold:#E8B960;--slate:#4A6274;--bg:#F8F8F8;--border:#E8E8E8;--dim:#6B7A8A}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events — Community Economic Defense Project</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/cedp-global.css" />
+    <style>
+      *{box-sizing:border-box;margin:0;padding:0}
+      html{scroll-behavior:smooth;scroll-padding-top:80px}
+      body{font-family:'Libre Franklin',sans-serif;color:#1B2838;background:#FFF;font-weight:300;font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}
+      :root{--navy:#1B2838;--red:#C53030;--gold:#E8B960;--slate:#4A6274;--bg:#F8F8F8;--border:#E8E8E8;--dim:#6B7A8A}
 
-/* Hero */
-.ev-hero{background:var(--navy);color:#fff;padding:90px 40px 70px;text-align:center}
-.ev-hero .lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.ev-hero h1{font-family:'Playfair Display',serif;font-size:56px;font-weight:700;line-height:1.1;margin-bottom:18px;letter-spacing:-.5px}
-.ev-hero p{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto}
+      /* Hero */
+      .ev-hero{background:var(--navy);color:#fff;padding:90px 40px 70px;text-align:center}
+      .ev-hero .lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+      .ev-hero h1{font-family:'Bebas Neue', sans-serif;font-size:56px;font-weight:700;line-height:1.1;margin-bottom:18px;letter-spacing:-.5px}
+      .ev-hero p{font-size:17px;font-weight:300;color:rgba(255,255,255,.75);max-width:680px;margin:0 auto}
 
-/* Tabs */
-.ev-tabs{display:flex;justify-content:center;gap:14px;padding:36px 40px 0;flex-wrap:wrap;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
-.ev-tab{appearance:none;background:transparent;border:1.5px solid var(--border);color:var(--slate);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:14px 32px;cursor:pointer;transition:all .25s;margin-bottom:-1px;border-bottom-width:3px}
-.ev-tab:hover{color:var(--navy);border-color:var(--gold)}
-.ev-tab.active{color:var(--navy);border-color:var(--border);border-bottom-color:var(--gold);background:#fff}
+      /* Tabs */
+      .ev-tabs{display:flex;justify-content:center;gap:14px;padding:36px 40px 0;flex-wrap:wrap;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+      .ev-tab{appearance:none;background:transparent;border:1.5px solid var(--border);color:var(--slate);font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:14px 32px;cursor:pointer;transition:all .25s;margin-bottom:-1px;border-bottom-width:3px}
+      .ev-tab:hover{color:var(--navy);border-color:var(--gold)}
+      .ev-tab.active{color:var(--navy);border-color:var(--border);border-bottom-color:var(--gold);background:#fff}
 
-/* Panels */
-.ev-wrap{max-width:980px;margin:0 auto;padding:56px 40px 90px}
-.ev-panel{display:none}
-.ev-panel.active{display:block}
-.ev-section-lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
-.ev-section-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-.3px}
-.ev-section-sub{font-size:14px;color:var(--dim);margin-bottom:34px}
+      /* Panels */
+      .ev-wrap{max-width:980px;margin:0 auto;padding:56px 40px 90px}
+      .ev-panel{display:none}
+      .ev-panel.active{display:block}
+      .ev-section-lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);margin-bottom:10px}
+      .ev-section-title{font-family:'Playfair Display',serif;font-size:34px;font-weight:700;color:var(--navy);margin-bottom:8px;letter-spacing:-.3px}
+      .ev-section-sub{font-size:14px;color:var(--dim);margin-bottom:34px}
 
-/* Cards */
-.ev-card{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px;border:1px solid var(--border);background:#fff;margin-bottom:18px;transition:all .25s;cursor:pointer}
-.ev-card:hover{border-color:var(--gold);box-shadow:0 8px 28px rgba(27,40,56,.08);transform:translateY(-2px)}
-.ev-card .date{text-align:center;padding:14px 0;background:var(--bg);border-left:3px solid var(--gold)}
-.ev-card.past .date{border-left-color:var(--dim);opacity:.85}
-.ev-card .d-mon{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
-.ev-card.past .d-mon{color:var(--dim)}
-.ev-card .d-day{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--navy);line-height:1}
-.ev-card .d-yr{font-size:12px;color:var(--dim);font-weight:600;margin-top:4px}
-.ev-card h3{font-family:'Bebas Neue','Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
-.ev-card .time{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:8px;letter-spacing:.5px}
-.ev-card p{font-size:14.5px;color:var(--dim);line-height:1.6}
-.ev-empty{text-align:center;color:var(--dim);padding:60px 0;font-style:italic}
+      /* Cards */
+      .ev-card{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:28px;border:1px solid var(--border);background:#fff;margin-bottom:18px;transition:all .25s;cursor:pointer}
+      .ev-card:hover{border-color:var(--gold);box-shadow:0 8px 28px rgba(27,40,56,.08);transform:translateY(-2px)}
+      .ev-card .date{text-align:center;padding:14px 0;background:var(--bg);border-left:3px solid var(--gold)}
+      .ev-card.past .date{border-left-color:var(--dim);opacity:.85}
+      .ev-card .d-mon{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+      .ev-card.past .d-mon{color:var(--dim)}
+      .ev-card .d-day{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--navy);line-height:1}
+      .ev-card .d-yr{font-size:12px;color:var(--dim);font-weight:600;margin-top:4px}
+      .ev-card h3{font-family:'Bebas Neue','Barlow Condensed',sans-serif;font-size:24px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+      .ev-card .time{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:8px;letter-spacing:.5px}
+      .ev-card p{font-size:14.5px;color:var(--dim);line-height:1.6}
+      .ev-empty{text-align:center;color:var(--dim);padding:60px 0;font-style:italic}
 
-/* Calendar */
-.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.cal-head h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy)}
-.cal-nav{display:flex;gap:8px}
-.cal-nav button{appearance:none;background:#fff;border:1px solid var(--border);width:38px;height:38px;cursor:pointer;font-size:18px;color:var(--navy);transition:all .2s}
-.cal-nav button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
-.cal-dow{background:var(--navy);color:#fff;text-align:center;padding:10px 0;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
-.cal-cell{background:#fff;min-height:78px;padding:8px;position:relative;font-size:13px;color:var(--navy)}
-.cal-cell.muted{background:#fafafa;color:#c8ccd1}
-.cal-cell .num{font-weight:600}
-.cal-cell.has-up{background:rgba(232,185,96,.18);border-left:3px solid var(--gold);cursor:pointer}
-.cal-cell.has-up:hover{background:rgba(232,185,96,.32)}
-.cal-cell.has-past{background:rgba(107,122,138,.10);border-left:3px solid var(--dim);cursor:pointer}
-.cal-cell.has-past:hover{background:rgba(107,122,138,.18)}
-.cal-cell .ev-dot{display:block;font-size:10px;font-weight:700;letter-spacing:.5px;margin-top:4px;color:var(--navy);text-transform:uppercase;line-height:1.2}
-.cal-cell .ev-dot.past{color:var(--dim)}
-.cal-legend{display:flex;gap:24px;margin-top:18px;font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.5px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
-.cal-legend span{display:flex;align-items:center;gap:8px}
-.cal-legend i{width:14px;height:14px;display:inline-block;border-left:3px solid var(--gold);background:rgba(232,185,96,.18)}
-.cal-legend i.past{border-left-color:var(--dim);background:rgba(107,122,138,.10)}
+      /* Calendar */
+      .cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+      .cal-head h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy)}
+      .cal-nav{display:flex;gap:8px}
+      .cal-nav button{appearance:none;background:#fff;border:1px solid var(--border);width:38px;height:38px;cursor:pointer;font-size:18px;color:var(--navy);transition:all .2s}
+      .cal-nav button:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+      .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+      .cal-dow{background:var(--navy);color:#fff;text-align:center;padding:10px 0;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+      .cal-cell{background:#fff;min-height:78px;padding:8px;position:relative;font-size:13px;color:var(--navy)}
+      .cal-cell.muted{background:#fafafa;color:#c8ccd1}
+      .cal-cell .num{font-weight:600}
+      .cal-cell.has-up{background:rgba(232,185,96,.18);border-left:3px solid var(--gold);cursor:pointer}
+      .cal-cell.has-up:hover{background:rgba(232,185,96,.32)}
+      .cal-cell.has-past{background:rgba(107,122,138,.10);border-left:3px solid var(--dim);cursor:pointer}
+      .cal-cell.has-past:hover{background:rgba(107,122,138,.18)}
+      .cal-cell .ev-dot{display:block;font-size:10px;font-weight:700;letter-spacing:.5px;margin-top:4px;color:var(--navy);text-transform:uppercase;line-height:1.2}
+      .cal-cell .ev-dot.past{color:var(--dim)}
+      .cal-legend{display:flex;gap:24px;margin-top:18px;font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.5px;text-transform:uppercase;font-family:'Barlow Condensed',sans-serif}
+      .cal-legend span{display:flex;align-items:center;gap:8px}
+      .cal-legend i{width:14px;height:14px;display:inline-block;border-left:3px solid var(--gold);background:rgba(232,185,96,.18)}
+      .cal-legend i.past{border-left-color:var(--dim);background:rgba(107,122,138,.10)}
 
-@media (max-width:640px){
-  .ev-hero h1{font-size:38px}
-  .ev-wrap{padding:36px 20px 60px}
-  .ev-card{grid-template-columns:84px 1fr;gap:16px;padding:18px}
-  .ev-card .d-day{font-size:28px}
-  .cal-cell{min-height:60px;font-size:11px}
-}
-</style>
-</head>
-<body>
+      @media (max-width:640px){
+        .ev-hero h1{font-size:38px}
+        .ev-wrap{padding:36px 20px 60px}
+        .ev-card{grid-template-columns:84px 1fr;gap:16px;padding:18px}
+        .ev-card .d-day{font-size:28px}
+        .cal-cell{min-height:60px;font-size:11px}
+      }
+    </style>
+  </head>
+  <body>
+    <nav></nav>
 
-<nav></nav>
+    <section class="ev-hero">
+      <div class="lab">About / Events</div>
+      <h1>Events &amp; Calendar</h1>
+      <p>Stay informed about CEDP office hours, community gatherings, and announcements across Colorado.</p>
+    </section>
 
-<section class="ev-hero">
-  <div class="lab">About / Events</div>
-  <h1>Events &amp; Calendar</h1>
-  <p>Stay informed about CEDP office hours, community gatherings, and announcements across Colorado.</p>
-</section>
+    <div class="ev-tabs" role="tablist">
+      <button class="ev-tab active" data-tab="upcoming">Upcoming</button>
+      <button class="ev-tab" data-tab="calendar">Calendar</button>
+      <button class="ev-tab" data-tab="past">Past</button>
+    </div>
 
-<div class="ev-tabs" role="tablist">
-  <button class="ev-tab active" data-tab="upcoming">Upcoming</button>
-  <button class="ev-tab" data-tab="calendar">Calendar</button>
-  <button class="ev-tab" data-tab="past">Past</button>
-</div>
+    <div class="ev-wrap">
+      <div id="upcoming" class="ev-panel active">
+        <div class="ev-section-lab">Upcoming events</div>
+        <h2 class="ev-section-title">What&rsquo;s coming up</h2>
+        <p class="ev-section-sub">Plan ahead with our upcoming schedule.</p>
 
-<div class="ev-wrap">
-
-  <div id="upcoming" class="ev-panel active">
-    <div class="ev-section-lab">Upcoming events</div>
-    <h2 class="ev-section-title">What&rsquo;s coming up</h2>
-    <p class="ev-section-sub">Plan ahead with our upcoming schedule.</p>
-
-    <article class="ev-card">
-      <div class="date">
-        <div class="d-mon">Jun</div>
-        <div class="d-day">7</div>
-        <div class="d-yr">2026</div>
+        <article class="ev-card">
+          <div class="date">
+            <div class="d-mon">Jun</div>
+            <div class="d-day">7</div>
+            <div class="d-yr">2026</div>
+          </div>
+          <div>
+            <h3>CEDP Denver Office Morning Closure</h3>
+            <div class="time">8:00 am &ndash; 1:00 pm</div>
+            <p>Our Denver office will be closed in the morning and open from 1 p.m. &ndash; 4 p.m. on July 7, 2026.</p>
+          </div>
+        </article>
       </div>
-      <div>
-        <h3>CEDP Denver Office Morning Closure</h3>
-        <div class="time">8:00 am &ndash; 1:00 pm</div>
-        <p>Our Denver office will be closed in the morning and open from 1 p.m. &ndash; 4 p.m. on July 7, 2026.</p>
+
+      <div id="calendar" class="ev-panel">
+        <div class="ev-section-lab">Calendar view</div>
+        <h2 class="ev-section-title">Events at a glance</h2>
+        <p class="ev-section-sub">Click a highlighted date to jump to the event.</p>
+
+        <div class="cal-head">
+          <h3 id="calTitle">June 2026</h3>
+          <div class="cal-nav">
+            <button id="calPrev" aria-label="Previous month">&larr;</button>
+            <button id="calNext" aria-label="Next month">&rarr;</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend">
+          <span><i></i> Upcoming</span>
+          <span><i class="past"></i> Past</span>
+        </div>
       </div>
-    </article>
-  </div>
 
-  <div id="calendar" class="ev-panel">
-    <div class="ev-section-lab">Calendar view</div>
-    <h2 class="ev-section-title">Events at a glance</h2>
-    <p class="ev-section-sub">Click a highlighted date to jump to the event.</p>
+      <div id="past" class="ev-panel">
+        <div class="ev-section-lab">Past events</div>
+        <h2 class="ev-section-title">From the archive</h2>
+        <p class="ev-section-sub">A look at recent gatherings and office updates.</p>
 
-    <div class="cal-head">
-      <h3 id="calTitle">June 2026</h3>
-      <div class="cal-nav">
-        <button id="calPrev" aria-label="Previous month">&larr;</button>
-        <button id="calNext" aria-label="Next month">&rarr;</button>
+        <article class="ev-card past">
+          <div class="date">
+            <div class="d-mon">Sep</div>
+            <div class="d-day">4</div>
+            <div class="d-yr">2025</div>
+          </div>
+          <div>
+            <h3>CEDP Colorado Springs Office Morning Closure</h3>
+            <div class="time">9:00 am &ndash; 2:00 pm</div>
+            <p>
+              Our Colorado Springs office will be closed in the morning and open from 2 p.m. &ndash; 4 p.m. on September
+              4, 2025.
+            </p>
+          </div>
+        </article>
+
+        <article class="ev-card past">
+          <div class="date">
+            <div class="d-mon">Sep</div>
+            <div class="d-day">4</div>
+            <div class="d-yr">2025</div>
+          </div>
+          <div>
+            <h3>CEDP Durango Office Morning Closure</h3>
+            <div class="time">9:00 am &ndash; 1:00 pm</div>
+            <p>
+              Our Durango office will be closed in the morning and open from 1 p.m. &ndash; 3 p.m. on September 4, 2025.
+            </p>
+          </div>
+        </article>
       </div>
     </div>
-    <div class="cal-grid" id="calGrid"></div>
-    <div class="cal-legend">
-      <span><i></i> Upcoming</span>
-      <span><i class="past"></i> Past</span>
-    </div>
-  </div>
 
-  <div id="past" class="ev-panel">
-    <div class="ev-section-lab">Past events</div>
-    <h2 class="ev-section-title">From the archive</h2>
-    <p class="ev-section-sub">A look at recent gatherings and office updates.</p>
+    <script>
+      // Tabs
+      document.querySelectorAll('.ev-tab').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          var t = btn.getAttribute('data-tab');
+          document.querySelectorAll('.ev-tab').forEach(function(b){b.classList.toggle('active', b===btn);});
+          document.querySelectorAll('.ev-panel').forEach(function(p){p.classList.toggle('active', p.id===t);});
+          history.replaceState(null,'','#'+t);
+        });
+      });
+      if (location.hash) {
+        var h = location.hash.slice(1);
+        var tab = document.querySelector('.ev-tab[data-tab="'+h+'"]');
+        if (tab) tab.click();
+      }
 
-    <article class="ev-card past">
-      <div class="date">
-        <div class="d-mon">Sep</div>
-        <div class="d-day">4</div>
-        <div class="d-yr">2025</div>
-      </div>
-      <div>
-        <h3>CEDP Colorado Springs Office Morning Closure</h3>
-        <div class="time">9:00 am &ndash; 2:00 pm</div>
-        <p>Our Colorado Springs office will be closed in the morning and open from 2 p.m. &ndash; 4 p.m. on September 4, 2025.</p>
-      </div>
-    </article>
-
-    <article class="ev-card past">
-      <div class="date">
-        <div class="d-mon">Sep</div>
-        <div class="d-day">4</div>
-        <div class="d-yr">2025</div>
-      </div>
-      <div>
-        <h3>CEDP Durango Office Morning Closure</h3>
-        <div class="time">9:00 am &ndash; 1:00 pm</div>
-        <p>Our Durango office will be closed in the morning and open from 1 p.m. &ndash; 3 p.m. on September 4, 2025.</p>
-      </div>
-    </article>
-  </div>
-
-</div>
-
-<script>
-// Tabs
-document.querySelectorAll('.ev-tab').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var t = btn.getAttribute('data-tab');
-    document.querySelectorAll('.ev-tab').forEach(function(b){b.classList.toggle('active', b===btn);});
-    document.querySelectorAll('.ev-panel').forEach(function(p){p.classList.toggle('active', p.id===t);});
-    history.replaceState(null,'','#'+t);
-  });
-});
-if (location.hash) {
-  var h = location.hash.slice(1);
-  var tab = document.querySelector('.ev-tab[data-tab="'+h+'"]');
-  if (tab) tab.click();
-}
-
-// Calendar
-var EVENTS = [
-  { y:2026, m:5, d:7,  type:'up',   label:'Denver closure' },
-  { y:2025, m:8, d:4,  type:'past', label:'CO Springs / Durango' }
-];
-var calY = 2026, calM = 5; // June 2026
-function renderCal(){
-  var grid = document.getElementById('calGrid');
-  var title = document.getElementById('calTitle');
-  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  title.textContent = months[calM]+' '+calY;
-  var dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  var html = dows.map(function(d){return '<div class="cal-dow">'+d+'</div>';}).join('');
-  var first = new Date(calY, calM, 1).getDay();
-  var daysIn = new Date(calY, calM+1, 0).getDate();
-  var prevDays = new Date(calY, calM, 0).getDate();
-  for (var i=0;i<first;i++){
-    html += '<div class="cal-cell muted"><span class="num">'+(prevDays-first+1+i)+'</span></div>';
-  }
-  for (var d=1; d<=daysIn; d++){
-    var ev = EVENTS.find(function(e){return e.y===calY && e.m===calM && e.d===d;});
-    var cls = 'cal-cell' + (ev ? (ev.type==='up'?' has-up':' has-past') : '');
-    var dot = ev ? '<span class="ev-dot'+(ev.type==='past'?' past':'')+'">'+ev.label+'</span>' : '';
-    html += '<div class="'+cls+'" data-jump="'+(ev?(ev.type==='up'?'upcoming':'past'):'')+'"><span class="num">'+d+'</span>'+dot+'</div>';
-  }
-  var total = first + daysIn;
-  var trail = (7 - (total % 7)) % 7;
-  for (var t=1; t<=trail; t++){
-    html += '<div class="cal-cell muted"><span class="num">'+t+'</span></div>';
-  }
-  grid.innerHTML = html;
-  grid.querySelectorAll('.cal-cell[data-jump]').forEach(function(c){
-    var j = c.getAttribute('data-jump');
-    if (!j) return;
-    c.addEventListener('click', function(){
-      var tab = document.querySelector('.ev-tab[data-tab="'+j+'"]');
-      if (tab) tab.click();
-    });
-  });
-}
-document.getElementById('calPrev').addEventListener('click', function(){
-  calM--; if (calM<0){calM=11;calY--;} renderCal();
-});
-document.getElementById('calNext').addEventListener('click', function(){
-  calM++; if (calM>11){calM=0;calY++;} renderCal();
-});
-renderCal();
-</script>
-<script src="/cedp-global.js"></script>
-</body>
+      // Calendar
+      var EVENTS = [
+        { y:2026, m:5, d:7,  type:'up',   label:'Denver closure' },
+        { y:2025, m:8, d:4,  type:'past', label:'CO Springs / Durango' }
+      ];
+      var calY = 2026, calM = 5; // June 2026
+      function renderCal(){
+        var grid = document.getElementById('calGrid');
+        var title = document.getElementById('calTitle');
+        var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        title.textContent = months[calM]+' '+calY;
+        var dows = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+        var html = dows.map(function(d){return '<div class="cal-dow">'+d+'</div>';}).join('');
+        var first = new Date(calY, calM, 1).getDay();
+        var daysIn = new Date(calY, calM+1, 0).getDate();
+        var prevDays = new Date(calY, calM, 0).getDate();
+        for (var i=0;i<first;i++){
+          html += '<div class="cal-cell muted"><span class="num">'+(prevDays-first+1+i)+'</span></div>';
+        }
+        for (var d=1; d<=daysIn; d++){
+          var ev = EVENTS.find(function(e){return e.y===calY && e.m===calM && e.d===d;});
+          var cls = 'cal-cell' + (ev ? (ev.type==='up'?' has-up':' has-past') : '');
+          var dot = ev ? '<span class="ev-dot'+(ev.type==='past'?' past':'')+'">'+ev.label+'</span>' : '';
+          html += '<div class="'+cls+'" data-jump="'+(ev?(ev.type==='up'?'upcoming':'past'):'')+'"><span class="num">'+d+'</span>'+dot+'</div>';
+        }
+        var total = first + daysIn;
+        var trail = (7 - (total % 7)) % 7;
+        for (var t=1; t<=trail; t++){
+          html += '<div class="cal-cell muted"><span class="num">'+t+'</span></div>';
+        }
+        grid.innerHTML = html;
+        grid.querySelectorAll('.cal-cell[data-jump]').forEach(function(c){
+          var j = c.getAttribute('data-jump');
+          if (!j) return;
+          c.addEventListener('click', function(){
+            var tab = document.querySelector('.ev-tab[data-tab="'+j+'"]');
+            if (tab) tab.click();
+          });
+        });
+      }
+      document.getElementById('calPrev').addEventListener('click', function(){
+        calM--; if (calM<0){calM=11;calY--;} renderCal();
+      });
+      document.getElementById('calNext').addEventListener('click', function(){
+        calM++; if (calM>11){calM=0;calY++;} renderCal();
+      });
+      renderCal();
+    </script>
+    <script src="/cedp-global.js"></script>
+  </body>
 </html>
