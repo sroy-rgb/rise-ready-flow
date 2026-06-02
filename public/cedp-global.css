@@ -700,6 +700,14 @@ nav img {
 .mega-2col .mega-links {
   min-width: 160px;
 }
+.mega-3col {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+.mega-3col .mega-links {
+  min-width: 160px;
+}
 .btn-d {
   background: #2c3e50;
   color: #fff !important;

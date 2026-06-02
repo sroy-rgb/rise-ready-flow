@@ -320,6 +320,16 @@ var wasOpen=card.classList.contains('open');
 document.querySelectorAll('.triage-card').forEach(function(c){c.classList.remove('open');c.querySelector('.triage-plus').textContent='+';});
 if(!wasOpen){card.classList.add('open');card.querySelector('.triage-plus').textContent='+';}
 }
+function handleHelpHash(){
+  var m=(location.hash||'').match(/^#help-(eviction|foreclosure|towing|debt)$/);
+  if(!m) return;
+  var card=document.getElementById(m[1]);
+  if(!card) return;
+  card.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){if(!card.classList.contains('open'))toggleTriage(card);},500);
+}
+window.addEventListener('load',handleHelpHash);
+window.addEventListener('hashchange',handleHelpHash);
 </script>
 <script src="/cedp-global.js"></script>
 <script src="/cedp-page-content.js"></script></body>

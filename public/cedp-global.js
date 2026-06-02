@@ -23,7 +23,10 @@
       '</div>'+
       '<div class="ni"><a href="/our-work" class="'+act('/our-work').trim()+'">Our work</a>'+
         '<div class="mega"><div class="mega-inner">'+
-          '<div class="mega-2col">'+
+          '<div class="mega-3col">'+
+            '<div class="mega-links"><div class="mega-label">Services</div>'+
+              '<a href="/get-help#help-eviction">Eviction defense</a><a href="/get-help#help-foreclosure">Foreclosure</a><a href="/get-help#help-towing">Unjust towing</a><a href="/get-help#help-debt">Debt collection</a><a href="/our-work#program-d5">Disaster relief</a><a href="/our-work#program-d6">Resource navigation</a>'+
+            '</div>'+
             '<div class="mega-links"><div class="mega-label">Programs</div>'+
               '<a href="/our-work#program-d1">Eviction Defense</a><a href="/our-work#program-d2">Foreclosure Prevention</a><a href="/our-work#program-d3">Towing Recovery</a><a href="/our-work#program-d4">Debt Defense</a><a href="/our-work#program-d5">Disaster Response</a>'+
             '</div>'+
