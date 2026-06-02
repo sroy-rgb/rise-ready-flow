@@ -14,6 +14,7 @@ import { Route as ResearchRouteImport } from './routes/research'
 import { Route as OurWorkRouteImport } from './routes/our-work'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as LegislativeWinsRouteImport } from './routes/legislative-wins'
+import { Route as IntakeFormRouteImport } from './routes/intake-form'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as GetHelpRouteImport } from './routes/get-help'
 import { Route as EventsRouteImport } from './routes/events'
@@ -51,6 +52,11 @@ const NewsRoute = NewsRouteImport.update({
 const LegislativeWinsRoute = LegislativeWinsRouteImport.update({
   id: '/legislative-wins',
   path: '/legislative-wins',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IntakeFormRoute = IntakeFormRouteImport.update({
+  id: '/intake-form',
+  path: '/intake-form',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImpactRoute = ImpactRouteImport.update({
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
+  '/intake-form': typeof IntakeFormRoute
   '/legislative-wins': typeof LegislativeWinsRoute
   '/news': typeof NewsRoute
   '/our-work': typeof OurWorkRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
+  '/intake-form': typeof IntakeFormRoute
   '/legislative-wins': typeof LegislativeWinsRoute
   '/news': typeof NewsRoute
   '/our-work': typeof OurWorkRoute
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/get-help': typeof GetHelpRoute
   '/impact': typeof ImpactRoute
+  '/intake-form': typeof IntakeFormRoute
   '/legislative-wins': typeof LegislativeWinsRoute
   '/news': typeof NewsRoute
   '/our-work': typeof OurWorkRoute
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/get-help'
     | '/impact'
+    | '/intake-form'
     | '/legislative-wins'
     | '/news'
     | '/our-work'
@@ -209,6 +219,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/get-help'
     | '/impact'
+    | '/intake-form'
     | '/legislative-wins'
     | '/news'
     | '/our-work'
@@ -229,6 +240,7 @@ export interface FileRouteTypes {
     | '/events'
     | '/get-help'
     | '/impact'
+    | '/intake-form'
     | '/legislative-wins'
     | '/news'
     | '/our-work'
@@ -250,6 +262,7 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   GetHelpRoute: typeof GetHelpRoute
   ImpactRoute: typeof ImpactRoute
+  IntakeFormRoute: typeof IntakeFormRoute
   LegislativeWinsRoute: typeof LegislativeWinsRoute
   NewsRoute: typeof NewsRoute
   OurWorkRoute: typeof OurWorkRoute
@@ -292,6 +305,13 @@ declare module '@tanstack/react-router' {
       path: '/legislative-wins'
       fullPath: '/legislative-wins'
       preLoaderRoute: typeof LegislativeWinsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/intake-form': {
+      id: '/intake-form'
+      path: '/intake-form'
+      fullPath: '/intake-form'
+      preLoaderRoute: typeof IntakeFormRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impact': {
@@ -415,6 +435,7 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   GetHelpRoute: GetHelpRoute,
   ImpactRoute: ImpactRoute,
+  IntakeFormRoute: IntakeFormRoute,
   LegislativeWinsRoute: LegislativeWinsRoute,
   NewsRoute: NewsRoute,
   OurWorkRoute: OurWorkRoute,
