@@ -482,6 +482,13 @@ footer a {
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   margin-bottom: 24px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.brand-mark-id {
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 .brand-mark img {
   height: 64px;
