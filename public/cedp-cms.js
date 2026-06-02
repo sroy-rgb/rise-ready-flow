@@ -83,6 +83,16 @@
   }
   window.openBillLightbox=function(key){
     var b=(window.__bills||{})[key]; if(!b) return;
+    var staticLightboxByBill={
+      "HB24-1098":"hb1098",
+      "SB24-094":"sb094",
+      "HB24-1051":"hb1051"
+    };
+    var staticId=staticLightboxByBill[b.bill_number];
+    if(staticId && document.getElementById("lb-"+staticId) && typeof window.openLightbox==="function"){
+      window.openLightbox(staticId);
+      return;
+    }
     ensureBillLightbox();
     var body=document.getElementById("cmsBillLbBody");
     var img=b.photo_url?'<img class="lb-hero-img" src="'+esc(b.photo_url)+'" alt=""/>':'';
