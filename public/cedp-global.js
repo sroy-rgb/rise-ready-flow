@@ -25,10 +25,10 @@
         '<div class="mega"><div class="mega-inner">'+
           '<div class="mega-2col">'+
             '<div class="mega-links"><div class="mega-label">Services</div>'+
-              '<a href="/our-work">Eviction defense</a><a href="/our-work">Foreclosure</a><a href="/our-work">Unjust towing</a><a href="/our-work">Debt collection</a><a href="/our-work">Disaster relief</a><a href="/our-work">Resource navigation</a>'+
+              '<a href="/our-work#programs">Eviction defense</a><a href="/our-work#programs">Foreclosure</a><a href="/our-work#programs">Unjust towing</a><a href="/our-work#programs">Debt collection</a><a href="/our-work#programs">Disaster relief</a><a href="/our-work#programs">Resource navigation</a>'+
             '</div>'+
             '<div class="mega-links"><div class="mega-label">Programs</div>'+
-              '<a href="/our-work">Programs overview</a><a href="/our-work">CARE Center</a><a href="/our-work">Just Bus mobile aid</a><a href="/our-work">Statewide coverage</a>'+
+              '<a href="/our-work#programs">Programs overview</a><a href="/our-work#programs">CARE Center</a><a href="/our-work#programs">Just Bus mobile aid</a><a href="/our-work#where">Statewide coverage</a>'+
             '</div>'+
           '</div>'+
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
@@ -45,7 +45,7 @@
       '<div class="ni"><a href="/careers" class="'+act('/careers').trim()+'">Careers</a>'+
         '<div class="mega mega-sm"><div class="mega-inner">'+
           '<div class="mega-links"><div class="mega-label">Join CEDP</div>'+
-            '<a href="/careers">Why CEDP</a><a href="/careers">Open positions</a><a href="/careers">Culture &amp; benefits</a>'+
+            '<a href="/careers#why">Why CEDP</a><a href="/careers#positions">Open positions</a><a href="/careers#culture">Culture &amp; benefits</a>'+
           '</div>'+
           '<div class="mega-img"><img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>'+
         '</div></div>'+
