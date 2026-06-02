@@ -63,6 +63,19 @@
       else existingNav.outerHTML = TB + NAV;
       if (existingTb && existingNav.parentNode) existingNav.remove();
     }
+    // Ensure all top-nav links break out of the iframe to the parent React route.
+    try {
+      var injectedNav = document.querySelector('body > nav:not(.dot-nav)') ||
+                        document.querySelector('header > nav:not(.dot-nav)') ||
+                        document.querySelector('nav:not(.dot-nav)');
+      if (injectedNav) {
+        injectedNav.querySelectorAll('a[href]').forEach(function(a){
+          var h = a.getAttribute('href') || '';
+          if (!h || h.charAt(0) === '#' || h.indexOf('mailto:') === 0 || h.indexOf('tel:') === 0) return;
+          if (!a.getAttribute('target')) a.setAttribute('target', '_parent');
+        });
+      }
+    } catch(e) {}
   } catch(e) { console.warn('nav inject failed', e); }
 
   // ---- Mobile hamburger + CTA injection (all pages) ----
