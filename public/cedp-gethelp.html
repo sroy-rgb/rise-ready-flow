@@ -330,6 +330,17 @@ function handleHelpHash(){
 }
 window.addEventListener('load',handleHelpHash);
 window.addEventListener('hashchange',handleHelpHash);
+function wireIntakeLinks(){
+  var sels=['a.crisis-after','a.after-link','a.triage-cta-alt'];
+  document.querySelectorAll(sels.join(',')).forEach(function(a){
+    if(!a.getAttribute('href')||a.getAttribute('href')==='#'||a.getAttribute('href')===''){
+      a.setAttribute('href','/intake-form');
+    }
+    a.setAttribute('target','_top');
+  });
+}
+window.addEventListener('load',wireIntakeLinks);
+setTimeout(wireIntakeLinks,800);
 </script>
 <script src="/cedp-global.js"></script>
 <script src="/cedp-page-content.js"></script></body>
