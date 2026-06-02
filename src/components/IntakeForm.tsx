@@ -31,7 +31,11 @@ function useIsDesktop() {
 }
 
 function detectLang(): Lang {
-  if (typeof navigator === "undefined") return "en";
+  if (typeof window === "undefined") return "en";
+  try {
+    const saved = window.localStorage.getItem("cedp.lang");
+    if (saved === "en" || saved === "es") return saved;
+  } catch {}
   return (navigator.language || "").toLowerCase().startsWith("es") ? "es" : "en";
 }
 
@@ -264,6 +268,10 @@ function Done({ lang }: { lang: Lang }) {
 export default function IntakeForm() {
   const isDesktop = useIsDesktop();
   const [lang, setLang] = useState<Lang>(detectLang);
+  useEffect(() => {
+    try { window.localStorage.setItem("cedp.lang", lang); } catch {}
+    if (typeof document !== "undefined") document.documentElement.lang = lang;
+  }, [lang]);
   const [values, setValues] = useState<Values>({});
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [stepIdx, setStepIdx] = useState(-1); // -1 = welcome (mobile only)
