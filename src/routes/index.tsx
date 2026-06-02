@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Laptop, FileText, PlayCircle } from "lucide-react";
+import { Laptop, FileText, PlayCircle, Building2 } from "lucide-react";
+import xtsPdf from "@/assets/XTS_Corporate_Overview.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -63,25 +64,34 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
       href: "/Interactive_Proposal.html",
       Icon: PlayCircle,
     },
+    {
+      label: "XTS Corporate Overview",
+      href: xtsPdf.url,
+      Icon: Building2,
+    },
   ];
   return (
     <>
       <style>{`
-        .access-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;gap:24px;background:rgba(27,40,56,.55);backdrop-filter:blur(6px);z-index:9998;pointer-events:auto}
-        .access-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:260px;height:140px;padding:18px 24px;border-radius:0;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:16px;text-decoration:none;text-align:center;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
-        .access-card span{display:block;line-height:1.25;white-space:nowrap}
+        .access-overlay{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(27,40,56,.55);backdrop-filter:blur(6px);z-index:9998;pointer-events:auto;padding:24px}
+        .access-grid{display:grid;grid-template-columns:repeat(2,260px);grid-template-rows:repeat(2,140px);gap:24px}
+        .access-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:100%;height:100%;padding:18px 24px;border-radius:0;border:1.5px solid #E8B960;background:rgba(27,40,56,.78);color:#fff;font-weight:700;font-size:16px;text-decoration:none;text-align:center;transition:transform .25s ease, box-shadow .25s ease, background .25s ease}
+        .access-card span{display:block;line-height:1.25}
         .access-card:hover{transform:translateY(-4px) scale(1.02);background:rgba(232,185,96,.12);box-shadow:0 8px 32px rgba(232,185,96,.45)}
         .access-card svg{flex-shrink:0}
         @media (max-width:640px){
-          .access-overlay{flex-direction:column;gap:16px;padding:16px}
-          .access-card{width:100%;max-width:320px;height:120px;padding:13px 20px;font-size:15px}
+          .access-overlay{padding:16px;overflow:auto}
+          .access-grid{grid-template-columns:1fr;grid-template-rows:repeat(4,auto);gap:14px;width:100%;max-width:340px}
+          .access-card{height:110px;padding:13px 20px;font-size:15px}
         }
         @media (min-width:641px) and (max-width:1024px){
-          .access-overlay{flex-wrap:wrap;gap:18px;padding:20px}
-          .access-card{width:240px;height:130px;padding:16px 20px;font-size:15px}
+          .access-overlay{padding:20px}
+          .access-grid{grid-template-columns:repeat(2,minmax(220px,240px));grid-template-rows:repeat(2,130px);gap:18px}
+          .access-card{padding:16px 20px;font-size:15px}
         }
       `}</style>
       <div className="access-overlay" role="dialog" aria-label="Access options">
+        <div className="access-grid">
         {options.map(({ label, href, Icon, onClick }) =>
           onClick ? (
             <button
@@ -107,6 +117,7 @@ function AccessOverlay({ onEnterPrototype }: { onEnterPrototype: () => void }) {
             </a>
           ),
         )}
+        </div>
       </div>
     </>
   );
