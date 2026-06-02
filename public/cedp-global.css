@@ -400,7 +400,7 @@ body {
 /* FOOTER hover */
 footer {
   background: #1b2838;
-  padding: 0 48px 28px;
+  padding: 23px 48px 28px;
   font-family: "Libre Franklin", sans-serif;
   color: rgba(255, 255, 255, 0.5);
 }
@@ -466,7 +466,7 @@ footer a {
 }
 .ft-bt {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 20px;
+  padding-top: 0px;
   display: flex;
   justify-content: space-between;
   font-size: 12px;
