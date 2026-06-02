@@ -600,6 +600,17 @@ document.getElementById('plbOverlay').classList.remove('open');
 document.body.style.overflow='';
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closePLB()});
+
+// Handle deep links like #program-d1 → scroll to programs and open lightbox
+function handleProgramHash(){
+  var m=(location.hash||'').match(/^#program-(d[1-9])$/);
+  if(!m) return;
+  var sec=document.getElementById('programs');
+  if(sec) sec.scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(function(){openDetail(m[1])},500);
+}
+window.addEventListener('load',handleProgramHash);
+window.addEventListener('hashchange',handleProgramHash);
 </script>
 <script src="/cedp-global.js"></script><script src="/cedp-cms.js"></script></body>
 </html>
