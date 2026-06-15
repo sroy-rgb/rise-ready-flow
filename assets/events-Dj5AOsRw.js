@@ -1,0 +1,1 @@
+import{j as t}from"./index-Brx7Kyvr.js";function s(){return t.jsx("iframe",{src:"/cedp-events.html",title:"Events — CEDP",style:{border:0,width:"100vw",height:"100vh",display:"block"}})}export{s as component};

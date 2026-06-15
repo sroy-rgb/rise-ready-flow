@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CED Law — Free Legal Defense for Coloradans</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Work+Sans:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Libre Franklin',sans-serif;font-weight:300;color:#1B2838;background:#fff;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.ph{font-size:9px;font-style:italic;color:rgba(0,0,0,.12);letter-spacing:1px;font-weight:700}
+
+/* TOP BAR */
+.tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
+.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+.lng{display:flex;gap:6px}
+.lng span{padding:2px 8px;border:1px solid rgba(255,255,255,.25);cursor:pointer;font-size:11px;color:rgba(255,255,255,.6)}
+.lng .act{background:rgba(255,255,255,.12);color:#fff;font-weight:600}
+
+/* NAV */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
+nav img{height:56px}
+.nl{display:flex;align-items:center;gap:0;height:100%}
+.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
+.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
+.ni:hover>a{color:#C53030}
+.ni>a.active-nav,.ni>a.act{color:#C53030;border-bottom:2px solid #C53030}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:14px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:14px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+
+/* HERO */
+.cl-hero{background:#fff;padding:80px 64px;display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:center}
+.cl-hero-logo{max-width:280px}
+.cl-hero-logo img{width:200px}
+.cl-hero-tag{font-size:12px;color:#6B7A8A;margin-top:14px;line-height:1.4;letter-spacing:.3px}
+.cl-hero h1{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;line-height:1.1;margin-bottom:20px;text-transform:uppercase;letter-spacing:.5px}
+.cl-hero p{font-size:15px;font-weight:300;line-height:1.6;color:#5A6B7A;margin-bottom:28px;max-width:620px}
+.cl-cta{display:flex;gap:14px;flex-wrap:wrap}
+.cl-btn-r{background:#C53030;color:#fff;padding:14px 28px;font-size:14px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;text-decoration:none;border:1.5px solid #C53030;transition:all .2s;display:inline-block}
+.cl-btn-r:hover{background:#a82626;border-color:#a82626}
+.cl-btn-o{background:transparent;color:#1B2838;padding:14px 28px;font-size:14px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;text-decoration:none;border:1.5px solid #1B2838;transition:all .2s;cursor:pointer;font-family:inherit}
+.cl-btn-o:hover{background:#1B2838;color:#fff}
+.cl-rule{height:1px;background:#E8E8E8;margin:0 64px}
+
+/* SECTION HEADERS */
+.cl-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:16px}
+.cl-label.gold{color:#E8B960}
+.cl-h{font-family:'Barlow Condensed',sans-serif;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px}
+
+/* ELIGIBILITY */
+.cl-elig{background:#fff;padding:80px 64px}
+.cl-elig h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:40px}
+.cl-elig-shell{max-width:760px;margin:0 auto;position:relative;min-height:380px;overflow:hidden}
+.cl-dots{display:flex;gap:10px;justify-content:center;margin-bottom:32px}
+.cl-dot{width:10px;height:10px;border-radius:50%;background:#E8E8E8;transition:background .3s}
+.cl-dot.on{background:#C53030}
+.cl-step{position:absolute;top:60px;left:0;right:0;transition:transform .4s ease,opacity .3s;opacity:0;transform:translateX(60px);pointer-events:none}
+.cl-step.show{opacity:1;transform:translateX(0);pointer-events:auto}
+.cl-step.gone{opacity:0;transform:translateX(-60px);pointer-events:none}
+.cl-q{font-family:'Barlow Condensed',sans-serif;font-size:24px;color:#1B2838;text-align:center;margin-bottom:24px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.cl-opts{display:flex;flex-direction:column;gap:12px;max-width:520px;margin:0 auto}
+.cl-opt{background:#fff;border:1px solid #E8E8E8;padding:18px 22px;font-size:15px;font-weight:600;color:#1B2838;text-align:left;cursor:pointer;transition:all .2s;font-family:'Libre Franklin',sans-serif;position:relative;border-left:4px solid transparent}
+.cl-opt:hover{border-left-color:#E8B960;transform:translateY(-2px);box-shadow:0 4px 16px rgba(27,40,56,.06)}
+.cl-back{background:none;border:0;color:#6B7A8A;font-size:12px;font-weight:600;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin-top:24px;display:inline-block;padding:8px 0;font-family:inherit}
+.cl-back:hover{color:#1B2838}
+.cl-result{text-align:center;max-width:560px;margin:0 auto}
+.cl-check{width:72px;height:72px;border-radius:50%;background:#E8F5E9;display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.cl-check svg{width:36px;height:36px}
+.cl-result h3{font-family:'Barlow Condensed',sans-serif;font-size:28px;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.cl-result p{font-size:15px;color:#5A6B7A;margin-bottom:24px}
+.cl-result-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.cl-result-hours{font-size:12px;color:#6B7A8A;letter-spacing:.5px}
+.cl-ineligible h3{color:#C53030}
+
+/* PRACTICE AREAS */
+.cl-prac{background:#F8F8F8;padding:80px 64px}
+.cl-prac h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:32px}
+.cl-acc{border-top:1px solid #E8E8E8;max-width:980px}
+.cl-acc-item{border-bottom:1px solid #E8E8E8}
+.cl-acc-head{display:flex;justify-content:space-between;align-items:center;padding:28px 0;cursor:pointer;width:100%;background:none;border:0;text-align:left;font-family:inherit}
+.cl-acc-head h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:600;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;padding-right:24px}
+.cl-acc-circle{width:48px;height:48px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .3s}
+.cl-acc-circle svg{width:18px;height:18px;transition:transform .3s}
+.cl-acc-circle svg path{stroke:#1B2838;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.cl-acc-item.open .cl-acc-circle{background:#E8B960;border-color:#E8B960}
+.cl-acc-item.open .cl-acc-circle svg{transform:rotate(180deg)}
+.cl-acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.cl-acc-item.open .cl-acc-body{max-height:400px}
+.cl-acc-content{padding:0 0 28px;max-width:760px}
+.cl-acc-content p{font-size:14px;font-weight:300;line-height:1.6;color:#5A6B7A;margin-bottom:14px}
+.cl-acc-stat{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:#1B2838;font-weight:600;margin-bottom:14px;text-transform:uppercase;letter-spacing:.5px}
+.cl-acc-link{font-size:13px;color:#C53030;font-weight:700;text-decoration:underline;text-underline-offset:3px;letter-spacing:.5px;text-transform:uppercase}
+
+/* TEAM */
+.cl-team{background:#fff;padding:80px 64px}
+.cl-team h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:32px}
+.cl-team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.cl-mem{perspective:1000px;cursor:pointer;height:380px}
+.cl-mem-inner{position:relative;width:100%;height:100%;transition:transform .7s;transform-style:preserve-3d}
+.cl-mem.flipped .cl-mem-inner{transform:rotateY(180deg)}
+.cl-mem-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.cl-mem-front{background:#fff}
+.cl-mem-img{position:relative;aspect-ratio:1/1;overflow:hidden;background:#eee}
+.cl-mem-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cl-mem-img::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:1}
+.cl-mem:hover .cl-mem-img::before{transform:scaleY(.35)}
+.cl-mem:hover .cl-mem-img img{transform:scale(1.05)}
+.cl-mem-img .ph{position:absolute;top:8px;right:8px;z-index:2;color:rgba(255,255,255,.7)}
+.cl-mem-text{padding:14px 4px;position:relative;z-index:2}
+.cl-mem-text h4{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;color:#1B2838;text-transform:uppercase;letter-spacing:.5px}
+.cl-mem-text span{font-size:12px;color:#6B7A8A;display:block;margin-top:2px}
+.cl-mem-back{background:#1B2838;color:#fff;padding:28px 24px;transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:space-between}
+.cl-mem-back h4{font-family:'Barlow Condensed',sans-serif;font-size:18px;color:#E8B960;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.cl-mem-back p{font-size:13px;font-weight:300;line-height:1.55;color:rgba(255,255,255,.7);flex:1}
+.cl-mem-back .cl-li{color:#E8B960;font-size:13px;font-weight:700;text-decoration:none;display:inline-block;margin-top:14px;letter-spacing:.5px}
+.cl-mem-back .cl-flip-hint{font-size:10px;color:rgba(255,255,255,.3);margin-top:10px;letter-spacing:.5px;text-transform:uppercase}
+
+/* RESULTS */
+.cl-res{background:#F8F8F8;padding:80px 64px}
+.cl-res h2{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:40px}
+.cl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:32px;border-top:1px solid #E8E8E8;padding-top:40px}
+.cl-stat .n{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#C53030;line-height:1;letter-spacing:1px;position:relative;display:inline-block}
+.cl-stat .n .ph{position:absolute;top:-4px;right:-18px}
+.cl-stat .l{font-size:12px;color:#6B7A8A;text-transform:uppercase;letter-spacing:1px;margin-top:10px}
+.cl-res-link{font-size:14px;color:#C53030;font-weight:700;text-decoration:underline;text-underline-offset:3px;letter-spacing:.5px;text-transform:uppercase}
+
+/* MISSION PUNCH */
+.cl-punch{background:#1B2838;padding:100px 32px;text-align:center;position:relative;transition:background .5s,color .5s}
+.cl-punch h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,64px);font-weight:400;color:#FFF;line-height:.95;letter-spacing:1px;margin-bottom:32px;transition:color .5s;max-width:1100px;margin-left:auto;margin-right:auto}
+.cl-punch-btn{display:inline-block;border:1.5px solid #fff;color:#fff;padding:16px 36px;font-size:15px;font-weight:600;text-decoration:none;border-radius:40px;letter-spacing:1px;text-transform:uppercase;transition:all .25s}
+.cl-punch-btn:hover{background:#fff;color:#1B2838}
+.cl-punch-tog{position:absolute;top:24px;right:32px;display:flex;gap:6px}
+.cl-punch-tog span{width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;font-family:'Work Sans',sans-serif;cursor:pointer;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.7)}
+.cl-punch-tog span.on{outline:2px solid #fff}
+.cl-punch.v-g{background:#E8B960}
+.cl-punch.v-g h2,.cl-punch.v-g .cl-punch-btn{color:#1B2838}
+.cl-punch.v-g .cl-punch-btn{border-color:#1B2838}
+.cl-punch.v-r{background:#C53030}
+
+/* FAQ */
+.cl-faq{background:#fff;padding:80px 64px}
+.cl-faq h2{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:700;color:#1B2838;text-transform:uppercase;letter-spacing:.5px;margin-bottom:14px}
+.cl-faq-rule{height:2px;background:#1B2838;width:60px;margin-bottom:32px}
+.cl-faq .cl-acc-head h3{font-size:20px}
+
+/* GIANT LINKS (same as we-are) */
+.we-are{background:#fff;padding:0 64px}
+.we-are-row{display:flex;align-items:center;justify-content:space-between;padding:48px 0;border-top:1px solid #E8E8E8;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
+.we-are-row:last-child{border-bottom:1px solid #E8E8E8}
+.we-are-row::before{content:"";position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:0}
+.we-are-row:hover::before{transform:scaleY(1)}
+.we-are-row h2,.we-are-row .ar{position:relative;z-index:1}
+.we-are-row h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#1B2838;letter-spacing:1.5px}
+.we-are-row .ar{width:80px;height:80px;border-radius:50%;border:1.5px solid #1B2838;display:flex;align-items:center;justify-content:center;transition:background .3s}
+.we-are-row .ar svg{width:32px;height:32px}
+.we-are-row .ar svg path{stroke:#1B2838;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.we-are-row:hover .ar{background:#1B2838}
+.we-are-row:hover .ar svg path{stroke:#E8B960}
+
+/* SIMPLE DONATE */
+.cl-donate{background:#1B2838;padding:80px 64px;text-align:center;color:#fff}
+.cl-donate h2{font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;margin-bottom:16px;letter-spacing:1.5px}
+.cl-donate p{font-size:15px;color:rgba(255,255,255,.6);max-width:620px;margin:0 auto 28px;line-height:1.55}
+.cl-donate-btn{display:inline-block;border:1.5px solid #E8B960;color:#E8B960;padding:16px 40px;font-size:15px;font-weight:600;text-decoration:none;border-radius:40px;letter-spacing:1px;text-transform:uppercase;transition:all .25s}
+.cl-donate-btn:hover{background:#E8B960;color:#1B2838}
+
+/* FOOTER */
+footer{background:#1B2838;padding:48px 48px 28px;color:#fff}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.ft-b{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#fff;margin-bottom:12px}
+.ft-b em{color:#E8B960;font-style:normal}
+.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
+.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
+footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+
+/* MOBILE */
+@media (max-width:1023px){
+  .tb{padding:6px 16px;font-size:11px}
+  nav{padding:0 16px;height:64px}
+  nav img{height:44px}
+  .nl>.ni:not(.btn-h-wrap){display:none}
+  .btn-d{display:none}
+  .btn-h{padding:8px 14px;font-size:12px;margin-left:0}
+  .cl-hero{grid-template-columns:1fr;padding:48px 20px;gap:32px}
+  .cl-hero-logo img{width:160px}
+  .cl-hero h1{font-size:28px}
+  .cl-rule{margin:0 20px}
+  .cl-elig,.cl-prac,.cl-team,.cl-res,.cl-faq,.cl-donate,.we-are{padding-left:20px;padding-right:20px}
+  .cl-elig,.cl-prac,.cl-team,.cl-res,.cl-faq,.cl-donate{padding-top:48px;padding-bottom:48px}
+  .we-are{padding:0 20px}
+  .cl-prac h2,.cl-faq h2{font-size:28px}
+  .cl-team-grid{grid-template-columns:1fr}
+  .cl-stats{grid-template-columns:repeat(2,1fr);gap:24px}
+  .cl-stat .n{font-size:36px}
+  .cl-acc-head h3{font-size:18px}
+  .cl-acc-circle{width:40px;height:40px}
+  .we-are-row{padding:32px 0}
+  .we-are-row .ar{width:56px;height:56px}
+  .we-are-row .ar svg{width:22px;height:22px}
+  .cl-donate h2{font-size:36px}
+  .cl-punch{padding:64px 20px}
+  .cl-q{font-size:20px}
+}
+@media (min-width:768px) and (max-width:1023px){
+  .cl-team-grid{grid-template-columns:repeat(2,1fr)}
+  .cl-stats{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+<link rel="stylesheet" href="/cedp-global.css"></head>
+<body>
+
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>
+
+<nav><div><a href="/" target="_parent"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="/about" target="_parent">About</a></div>
+<div class="ni"><a href="/our-work" target="_parent">Our work</a></div>
+<div class="ni"><a href="/ced-law" target="_parent" class="act">CED Law</a></div>
+<div class="ni"><a href="/news" target="_parent">News</a></div>
+<div class="ni"><a href="/careers" target="_parent">Careers</a></div>
+<a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h" href="/get-help" target="_parent">Get help</a>
+</div></nav>
+
+<!-- HERO -->
+<section class="cl-hero">
+  <div class="cl-hero-logo">
+    <img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2023/01/ced_law_transparent.png?w=808&quality=100&ssl=1" alt="CED Law"/>
+    <div class="cl-hero-tag">A program of the Community Economic Defense Project</div>
+  </div>
+  <div>
+    <h1>Free Legal Defense for Coloradans Facing Economic Abuse</h1>
+    <p>CED Law is CEDP's nonprofit law firm. Our attorneys provide free legal representation to people facing eviction, foreclosure, predatory towing, and debt collection. You never pay anything.</p>
+    <div class="cl-cta">
+      <a class="cl-btn-r" href="tel:3038381200">Call (303) 838-1200</a>
+      <button class="cl-btn-o" onclick="document.getElementById('eligSection').scrollIntoView({behavior:'smooth'})">Check Eligibility &darr;</button>
+    </div>
+  </div>
+</section>
+<div class="cl-rule"></div>
+
+<!-- ELIGIBILITY -->
+<section class="cl-elig" id="eligSection">
+  <div class="cl-label">Can CED Law help you?</div>
+  <h2>Check your eligibility</h2>
+  <div class="cl-elig-shell" id="eligShell">
+    <div class="cl-dots" id="eligDots">
+      <div class="cl-dot on"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div>
+    </div>
+
+    <div class="cl-step show" data-step="1">
+      <div class="cl-q">Are you a Colorado resident?</div>
+      <div class="cl-opts">
+        <button class="cl-opt" data-next="2">Yes</button>
+        <button class="cl-opt" data-next="ineligible">No</button>
+      </div>
+    </div>
+
+    <div class="cl-step" data-step="2">
+      <div class="cl-q">What are you facing?</div>
+      <div class="cl-opts">
+        <button class="cl-opt" data-next="3">Eviction or housing loss</button>
+        <button class="cl-opt" data-next="3">Foreclosure</button>
+        <button class="cl-opt" data-next="3">Car was towed</button>
+        <button class="cl-opt" data-next="3">Debt collection</button>
+        <button class="cl-opt" data-next="3">Something else</button>
+      </div>
+      <button class="cl-back" data-back="1">&larr; Back</button>
+    </div>
+
+    <div class="cl-step" data-step="3">
+      <div class="cl-q">Have you received a formal notice?</div>
+      <div class="cl-opts">
+        <button class="cl-opt" data-next="4">Yes, I have paperwork</button>
+        <button class="cl-opt" data-next="4">No, but I'm worried</button>
+        <button class="cl-opt" data-next="4">I'm not sure</button>
+      </div>
+      <button class="cl-back" data-back="2">&larr; Back</button>
+    </div>
+
+    <div class="cl-step" data-step="4">
+      <div class="cl-result">
+        <div class="cl-check"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" stroke="#2E7D32" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>You likely qualify for free legal help.</h3>
+        <p>A CED Law attorney can represent you at no cost.</p>
+        <div class="cl-result-cta">
+          <a class="cl-btn-r" href="tel:3038381200">Call Now: (303) 838-1200</a>
+          <a class="cl-btn-o" href="/intake-form" target="_parent">Submit Intake Form</a>
+        </div>
+        <div class="cl-result-hours">Mon&ndash;Fri, 8:30am&ndash;5:30pm MT</div>
+      </div>
+      <div style="text-align:center"><button class="cl-back" data-back="3">&larr; Back</button></div>
+    </div>
+
+    <div class="cl-step" data-step="ineligible">
+      <div class="cl-result cl-ineligible">
+        <h3>CED Law currently serves Colorado residents only.</h3>
+        <p>Call (303) 838-1200 for referrals to legal aid in your state.</p>
+        <div class="cl-result-cta">
+          <a class="cl-btn-r" href="tel:3038381200">Call (303) 838-1200</a>
+        </div>
+      </div>
+      <div style="text-align:center"><button class="cl-back" data-back="1">&larr; Start over</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRACTICE AREAS -->
+<section class="cl-prac" id="practice">
+  <div class="cl-label gold">What we do</div>
+  <h2>Practice Areas</h2>
+  <div class="cl-acc" id="cprac">
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Eviction Defense</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button>
+      <div class="cl-acc-body"><div class="cl-acc-content"><p>Our largest practice. Housing attorneys represent tenants in eviction proceedings, negotiate with landlords, and connect clients with emergency rental assistance.</p><div class="cl-acc-stat"><span class="ph">PH</span> evictions prevented in 2025</div><a class="cl-acc-link" href="/get-help" target="_parent">Get help with this &rarr;</a></div></div>
+    </div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Foreclosure Prevention</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button>
+      <div class="cl-acc-body"><div class="cl-acc-content"><p>Legal guidance and financial intervention for homeowners facing foreclosure.</p><div class="cl-acc-stat"><span class="ph">PH</span> homes saved</div><a class="cl-acc-link" href="/get-help" target="_parent">Get help with this &rarr;</a></div></div>
+    </div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Towing Recovery</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button>
+      <div class="cl-acc-body"><div class="cl-acc-content"><p>Vehicle recovery and consumer rights under Colorado's Towing Bill of Rights (HB22-1314).</p><div class="cl-acc-stat"><span class="ph">PH</span> vehicles recovered</div><a class="cl-acc-link" href="/get-help" target="_parent">Get help with this &rarr;</a></div></div>
+    </div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Debt Defense</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button>
+      <div class="cl-acc-body"><div class="cl-acc-content"><p>Challenging unfair debt collection practices and protecting clients' financial stability.</p><div class="cl-acc-stat"><span class="ph">PH</span> debt collection cases defended</div><a class="cl-acc-link" href="/get-help" target="_parent">Get help with this &rarr;</a></div></div>
+    </div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Appellate Program</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button>
+      <div class="cl-acc-body"><div class="cl-acc-content"><p>Taking critical housing cases to higher courts to establish precedent and expand tenant protections.</p><div class="cl-acc-stat"><span class="ph">PH</span> appeals filed</div><a class="cl-acc-link" href="/impact" target="_parent">View impact &rarr;</a></div></div>
+    </div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Affirmative Litigation</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button>
+      <div class="cl-acc-body"><div class="cl-acc-content"><p>Strategic cases targeting systemic abuses. Including the $1M Wyatts Towing AG settlement.</p><div class="cl-acc-stat">$1M Wyatts Towing settlement</div><a class="cl-acc-link" href="/impact" target="_parent">View impact &rarr;</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="cl-team" id="team">
+  <div class="cl-label">Our attorneys</div>
+  <h2>The people defending your rights</h2>
+  <div class="cl-team-grid" id="teamGrid">
+    <!-- inserted by JS -->
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="cl-res" id="resources">
+  <div class="cl-label gold">Track record</div>
+  <h2>Results that change systems</h2>
+  <div class="cl-stats">
+    <div class="cl-stat"><div class="n"><span class="ph">PH</span>2,400+</div><div class="l">Cases handled</div></div>
+    <div class="cl-stat"><div class="n">$1M</div><div class="l">Wyatts settlement</div></div>
+    <div class="cl-stat"><div class="n"><span class="ph">PH</span>4</div><div class="l">Laws changed</div></div>
+    <div class="cl-stat"><div class="n"><span class="ph">PH</span>1,800+</div><div class="l">Evictions prevented</div></div>
+  </div>
+  <a class="cl-res-link" href="/impact" target="_parent">View all legislative wins &rarr;</a>
+</section>
+
+<!-- MISSION PUNCH -->
+<section class="cl-punch v-n" id="clPunch">
+  <div class="cl-punch-tog">
+    <span class="on" data-v="n">N</span><span data-v="g">G</span><span data-v="r">R</span>
+  </div>
+  <h2>FREE LEGAL DEFENSE.<br/>BECAUSE JUSTICE SHOULDN'T HAVE A PRICE TAG.</h2>
+  <a class="cl-punch-btn" href="/#donateSection" target="_parent">Donate Today &rarr;</a>
+</section>
+
+<!-- FAQ -->
+<section class="cl-faq" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="cl-faq-rule"></div>
+  <div class="cl-acc" id="cfaq">
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Does CED Law charge fees?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>Never. All legal services are 100% free. CED Law is a nonprofit funded by donors, grants, and legal awards &mdash; never by clients.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Do I qualify for help?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>If you're a Colorado resident facing eviction, foreclosure, towing, or debt collection, you likely qualify. Use our eligibility checker above or call us.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>What should I bring to my first call?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>Any paperwork you've received &mdash; eviction notices, court summons, towing receipts, debt collection letters, lease agreements, or anything from your landlord or lender.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>How quickly can you help?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>For urgent matters like active evictions, we prioritize same-day or next-day response. Less time-sensitive matters are typically reviewed within a week.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Do you help in Spanish?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>Yes. Bilingual services available. &iquest;Necesita ayuda en espa&ntilde;ol? Llame al (303) 838-1200.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>What areas of Colorado do you cover?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>We serve 59 of 64 Colorado counties from offices in Denver, Colorado Springs, Durango, and Fort Morgan.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>Can you help if I've already been evicted?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>Yes. We can help with wrongful eviction claims, security deposit recovery, and rehousing support.</p></div></div></div>
+    <div class="cl-acc-item"><button class="cl-acc-head"><h3>How is CED Law different from other legal aid?</h3><div class="cl-acc-circle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></div></button><div class="cl-acc-body"><div class="cl-acc-content"><p>We integrate legal defense with financial aid and resource navigation &mdash; a single point of contact, not five different offices.</p></div></div></div>
+  </div>
+</section>
+
+<!-- GIANT LINKS -->
+<div class="we-are">
+  <a class="we-are-row" href="/get-help" target="_parent"><h2>GET HELP NOW</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+  <a class="we-are-row" href="/our-work" target="_parent"><h2>OUR PROGRAMS</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+  <a class="we-are-row" href="#teamGrid"><h2>MEET THE TEAM</h2><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+</div>
+
+<!-- SIMPLE DONATE -->
+<section class="cl-donate" id="donate">
+  <h2>Support CED Law</h2>
+  <p>Your donation funds free legal representation for families who can't afford a lawyer.</p>
+  <a class="cl-donate-btn" href="/#donateSection" target="_parent">Donate &rarr;</a>
+</section>
+
+<footer><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help" target="_parent">Eviction</a><a href="/get-help" target="_parent">Foreclosure</a><a href="/get-help" target="_parent">Towing</a><a href="/get-help" target="_parent">Debt</a><a href="/get-help" target="_parent">Disaster relief</a></div><div><h4>About</h4><a href="/about">Our purpose</a><a href="/about">Our team</a><a href="/careers">Careers</a><a href="/ced-law">CED Law</a><a href="/about">Contact</a></div><div><h4>Impact</h4><a href="/impact">Legislative wins</a><a href="/impact">Research</a><a href="/news">News &amp; press</a><a href="/#donateSection">Donate</a><a href="/#donateSection">Events</a></div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+
+<script>
+// ELIGIBILITY CHECKER
+(function(){
+  var steps = document.querySelectorAll('.cl-step');
+  var dots = document.querySelectorAll('#eligDots .cl-dot');
+  var stepOrder = ['1','2','3','4'];
+  function go(target){
+    var cur = document.querySelector('.cl-step.show');
+    if(cur){ cur.classList.remove('show'); cur.classList.add('gone'); }
+    setTimeout(function(){
+      steps.forEach(function(s){ s.classList.remove('show','gone'); });
+      var next = document.querySelector('.cl-step[data-step="'+target+'"]');
+      if(next){ next.classList.add('show'); }
+      var idx = stepOrder.indexOf(target);
+      dots.forEach(function(d,i){ d.classList.toggle('on', idx === -1 ? false : i <= idx); });
+      if(target === 'ineligible'){ dots.forEach(function(d){ d.classList.remove('on'); }); dots[0].classList.add('on'); }
+    }, 200);
+  }
+  document.querySelectorAll('.cl-opt').forEach(function(b){
+    b.addEventListener('click', function(){ go(b.dataset.next); });
+  });
+  document.querySelectorAll('.cl-back').forEach(function(b){
+    b.addEventListener('click', function(){ go(b.dataset.back); });
+  });
+})();
+
+// ACCORDIONS (practice + faq, one open at a time per group)
+(function(){
+  ['cprac','cfaq'].forEach(function(id){
+    var root = document.getElementById(id);
+    if(!root) return;
+    root.querySelectorAll('.cl-acc-head').forEach(function(h){
+      h.addEventListener('click', function(){
+        var item = h.parentElement;
+        var open = item.classList.contains('open');
+        root.querySelectorAll('.cl-acc-item').forEach(function(i){ i.classList.remove('open'); });
+        if(!open) item.classList.add('open');
+      });
+    });
+  });
+})();
+
+// TEAM (with flip)
+(function(){
+  var team = [
+    {n:'Spencer Bailey',t:'Appellate Program Supervisor',b:'Leads CED Law\'s appellate work, taking critical housing cases to higher courts to establish precedent for tenant protections.',img:'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {n:'Charlotte Goodenow',t:'Equal Justice Works Fellow',b:'Focuses on debt defense and consumer protection, helping clients challenge unfair collection practices.',img:'https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {n:'Amanda Bliss',t:'Housing Attorney',b:'Represents tenants in eviction proceedings, negotiates with landlords, and connects clients with emergency rental assistance.',img:'https://images.pexels.com/photos/1181519/pexels-photo-1181519.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {n:'Marcus Rivera',t:'Senior Housing Attorney',b:'Specializes in complex eviction defense, with a focus on wrongful eviction claims and security deposit recovery.',img:'https://images.pexels.com/photos/8112172/pexels-photo-8112172.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {n:'Priya Patel',t:'Foreclosure Defense Attorney',b:'Helps homeowners navigate foreclosure prevention, loan modifications, and mortgage workouts.',img:'https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=600'},
+    {n:'Daniel Okafor',t:'Affirmative Litigation Lead',b:'Drives strategic litigation against systemic economic abuse, including the $1M Wyatts Towing AG settlement.',img:'https://images.pexels.com/photos/1300402/pexels-photo-1300402.jpeg?auto=compress&cs=tinysrgb&w=600'}
+  ];
+  var grid = document.getElementById('teamGrid');
+  team.forEach(function(m){
+    var el = document.createElement('div');
+    el.className = 'cl-mem';
+    el.innerHTML = '<div class="cl-mem-inner">'+
+      '<div class="cl-mem-face cl-mem-front">'+
+        '<div class="cl-mem-img"><img src="'+m.img+'" alt=""/><span class="ph">PH</span></div>'+
+        '<div class="cl-mem-text"><h4>'+m.n+'</h4><span>'+m.t+'</span></div>'+
+      '</div>'+
+      '<div class="cl-mem-face cl-mem-back">'+
+        '<div><h4>'+m.n+'</h4><p>'+m.b+'</p></div>'+
+        '<div><a class="cl-li" href="#" target="_blank" rel="noopener">LinkedIn &rarr;</a><div class="cl-flip-hint">Tap to flip back</div></div>'+
+      '</div>'+
+    '</div>';
+    el.addEventListener('click', function(e){
+      if(e.target.tagName === 'A') return;
+      el.classList.toggle('flipped');
+    });
+    grid.appendChild(el);
+  });
+})();
+
+// MISSION PUNCH TOGGLE
+(function(){
+  var box = document.getElementById('clPunch');
+  box.querySelectorAll('.cl-punch-tog span').forEach(function(s){
+    s.addEventListener('click', function(){
+      box.className = 'cl-punch v-' + s.dataset.v;
+      box.querySelectorAll('.cl-punch-tog span').forEach(function(x){ x.classList.remove('on'); });
+      s.classList.add('on');
+    });
+  });
+})();
+
+// LANGUAGE TOGGLE
+(function(){
+  document.querySelectorAll('.tb .lng span').forEach(function(s){
+    s.addEventListener('click', function(){
+      document.querySelectorAll('.tb .lng span').forEach(function(x){ x.classList.remove('act'); });
+      s.classList.add('act');
+    });
+  });
+})();
+</script>
+<script src="/cedp-global.js"></script></body>
+</html>

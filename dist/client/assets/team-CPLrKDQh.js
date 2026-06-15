@@ -1,0 +1,1 @@
+import{j as t}from"./index-Brx7Kyvr.js";function r(){return t.jsx("iframe",{src:"/cedp-team.html",title:"Our Team — CEDP",style:{border:0,width:"100vw",height:"100vh",display:"block"}})}export{r as component};

@@ -1,0 +1,521 @@
+<html lang="en"><head><style data-hubspot-styled-components=""></style><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><link rel="preconnect" href="https://static.hsappstatic.net" crossorigin="anonymous"><script src="https://js.hs-analytics.net/analytics/1780387800000/14544450.js" type="text/javascript" id="hs-analytics"></script><script src="https://js.usemessages.com/conversations-embed.js" type="text/javascript" id="hubspot-messages-loader" data-loader="hs-scriptloader" data-hsjs-portal="14544450" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script src="https://js.hs-banner.com/v2/14544450/banner.js" type="text/javascript" id="cookieBanner-14544450" data-cookieconsent="ignore" data-hs-ignore="true" data-loader="hs-scriptloader" data-hsjs-portal="14544450" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script src="https://js.hscollectedforms.net/collectedforms.js" type="text/javascript" id="CollectedForms-14544450" crossorigin="anonymous" data-leadin-portal-id="14544450" data-leadin-env="prod" data-loader="hs-scriptloader" data-hsjs-portal="14544450" data-hsjs-env="prod" data-hsjs-hublet="na1"></script><script>(function() {
+    const SILO_ACCESSOR=Symbol.for("silo_v1");function makeScopedState(...e){return{values:new Map(e),watchers:new Map}}function getBuildTimePropertyNames(){return{copilotLayoutType:"copilot_layout_type",copilotSidebarSide:"copilot_sidebar_side",currentPackageName:"current_package_name",currentPackageVersion:"current_package_version",rootPackageName:"root_package_name",rootPackageVersion:"root_package_version",parentPackageName:"parent_package_name",parentPackageVersion:"parent_package_version"}}function getCopilotSidebarSideFromSessionStorage(){try{return"left"===sessionStorage.getItem("copilot-sidebar-side")?"left":"right"}catch(e){return"right"}}function getGlobalState(e=window){return e[SILO_ACCESSOR]}function initialize(e,a,t){var o;if(getGlobalState())throw Error("Global state already initialized");let r=window;for(;r.parent!==r;)try{r.parent.document;r=r.parent;if(getGlobalState(r.parent))break}catch(e){break}const{copilotLayoutType:i,copilotSidebarSide:n,currentPackageName:c,currentPackageVersion:S,rootPackageName:p,rootPackageVersion:g,parentPackageName:l,parentPackageVersion:s}=getBuildTimePropertyNames();window[SILO_ACCESSOR]={TAB:(null===(o=r[SILO_ACCESSOR])||void 0===o?void 0:o.TAB)||makeScopedState([p,e],[g,a],[l,e],[s,a]),BROWSING_CONTEXT:makeScopedState([c,e],[S,a],[i,t],[n,getCopilotSidebarSideFromSessionStorage()])}}
+    initialize('ui-forms-embed-components-app-legacy','1.906', 'undefined')})();</script><title>Form</title><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="googlebot" content="noindex"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="dns-prefetch" href="https://forms.hsforms.com"><style>
+          body {
+            margin: 0;
+            background: #f4f8fa;
+          }
+
+          .container {
+            display: none;
+            width: 800px;
+            margin: 0 auto;
+            margin-top: 30px;
+          }
+
+          .skip-to-form {
+            left: -9999px;
+            position: absolute;
+          }
+
+          @media only screen and (max-width: 767px) {
+            .container {
+              width: 100%;
+            }
+          }
+
+          .container.loaded,
+          .container.error {
+            display: block;
+          }
+
+          .container.loaded {
+            background: #fff;
+            box-shadow: 0 4px 8px 0 rgba(53, 105, 128, 0.3), 0 6px 20px 0 rgba(165, 200, 213, 0.41);
+          }
+
+          .container.loaded .unpublish-content p{
+            text-align: center;
+            font-size: 20px;
+            padding: 20px;
+          }
+
+          #form-target {
+            padding: 40px;
+          }
+
+          .hs-form_free.hs-form__thankyou-message {
+            font-size: 38px;
+            text-align: center;
+          }
+
+          .hs-form_free.hs-form__thankyou-message .hs-form__virality__link {
+            font-size: 18px;
+            margin-top: 240px;
+            line-height: 60px;
+          }
+
+          .hs-form_free.hs-form__thankyou-message .hs-form__virality__link__sproket {
+            width: 60px;
+            height: 60px;
+          }
+
+          .hs-form_free.hs-form__thankyou-message:before {
+            display: block;
+            content: url(//static.hsappstatic.net/ui-forms-embed-components-app-legacy/static-1.906/img/success-green.svg);
+            width: 130px;
+            height: 201px;
+            padding-top: 28px;
+            margin: 0 auto;
+          }
+        </style><script>
+    window.disabledHsPopups = ['ADS', 'LEADFLOW', 'LIVE_CHAT', 'FEEDBACK', 'CALLS_TO_ACTION'];
+  </script><script>!function(){"use strict";const r=/\/([a-z0-9\-_]+)\/?([?#].*)?$/i,t=[["-","+"],["_","/"]],o=1,n=22,e=r=>/^[{]?[0-9a-fA-F]{8}-?([0-9a-fA-F]{4}-?){3}[0-9a-fA-F]{12}[}]?$/.test(r),s=r=>{const o=t.reduce(((r,t)=>r.replaceAll(t[0],t[1])),r);return[...Uint8Array.from(atob(o),(r=>r.charCodeAt(0)))].map((r=>(r+256).toString(16).slice(-2))).reduce(((r,t,o)=>{4!==o&&6!==o&&8!==o&&10!==o||(r+="-");return r+t}),"")},a=r=>{var o;const n=(null===(o=r.replace(/[^a-fA-F0-9]/g,"").match(/.{2}/g))||void 0===o?void 0:o.map((r=>parseInt(r,16))))||[],e=btoa(String.fromCharCode(...n)).substring(0,22);return t.reduce(((r,[t,o])=>r.replaceAll(o,t)),e)},i=r=>r.hostname.split(".").length>3,c=r=>r.hostname.split(".")[0],u=t=>{var o;return(null===(o=r.exec(t.href))||void 0===o?void 0:o[1])||""},l=r=>{const t=parseInt(r,36);return isNaN(t)?"":t.toString()},d=r=>{const t=s(r);return e(t)?t:""},f=r=>i(r)?c(r):u(r).substring(n+o),h=r=>i(r)?u(r).substring(o):u(r).substring(o,n+o),m=r=>({formId:d(h(r)),portalId:l(f(r))}),p=(r,t,o)=>`${r}${a(t)}${Number(o).toString(36)}`,w=/^[^/]+\/\/[^/]+\/([0-9]+)\/([a-z0-9-]+)/i,g="test-share";function I(){const r=new URLSearchParams(window.location.search);return/(hubspot|hsforms)(qa).com/.test(window.location.href)||"true"===r.get("_hsIsQa")}function b(){try{return!/(test.html|test-share)/.test(window.location.href)&&/(hubspot|hsforms)(qa)?.com/.test(window.location.href)}catch(r){return!1}}function F(r){return w.test(r)}function S(){return F(window.location.href)}function v(){return window.location.hostname.split(".")[0].split("-")[1]||""}function $(r){const t=w.exec(r),o={portalId:null,formGuid:null};if(t&&t[1]&&t[2]){o.portalId=parseInt(t[1],10);o.formGuid=t[2]}return o}function A(){return window.location.href.replace(`/${g}`,"")}function q(){if(S())return{portalId:$(window.location.href).portalId,formGuid:$(window.location.href).formGuid,region:v()};const r=new URL(A());return{portalId:m(r).portalId,formGuid:m(r).formId,region:v()}}function y(){const r=q();return`${window.shareHsFormsUrl}/${p("1",r.formGuid,r.portalId.toString())}`}function G(){return b()?y():window.location.href}const R=window,U=()=>{R._hsq.push(["setCanonicalUrl",G()]);R.HubSpotForms.onFormReady((()=>{var r;R.HubSpotForms.currentForm.setContext({pageUrl:`${y()}${R.location.search}`});null===(r=document.querySelector(".container"))||void 0===r||r.classList.add("loaded")}));R.HubSpotForms.onRenderError((()=>{var r;null===(r=document.querySelector(".container"))||void 0===r||r.classList.add("error")}))};(()=>{R.hsFormsOnReady=[];R._hsq=R._hsq||[];R.isQa=I();R.isLocal="local"===R.location.hostname.split(".")[0];R.HubSpotForms?U():R.hsFormsOnReady.push(U)})()}();
+      //# sourceURL=//static.hsappstatic.net/ui-forms-embed-components-app-legacy/static-1.906/bundles/project.js</script><script>
+      (function (isQa, isLocal) {
+        var getHubletSuffixFromUrl = function () {
+          var host = window.location.hostname;
+          return host.indexOf('-') !== -1
+            ? host.split('.')[0].substring(host.indexOf('-'))
+            : '';
+        };
+
+        var protocol = 'https://';
+        var hubletSuffix = getHubletSuffixFromUrl();
+        var qaSuffix = isQa ? 'qa' : '';
+
+        var domainBuilders = {
+          'js.hsforms.net': function () {
+            return protocol + 'js' + hubletSuffix + '.hsforms' + qaSuffix + '.net';
+          },
+          'forms.hsforms.com': function () {
+            return protocol + 'forms' + hubletSuffix + '.hsforms' + qaSuffix + '.com';
+          },
+          'share.hsforms.com': function () {
+            return protocol + 'share' + hubletSuffix + '.hsforms' + qaSuffix + '.com';
+          },
+          'js.hs-scripts.com': function () {
+            return protocol + 'js' + hubletSuffix + '.hs-scripts' + qaSuffix + '.com';
+          },
+          'api.hubspot.com': function () {
+            return protocol + 'api' + hubletSuffix + '.hubspot' + qaSuffix + '.com';
+          }
+        };
+
+        window.apiHubspotUrl = domainBuilders['api.hubspot.com']();
+        window.formsHsFormsUrl = domainBuilders['forms.hsforms.com']();
+        window.shareHsFormsUrl = domainBuilders['share.hsforms.com']();
+        window.jsHsFormsUrl = domainBuilders['js.hsforms.net']();
+        window.jsHsScriptsUrl = domainBuilders['js.hs-scripts.com']();
+      })(window.isQa, window.isLocal);
+    </script><script>
+      (function (jsHsFormsUrl, isLocal) {
+        var scriptJs = document.createElement('script');
+        scriptJs.type = 'text/javascript';
+        scriptJs.src = isLocal ? 'https://local.hsappstatic.net/forms-embed/static/bundles/render-testing-app.js' :  jsHsFormsUrl + '/hs-legacy-forms-render-testing-app.js';
+        scriptJs.async = true;
+        scriptJs.defer = true;
+
+        document.head.appendChild(scriptJs);
+      })(window.jsHsFormsUrl, window.isLocal);
+    </script><script type="text/javascript" src="https://js.hsforms.net/hs-legacy-forms-render-testing-app.js" async="" defer=""></script><script>
+      (function (jsHsFormsUrl, isLocal) {
+        var scriptJs = document.createElement('script');
+
+        var hsVersion =
+          (window.location.search.match(/[?&]{1}_hsVersion=([^&#]*)/) || [])[1] ||
+          'v3';
+
+        scriptJs.type = 'text/javascript';
+        scriptJs.src = isLocal ? 'https://local.hsappstatic.net/forms-embed/static/bundles/project-v3.js' :  jsHsFormsUrl + '/forms/embed/' + hsVersion + '.js';
+        scriptJs.async = true;
+        scriptJs.defer = true;
+
+        document.head.appendChild(scriptJs);
+      })(window.jsHsFormsUrl, window.isLocal);
+    </script><script type="text/javascript" src="https://js.hsforms.net/forms/embed/v3.js" async="" defer=""></script><script>window.hs_RequestParams = {}</script><script>
+    (function (RequestParams) {
+      var LEGACY_UUID_IDENTIFIER = '-';
+      var BYTE_TO_HEX_MAP = [];
+      var BASE64_URL_SAFE_MAP = [
+        ['+', '-'],
+        ['/', '_'],
+      ];
+      var requestObj;
+
+      function generateHexMap() {
+        var result = [];
+        var index;
+        for (index = 0; index < 256; index++) {
+          result.push((index + 0x100).toString(16).substr(1));
+        }
+        return result;
+      }
+
+      BYTE_TO_HEX_MAP = generateHexMap();
+
+      function base64ToArrayBuffer(base64) {
+        var binaryString = window.atob(base64);
+        var result = [];
+        var index;
+        for (index = 0; index < binaryString.length; index++) {
+          result.push(binaryString.charCodeAt(index));
+        }
+        return new window.Uint8Array(result);
+      }
+
+      function getVersionFromSymbol(symbol) {
+        return (
+          parseInt(symbol, 36) +
+          (isNaN(symbol * 1) && symbol === symbol.toUpperCase() ? 26 : 0)
+        );
+      }
+
+      function bytesToUuid(buf, offset) {
+        var i = offset || 0;
+        return [
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          '-',
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          '-',
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          '-',
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          '-',
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+          BYTE_TO_HEX_MAP[buf[i++]],
+        ].join('');
+      }
+
+      function unescapeBase64(b64) {
+        return BASE64_URL_SAFE_MAP.reduce(function (t, v) {
+          return t.split('').map(c => c === v[1] ? v[0] : c).join('');
+        }, b64);
+      }
+
+      function B64ToUuid(b64) {
+        return bytesToUuid(base64ToArrayBuffer(b64));
+      }
+
+      function decodeFormToken(encodedString) {
+        var legacyUuid = encodedString.charAt(0) === LEGACY_UUID_IDENTIFIER;
+        var offset = legacyUuid ? 2 : 1;
+        var formGuid = B64ToUuid(
+          unescapeBase64(encodedString.substring(offset, 22 + offset))
+        );
+        return {
+          formId: legacyUuid ? formGuid.replace(/-/g, '') : formGuid,
+          portalId: parseInt(encodedString.substring(22 + offset), 36),
+          version: getVersionFromSymbol(encodedString.charAt(offset - 1)),
+        };
+      }
+
+      function getHubletFromUrl(queryParams) {
+        const hublet = queryParams.get("_hsHublet");
+        if (hublet) {
+          return hublet;
+        }
+        var subdomain = window.location.hostname.split('.')[0];
+        const derivedHublet = subdomain.split('-')[1];
+        return derivedHublet || '';
+      }
+
+      function getPathParams() {
+        var pathParams = window.location.pathname.split('/');
+        return pathParams.filter(function (param) {
+          return param !== '' && param.indexOf('test-') === -1;
+        });
+      }
+
+      function parseRequestParamsFromUrl() {
+        const pathParams = getPathParams();
+        const queryParams = new URLSearchParams(window.location.search);
+
+        const queryParamsToken = queryParams.get("_hsShareToken");
+        const queryParamsIsQa = queryParams.get("_hsIsQa");
+        const queryParamsPortalId = queryParams.get("_hsPortalId");
+        const queryParamsFormId = queryParams.get("_hsFormId");
+
+        const isQa = queryParamsIsQa === 'true';
+        const region = getHubletFromUrl(queryParams);
+        const token = queryParamsToken || pathParams[0];
+        const isPortalAndFormUrl = pathParams.length === 2;
+
+        const baseParams = {isQa, region }
+
+        if (isPortalAndFormUrl) {
+          return {
+            ...baseParams,
+            portalId: pathParams[0],
+            formId: pathParams[1],
+          };
+        }
+
+        if (window.isLocal && queryParamsPortalId && queryParamsFormId) {
+          return {
+            ...baseParams,
+            portalId: queryParamsPortalId,
+            formId: queryParamsFormId,
+          };
+        }
+
+        const { formId, portalId, version } = decodeFormToken(token);
+        return { ...baseParams, formId, portalId, version };
+      }
+
+      // Get Form request params hash from url
+      const {portalId, formId, isQa, region, version} = parseRequestParamsFromUrl();
+
+      // Set to global
+      RequestParams.portalId = portalId;
+      RequestParams.formId = formId;
+      RequestParams.isQa = isQa;
+      RequestParams.region = region;
+      RequestParams.version = version;
+    })(window.hs_RequestParams);
+    </script><script>
+  (function (requestParams, formsReadyQueue, globalIsQa) {
+    var context;
+    var create;
+    var instance;
+    const versionMap = new Map([[1, "1.0"], [2, "2.0"]])
+    const { url, formId, portalId, region, version, isQa: queryParamsIsQa } = requestParams
+
+    context = {
+      embedDefinitionUrl: url,
+      formId: formId,
+      portalId: portalId,
+      region: region,
+      target: '#form-target',
+      ...(version && versionMap.get(version) && {
+        __INTERNAL__CONTEXT: {
+          editorVersion: versionMap.get(version)
+        }
+      }),
+    };
+
+    // Check both query param and global isQa flag for backwards compatibility (queryParamsIsQa is set in requestForm.tsx)
+    if (queryParamsIsQa || globalIsQa) {
+      context['env'] = 'qa';
+    }
+
+    function updateHtmlLang() {
+      var form = document.querySelector('.hs-form-' + context.formId);
+      var formLang = form.lang;
+
+      if (formLang) {
+        document.documentElement.setAttribute('lang', formLang);
+      }
+    }
+
+    function scrollToTop() {
+      try {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (e) {
+        window.scrollTo(0, 0);
+      }
+    }
+
+    create = function () {
+      instance = window.hbspt.forms.create(context);
+      instance.on('onFormReady', updateHtmlLang);
+      instance.on('onPageChange', scrollToTop);
+      window.HubSpotForms.currentForm = instance;
+    };
+
+    formsReadyQueue.push(create);
+  })(window.hs_RequestParams, window.hsFormsOnReady, window.isQa);
+
+  </script><style type="text/css">
+
+body.form-submitting .hs-form__actions__submit {
+  position: relative;
+  color: transparent !important;
+  --spinner-color: #ffffff;
+  opacity: 0.7;
+}
+
+body.form-submitting .hs-form__actions__submit::after {
+  content: '' !important;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 2px solid var(--spinner-color);
+  border-top-color: transparent;
+  animation: hs-spinner-rotate 0.6s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+  display: block;
+}
+
+@keyframes hs-spinner-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+          </style><script>
+        (function() {
+          window.addEventListener('message', function(event) {
+            if (event.data.type !== 'hsFormCallback') return;
+
+            const eventName = event.data.eventName;
+            const formId = event.data.id;
+
+            if (eventName === 'onFormSubmit') {
+              document.body.classList.add('form-submitting');
+            } else if (eventName === 'onFormSubmitted') {
+              document.body.classList.remove('form-submitting');
+              try {
+                var overlay = document.createElement('div');
+                overlay.setAttribute('role', 'status');
+                overlay.style.cssText = 'position:fixed;inset:0;background:rgba(255,255,255,0.97);display:flex;align-items:center;justify-content:center;z-index:2147483646;font-family:Helvetica Neue,Helvetica,Arial,sans-serif;';
+                overlay.innerHTML = '<div style="max-width:480px;text-align:center;padding:32px;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.08);background:#fff;">\
+                  <div style="font-size:48px;line-height:1;margin-bottom:12px;">✅</div>\
+                  <h2 style="margin:0 0 8px;font-size:22px;color:#0d2c47;">Form submitted successfully</h2>\
+                  <p style="margin:0 0 16px;color:#33475b;font-size:14px;">Thank you. Redirecting you back to Get Help…</p>\
+                </div>';
+                document.body.appendChild(overlay);
+              } catch (e) {}
+              setTimeout(function () {
+                try {
+                  (window.top || window.parent || window).location.href = '/get-help';
+                } catch (e) {
+                  window.location.href = '/get-help';
+                }
+              }, 1800);
+            } else if (eventName === 'onFormError') {
+              document.body.classList.remove('form-submitting');
+            }
+          });
+        })();
+      </script><meta name="author" content="HubSpot, Inc."><link rel="apple-touch-icon" sizes="180x180" href="//static.hsappstatic.net/quartz/static-1.6368/favicon/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="//static.hsappstatic.net/quartz/static-1.6368/favicon/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="//static.hsappstatic.net/quartz/static-1.6368/favicon/favicon-16x16.png"><link rel="mask-icon" href="//static.hsappstatic.net/quartz/static-1.6368/favicon/safari-pinned-tab.svg" color="#FF7A59"><meta name="msapplication-TileColor" content="#2b5797"><style type="text/css">html.hs-messages-widget-open.hs-messages-mobile,html.hs-messages-widget-open.hs-messages-mobile body{overflow:hidden!important;position:relative!important}html.hs-messages-widget-open.hs-messages-mobile body{height:100%!important;margin:0!important}#hubspot-messages-iframe-container{display:initial!important;z-index:2147483647;position:fixed!important;bottom:0!important}#hubspot-messages-iframe-container:hover .hs-drag-handle--v2--widget-open--left,#hubspot-messages-iframe-container:hover .hs-drag-handle--v2--widget-open--right{display:flex!important}#hubspot-messages-iframe-container.widget-align-left{left:0!important}#hubspot-messages-iframe-container.widget-align-right{right:0!important}#hubspot-messages-iframe-container.internal{z-index:1016}#hubspot-messages-iframe-container.internal iframe{min-width:108px}#hubspot-messages-iframe-container .hs-shadow-container{display:initial!important;z-index:-1;position:absolute;width:0;height:0;bottom:0;content:""}#hubspot-messages-iframe-container .hs-shadow-container.internal{display:none!important}#hubspot-messages-iframe-container .hs-shadow-container.active{width:400px;height:400px}#hubspot-messages-iframe-container iframe{display:initial!important;width:100%!important;height:100%!important;border:none!important;position:absolute!important;bottom:0!important;right:0!important;background:transparent!important}#hubspot-messages-iframe-container .hs-drag-handle--v2--widget-open--right{bottom:20px;left:-5px;display:none!important}#hubspot-messages-iframe-container .hs-drag-handle--v2--widget-open--left{bottom:20px;right:-5px;display:none!important}.hs-drag-handle{position:absolute;cursor:grab;height:60px;display:none;align-items:center;transition:opacity .5s ease;transition-delay:.5s;opacity:1}.hs-drag-handle--v1--right{right:82px;bottom:12px}.hs-drag-handle--v1--left{left:82px;bottom:12px}.hs-drag-handle--v2--pill-launcher--right{bottom:20px;left:10px}.hs-drag-handle--v2--pill-launcher--left{bottom:20px;right:10px}.hs-drag-handle--v2--hidden--left,.hs-drag-handle--v2--hidden--right{opacity:0!important;pointer-events:none!important;transition:none!important}.hs-drag-overlay{position:absolute;top:0;left:0;right:0;bottom:0;user-select:none;z-index:999;display:none}@media print{#hubspot-messages-iframe-container.hs-widget-hide-on-print{display:none!important}}</style><style data-test-id="custom-style-sheet" data-hs-form-style-id="61165964-5ed5-4cc7-906e-bf04f9447cb0_65c02a1f-d78c-4d22-b190-119f8ef0e422">
+    @charset "UTF-8";.hs-form__actions__next,.hs-form__actions__previous,.hs-form__actions__submit{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;margin:0;cursor:pointer;display:inline-block;font-weight:700;line-height:12px;position:relative;text-align:center;transition:all .15s linear;background-color:#ff7a59;border:1px solid #ff7a59;color:#fff;border-radius:3px;font-size:14px;padding:12px 24px}.hs-form__actions__previous{margin-right:10px;color:#ff7a59;background-color:#fff}.hs-form__field__input{display:inline-block;width:100%;height:40px;padding:9px 10px;font-size:16px;font-weight:400;line-height:22px;color:#33475b;background-color:#f5f8fa;border:1px solid #959494;box-sizing:border-box;-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;border-radius:3px}.hs-form__field__input[type=checkbox],.hs-form__field__input[type=radio]{cursor:pointer;width:auto;height:auto;padding:0;margin:3px 0;line-height:normal;border:none;vertical-align:middle}.hs-form__field__input[type=checkbox] span,.hs-form__field__input[type=radio] span{margin:5px}.hs-form__field__input[type=file]{padding:initial;border:initial;line-height:initial;box-shadow:none;background:none}select.is-placeholder{color:#707070}select.is-placeholder:focus{color:#33475b}.hs-form__field__input:-moz-placeholder{color:#707070}.hs-form__field__input::-webkit-input-placeholder{color:#707070}[type=email]:focus,[type=number]:focus,[type=string]:focus,[type=tel]:focus,[type=text]:focus,select:focus,textarea:focus{outline:none;border-color:#005fcc}textarea.hs-form__field__input{height:auto;max-width:100%}.hs-form__field,.hs-form__field__label{font-size:14px;color:#212d3a;display:block;float:none;width:auto;font-weight:500;padding-top:0}.hs-form__field__label__required,.hs-form__field__required{margin-left:4px;color:#e51520}.hs-form__visually-hidden{border:0;padding:0;margin:0;position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px);clip-path:inset(50%);white-space:nowrap}.hs-form__field__description,.hs-form__field__footer{margin:0 0 6px;font-size:11px}.hs-form__virality-link{margin-top:30px;line-height:30px;font-size:14px}.hs-form__field__checkbox__label-text{font-weight:400;margin-left:5px}.hs-form__field__checkbox__label-text>p{display:inline;margin:0}.hs-form__legal-consent__row{width:100%}.hs-form__legal-consent__row .hs-form__field{margin-top:5px;margin-bottom:0}.hs-form__thankyou-message{font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.hs-form__cookie-reset{font-size:75%;text-align:right}.hs-form__pagination-progress-outer{position:relative;width:100%;height:15px;border-radius:5px;background:#e3e3e3}.hs-form__pagination-progress-step{position:absolute;top:-25px}.hs-form__pagination-progress-percentage{position:absolute;top:-25px;right:0}.hs-form__pagination-progress-inner{width:0;height:15px;border-radius:5px;background:#598aff}.hs-form__pagination-progress-container{margin-top:75px}.hs-form__pagination-progress-theme-blocks .hs-form__pagination-progress-inner{background-size:10px!important;background-image:linear-gradient(90deg,transparent 70%,#fff 0)!important;border-radius:0}.hs-form__pagination-progress-theme-blocks .hs-form__pagination-progress-outer{border-radius:0}.hs-form__pagination-progress-theme-minimal .hs-form__pagination-progress-inner,.hs-form__pagination-progress-theme-minimal .hs-form__pagination-progress-outer{height:7px}.hs-form__pagination-progress-theme-minimal .hs-form__pagination-progress-percentage,.hs-form__pagination-progress-theme-minimal .hs-form__pagination-progress-step{display:none}.hs-form__pagination-fade{opacity:0}.hs-form__pagination-fade-enter-active,.hs-form__pagination-fade-exit{opacity:1}.hs-form__pagination-fade-exit-active{opacity:0}.hs-form__pagination-fade-enter-active,.hs-form__pagination-fade-exit-active{transition:opacity .2s}.hs-form__pagination-horizontal-next-enter{opacity:0;transform:translateX(-10%)}.hs-form__pagination-horizontal-next-exit{opacity:1;transform:translateX(0)}.hs-form__pagination-horizontal-next-exit-active{opacity:0;transform:translateX(10%)}.hs-form__pagination-horizontal-next-enter-active{opacity:1;transform:translateX(0)}.hs-form__pagination-horizontal-next-enter-active,.hs-form__pagination-horizontal-next-exit-active{transition:opacity .1s,transform .2s}.hs-form__pagination-horizontal-previous-enter{opacity:0;transform:translateX(10%)}.hs-form__pagination-horizontal-previous-exit{opacity:1;transform:translateX(0)}.hs-form__pagination-horizontal-previous-exit-active{opacity:0;transform:translateX(-10%)}.hs-form__pagination-horizontal-previous-enter-active{opacity:1;transform:translateX(0)}.hs-form__pagination-horizontal-previous-enter-active,.hs-form__pagination-horizontal-previous-exit-active{transition:opacity .1s,transform .2s}.hs-form__pagination-vertical-next-enter{opacity:0;transform:translateY(-10%)}.hs-form__pagination-vertical-next-exit{opacity:1;transform:translateY(0)}.hs-form__pagination-vertical-next-exit-active{opacity:0;transform:translateY(10%)}.hs-form__pagination-vertical-next-enter-active{opacity:1;transform:translateY(0)}.hs-form__pagination-vertical-next-enter-active,.hs-form__pagination-vertical-next-exit-active{transition:opacity .1s,transform .2s}.hs-form__pagination-vertical-previous-enter{opacity:0;transform:translateY(10%)}.hs-form__pagination-vertical-previous-exit{opacity:1;transform:translateY(0)}.hs-form__pagination-vertical-previous-exit-active{opacity:0;transform:translateY(-10%)}.hs-form__pagination-vertical-previous-enter-active{opacity:1;transform:translateY(0)}.hs-form__pagination-vertical-previous-enter-active,.hs-form__pagination-vertical-previous-exit-active{transition:opacity .1s,transform .2s}.hs-form_theme-linear .hs-form__field__input{border:0;border-radius:0;background:none;border-bottom:2px solid #cad5e2}.hs-form_theme-round .hs-form__field__input{-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;background-clip:padding-box;padding:8px 15px}.hs-form_theme-round .hs-form__field__input[type=checkbox],.hs-form_theme-round .hs-form__field__input[type=radio]{padding:10px 15px 10px 0}.hs-form_theme-round .hs-form__actions__submit{-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;background-clip:padding-box}.hs-form_theme-sharp .hs-form__actions__submit,.hs-form_theme-sharp .hs-form__field__input{border-radius:0}.hs-form{font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-display:swap}.hs-form *{box-sizing:border-box}.hs-form input,.hs-form select,.hs-form textarea{font-family:Helvetica Neue,Helvetica,Arial,sans-serif}.hs-form [data-hsfc-id=RichText]{font-size:1em;width:100%;word-break:break-word}.hs-form [data-hsfc-id=RichText]:after{content:".";visibility:hidden;display:block;height:0;clear:both}.hs-form [data-hsfc-id=LinkButton]{font-size:1em;color:#33475b;font-weight:500;background:none;border:none;text-align:left;padding-left:0}.hs-form [data-hsfc-id=LinkButton]:hover{text-decoration:underline;cursor:pointer}.hs-form__row{margin-bottom:18px}.hs-form__row_hidden{margin:0}.hs-form__field-row{margin-left:-10px;margin-right:-10px;display:flex;flex-grow:1;align-items:flex-start;justify-content:flex-start;flex-direction:row}@media only screen and (max-device-width:700px){.hs-form__field-row{display:block}.hs-form__field-row__column{margin-bottom:18px}}.hs-form__field-row__column{align-self:flex-start;flex:1 1 100%;padding:0 10px;width:100%}.hs-form__field-row__column_hidden{flex:0 0}.hs-form__field__error,.hs-form__field__input,.hs-form__field__label{margin-bottom:4px}.hs-form__field__label{font-weight:500}.hs-form__field__description,.hs-form__field__footer{margin-bottom:6px;color:rgba(81,99,131,.8705882353)}.hs-form__field__fieldset{border:none;padding:0;margin:0}.hs-form__field__input[type=date],.hs-form__field__input[type=number],.hs-form__field__input[type=string],textarea.hs-form__field__input{width:100%}.hs-form__field__input--error{border-color:#e51520!important}.hs-form__alerts__list{list-style-type:none;padding:0;margin:0}.hs-form__alerts__list-item{font-size:14px}.hs-form__alerts__list-item--error{color:#e51520;font-weight:400}.hs-form__alerts__list-item--info{color:#33475b}.hs-form__select__container{position:relative}.hs-form__select__container:after{content:"▾";position:absolute;top:0;right:0;width:40px;text-align:center;line-height:45px;color:#222f3e;z-index:1}.hs-form__select__options__container{display:none;position:absolute;overflow:auto;background:#fff;border-radius:3px;border:1px solid #959494;box-shadow:0 1px 24px 0 rgba(0,0,0,.08);min-height:60px;top:60px;left:0;right:0;z-index:100}.hs-form__select__options__container__display{display:block}.hs-form__select__options{padding:0;margin:0}.hs-form__select__option{cursor:pointer;font-size:16px;padding:15px 20px;overflow:hidden;border-top:1px solid #eee;color:#33475b}.hs-form__select__option:first-child{border-top:none}.hs-form__select__option__highlighted,.hs-form__select__option__valid:hover{background:#e5f5f8}.hs-form__select__option__selected{background:#54a0ff}.hs-form__select__option__no-result{cursor:not-allowed;color:#b0c1d4}.hs-form__field__radio__container{display:block;position:relative;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.hs-form__field__radio__input{margin:0 0 5px}.hs-form__field__radio__label{font-weight:400;clear:both}.hs-form__field__radio__label-text{margin-left:5px;margin-right:5px}.hs-form__field__rating__container .hs-form__field__normal-rating{position:relative;display:block;cursor:pointer;border-radius:100%;width:35px;height:35px;background-color:#eaf0f6;border:1px solid #cbd6e2;color:#506e91;margin:8px 4px 10px}.hs-form__field__rating__container .hs-form__field__normal-rating__active{background-color:#cbd6e2;border-color:#7c98b6;color:#506e91}.hs-form__field__rating__container .hs-form__field__normal-rating__label{cursor:pointer;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);transform:translate(-50%,-50%);font-size:16px;padding:10px}.hs-form__field__rating__container .hs-form__field__normal-rating__not-active:hover{background-color:#f5f8fa;color:#506e91}.hs-form__field__rating__container .hs-form__field__radio__container--image{margin-bottom:0}.hs-form__field__rating__container .hs-form__field__image__label__selected img{border:5px solid #54a0ff}.hs-form__field__rating__container .hs-form__field__image__label{height:100px}.hs-form__field__rating__container .hs-form__field__image__label img{width:100px;height:100px;padding:5px;border-radius:10px}.hs-form__field__rating__container .hs-form__field__image__label img:hover{border:5px solid #54a0ff}.hs-form__field__rating__container .hs-form__field__radio__container--image{margin:0 5px;width:100px;height:100px}.hs-form__field__rating__container .hs-form__field__radio__input--rating{position:absolute;opacity:0;bottom:0}.hs-form__field__rating__container .hs-form__field__radio__label--rating{cursor:pointer;font-size:16px;display:flex;align-items:center;flex-direction:column-reverse;justify-content:center}.hs-form__field__rating__container .hs-form__field__radio__label--rating--image{position:relative}.hs-form__field__rating__container .hs-form__field__radio__label--rating--image input[type=radio]{z-index:1;position:absolute;top:10px;right:5px}.hs-form__field__rating__container .hs-form__field__radio__label--rating--image img{position:absolute;top:0;left:0}.hs-form__field__rating__range{display:flex;justify-content:space-between;color:#69788a;font-size:12px;padding:0}.hs-form__field__rating__range span:first-child{text-align:left}.hs-form__field__rating__range span:nth-child(2){text-align:right}.hs-form__field__rating__range div:first-child{margin-right:45px}@media (max-width:768px){.hs-form__field__rating__range--labels{display:inline-block}}.hs-form__field__icon__rating__label{display:flex;flex-direction:column;justify-content:center;align-items:center;margin-left:2.5px;margin-right:2.5px}.hs-form__field__icon__rating__label svg{display:block;cursor:pointer;fill:#fff;width:40px;height:32px;stroke:#cbd6e2;stroke-width:3px;transform:scale(.8);transition:transform .2s ease-in-out}.hs-form__field__icon__rating__label path{transition:fill .2s ease-in-out,stroke .1s ease-in-out}.hs-form__field__icon__rating__svg-is-filled{transform:scale(.9)!important}.hs-form__field__icon__rating__svg-is-filled--star path{fill:#f7e31b;stroke:#d7c508}.hs-form__field__icon__rating__svg-is-filled--heart path{fill:#ff4500;stroke:#cc3700}.hs-form__field__phone{display:flex;justify-content:space-between;flex-direction:row}.hs-form__field__phone select{margin-right:5px;width:30%}.hs-form__field__options__container{padding-top:6px}.hs-form__field__options__container fieldset{border:0;padding:0;margin:0}.hs-form__date_input__fragment{text-align:center}.hs-form__date_input__separator{display:inline-block;padding:0 5px}.hs-form__date_input__dd,.hs-form__date_input__mm{width:50px}.hs-form__date_input__yyyy{width:70px}
+    
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0.hs-form {
+      width: 100%;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 {
+      font-family: helvetica;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__field__label {
+      font-size: 13px;
+      color: #33475b;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__alerts__list-item--error {
+      font-size: 13px;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__legal-consent .hs-form__field__label {
+      font-size: 14px;
+      color: #33475b;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__field__input::placeholder {
+      
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__field__description, .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__field__footer {
+      font-size: 11px;
+      color: #537393;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__actions__submit, .hs-form__actions__next {
+      background: #ff7a59;
+      border-color: #ff7a59;
+      color: #ffffff;
+      font-family: helvetica;
+      line-height: 12px;
+      font-size: 12px;
+      
+      
+      
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__actions__previous {
+      border-color: #ff7a59;
+      font-family: helvetica;
+      font-size: 12px;
+      
+      
+      
+      color: #ff7a59;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__actions {
+      text-align: left;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__pagination-progress-inner {
+      background: #598aff;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 .hs-form__pagination-progress-container {
+      color: #33475b;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0.hs-form__thankyou-message {
+      font-size: 16px;
+      color: #33475b;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 a:link, a:active {
+      color: #FF9902;
+    }
+
+    .hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 a:visited, a:hover {
+      color: #551A8B;
+    }
+
+    
+  
+    
+    
+  </style></head><body><a id="skip-to-form" href="#main" style="left:-9999px;position:absolute">Skip to form</a><main id="main"><div class="container loaded"><div id="form-target" data-hs-forms-root="true"><form id="hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0-65c02a1f-d78c-4d22-b190-119f8ef0e422" class="hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0 hs-form hs-form_theme-round" data-instance-id="65c02a1f-d78c-4d22-b190-119f8ef0e422" data-form-id="61165964-5ed5-4cc7-906e-bf04f9447cb0" data-portal-id="14544450" lang="en" data-test-id="hs-form-61165964-5ed5-4cc7-906e-bf04f9447cb0-65c02a1f-d78c-4d22-b190-119f8ef0e422"><div class="hs-form__pagination-content-container"><div class="hs-form__row"><div class="hs-form__group"><div data-hsfc-id="RichText" style="font-size: 14px; color: rgb(51, 71, 91);"><img src="https://14544450.fs1.hubspotusercontent-na1.net/hubfs/14544450/New%20CED%20Logo.png" style="max-width: 100%; max-height: 100%" data-img-aspect-ratio="2.6077586206896552" alt="blob_2_" width="605" data-img-width="605" data-img-height="232"></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div data-hsfc-id="RichText" style="font-size: 14px; color: rgb(51, 71, 91);"><h1 style="text-align: center;">Affordable Connectivity Interest Form</h1>
+<p style="text-align: center; font-weight: 500; margin: 0px; border: 0px; color: #ffffff; font-size: 12px;"><span style="font-weight: bold; margin: 0px; border: 0px;"><span style="margin: 0px; border: 0px; color: #000000;">As</span>&nbsp;<span style="margin: 0px; border: 0px; color: #000000;">part of the Your Home, Your Internet pilot program, the Community Economic Defense Project and Maiker Housing Partners are working to increase awareness and encourage participation in the Affordable Connectivity Program.<br><br></span></span></p>
+<p style="text-align: center; font-weight: 500; margin: 0px; border: 0px; color: #ffffff; font-size: 12px;"><span style="font-weight: bold; margin: 0px; border: 0px;"><span style="margin: 0px; border: 0px; color: #000000;">The Affordable Connectivity Program is an FCC benefit program that helps ensure that households can afford the broadband they need for work, school, healthcare and more.</span></span></p>
+<p style="text-align: center; font-weight: 500; margin: 0px; border: 0px; color: #ffffff; font-size: 12px;"><span style="font-weight: bold; margin: 0px; border: 0px;"><span style="margin: 0px; border: 0px; color: #000000;">The benefit provides a discount of up to $30 per month toward internet service for eligible households and up to $75 per month for households on qualifying Tribal lands. <br><br>Eligible households can also receive a one-time discount of up to $100 to purchase a laptop, desktop computer, or tablet from participating providers if they contribute more than $10 and less than $50 toward the purchase price</span></span></p></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div data-hsfc-id="RichText" style="font-size: 14px; color: rgb(51, 71, 91);"><h2>Client Contact Information</h2></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-firstname hs-firstname"><label id="firstname-label" for="firstname-input" class="hs-form__field__label" data-required="false"><span lang="en">First name</span></label><input aria-invalid="false" autocomplete="given-name" inputmode="text" id="firstname-input" class="hs-form__field__input" type="text" name="firstname" value=""></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-lastname hs-lastname"><label id="lastname-label" for="lastname-input" class="hs-form__field__label" data-required="false"><span lang="en">Last name</span></label><input aria-invalid="false" autocomplete="family-name" inputmode="text" id="lastname-input" class="hs-form__field__input" type="text" name="lastname" value=""></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-name_pronunciation hs-name_pronunciation"><label id="name_pronunciation-label" for="name_pronunciation-input" class="hs-form__field__label" data-required="false"><span lang="en">Name Pronunciation</span></label><input aria-invalid="false" inputmode="text" id="name_pronunciation-input" class="hs-form__field__input" type="text" name="name_pronunciation" value=""></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-preffered_methods_of_communication_due_to_disability hs-preffered_methods_of_communication_due_to_disability"><div id="preffered_methods_of_communication_due_to_disability-label" class="hs-form__field__label" data-required="false"><span lang="en">What is your preferred method of communication?</span></div><div style="display: flex; flex-grow: 1; align-items: flex-start; justify-content: flex-start; flex-flow: wrap;"><div class="hs-form__field__options__container" role="group" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label"><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-1" value="N/A - no considerations needed for communication"><span class="hs-form__field__checkbox__label-text">N/A - no considerations needed for communication/No hay preferencia</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-2" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-2" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-2" value="Phone only"><span class="hs-form__field__checkbox__label-text">Phone only/Telefono (Blind/Ceguera, Dyslexia/Dislexia, illiterate/analfabetismo, etc.)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-3" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-3" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-3" value="Email only"><span class="hs-form__field__checkbox__label-text">Email only/Correo Electronico (non-verbal, anxiety/ansiedad, etc.)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-4" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-4" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-4" value="Text only (non-verbal, anxiety, etc.)"><span class="hs-form__field__checkbox__label-text">Text only/Mensaje de texto (non-verbal, anxiety/ansiedad, etc.)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-5" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-5" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-5" value="Guardian/Fiduciary"><span class="hs-form__field__checkbox__label-text">Guardian or Fiduciary presence required/Requiere la presencia de un Guardián o Fiduciario (unable to communicate/incapaz de comunicarse, in need of legal or financial protection/necesita de protección legal o financiera, etc.)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-6" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-6" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-6" value="Translation (ESL,non-native speaker, deaf)"><span class="hs-form__field__checkbox__label-text">Translation/Traducción (ESL,non-native speaker, deaf/sordera)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-7" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-7" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-7" value="Other"><span class="hs-form__field__checkbox__label-text">Other/Otro</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="preffered_methods_of_communication_due_to_disability-label-8" class="hs-form__field__label hs-form__field__checkbox__label"><input id="preffered_methods_of_communication_due_to_disability-input-8" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="preffered_methods_of_communication_due_to_disability" aria-invalid="false" aria-labelledby="preffered_methods_of_communication_due_to_disability-label-8" value="Unknown"><span class="hs-form__field__checkbox__label-text">Unknown/desconocida</span></label></div></div></div></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-phone hs-phone"><label id="phone-label" for="phone-input" class="hs-form__field__label" data-required="false"><span lang="en">Phone number</span></label><div class="hs-form__field__phone"><input aria-invalid="false" autocomplete="tel" inputmode="tel" id="phone-input" class="hs-form__field__input" type="tel" name="phone" value=""></div></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-opted_in_to_text_messaging_ hs-opted_in_to_text_messaging_"><label id="opted_in_to_text_messaging_-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="opted_in_to_text_messaging_-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="opted_in_to_text_messaging_" aria-invalid="false" aria-labelledby="opted_in_to_text_messaging_-label-1" value=""><span class="hs-form__field__checkbox__label-text">Opted In To Text Messaging? </span></label></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-email hs-email"><label id="email-label" for="email-input" class="hs-form__field__label" data-required="true"><span lang="en">Email</span><span class="hs-form__field__label__required">*</span></label><input aria-invalid="false" aria-required="true" autocomplete="email" inputmode="email" id="email-input" class="hs-form__field__input" type="email" name="email" required="" value=""></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-address hs-address"><label id="address-label" for="address-input" class="hs-form__field__label" data-required="false"><span lang="en">Street address</span></label><input aria-invalid="false" autocomplete="address-line1" inputmode="text" id="address-input" class="hs-form__field__input" type="text" name="address" value=""></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-city hs-city"><label id="city-label" for="city-input" class="hs-form__field__label" data-required="false"><span lang="en">City</span></label><input aria-invalid="false" autocomplete="address-level2" inputmode="text" id="city-input" class="hs-form__field__input" type="text" name="city" value=""></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-state hs-state"><label id="state-label" for="state-input" class="hs-form__field__label" data-required="false"><span lang="en">State/Region</span></label><input aria-invalid="false" autocomplete="address-level1" inputmode="text" id="state-input" class="hs-form__field__input" type="text" name="state" value=""></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-country hs-country"><label id="country-label" for="country-input" class="hs-form__field__label" data-required="false"><span lang="en">Country/Region</span></label><input aria-invalid="false" autocomplete="country-name" inputmode="text" id="country-input" class="hs-form__field__input" type="text" name="country" value=""></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div data-hsfc-id="RichText" style="font-size: 14px; color: rgb(51, 71, 91);"><h2>Demographic Information</h2></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-what_is_your_race_ hs-what_is_your_race_"><div id="what_is_your_race_-label" class="hs-form__field__label" data-required="false"><span lang="en">What is your racial Identity?</span></div><div style="display: flex; flex-grow: 1; align-items: flex-start; justify-content: flex-start; flex-flow: wrap;"><div class="hs-form__field__options__container" role="group" aria-invalid="false" aria-labelledby="what_is_your_race_-label"><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-1" value="American Indian or Alaska Native"><span class="hs-form__field__checkbox__label-text">American Indian, Alaska Native, or Indigenous</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-2" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-2" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-2" value="Asian"><span class="hs-form__field__checkbox__label-text">Asian or Asian American</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-3" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-3" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-3" value="Black or African American"><span class="hs-form__field__checkbox__label-text">Black, African American, or African</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-4" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-4" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-4" value="Native Hawaiian or Other Pacific Islander"><span class="hs-form__field__checkbox__label-text">Native Hawaiian or other Pacific Islander</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-5" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-5" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-5" value="White"><span class="hs-form__field__checkbox__label-text">White</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-6" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-6" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-6" value="Prefer not to answer"><span class="hs-form__field__checkbox__label-text">Prefer not to answer</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="what_is_your_race_-label-7" class="hs-form__field__label hs-form__field__checkbox__label"><input id="what_is_your_race_-input-7" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="what_is_your_race_" aria-invalid="false" aria-labelledby="what_is_your_race_-label-7" value="Other"><span class="hs-form__field__checkbox__label-text">Other</span></label></div></div></div></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-ethnicity hs-ethnicity"><div id="ethnicity-label" class="hs-form__field__label" data-required="false"><span lang="en">What is your ethnicity?</span></div><div style="display: flex; flex-grow: 1; align-items: flex-start; justify-content: flex-start; flex-flow: wrap;"><div class="hs-form__field__options__container" role="radiogroup" aria-invalid="false" aria-labelledby="ethnicity-label"><div style="align-self: flex-start; flex: 0 1 auto;"><label id="ethnicity-label-1" class="hs-form__field__label hs-form__field__radio__label"><input id="ethnicity-input-1" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="ethnicity" aria-invalid="false" aria-labelledby="ethnicity-label-1" value="Non-Hispanic or Latine"><span class="hs-form__field__radio__label-text">Non-Hispanic or Non-Latin(a)(o)(x)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="ethnicity-label-2" class="hs-form__field__label hs-form__field__radio__label"><input id="ethnicity-input-2" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="ethnicity" aria-invalid="false" aria-labelledby="ethnicity-label-2" value="Hispanic or Latine"><span class="hs-form__field__radio__label-text">Hispanic or Latin(a)(o)(x)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="ethnicity-label-3" class="hs-form__field__label hs-form__field__radio__label"><input id="ethnicity-input-3" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="ethnicity" aria-invalid="false" aria-labelledby="ethnicity-label-3" value="Refuse to Answer"><span class="hs-form__field__radio__label-text">Prefer not to Answer</span></label></div></div></div></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-gender_identification hs-gender_identification"><div id="gender_identification-label" class="hs-form__field__label" data-required="false"><span lang="en">Gender Identification</span></div><div style="display: flex; flex-grow: 1; align-items: flex-start; justify-content: flex-start; flex-flow: wrap;"><div class="hs-form__field__options__container" role="radiogroup" aria-invalid="false" aria-labelledby="gender_identification-label"><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-1" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-1" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-1" value="Male"><span class="hs-form__field__radio__label-text">Male</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-2" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-2" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-2" value="Female"><span class="hs-form__field__radio__label-text">Female</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-3" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-3" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-3" value="Gender Nonconforming"><span class="hs-form__field__radio__label-text">Gender Nonconforming</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-4" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-4" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-4" value="Non-Binary"><span class="hs-form__field__radio__label-text">Non-binary</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-5" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-5" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-5" value="Other"><span class="hs-form__field__radio__label-text">Other</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-6" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-6" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-6" value="Transgender Male"><span class="hs-form__field__radio__label-text">Transgender Male</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-7" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-7" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-7" value="Transgender Female"><span class="hs-form__field__radio__label-text">Transgender Female </span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-8" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-8" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-8" value="Two-Spirit"><span class="hs-form__field__radio__label-text">Culturally Specific Identity (e.g. Two-Spirit)</span></label></div><div style="align-self: flex-start; flex: 0 1 auto;"><label id="gender_identification-label-9" class="hs-form__field__label hs-form__field__radio__label"><input id="gender_identification-input-9" class="hs-form__field__input hs-form__field__radio__input" type="radio" name="gender_identification" aria-invalid="false" aria-labelledby="gender_identification-label-9" value="Prefer not to answer"><span class="hs-form__field__radio__label-text">Prefer not to answer</span></label></div></div></div></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-pronouns hs-pronouns"><label id="pronouns-label" for="pronouns-input" class="hs-form__field__label" data-required="false"><span lang="en">Pronouns</span></label><input aria-invalid="false" inputmode="text" id="pronouns-input" class="hs-form__field__input" type="text" name="pronouns" value=""></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-part_of_lgbtqia__community hs-part_of_lgbtqia__community"><label id="part_of_lgbtqia__community-label" for="part_of_lgbtqia__community-input" class="hs-form__field__label" data-required="false"><span lang="en">Part of LGBTQIA+ Community</span></label><select id="part_of_lgbtqia__community-input" class="hs-form__field__input is-placeholder" name="part_of_lgbtqia__community" aria-invalid="false"><option label="Please Select" disabled="" value="">Please Select</option><option label="Yes" value="Yes">Yes</option><option label="No" value="No">No</option><option label="Prefer Not to Answer" value="Prefer Not to Answer">Prefer Not to Answer</option></select></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-identify_as_having_a_disability_ hs-identify_as_having_a_disability_"><label id="identify_as_having_a_disability_-label" for="identify_as_having_a_disability_-input" class="hs-form__field__label" data-required="false"><span lang="en">Identify as Having a Disability?</span></label><select id="identify_as_having_a_disability_-input" class="hs-form__field__input is-placeholder" name="identify_as_having_a_disability_" aria-invalid="false"><option label="Please Select" disabled="" value="">Please Select</option><option label="Yes" value="Yes">Yes</option><option label="No" value="No">No</option><option label="Prefer Not to Answer" value="Prefer Not to Answer">Prefer Not to Answer</option></select></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-number_of_individuals_currently_in_your_household hs-number_of_individuals_currently_in_your_household"><label id="number_of_individuals_currently_in_your_household-label" for="number_of_individuals_currently_in_your_household-input" class="hs-form__field__label" data-required="false"><span lang="en">Household Size?</span></label><input aria-invalid="false" inputmode="decimal" id="number_of_individuals_currently_in_your_household-input" class="hs-form__field__input" type="text" name="number_of_individuals_currently_in_your_household" value=""></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-single_parent_ hs-single_parent_"><label id="single_parent_-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="single_parent_-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="single_parent_" aria-invalid="false" aria-labelledby="single_parent_-label-1" value=""><span class="hs-form__field__checkbox__label-text">Single Parent?</span></label></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-participating_in_a_public_housing_authority_ hs-participating_in_a_public_housing_authority_"><label id="participating_in_a_public_housing_authority_-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="participating_in_a_public_housing_authority_-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="participating_in_a_public_housing_authority_" aria-invalid="false" aria-labelledby="participating_in_a_public_housing_authority_-label-1" value=""><span class="hs-form__field__checkbox__label-text">Participating in a Public Housing Authority?</span></label></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-does_the_client_have_a_housing_voucher_ hs-does_the_client_have_a_housing_voucher_"><label id="does_the_client_have_a_housing_voucher_-label" for="does_the_client_have_a_housing_voucher_-input" class="hs-form__field__label" data-required="false"><span lang="en">Does the client have a housing voucher?</span></label><select id="does_the_client_have_a_housing_voucher_-input" class="hs-form__field__input is-placeholder" name="does_the_client_have_a_housing_voucher_" aria-invalid="false"><option label="Please Select" disabled="" value="">Please Select</option><option label="Yes" value="Yes">Yes</option><option label="No" value="No">No</option></select></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div data-hsfc-id="RichText" style="font-size: 14px; color: rgb(51, 71, 91);"><h2>ACP Questions</h2></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-are_you_needing_assistence_with_enrolling_in_the_acp_program_ hs-are_you_needing_assistence_with_enrolling_in_the_acp_program_"><label id="are_you_needing_assistence_with_enrolling_in_the_acp_program_-label" for="are_you_needing_assistence_with_enrolling_in_the_acp_program_-input" class="hs-form__field__label" data-required="false"><span lang="en">Are You Needing Assistance with Enrolling in the ACP Program?</span></label><select id="are_you_needing_assistence_with_enrolling_in_the_acp_program_-input" class="hs-form__field__input is-placeholder" name="are_you_needing_assistence_with_enrolling_in_the_acp_program_" aria-invalid="false"><option label="Please Select" disabled="" value="">Please Select</option><option label="Yes" value="Yes">Yes</option><option label="No" value="No">No</option></select></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-are_you_a_community_organization_and_would_like_for_an_acp_specialist_to_present_to_your_staff_ hs-are_you_a_community_organization_and_would_like_for_an_acp_specialist_to_present_to_your_staff_"><label id="are_you_a_community_organization_and_would_like_for_an_acp_specialist_to_present_to_your_staff_-label" for="are_you_a_community_organization_and_would_like_for_an_acp_specialist_to_present_to_your_staff_-input" class="hs-form__field__label" data-required="false"><span lang="en">Are You a Community Organization and Would like for an ACP Specialist to Present to Your Staff?</span></label><select id="are_you_a_community_organization_and_would_like_for_an_acp_specialist_to_present_to_your_staff_-input" class="hs-form__field__input is-placeholder" name="are_you_a_community_organization_and_would_like_for_an_acp_specialist_to_present_to_your_staff_" aria-invalid="false"><option label="Please Select" disabled="" value="">Please Select</option><option label="Yes" value="Yes">Yes</option><option label="No" value="No">No</option></select></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-snap_recipient hs-snap_recipient"><label id="snap_recipient-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="snap_recipient-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="snap_recipient" aria-invalid="false" aria-labelledby="snap_recipient-label-1" value=""><span class="hs-form__field__checkbox__label-text">SNAP_Recipient</span></label></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-tanf_recipient hs-tanf_recipient"><label id="tanf_recipient-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="tanf_recipient-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="tanf_recipient" aria-invalid="false" aria-labelledby="tanf_recipient-label-1" value=""><span class="hs-form__field__checkbox__label-text">TANF_recipient</span></label></div></div><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-leap_recipient hs-leap_recipient"><label id="leap_recipient-label-1" class="hs-form__field__label hs-form__field__checkbox__label"><input id="leap_recipient-input-1" class="hs-form__field__input hs-form__field__checkbox__input" type="checkbox" name="leap_recipient" aria-invalid="false" aria-labelledby="leap_recipient-label-1" value=""><span class="hs-form__field__checkbox__label-text">LEAP_Recipient</span></label></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-are_you_currently_enrolled_with_a_broadband_provider hs-are_you_currently_enrolled_with_a_broadband_provider"><label id="are_you_currently_enrolled_with_a_broadband_provider-label" for="are_you_currently_enrolled_with_a_broadband_provider-input" class="hs-form__field__label" data-required="false"><span lang="en">Are You Currently Enrolled with a Broadband Provider</span></label><select id="are_you_currently_enrolled_with_a_broadband_provider-input" class="hs-form__field__input is-placeholder" name="are_you_currently_enrolled_with_a_broadband_provider" aria-invalid="false"><option label="Please Select" disabled="" value="">Please Select</option><option label="Yes" value="Yes">Yes</option><option label="No" value="No">No</option><option label="Unsure" value="Unsure">Unsure</option></select></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-barriers_to_enrolling_ hs-barriers_to_enrolling_"><label id="barriers_to_enrolling_-label" for="barriers_to_enrolling_-input" class="hs-form__field__label" data-required="false"><span lang="en">Barriers to Enrolling in ACP?</span></label><textarea id="barriers_to_enrolling_-input" class="hs-form__field__input" name="barriers_to_enrolling_" aria-invalid="false"></textarea></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__group"><div class="hs-form__field-row"><div class="hs-form__field-row__column"><div class="hs-form__field hs-form__field-how_did_they_hear_about_the_program_ hs-how_did_they_hear_about_the_program_"><label id="how_did_they_hear_about_the_program_-label" for="how_did_they_hear_about_the_program_-input" class="hs-form__field__label" data-required="false"><span lang="en">How Did They Hear About the Program?</span></label><input aria-invalid="false" inputmode="text" id="how_did_they_hear_about_the_program_-input" class="hs-form__field__input" type="text" name="how_did_they_hear_about_the_program_" value=""></div></div></div></div></div></div><div class="hs-form__row"><div class="hs-form__actions"><button type="submit" name="Submit" class="hs-form__actions__submit" lang="en">Submit</button></div></div><div id="65c02a1f-d78c-4d22-b190-119f8ef0e422-live-region-content" class="hs-form__visually-hidden" aria-live="polite"></div></form></div></div></main><script>
+      (function (requestParams, jsHsScriptsUrl) {
+        var script = document.createElement('script');
+        var shouldSkipScriptLoader;
+        var regex;
+        var results;
+
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[[]]/g, '$&');
+          regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+          results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        shouldSkipScriptLoader = getParameterByName('hs_skipScriptLoader');
+        if (!shouldSkipScriptLoader) {
+          script.type = 'text/javascript';
+          script.id = 'hs-script-loader';
+          script.async = true;
+          script.defer = true;
+          script.src = jsHsScriptsUrl + '/' + requestParams.portalId + '.js';
+          document.body.appendChild(script);
+        }
+      })(window.hs_RequestParams, window.jsHsScriptsUrl);
+    </script><script type="text/javascript" id="hs-script-loader" async="" defer="" src="https://js.hs-scripts.com/14544450.js" data-hubspot-rendered="true"></script><iframe owner="archetype" title="archetype" style="display: none; visibility: hidden;"></iframe></body></html>

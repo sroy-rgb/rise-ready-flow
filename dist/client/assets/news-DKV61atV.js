@@ -1,0 +1,1 @@
+import{j as e}from"./index-Brx7Kyvr.js";function t(){return e.jsx("iframe",{src:"/cedp-news.html",title:"News & Press — CEDP",style:{border:0,width:"100vw",height:"100vh",display:"block"}})}export{t as component};

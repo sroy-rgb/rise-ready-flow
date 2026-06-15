@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Team — Community Economic Defense Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800&family=Libre+Franklin:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Libre Franklin',sans-serif;color:#1B2838;background:#FFF;font-weight:300;font-size:15px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+:root{--navy:#1B2838;--red:#C53030;--gold:#E8B960;--slate:#4A6274;--bg:#F8F8F8;--border:#E8E8E8;--dim:#6B7A8A;--faint:#8A9AAA}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease-out,transform .7s ease-out}.rv.v{opacity:1;transform:translateY(0)}
+
+/* ---- TOP BAR ---- */
+.tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7)}
+.tb a{color:var(--gold);font-weight:700;text-decoration:none;font-size:13px}
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;height:68px}
+nav img{height:52px}
+.nl{display:flex;align-items:center;height:100%}
+.ni>a{font-size:14px;color:var(--slate);text-decoration:none;font-weight:500;padding:0 16px;height:68px;display:flex;align-items:center;transition:color .2s}
+.ni:hover>a{color:var(--red)}
+.ni>a.act{color:var(--red);border-bottom:2px solid var(--red)}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h{background:var(--red);color:#fff!important;padding:10px 22px;font-weight:700;font-size:13px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+
+/* ---- HERO ---- */
+.hero-t{padding:100px 64px 60px;background:#FFF}
+.hero-t .back-link{font-size:13px;font-weight:600;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-bottom:16px}
+.hero-t h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(64px,10vw,120px);font-weight:800;color:var(--navy);line-height:.85;letter-spacing:-1px;margin-bottom:24px}
+.hero-t>p{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,24px);font-style:italic;color:var(--dim);max-width:600px;line-height:1.55}
+
+/* ---- TEAM LAYOUT ---- */
+.team-layout{display:grid;grid-template-columns:220px 1fr;gap:0;border-top:3px solid var(--navy);min-height:80vh}
+
+/* Sidebar */
+.team-sidebar{position:sticky;top:68px;height:calc(100vh - 68px);overflow-y:auto;padding:24px 0 24px 0;border-right:1px solid var(--border);background:#FFF}
+.cat-link{display:flex;align-items:center;justify-content:space-between;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:500;color:var(--dim);padding:12px 16px 12px 20px;cursor:pointer;transition:color .2s;text-decoration:none;position:relative;overflow:hidden;border-bottom:1px solid rgba(232,232,232,.5)}
+.cat-link::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s;z-index:0}
+.cat-link:hover::before{transform:scaleY(1)}
+.cat-link:hover{color:var(--navy)}
+.cat-link span{position:relative;z-index:1}
+.cat-link .cat-arrow{width:24px;height:24px;position:relative;z-index:1;flex-shrink:0;opacity:.25;transition:opacity .3s}
+.cat-link .cat-arrow svg{width:16px;height:16px}
+.cat-link .cat-arrow svg path{stroke:var(--navy);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cat-link:hover .cat-arrow{opacity:.6}
+.cat-link.active{color:var(--navy);font-weight:700;background:var(--gold)}
+.cat-link.active::before{transform:scaleY(1)}
+.cat-link.active .cat-arrow{opacity:1}
+
+/* Grid */
+.team-main{padding:48px 48px 80px}
+.dept-title{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--navy);margin-bottom:32px;letter-spacing:-0.5px}
+.people-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.person{cursor:pointer;overflow:hidden}
+.person-img{aspect-ratio:3/4;overflow:hidden;background:var(--bg)}
+.person-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.person:hover .person-img img{transform:scale(1.04)}
+.person-info{padding:14px 0}
+.person-info h3{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:700;color:var(--navy);line-height:1.15}
+.person-info span{font-size:12px;color:var(--dim)}
+
+/* ---- PROFILE LIGHTBOX ---- */
+.pro-overlay{position:fixed;inset:0;background:rgba(255,255,255,.92);z-index:1000;display:none;align-items:center;justify-content:center;padding:40px;backdrop-filter:blur(8px);opacity:0;transition:opacity .3s}
+.pro-overlay.open{display:flex;opacity:1}
+.pro-card{background:#FFF;max-width:900px;width:100%;box-shadow:0 16px 60px rgba(0,0,0,.12);display:grid;grid-template-columns:1fr 1fr;overflow:hidden;animation:proIn .4s cubic-bezier(.16,1,.3,1)}
+@keyframes proIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.pro-close{position:absolute;top:24px;right:24px;width:48px;height:48px;border:none;background:none;cursor:pointer;font-size:32px;color:var(--navy);display:flex;align-items:center;justify-content:center;transition:color .2s;z-index:2}
+.pro-close:hover{color:var(--red)}
+.pro-img{min-height:500px;overflow:hidden}
+.pro-img img{width:100%;height:100%;object-fit:cover;display:block}
+.pro-content{padding:48px;display:flex;flex-direction:column;justify-content:center;position:relative}
+.pro-content h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;color:var(--navy);line-height:1;margin-bottom:6px}
+.pro-content .pro-title{font-size:14px;color:var(--dim);margin-bottom:16px}
+.pro-content .pro-li{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--gold);color:var(--navy);align-items:center;justify-content:center;text-decoration:none;font-size:16px;font-weight:700;margin-bottom:20px;transition:background .2s}
+.pro-content .pro-li:hover{background:var(--navy);color:var(--gold)}
+.pro-content p{font-size:14px;color:var(--dim);line-height:1.7}
+
+/* ---- JOIN CTA ---- */
+.join-sec{padding:100px 64px;background:var(--navy);text-align:center;position:relative;overflow:hidden}
+.join-sec::before{content:'JOIN US';font-family:'Bebas Neue',sans-serif;font-size:clamp(120px,18vw,240px);color:rgba(255,255,255,.02);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;pointer-events:none;letter-spacing:8px}
+.join-sec h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,64px);color:#FFF;letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;position:relative;z-index:1}
+.join-sec p{font-size:16px;color:rgba(255,255,255,.45);max-width:480px;margin:0 auto 32px;position:relative;z-index:1}
+.join-sec a{display:inline-block;padding:18px 48px;background:var(--red);color:#FFF;font-size:15px;font-weight:700;text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:background .3s;position:relative;z-index:1}
+.join-sec a:hover{background:#A02828}
+
+/* ---- GIANT LINKS ---- */
+.giant-links{padding:60px 64px 80px;background:var(--bg)}
+.giant-rule{height:2px;background:var(--navy)}
+.giant-row{display:flex;justify-content:space-between;align-items:center;padding:32px;cursor:pointer;position:relative;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none}
+.giant-row::before{content:'';position:absolute;inset:0;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s;z-index:0}
+.giant-row:hover::before{transform:scaleY(1)}
+.giant-row h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,52px);color:var(--navy);text-transform:uppercase;letter-spacing:2px;position:relative;z-index:1}
+.giant-row .gar{width:60px;height:60px;border-radius:50%;border:1.5px solid rgba(27,40,56,.15);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;transition:all .5s;flex-shrink:0}
+.giant-row .gar svg{width:28px;height:28px}
+.giant-row .gar svg path{stroke:var(--gold);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.giant-row:hover .gar{background:var(--navy);border-color:var(--navy)}
+
+/* ---- FOOTER ---- */
+footer{background:var(--navy);padding:0 48px 28px}
+.ft-warm{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.ft-warm-txt{font-size:20px;font-weight:600;color:rgba(255,255,255,.45)}.ft-warm-txt em{color:var(--red);font-style:normal}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:28px}
+.ft-b{font-size:16px;font-weight:700;color:#FFF;margin-bottom:10px}.ft-b em{color:var(--gold);font-style:normal}
+.ft-d{font-size:12px;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:12px}
+.ft-c{font-size:11px;color:rgba(255,255,255,.35);line-height:1.6}
+footer h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+footer a{display:block;font-size:12px;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:6px}
+.brand-mark{display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:flex-end;padding:32px 0 24px}
+.brand-mark img{height:56px}
+.brand-mark-text{font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);line-height:1.25;transition:color .4s}
+.ft-bt{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;display:flex;justify-content:space-between;font-size:11px;color:rgba(255,255,255,.25)}
+
+@media(max-width:1024px){.people-grid{grid-template-columns:1fr 1fr}.pro-card{grid-template-columns:1fr}.pro-img{min-height:300px}}
+@media(max-width:768px){.hero-t,.join-sec,.giant-links{padding-left:24px;padding-right:24px}.team-layout{grid-template-columns:1fr}.team-sidebar{position:static;height:auto;padding:0;border-right:none;border-bottom:1px solid var(--border);display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}.cat-link{white-space:nowrap;font-size:13px;padding:10px 14px;border-bottom:none;border-right:1px solid rgba(232,232,232,.5)}.cat-link .cat-arrow{display:none}.team-main{padding:24px}.people-grid{grid-template-columns:1fr 1fr}.giant-row h3{font-size:28px}.giant-row .gar{width:48px;height:48px}.pro-overlay{padding:16px}.pro-card{grid-template-columns:1fr}.pro-content{padding:24px}.pro-img{min-height:250px}}
+</style>
+<link rel="stylesheet" href="/cedp-global.css"></head>
+<body>
+
+<!-- TOP BAR -->
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Español</div></div>
+<nav><div><a href="/"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="/about" class="act">About</a></div>
+<div class="ni"><a href="/our-work">Our work</a></div>
+<div class="ni"><a href="/ced-law">CED Law</a></div>
+<div class="ni"><a href="/news">News</a></div>
+<div class="ni"><a href="/careers">Careers</a></div>
+<a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h" href="/get-help" target="_parent">Get help</a>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero-t rv" id="teamHero">
+<a href="/about" class="back-link">← About</a>
+<h1><span style="color:var(--navy)">Our</span><br><span style="color:var(--gold)">Team</span></h1>
+<p>Lawyers, navigators, economists, advocates, and policy experts — united in our shared passion to defend communities against economic injustice. Meet the faces behind the work.</p>
+</section>
+
+<!-- TEAM LAYOUT -->
+<div class="team-layout">
+
+<!-- SIDEBAR -->
+<div class="team-sidebar">
+<a class="cat-link active" onclick="filterCat('all',this)"><span>All</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('executive',this)"><span>Executive</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('cedlaw',this)"><span>CED Law</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('care',this)"><span>Customer Care</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('community',this)"><span>Community Services</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('eviction',this)"><span>Eviction Diversion</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('foreclosure',this)"><span>Foreclosure Prevention</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('benefit',this)"><span>Benefit Enrollment</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('comms',this)"><span>Communications</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('policy',this)"><span>Policy</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('finance',this)"><span>Finance</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('ops',this)"><span>Operations</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('people',this)"><span>People</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('resource',this)"><span>Resource Equity</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('strategy',this)"><span>Strategy</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('housing',this)"><span>Supportive Housing</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a class="cat-link" onclick="filterCat('board',this)"><span>CEDP Board</span><div class="cat-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+</div>
+
+<!-- MAIN GRID -->
+<div class="team-main">
+<div class="dept-title" id="deptTitle">The CEDP Team</div>
+<div class="people-grid" id="peopleGrid">
+
+<div class="person" data-cat="executive" onclick="openProfile(this)" data-name="Zach Neumann" data-title="Co-Founder & Co-CEO" data-bio="Zach co-founded CEDP in April 2020 from a Facebook post offering free legal help to families facing eviction during the pandemic. He has built CEDP into Colorado's most comprehensive economic defense organization, serving 68,000+ families across 59 counties." data-img="https://cedproject.org/wp-content/uploads/2022/11/Zach-Neumann.jpg" data-li="https://linkedin.com">
+<div class="person-img"><img src="https://cedproject.org/wp-content/uploads/2022/11/Zach-Neumann.jpg" alt="Zach Neumann" loading="lazy"/></div>
+<div class="person-info"><h3>Zach Neumann</h3><span>Co-Founder & Co-CEO</span></div></div>
+
+<div class="person" data-cat="executive" onclick="openProfile(this)" data-name="Sam Gilman" data-title="Co-Founder & Co-CEO" data-bio="Sam co-founded CEDP alongside Zach, bringing policy expertise and a vision for systemic change. Under his leadership, CEDP has passed landmark legislation including the Towing Bill of Rights and For Cause Eviction protections." data-img="https://media.licdn.com/dms/image/v2/D5603AQHOwf7VYsBABQ/profile-displayphoto-scale_400_400/B56Z1lZngXJsAg-/0/1775522710846?e=2147483647&v=beta&t=8YY3bJifbVYlFnQoyCNW4_HZ8ea3nsQ9wuAraq38TFs" data-li="https://linkedin.com">
+<div class="person-img"><img src="https://media.licdn.com/dms/image/v2/D5603AQHOwf7VYsBABQ/profile-displayphoto-scale_400_400/B56Z1lZngXJsAg-/0/1775522710846?e=2147483647&v=beta&t=8YY3bJifbVYlFnQoyCNW4_HZ8ea3nsQ9wuAraq38TFs" alt="Sam Gilman" loading="lazy"/></div>
+<div class="person-info"><h3>Sam Gilman</h3><span>Co-Founder & Co-CEO</span></div></div>
+
+<div class="person" data-cat="executive" onclick="openProfile(this)" data-name="Shauna Alvillar" data-title="SVP, Housing Stability Programs" data-bio="Senior Vice President of Housing Stability Programs. Leads CEDP's housing stability division overseeing rental assistance, foreclosure prevention, and community services across Colorado." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/Shauna-Alvillar.jpg?fit=200%2C200&quality=100&ssl=1" data-li="https://linkedin.com">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/Shauna-Alvillar.jpg?fit=200%2C200&quality=100&ssl=1" alt="Shauna Alvillar" loading="lazy"/></div>
+<div class="person-info"><h3>Shauna Alvillar</h3><span>SVP, Housing Stability</span></div></div>
+
+<div class="person" data-cat="cedlaw" onclick="openProfile(this)" data-name="Spencer Bailey" data-title="Appellate Program Supervisor" data-bio="Leads CED Law's appellate program, taking critical housing cases to higher courts. Drafted the appeal that won tenants the right to jury trials in disputed eviction cases — a Colorado Supreme Court landmark ruling." data-img="https://images.pexels.com/photos/5668474/pexels-photo-5668474.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" data-li="https://linkedin.com">
+<div class="person-img"><img src="https://images.pexels.com/photos/5668474/pexels-photo-5668474.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" alt="Spencer Bailey" loading="lazy"/></div>
+<div class="person-info"><h3>Spencer Bailey</h3><span>Appellate Supervisor</span></div></div>
+
+<div class="person" data-cat="cedlaw" onclick="openProfile(this)" data-name="Charlotte Goodenow" data-title="Equal Justice Works Fellow" data-bio="Equal Justice Works Fellow focusing on tenant rights litigation and consumer protection cases across Colorado." data-img="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" data-li="https://linkedin.com">
+<div class="person-img"><img src="https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" alt="Charlotte Goodenow" loading="lazy"/></div>
+<div class="person-info"><h3>Charlotte Goodenow</h3><span>Equal Justice Fellow</span></div></div>
+
+<div class="person" data-cat="cedlaw" onclick="openProfile(this)" data-name="Amanda Bliss" data-title="Housing Attorney" data-bio="Represents tenants in eviction proceedings, negotiates with landlords, and connects clients with emergency resources. Represented Ms. Bermudez in the landmark jury trial ruling." data-img="https://images.pexels.com/photos/4342400/pexels-photo-4342400.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" data-li="https://linkedin.com">
+<div class="person-img"><img src="https://images.pexels.com/photos/4342400/pexels-photo-4342400.jpeg?auto=compress&cs=tinysrgb&w=400&h=500&fit=crop" alt="Amanda Bliss" loading="lazy"/></div>
+<div class="person-info"><h3>Amanda Bliss</h3><span>Housing Attorney</span></div></div>
+
+<div class="person" data-cat="care" onclick="openProfile(this)" data-name="Riley Armstrong" data-title="CARE Center Agent" data-bio="CARE Center agent providing first-contact navigation for clients in crisis. Handles intake, triage, and connection to legal, financial, and community services." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/Riley_Armstrong.png?fit=200%2C200&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/Riley_Armstrong.png?fit=200%2C200&quality=100&ssl=1" alt="Riley" loading="lazy"/></div>
+<div class="person-info"><h3>Riley</h3><span>CARE Agent</span></div></div>
+
+<div class="person" data-cat="care" onclick="openProfile(this)" data-name="Lauren Brownridge" data-title="CARE Center Agent" data-bio="First point of contact for families calling CEDP's CARE Center helpline. Provides navigation, triage, and intake support." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/11/Lauren_Brownridge.png?fit=200%2C200&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/11/Lauren_Brownridge.png?fit=200%2C200&quality=100&ssl=1" alt="Lauren" loading="lazy"/></div>
+<div class="person-info"><h3>Lauren</h3><span>CARE Agent</span></div></div>
+
+<div class="person" data-cat="care" onclick="openProfile(this)" data-name="Latasha" data-title="CARE Center Agent" data-bio="CARE Center agent providing navigation and intake support for families in economic crisis across Colorado." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/09/Latasha.jpg?fit=300%2C300&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/09/Latasha.jpg?fit=300%2C300&quality=100&ssl=1" alt="Latasha" loading="lazy"/></div>
+<div class="person-info"><h3>Latasha</h3><span>CARE Agent</span></div></div>
+
+<div class="person" data-cat="community" onclick="openProfile(this)" data-name="Julia Barz" data-title="Senior Supervisor, Community Services" data-bio="Oversees case management, tenant advocacy, and community outreach programs. Leads the team connecting clients with long-term stability resources." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2023/01/JuliaBarz-.jpg?fit=300%2C300&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2023/01/JuliaBarz-.jpg?fit=300%2C300&quality=100&ssl=1" alt="Julia Barz" loading="lazy"/></div>
+<div class="person-info"><h3>Julia Barz</h3><span>Sr. Supervisor</span></div></div>
+
+<div class="person" data-cat="community" onclick="openProfile(this)" data-name="Natalie Bjorklun" data-title="Tenant Advocate" data-bio="Works directly with clients facing eviction, providing navigation and support through the legal process and connecting them with resources." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/04/Natalie-Bjorklun.jpg?fit=300%2C300&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/04/Natalie-Bjorklun.jpg?fit=300%2C300&quality=100&ssl=1" alt="Natalie Bjorklun" loading="lazy"/></div>
+<div class="person-info"><h3>Natalie Bjorklun</h3><span>Tenant Advocate</span></div></div>
+
+<div class="person" data-cat="community" onclick="openProfile(this)" data-name="Jay Amaya" data-title="Case Manager — Bilingual" data-bio="Bilingual case manager serving Spanish-speaking clients. Provides direct support for families navigating eviction and financial crisis in Colorado." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2025/09/Jay-Amaya.png?fit=251%2C250&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2025/09/Jay-Amaya.png?fit=251%2C250&quality=100&ssl=1" alt="Jay Amaya" loading="lazy"/></div>
+<div class="person-info"><h3>Jay Amaya</h3><span>Case Manager — Bilingual</span></div></div>
+
+<div class="person" data-cat="community" onclick="openProfile(this)" data-name="Lisa Brady Griffin" data-title="Case Manager" data-bio="Provides direct client services and long-term navigation support for families in housing crisis across Colorado." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2025/02/Lisa-Brady-Griffin.jpg?fit=300%2C300&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2025/02/Lisa-Brady-Griffin.jpg?fit=300%2C300&quality=100&ssl=1" alt="Lisa Brady Griffin" loading="lazy"/></div>
+<div class="person-info"><h3>Lisa Brady Griffin</h3><span>Case Manager</span></div></div>
+
+<div class="person" data-cat="community" onclick="openProfile(this)" data-name="Alie Banuelos" data-title="Temporary Case Manager" data-bio="Case manager providing client services and navigation support." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2025/04/Alie-Banuelos.jpg?fit=300%2C300&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2025/04/Alie-Banuelos.jpg?fit=300%2C300&quality=100&ssl=1" alt="Alie Banuelos" loading="lazy"/></div>
+<div class="person-info"><h3>Alie Banuelos</h3><span>Case Manager</span></div></div>
+
+<div class="person" data-cat="finance" onclick="openProfile(this)" data-name="Allison Arsenault" data-title="Compliance Specialist" data-bio="Ensures CEDP meets all regulatory requirements and maintains program integrity across all operations and funding sources." data-img="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/09/Allison-Arsenault.jpg?fit=300%2C300&quality=100&ssl=1" data-li="">
+<div class="person-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2024/09/Allison-Arsenault.jpg?fit=300%2C300&quality=100&ssl=1" alt="Allison Arsenault" loading="lazy"/></div>
+<div class="person-info"><h3>Allison Arsenault</h3><span>Compliance Specialist</span></div></div>
+
+</div>
+</div>
+</div>
+
+<!-- PROFILE LIGHTBOX -->
+<div class="pro-overlay" id="proOverlay" onclick="if(event.target===this)closeProfile()">
+<div class="pro-card">
+<button class="pro-close" onclick="closeProfile()">×</button>
+<div class="pro-img"><img id="proImg" src="" alt=""/></div>
+<div class="pro-content">
+<h2 id="proName"></h2>
+<div class="pro-title" id="proTitle"></div>
+<a class="pro-li" id="proLi" href="#" target="_blank">in</a>
+<p id="proBio"></p>
+</div>
+</div>
+</div>
+
+<!-- JOIN CTA -->
+<section class="join-sec rv" id="join">
+<h2>Want to be part<br>of this team?</h2>
+<p>We're always looking for people who believe injustice doesn't have to be inevitable.</p>
+<a href="/careers">View Open Positions →</a>
+</section>
+
+<!-- GIANT LINKS -->
+<section class="giant-links rv" id="explore">
+<div class="giant-rule"></div>
+<a href="/about" class="giant-row"><h3>About CEDP</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a href="/ced-law" class="giant-row"><h3>Meet CED Law</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<a href="/get-help" target="_parent" class="giant-row"><h3>Get help now</h3><div class="gar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></a>
+<div class="giant-rule"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="ft-warm"><span class="ft-warm-txt">You don't have to face this <em>alone.</em></span></div>
+<div class="ft-g"><div><div class="ft-b">Community Economic<br><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br>Denver, CO 80218<br>info@cedproject.org<br>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help#eviction" target="_parent">Eviction</a><a href="/get-help#foreclosure" target="_parent">Foreclosure</a><a href="/get-help#towing" target="_parent">Towing</a><a href="/get-help#debt" target="_parent">Debt</a><a href="/our-work#programsGrid" target="_parent">Disaster relief</a></div><div><h4>About</h4><a href="/about">Our purpose</a><a href="/team">Our team</a><a href="/about#leadership">Leadership</a><a href="/careers">Careers</a><a href="/careers#positions">Join Us</a><a href="/ced-law">CED law</a><a href="mailto:info@cedproject.org">Contact</a></div><div><h4>Impact</h4><a href="/legislative-wins">Legislative wins</a><a href="/research">Research</a><a href="/news">News & press</a><a href="/ced-law#faq">FAQ</a><a href="/#donateSection" target="_parent">Donate</a><a href="/news">Events</a></div></div>
+<div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br>Economic<br>Defense Project</div></div>
+<div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy · Terms of use · Accessibility</span></div>
+</footer>
+
+<script>
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');ro.unobserve(x.target)}})},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+// Category filter
+var catNames={all:'The CEDP Team',executive:'Executive',cedlaw:'CED Law',care:'Customer Care',community:'Community Services',eviction:'Eviction Diversion',foreclosure:'Foreclosure Prevention',benefit:'Benefit Enrollment',comms:'Communications',policy:'Policy',finance:'Finance',ops:'Operations',people:'People',resource:'Resource Equity',strategy:'Strategy',housing:'Supportive Housing',board:'CEDP Board'};
+function filterCat(cat,el){
+document.querySelectorAll('.cat-link').forEach(l=>l.classList.remove('active'));
+el.classList.add('active');
+document.getElementById('deptTitle').textContent=catNames[cat]||'All Staff';
+document.querySelectorAll('.person').forEach(p=>{
+p.style.display=(cat==='all'||p.dataset.cat===cat)?'':'none';
+});
+}
+
+// Profile lightbox
+function openProfile(el){
+document.getElementById('proImg').src=el.dataset.img;
+document.getElementById('proName').textContent=el.dataset.name;
+document.getElementById('proTitle').textContent=el.dataset.title;
+document.getElementById('proBio').textContent=el.dataset.bio;
+var liLink=document.getElementById('proLi');
+if(el.dataset.li){liLink.href=el.dataset.li;liLink.style.display='';}
+else{liLink.style.display='none';}
+document.getElementById('proOverlay').classList.add('open');
+document.body.style.overflow='hidden';
+}
+function closeProfile(){
+document.getElementById('proOverlay').classList.remove('open');
+document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeProfile()});
+</script>
+<script src="/cedp-global.js"></script><script src="/cedp-cms.js"></script></body>
+</html>

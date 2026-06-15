@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEDP Homepage — Font A/B Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Libre+Franklin:wght@300;400;500;600;700&family=Bebas+Neue&family=Work+Sans:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+@keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideRight{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes countReveal{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ---- CSS VARS ---- */
+body{font-family:var(--body);color:#1a1a1a;overflow-x:hidden;background:#F8F8F8}
+
+/* ---- ACCORDION ---- */
+.accordion{padding:60px 64px 80px;background:#F8F8F8}
+.accordion-label{font-size:14px;font-weight:500;color:#C53030;margin-bottom:8px}
+.accordion-rule{height:2px;background:#1B2838;margin-bottom:0}
+.acc-row{border-bottom:1px solid #E8E8E8;position:relative;overflow:hidden}
+.acc-header{display:flex;justify-content:space-between;align-items:center;padding:32px 32px;cursor:pointer;position:relative;z-index:1;transition:background .4s}
+.acc-header::before{content:'';position:absolute;inset:0;background:#E8B960;transform:scaleY(0);transform-origin:bottom;transition:transform .4s ease;z-index:-1}
+.acc-header:hover::before{transform:scaleY(1)}
+.acc-row.open .acc-header{background:#E8B960}
+.acc-row.open .acc-header::before{transform:scaleY(1)}
+.acc-header h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);font-weight:400;color:#1B2838;text-transform:uppercase;letter-spacing:2px;transition:color .4s}
+.acc-plus{font-family:'Libre Franklin',sans-serif;font-size:80px;font-weight:200;color:#E8B960;transition:all .4s;line-height:1;flex-shrink:0}
+.acc-header:hover .acc-plus{color:#1B2838}
+.acc-row.open .acc-plus{color:#C53030;transform:rotate(45deg);font-weight:200}
+.acc-content{max-height:0;overflow:hidden;transition:max-height .6s ease-out;background:#FFF}
+.acc-row.open .acc-content{max-height:2000px;transition:max-height .8s ease-in}
+.acc-inner{padding:32px 32px 40px}
+.acc-row:last-child{border-bottom:none}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease-out,transform .7s ease-out}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.ph{font-size:9px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.15);font-style:italic;font-family:'Libre Franklin',sans-serif;vertical-align:super;margin-left:4px}
+.ph-dark{color:rgba(27,40,56,.12)}
+body.fontA{--d:'Playfair Display',serif;--body:'Libre Franklin',sans-serif;--stat:'Playfair Display',serif;--card:'Playfair Display',serif;--hero-sz:48px;--hero-wt:800;--hero-tt:none;--hero-ls:normal;--hero-lh:1.08;--stat-sz:48px;--card-m:44px;--card-s:26px;--card-t:20px;--press:'Playfair Display',serif;--quote:'Playfair Display',serif}
+body.fontB{--d:'Barlow Condensed',sans-serif;--body:'Work Sans',sans-serif;--stat:'Barlow Condensed',sans-serif;--card:'Barlow Condensed',sans-serif;--hero-sz:62px;--hero-wt:700;--hero-tt:capitalize;--hero-ls:1px;--hero-lh:1.0;--stat-sz:56px;--card-m:52px;--card-s:32px;--card-t:26px;--press:'Barlow Condensed',sans-serif;--quote:'Libre Franklin',sans-serif;--card-desc:'Libre Franklin',sans-serif}
+
+/* ---- TOP BAR ---- */
+.tb{background:#2C3E50;padding:6px 40px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,.7);font-family:var(--body)}
+.tb a{color:#E8B960;font-weight:700;text-decoration:none;font-size:13px}
+.lng{display:flex;gap:6px}
+.lng span{padding:2px 8px;border:1px solid rgba(255,255,255,.25);cursor:pointer;font-size:11px;color:rgba(255,255,255,.6)}
+.lng .act{background:rgba(255,255,255,.12);color:#fff;font-weight:600}
+
+/* ---- NAV ---- */
+nav{background:#fff;padding:0 40px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8e8e8;position:sticky;top:0;z-index:100;height:72px}
+nav img{height:56px}
+.nl{display:flex;align-items:center;gap:0;font-family:var(--body);height:100%}
+.nl>.ni{position:relative;height:72px;display:flex;align-items:center}
+.ni>a{font-size:14px;color:#4A6274;text-decoration:none;font-weight:500;transition:color .2s;padding:0 16px;height:100%;display:flex;align-items:center}
+.ni:hover>a{color:#C53030}
+.btn-d{background:#2C3E50;color:#fff!important;padding:10px 22px;font-weight:700;font-size:14px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+.btn-h{background:#C53030;color:#fff!important;padding:10px 22px;font-weight:700;font-size:14px;letter-spacing:.8px;text-transform:uppercase;text-decoration:none;margin-left:8px}
+
+/* ---- MEGA MENU ---- */
+.mega{position:absolute;top:72px;left:50%;transform:translateX(-50%);background:#1B2838;min-width:520px;padding:0;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;z-index:200;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.ni:hover .mega{opacity:1;visibility:visible}
+.mega-inner{display:flex;flex-direction:row}
+.mega-links{padding:32px 28px;flex:1;min-width:220px}
+.mega-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#E8B960;margin-bottom:16px;font-family:var(--body)}
+.mega-links a{display:block;font-size:14px;color:rgba(255,255,255,.7);text-decoration:none;padding:8px 0;font-weight:400;transition:color .2s;font-family:var(--body);border-bottom:1px solid rgba(255,255,255,.05)}
+.mega-links a:hover{color:#FFF}
+.mega-links a i{font-size:12px;margin-right:8px;color:#E8B960;vertical-align:0}
+.mega-img{width:220px;flex-shrink:0;overflow:hidden}
+.mega-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.mega-img img:hover{transform:scale(1.05)}
+.mega-stat{padding:16px 28px;border-top:1px solid rgba(255,255,255,.06);font-size:11px;color:#E8B960;font-weight:700;font-family:var(--body)}
+.mega-sm{min-width:360px}
+.mega-2col{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.mega-2col .mega-links{min-width:160px}
+
+/* ---- HERO ---- */
+.hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-c{position:relative;z-index:2;padding:120px 64px 80px;width:100%}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(90px,15vw,175px);font-weight:400;color:#FFF;line-height:0.85;text-transform:uppercase;letter-spacing:4px;text-shadow:0 4px 30px rgba(0,0,0,.5),0 1px 3px rgba(0,0,0,.3);-webkit-text-stroke:1px rgba(255,255,255,.15)}
+.hero h1 span{display:block;opacity:0;transform:translateY(20px) scale(1.02);animation:heroSlam .4s cubic-bezier(0.22,1,0.36,1) forwards,heroDrift 6s ease-in-out 1.5s infinite}
+.hero h1 span:nth-child(1){animation-delay:.2s,1.5s}
+.hero h1 span:nth-child(2){animation-delay:.5s,1.8s}
+.hero h1 span:nth-child(3){animation-delay:.8s,2.1s}
+@keyframes heroSlam{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes heroDrift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-3px) scale(1)}}
+.hero h1 .val{color:#FFF;font-style:normal;transition:color .2s ease-out,text-shadow .2s ease-out}
+.hero h1 .val.lit{color:#C53030;text-shadow:0 0 30px rgba(197,48,48,.35)}
+.hero h1 .val.done{color:#C53030;text-shadow:none}
+.fontA .hero h1,.fontB .hero h1{font-family:'Bebas Neue',sans-serif;font-weight:400}
+
+/* ---- RED ACTION STRIP ---- */
+.red-strip{background:#C53030;padding:36px 64px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.red-strip-txt{flex:1;min-width:300px}
+.red-strip-txt p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.85);line-height:1.6;max-width:420px}
+.red-strip-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.red-btn-w{background:#FFFFFF;color:#C53030;padding:14px 32px;font-weight:700;font-size:15px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;font-family:var(--body);transition:all .3s}
+.red-btn-w:hover{background:#1B2838;color:#FFF;transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.red-btn-o{background:transparent;color:#FFFFFF;padding:14px 32px;font-weight:600;font-size:15px;text-decoration:none;border:1.5px solid rgba(255,255,255,.6);font-family:var(--body);transition:all .3s}
+.red-btn-o:hover{background:rgba(255,255,255,.15);border-color:#FFF;transform:translateY(-2px)}
+.red-strip-phone{margin-top:0;font-family:'Bebas Neue',sans-serif;display:flex;flex-direction:column;align-items:flex-end}
+.red-strip-phone-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.6);font-family:var(--body);margin-bottom:2px}
+.red-strip-phone-num{font-size:36px;color:#FFF;letter-spacing:2px;text-decoration:none;transition:color .3s}
+.red-strip-phone-num:hover{color:#E8B960}
+
+/* ---- STATS ---- */
+.stats{background:#1B2838}
+.stats-g{display:grid;grid-template-columns:repeat(4,1fr)}
+.st{padding:44px 24px;text-align:center;position:relative;cursor:default}
+.st:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;bottom:20%;width:1px;background:rgba(255,255,255,.08)}
+.st-n{font-family:var(--stat);font-size:var(--stat-sz);font-weight:800;background:linear-gradient(to top,#E8B960 0%,#E8B960 50%,#FFF 50%,#FFF 100%);background-size:100% 200%;background-position:0 0;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:countReveal .7s ease-out both;transition:background-position .6s ease,transform .4s ease}
+.fontB .st-n{font-weight:700;letter-spacing:1px}
+.st:hover .st-n{background-position:0 100%;transform:scale(1.06)}
+.stats.gold .st-n{background-position:0 100%;transform:scale(1.03)}
+.stats.gold .st-l{color:rgba(255,255,255,.8)}
+.stats.gold .st-a{background:#E8B960;width:40px}
+.st:nth-child(1) .st-n{animation-delay:.1s}
+.st:nth-child(2) .st-n{animation-delay:.25s}
+.st:nth-child(3) .st-n{animation-delay:.4s}
+.st:nth-child(4) .st-n{animation-delay:.55s}
+.st-l{font-size:12px;color:rgba(255,255,255,.55);margin-top:8px;line-height:1.4;font-family:var(--body);transition:color .4s}
+.st:hover .st-l{color:rgba(255,255,255,.8)}
+.st-a{width:24px;height:2px;background:rgba(255,255,255,.15);margin:10px auto 0;transition:all .4s}
+.st:hover .st-a{background:#E8B960;width:40px}
+
+/* ---- WHO WE ARE ---- */
+.sec{font-family:var(--body)}
+.sec-lab{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:12px;font-family:var(--body)}
+.who{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.who-img{overflow:hidden;min-height:480px}
+.who-img img{width:100%;height:100%;object-fit:cover;display:block}
+.who-txt{background:#1B2838;padding:56px 48px;display:flex;flex-direction:column;justify-content:center}
+.who-txt .sec-lab{color:#E8B960}
+.who h2{font-family:var(--d);font-size:30px;font-weight:700;color:#FFF;line-height:1.2;margin-bottom:16px}
+.fontB .who h2{font-weight:700;font-size:36px;text-transform:capitalize;letter-spacing:.5px}
+.who-txt p.ld{font-size:15px;color:rgba(255,255,255,.7);line-height:1.7;font-weight:300;font-family:'Libre Franklin',sans-serif;margin-bottom:12px}
+.who-txt .qb{margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);background:transparent;padding-left:0;padding-right:0;padding-bottom:0}
+.who-txt .qb::before{display:none}
+.who-txt .qb q{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.55);line-height:1.6;display:block;quotes:none}
+.who-txt .qb cite{font-size:12px;color:#E8B960;font-style:normal;margin-top:10px;display:block}
+.who-txt .qb cite strong{color:#E8B960}
+.who-link{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-size:14px;font-weight:600;color:#E8B960;text-decoration:none;font-family:'Libre Franklin',sans-serif;transition:color .3s}
+.who-link:hover{color:#FFF}
+
+/* ---- BENTO ---- */
+.hlp{background:#F8F8F8;padding:72px 48px}
+.hlp h2{font-family:var(--d);font-size:34px;font-weight:800;color:#1B2838;margin-bottom:8px}
+.fontB .hlp h2{font-weight:700;font-size:44px;text-transform:capitalize;letter-spacing:.5px}
+
+/* Shared arrow */
+.ar{width:70px;height:70px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35);background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .5s}
+.ar svg{width:40px;height:40px;transition:all .5s}
+.ar svg path{stroke:#E8B960;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+
+/* Stat bottomline */
+.bc-stat{font-size:11px;font-weight:700;color:#E8B960;letter-spacing:.5px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-family:var(--body);transition:color .5s,border-color .5s,opacity .5s;opacity:.7}
+
+/* Image wrapper for inset border effect */
+.img-wrap{width:38%;flex-shrink:0;overflow:hidden}
+.img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+
+/* ---- MAIN CARD (full inversion on hover) ---- */
+.bn{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px;margin-top:40px}
+.bc-m{grid-row:1/3;background:#1B2838;cursor:pointer;display:flex;overflow:hidden;transition:background-color .5s;position:relative}
+.bc-m *{transition:color .5s,background-color .5s,border-color .5s,stroke .5s,opacity .5s}
+.bc-m-inner{display:flex;flex-direction:row;padding:28px;gap:24px;flex:1}
+.bc-m .img-wrap{width:38%}
+.bc-m-txt{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.bc-m h3{font-family:var(--card);font-size:var(--card-m);font-weight:800;color:#FFF;line-height:1.05;margin-bottom:12px}
+.fontB .bc-m h3{font-weight:700;letter-spacing:.5px;text-transform:capitalize}
+.bc-m p{color:rgba(255,255,255,.7);line-height:1.55;font-family:'Libre Franklin',sans-serif;font-size:14px;max-width:340px;font-weight:300}
+.fontB .bc-m p{font-weight:300}
+.bc-m-bot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto;padding-top:8px}
+.bc-m:hover{background:#E8B960}
+.bc-m:hover h3{color:#1B2838}
+.bc-m:hover p{color:rgba(27,40,56,.6)}
+.bc-m:hover .bc-stat{color:#1B2838;border-color:rgba(27,40,56,.15);opacity:1}
+.bc-m:hover .ar{background:#1B2838;border-color:#1B2838}
+.bc-m:hover .ar svg path{stroke:#E8B960}
+.bc-m:hover .img-wrap img{transform:scale(1.05)}
+
+/* ---- SMALL CARDS (subtle hover: image zoom + stat brighten + gold top line + arrow fill) ---- */
+.bc-s{background:#1B2838;cursor:pointer;display:flex;flex-direction:row;overflow:hidden;min-height:220px;position:relative}
+.bc-s::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#E8B960;transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.bc-s:hover::after{transform:scaleX(1)}
+.bc-s-inner{display:flex;flex-direction:row;width:100%;padding:24px;gap:20px}
+.bc-s .img-wrap{width:38%}
+.bc-s-txt{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.bc-s-top{display:flex;flex-direction:row;gap:14px;align-items:flex-start}
+.bc-s-top h3{font-family:var(--card);font-size:var(--card-s);font-weight:800;color:#FFF;line-height:1.08;flex-shrink:0;transition:none}
+.fontB .bc-s-top h3{font-weight:700;letter-spacing:.5px;text-transform:capitalize}
+.bc-s-top p{color:rgba(255,255,255,.6);line-height:1.45;font-family:'Libre Franklin',sans-serif;font-size:12px;font-weight:300;text-align:right;transition:none;flex:1}
+.bc-s-bot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto}
+.bc-s .bc-stat{font-size:10px;margin-top:0;padding-top:0;border-top:none}
+.bc-s .ar{width:70px;height:70px}
+.bc-s:hover .ar{background:#E8B960;border-color:#E8B960}
+.bc-s:hover .ar svg path{stroke:#1B2838}
+.bc-s:hover .bc-stat{opacity:1}
+.bc-s:hover .img-wrap img{transform:scale(1.05)}
+
+/* ---- TERTIARY CARDS (bottom row) ---- */
+.bn2{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.bt{background:#1B2838;cursor:pointer;display:flex;flex-direction:row;overflow:hidden;min-height:190px;position:relative}
+.bt::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#E8B960;transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.bt:hover::after{transform:scaleX(1)}
+.bt-inner{display:flex;flex-direction:row;width:100%;padding:20px;gap:16px}
+.bt .img-wrap{width:38%}
+.bt-bd{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.bt-top{display:flex;flex-direction:row;gap:10px;align-items:flex-start}
+.bt-top h3{font-family:var(--card);font-size:var(--card-t);font-weight:800;color:#FFF;line-height:1.1;flex-shrink:0;transition:none}
+.fontB .bt-top h3{font-weight:700;letter-spacing:.5px;text-transform:capitalize}
+.bt-top p{font-size:11px;color:rgba(255,255,255,.55);line-height:1.4;font-family:'Libre Franklin',sans-serif;font-weight:300;text-align:right;transition:none;flex:1}
+.bt-bot{display:flex;justify-content:space-between;align-items:flex-end;margin-top:auto}
+.bt .bc-stat{font-size:10px;margin-top:0;padding-top:0;border-top:none}
+.bt .ar{width:70px;height:70px}
+.bt:hover .ar{background:#E8B960;border-color:#E8B960}
+.bt:hover .ar svg path{stroke:#1B2838}
+.bt:hover .bc-stat{opacity:1}
+.bt:hover .img-wrap img{transform:scale(1.05)}
+
+/* ---- PRESS ---- */
+.press{padding:44px 48px;background:#fff;border-top:1px solid #eee;border-bottom:1px solid #eee;overflow:hidden}
+.press-lab{text-align:center;font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#8A9AAA;margin-bottom:24px;font-family:var(--body)}
+.press-w{overflow:hidden}
+.press-t{display:flex;gap:56px;align-items:center;animation:marquee 35s linear infinite;min-width:max-content}
+.press-t:hover{animation-play-state:paused}
+.press-t img{height:24px;opacity:.4;filter:grayscale(100%);transition:all .4s;flex-shrink:0;object-fit:contain}
+.press-t img:hover{opacity:.85;filter:grayscale(0%)}
+.press-t img.logo-seal{height:56px}
+.press-t img.logo-mid{height:34px}
+.press-t img.logo-lg{height:56px}
+
+/* ---- IMPACT ---- */
+
+/* ---- CTA ---- */
+
+/* ---- FOOTER ---- */
+
+/* ---- CEDP MODEL ---- */
+.model{background:#1B2838;padding:80px 48px}
+.model h2{font-family:var(--d);font-size:34px;font-weight:800;color:#FFF;margin-bottom:8px}
+.fontB .model h2{font-weight:700;font-size:40px;text-transform:capitalize;letter-spacing:.5px}
+.model-steps{display:flex;gap:0;margin-top:48px;position:relative}
+.model-step{flex:1;text-align:center;position:relative;padding:0 12px}
+.model-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;transition:all .4s}
+.model-icon svg{width:32px;height:32px;transition:all .5s}
+.model-icon svg path{fill:none;stroke:#FFF;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.model-step:hover .model-icon svg path{stroke:#C53030}
+.model-step:hover .model-icon{transform:translateY(-4px)}
+.model-step h4{font-family:var(--d);font-size:16px;font-weight:700;color:#FFF;margin-bottom:6px}
+.fontB .model-step h4{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;text-transform:capitalize}
+.model-step p{font-size:11px;color:rgba(255,255,255,.5);line-height:1.45;font-family:var(--body)}
+.model-connector{position:absolute;top:32px;left:calc(50% + 40px);width:calc(100% - 80px);height:3px;background:rgba(232,185,96,.15);overflow:visible}
+.model-connector::before{content:'';position:absolute;left:0;top:0;height:100%;width:100%;background:#E8B960;transform:scaleX(0);transform-origin:left}
+.model-connector::after{content:'';position:absolute;right:-6px;top:-4px;width:0;height:0;border-top:5.5px solid transparent;border-bottom:5.5px solid transparent;border-left:8px solid #E8B960;opacity:0}
+@keyframes connectorFlow{0%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+@keyframes arrowPop{0%{opacity:0}100%{opacity:1}}
+.model.animate .model-step:nth-child(1) .model-connector::before{animation:connectorFlow .8s ease-out .3s forwards}
+.model.animate .model-step:nth-child(1) .model-connector::after{animation:arrowPop .3s ease-out 1.1s forwards}
+.model.animate .model-step:nth-child(2) .model-connector::before{animation:connectorFlow .8s ease-out 1.3s forwards}
+.model.animate .model-step:nth-child(2) .model-connector::after{animation:arrowPop .3s ease-out 2.1s forwards}
+.model.animate .model-step:nth-child(3) .model-connector::before{animation:connectorFlow .8s ease-out 2.3s forwards}
+.model.animate .model-step:nth-child(3) .model-connector::after{animation:arrowPop .3s ease-out 3.1s forwards}
+.model.animate .model-step:nth-child(4) .model-connector::before{animation:connectorFlow .8s ease-out 3.3s forwards}
+.model.animate .model-step:nth-child(4) .model-connector::after{animation:arrowPop .3s ease-out 4.1s forwards}
+.model.animate .model-step:nth-child(5) .model-connector::before{animation:connectorFlow .8s ease-out 4.3s forwards}
+.model.animate .model-step:nth-child(5) .model-connector::after{animation:arrowPop .3s ease-out 5.1s forwards}
+.model-step:last-child .model-connector{display:none}
+
+/* ---- WHERE WE'RE WORKING ---- */
+.working{background:#F8F8F8;padding:80px 48px}
+.working h2{font-family:var(--d);font-size:34px;font-weight:800;color:#1B2838;margin-bottom:8px}
+.fontB .working h2{font-weight:700;font-size:40px;text-transform:capitalize;letter-spacing:.5px}
+.working-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px;align-items:start}
+.working-map{background:#1B2838;padding:40px;text-align:center;position:relative;min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.working-map-num{font-family:'Bebas Neue',sans-serif;font-size:80px;color:#E8B960;line-height:1}
+.working-map-of{font-size:14px;color:rgba(255,255,255,.5);margin:4px 0 8px;font-family:var(--body)}
+.working-map-label{font-size:13px;color:rgba(255,255,255,.7);font-family:var(--body)}
+.working-map-offices{margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.working-map-offices span{font-size:10px;color:rgba(255,255,255,.4);padding:4px 10px;border:1px solid rgba(255,255,255,.1);font-family:var(--body)}
+.working-cards{display:flex;flex-direction:column;gap:12px}
+.working-card{background:#fff;padding:24px;border-left:3px solid #E8B960;display:flex;gap:16px;align-items:start}
+.working-card-dot{width:10px;height:10px;border-radius:50%;background:#C53030;margin-top:4px;flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.working-card h4{font-size:14px;font-weight:700;color:#1B2838;margin-bottom:2px;font-family:var(--body)}
+.working-card p{font-size:12px;color:#6B7A8A;line-height:1.45;font-family:var(--body)}
+.working-card-tag{font-size:9px;font-weight:700;color:#C53030;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;font-family:var(--body)}
+
+/* ---- IMPACT BENTO ---- */
+.impact-bento{background:#F0EDE6;padding:80px 48px}
+.impact-bento h2{font-family:var(--d);font-size:34px;font-weight:800;color:#1B2838;margin-bottom:8px}
+.ib-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:12px;margin-top:40px}
+.ib{padding:36px 28px;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;position:relative;overflow:hidden}
+.ib::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:#E8B960;transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.ib:hover::after{transform:scaleX(1)}
+.ib-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;font-family:var(--body)}
+.ib-num{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;margin-bottom:12px;transition:transform .4s}
+.ib:hover .ib-num{transform:scale(1.04)}
+.ib p{font-size:13px;line-height:1.5;font-family:'Libre Franklin',sans-serif;font-weight:300}
+.ib-navy{background:#FFF;border:1px solid #E8E8E8;border-left:4px solid #1B2838}
+.ib-navy .ib-label{color:#C53030}
+.ib-navy .ib-num{color:#1B2838}
+.ib-navy p{color:#6B7A8A}
+.ib-red{background:#FFF;border:1px solid #E8E8E8;border-left:4px solid #C53030}
+.ib-red .ib-label{color:#C53030}
+.ib-red .ib-num{color:#C53030}
+.ib-red p{color:#6B7A8A}
+.ib-gold{background:#FFF;border:1px solid #E8E8E8;border-left:4px solid #E8B960}
+.ib-gold .ib-label{color:#C53030}
+.ib-gold .ib-num{color:#E8B960}
+.ib-gold p{color:#6B7A8A}
+.ib-slate{background:#FFF;border:1px solid #E8E8E8;border-left:4px solid #4A6274}
+.ib-slate .ib-label{color:#C53030}
+.ib-slate .ib-num{color:#4A6274}
+.ib-slate p{color:#6B7A8A}
+.ib-navy2{background:#FFF;border:1px solid #E8E8E8;border-left:4px solid #2C3E50}
+.ib-navy2 .ib-label{color:#C53030}
+.ib-navy2 .ib-num{color:#1B2838}
+.ib-navy2 p{color:#6B7A8A}
+.ib-red2{background:#FFF;border:1px solid #E8E8E8;border-left:4px solid #8B1E1E}
+.ib-red2 .ib-label{color:#C53030}
+.ib-red2 .ib-num{color:#C53030}
+.ib-red2 p{color:#6B7A8A}
+.ib-arrow{position:absolute;bottom:16px;right:16px;opacity:0;transform:translateX(-8px);transition:all .4s}
+.ib-arrow svg{width:20px;height:20px}
+.ib-arrow svg path{stroke:#C53030;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.ib:hover .ib-arrow{opacity:1;transform:translateX(0)}
+.ib-link{margin-top:32px;text-align:center}
+.ib-link a{font-size:14px;font-weight:700;color:#C53030;text-decoration:none;font-family:var(--body)}
+
+/* ---- STORIES ---- */
+.stories{background:#1B2838;padding:80px 48px;transition:background .5s}
+.stories h2{font-family:var(--d);font-size:34px;font-weight:800;color:#FFF;margin-bottom:12px;transition:color .5s}
+.fontB .stories h2{font-weight:700;font-size:40px;text-transform:capitalize;letter-spacing:.5px}
+.stories-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.story{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);overflow:hidden;display:flex;flex-direction:column;transition:background .5s,border-color .5s}
+.story-img{width:100%;height:200px;object-fit:cover;display:block}
+.story-body{padding:28px;flex:1;display:flex;flex-direction:column}
+.story q{font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:rgba(255,255,255,.85);line-height:1.55;display:block;quotes:none;flex:1;transition:color .5s}
+.story-meta{margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);transition:border-color .5s}
+.story-name{font-size:13px;font-weight:700;color:#FFF;font-family:var(--body);transition:color .5s}
+.story-outcome{font-size:11px;color:#E8B960;margin-top:2px;font-family:var(--body);transition:color .5s}
+
+/* ---- LEGISLATIVE TIMELINE ---- */
+.timeline{background:#1B2838;padding:80px 48px;overflow:hidden}
+.timeline h2{font-family:var(--d);font-size:34px;font-weight:800;color:#FFF;margin-bottom:8px}
+.fontB .timeline h2{font-weight:700;font-size:40px;text-transform:capitalize;letter-spacing:.5px}
+.tl-track{display:flex;gap:0;margin-top:48px;position:relative}
+.tl-track::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:rgba(232,185,96,.15)}
+.tl-track::after{content:'';position:absolute;top:0;left:0;height:3px;background:#E8B960;animation:tlLine 4s ease-out forwards;transform-origin:left}
+@keyframes tlLine{from{width:0}to{width:100%}}
+.tl-item{flex:1;padding:32px 24px 0 0;position:relative;border-top:3px solid transparent}
+.tl-dot{position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:#E8B960;border:3px solid #1B2838;z-index:1}
+.tl-year{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#E8B960;margin-bottom:4px;margin-top:12px}
+.tl-item h4{font-size:16px;font-weight:700;color:#FFF;margin-bottom:6px;font-family:var(--body);line-height:1.3}
+.tl-item p{font-size:13px;color:rgba(255,255,255,.55);line-height:1.55;font-family:'Libre Franklin',sans-serif;font-weight:300}
+.tl-link{margin-top:40px;text-align:center}
+.tl-link a{font-size:14px;font-weight:700;color:#E8B960;text-decoration:none;font-family:var(--body)}
+
+/* ---- AUDIENCE PATHWAYS ---- */
+.paths{background:#1B2838;padding:80px 48px}
+.paths h2{font-family:'Playfair Display',serif;font-size:34px;font-weight:800;color:#FFF;margin-bottom:8px}
+.paths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.path-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px;display:flex;flex-direction:column;justify-content:space-between;min-height:200px;transition:all .4s;cursor:pointer}
+.path-card:hover{border-color:#E8B960}
+.path-card h4{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,3.5vw,42px);color:#FFF;line-height:.95;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;transition:color .4s}
+.path-card p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;font-family:'Libre Franklin',sans-serif;font-weight:300;transition:color .4s}
+.path-ar{display:flex;justify-content:flex-end;margin-top:16px}
+.path-ar .ar{width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;transition:all .5s}
+.path-ar .ar svg{width:32px;height:32px}
+.path-ar .ar svg path{stroke:#E8B960;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke .5s}
+.path-card:hover .ar{background:#E8B960;border-color:#E8B960}
+.path-card:hover .ar svg path{stroke:#1B2838}
+
+/* Red crisis card */
+.path-card.path-red{background:#C53030;border-color:#C53030}
+.path-card.path-red h4{color:#FFF}
+.path-card.path-red p{color:rgba(255,255,255,.75)}
+.path-card.path-red .ar{border-color:rgba(255,255,255,.3)}
+.path-card.path-red .ar svg path{stroke:#FFF}
+.path-card.path-red:hover{background:#FFF;border-color:#E8E8E8}
+.path-card.path-red:hover h4{color:#C53030}
+.path-card.path-red:hover p{color:#6B7A8A}
+.path-card.path-red:hover .ar{background:#C53030;border-color:#C53030}
+.path-card.path-red:hover .ar svg path{stroke:#FFF}
+
+/* Gold inversion mode */
+
+/* ---- DONATE BENTO ---- */
+.donate-bento{background:#F8F8F8;padding:80px 48px}
+.donate-bento-label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:12px;font-family:var(--body)}
+.donate-bento h2{font-family:var(--d);font-size:34px;font-weight:800;color:#1B2838;margin-bottom:40px}
+.fontB .donate-bento h2{font-weight:700;font-size:40px;text-transform:capitalize;letter-spacing:.5px}
+.db-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
+
+/* Large donate tile - only arrow changes on hover */
+.db-main{grid-row:1/3;background:#1B2838;display:flex;flex-direction:column;padding:40px;position:relative;overflow:hidden}
+.db-main::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:#E8B960;transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
+.db-main:hover::after{transform:scaleX(1)}
+.db-main h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);color:#FFF;line-height:.9;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}
+.db-main>p{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:28px;max-width:380px}
+.db-amounts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.db-amounts span{padding:12px 24px;border:1.5px solid rgba(255,255,255,.25);color:#FFF;font-size:16px;font-weight:600;font-family:var(--body);cursor:pointer;transition:all .3s}
+.db-amounts span:hover{border-color:#E8B960;color:#E8B960}
+.db-custom{display:flex;gap:0;margin-bottom:20px}
+.db-custom input{padding:12px 16px;font-size:14px;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:#FFF;width:200px;font-family:var(--body);outline:none}
+.db-custom input::placeholder{color:rgba(255,255,255,.35)}
+.db-custom button{padding:12px 28px;background:#C53030;color:#FFF;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:var(--body);letter-spacing:.5px;text-transform:uppercase}
+.db-faq{font-size:13px;color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:3px;font-family:var(--body)}
+.db-main-bot{margin-top:auto;display:flex;justify-content:flex-end;align-items:flex-end}
+.db-main .ar{border-color:rgba(255,255,255,.25)}
+.db-main:hover .ar{background:#E8B960;border-color:#E8B960}
+.db-main:hover .ar svg path{stroke:#1B2838}
+
+/* Small donate tiles - full inversion on hover */
+.db-sm{background:#1B2838;display:flex;flex-direction:row;overflow:hidden;min-height:200px;cursor:pointer;transition:background-color .5s}
+.db-sm *{transition:color .5s,background-color .5s,border-color .5s,stroke .5s}
+.db-sm-inner{display:flex;flex-direction:row;width:100%;padding:24px;gap:20px}
+.db-sm .img-wrap{width:38%}
+.db-sm-txt{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.db-sm h3{font-family:var(--card);font-size:var(--card-s);font-weight:800;color:#FFF;line-height:1.08;margin-bottom:6px}
+.fontB .db-sm h3{font-weight:700;letter-spacing:.5px;text-transform:capitalize}
+.db-sm p{color:rgba(255,255,255,.6);line-height:1.45;font-family:'Playfair Display',serif;font-size:12px;font-style:italic}
+.db-sm-bot{display:flex;justify-content:flex-end;align-items:flex-end;margin-top:auto}
+.db-sm .ar{border-color:rgba(255,255,255,.25)}
+.db-sm:hover{background:#E8B960}
+.db-sm:hover h3{color:#1B2838}
+.db-sm:hover p{color:rgba(27,40,56,.6)}
+.db-sm:hover .ar{background:#1B2838;border-color:#1B2838}
+.db-sm:hover .ar svg path{stroke:#E8B960}
+.db-sm:hover .img-wrap img{transform:scale(1.05)}
+
+/* ---- FOOTER ---- */
+/* ---- DOT NAV ---- */
+nav.dot-nav{position:fixed!important;right:24px!important;top:50%!important;left:auto!important;bottom:auto!important;transform:translateY(-50%)!important;z-index:9999;display:flex!important;flex-direction:column;align-items:flex-end;gap:14px;background:none!important;border:none!important;border-bottom:none!important;padding:0!important;margin:0!important;width:auto!important;height:auto!important;box-shadow:none!important;pointer-events:auto}
+.dot-nav a{position:relative;display:flex;align-items:center;justify-content:flex-end;gap:10px;text-decoration:none;width:14px;height:14px}
+.dot-nav a .dot-label{position:absolute;right:18px;top:50%;transform:translateY(-50%) translateX(8px);font-size:10px;font-weight:600;color:#fff;font-family:var(--body);letter-spacing:.5px;opacity:0;visibility:hidden;transition:all .3s;white-space:nowrap;background:rgba(27,40,56,.95);padding:4px 10px;pointer-events:none;border-radius:2px}
+.dot-nav a:hover .dot-label{opacity:1;visibility:visible;transform:translateY(-50%) translateX(0);pointer-events:auto}
+.dot-nav a .dot{width:8px;height:8px;border-radius:50%;background:#C53030;transition:all .3s;flex-shrink:0}
+.dot-nav a:hover .dot{background:#E8B960;transform:scale(1.3)}
+.dot-top{cursor:pointer;opacity:0;transition:all .3s;pointer-events:none;display:flex;align-items:center;justify-content:center;width:14px;height:14px;margin-right:-3px}
+.dot-top.show{opacity:1;pointer-events:auto}
+.dot-top svg{width:18px;height:18px;overflow:visible}
+.dot-top svg path{stroke:#E8B960;fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;transition:stroke .3s}
+.dot-top:hover svg path{stroke:#C53030}
+.dot-top:active svg path{stroke:#E8B960}
+
+/* ---- BRAND WATERMARK ---- */
+.brand-mark{display:flex;align-items:center;gap:12px;cursor:pointer;justify-content:flex-end;padding:32px 0 24px}
+.brand-mark img{height:56px}
+.brand-mark-text{font-family:'Libre Franklin',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.5);line-height:1.25;transition:color .4s}
+.brand-mark:hover .brand-mark-text{color:#E8B960}
+
+footer{background:#1B2838;padding:0 48px 28px;font-family:var(--body)}
+.ft-warm{padding:36px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:36px}
+.ft-warm-txt{font-family:'Libre Franklin',sans-serif;font-size:22px;font-weight:600;color:rgba(255,255,255,.5)}
+.ft-warm-txt em{color:#C53030;font-style:normal}
+.ft-g{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
+.ft-b{font-family:var(--d);font-size:18px;font-weight:800;color:#FFF;margin-bottom:12px}
+.fontB .ft-b{font-size:26px;font-weight:700;text-transform:capitalize;letter-spacing:.5px}
+.ft-b em{color:#E8B960;font-style:normal}
+.ft-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.5);margin-bottom:14px}
+.ft-c{font-size:12px;color:rgba(255,255,255,.45);line-height:1.6}
+footer h4{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#E8B960;margin-bottom:14px}
+footer a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:8px}
+.ft-bt{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.3)}
+.ft-actions{display:flex;gap:14px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:28px}
+.ft-actions a{display:inline-flex;align-items:center}
+
+/* Arrow SVG */
+.arrow-svg{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+<link rel="stylesheet" href="/cedp-global.css"></head>
+<body class="fontB">
+
+<div class="tb"><div style="display:flex;align-items:center;gap:14px"><span>&#9742; Need help now?</span> <a href="tel:3038381200">(303) 838-1200</a></div><div style="font-size:11px;color:rgba(255,255,255,.5)">English | Espa&ntilde;ol</div></div>
+
+<nav><div><a href="/" target="_parent"><img src="https://cedproject.org/wp-content/uploads/2022/10/CEDP_2022Logo_Horizontal_RGBWeb-01-e1670360921367.png" alt="CEDP"/></a></div><div class="nl">
+<div class="ni"><a href="/" target="_parent">Home</a></div>
+<div class="ni"><a href="/about" target="_parent">About</a>
+  <div class="mega mega-sm"><div class="mega-inner">
+    <div class="mega-links"><div class="mega-label">About CEDP</div>
+      <a href="/about">Our purpose</a><a href="/about">Our team</a><a href="/ced-law">CED Law</a><a href="/about">Contact</a>
+    </div>
+    <div class="mega-img"><img src="/__l5e/assets-v1/feb48bc5-8bd3-47a9-9cbe-08cf17d60aed/about-cedp-hover.png" alt="" loading="lazy"/></div>
+  </div><div class="mega-stat">100+ professionals &middot; 4 offices across Colorado</div></div>
+</div>
+<div class="ni"><a href="/our-work" target="_parent">Our work</a>
+  <div class="mega"><div class="mega-inner">
+    <div class="mega-2col">
+      <div class="mega-links"><div class="mega-label">Services</div>
+        <a href="/our-work">Eviction defense</a><a href="/our-work">Foreclosure</a><a href="/our-work">Unjust towing</a><a href="/our-work">Debt collection</a><a href="/our-work">Disaster relief</a><a href="/our-work">Resource navigation</a>
+      </div>
+      <div class="mega-links"><div class="mega-label">Programs</div>
+        <a href="/our-work">Programs overview</a><a href="/our-work">CARE Center</a><a href="/our-work">Just Bus mobile aid</a><a href="/our-work">Statewide coverage</a>
+      </div>
+    </div>
+    <div class="mega-img"><img src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>
+  </div><div class="mega-stat">68,000+ Coloradans served &middot; $280M+ distributed</div></div>
+</div>
+<div class="ni"><a href="/impact" target="_parent">Impact</a>
+  <div class="mega mega-sm"><div class="mega-inner">
+    <div class="mega-links"><div class="mega-label">Our impact</div>
+      <a href="/impact">Legislative wins</a><a href="/impact">Research</a><a href="/impact">Impact data</a>
+    </div>
+    <div class="mega-img"><img src="https://images.pexels.com/photos/8761744/pexels-photo-8761744.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>
+  </div><div class="mega-stat">12+ state laws passed &middot; Cited by White House &amp; HUD</div></div>
+</div>
+<div class="ni"><a href="/news" target="_parent">News</a>
+  <div class="mega mega-sm"><div class="mega-inner">
+    <div class="mega-links"><div class="mega-label">News &amp; press</div>
+      <a href="/news">Press &amp; media</a><a href="/news">In the news</a><a href="/news">Press resources</a><a href="/news">Media contact</a>
+    </div>
+    <div class="mega-img"><img src="https://images.pexels.com/photos/518543/pexels-photo-518543.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>
+  </div></div>
+</div>
+<div class="ni"><a href="/careers" target="_parent">Careers</a>
+  <div class="mega mega-sm"><div class="mega-inner">
+    <div class="mega-links"><div class="mega-label">Join CEDP</div>
+      <a href="/careers">Why CEDP</a><a href="/careers">Open positions</a><a href="/careers">Culture &amp; benefits</a>
+    </div>
+    <div class="mega-img"><img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=440&h=520&fit=crop" alt="" loading="lazy"/></div>
+  </div></div>
+</div>
+<a class="btn-d" href="/#donateSection" target="_parent">Donate</a><a class="btn-h" href="/get-help" target="_parent">Get help</a>
+</div></nav>
+
+<section class="hero">
+<video class="hero-video" autoplay muted loop playsinline preload="auto" poster="https://raw.githubusercontent.com/sroy-rgb/cedp-prototype/main/hero-poster.jpg"><source src="https://raw.githubusercontent.com/sroy-rgb/cedp-prototype/main/cedp-hero.mp4" type="video/mp4"></video>
+<div class="hero-c"><h1><span><em class="val v1">Prevent</em>ing eviction</span><span><em class="val v2">Confront</em>ing</span><span>Economic <em class="val v3">injustice</em></span></h1></div>
+</section>
+
+<div class="red-strip">
+<div class="red-strip-txt">
+<p>We're here to help when things get tough &mdash; whether that's an eviction, foreclosure, or an unexpected tow. Free legal help and financial assistance for Colorado families.</p>
+</div>
+<div class="red-strip-actions">
+<a href="/get-help" target="_parent" class="red-btn-w">&#9742; Get help now</a>
+<a href="/our-work" class="red-btn-o">Our programs &rarr;</a>
+</div>
+<div class="red-strip-phone">
+<div class="red-strip-phone-label">Call our CARE Center</div>
+<a href="tel:3038381200" class="red-strip-phone-num">(303) 838-1200</a>
+</div>
+</div>
+
+<section class="stats" id="statsSection"><div class="stats-g">
+<div class="st"><div class="st-n">68,000+</div><div class="st-a"></div><div class="st-l">Coloradans served across 54 counties</div></div>
+<div class="st"><div class="st-n">$280M+</div><div class="st-a"></div><div class="st-l">Emergency assistance distributed</div></div>
+<div class="st"><div class="st-n">1,000+</div><div class="st-a"></div><div class="st-l">People helped every month</div></div>
+<div class="st"><div class="st-n">74%</div><div class="st-a"></div><div class="st-l">Clients are BIPOC or Hispanic/Latino</div></div>
+</div></section>
+
+<section class="sec reveal" id="whoSection"><div class="who"><div class="who-img"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/12/cedp_bill_signing-scaled.jpeg?resize=1080%2C810&quality=100&ssl=1" alt="CEDP bill signing ceremony" loading="lazy"/></div><div class="who-txt"><div class="sec-lab">Who we are</div><h2>Born from a Facebook post. Built into Colorado's economic defense.</h2><p class="ld">In April 2020, two lawyers asked on Facebook who needed help with eviction. Thousands responded. What started as a volunteer effort has grown into a team of 200 serving 68,000 people across 59 counties.</p><p class="ld">We run a financial emergency room — integrating legal defense, financial aid, and resource navigation in a single point of contact.</p><div class="qb"><q>When someone comes to us in crisis, we don't send them to five different offices. We meet them where they are.</q><cite><strong>Sam Gilman</strong> — Co-Founder & Co-CEO</cite></div><a href="#" class="who-link">Learn more about CEDP &rarr;</a></div></div></section>
+
+<style>
+.video-feature{max-width:900px;margin:48px auto 64px;padding:0 24px;box-sizing:border-box}
+@media(min-width:768px){.video-feature{padding:0 48px}}
+@media(min-width:1000px){.video-feature{padding:0}}
+.vf-poster{position:relative;width:100%;aspect-ratio:16/9;border-radius:6px;overflow:hidden;cursor:pointer;background:#1b2838}
+.vf-poster img{width:100%;height:100%;object-fit:cover;display:block}
+.vf-overlay{position:absolute;inset:0;background:rgba(27,40,56,.3);display:flex;align-items:center;justify-content:center;transition:background .3s}
+.vf-play{width:72px;height:72px;border-radius:50%;border:1.5px solid rgba(255,255,255,.5);background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.vf-play svg{width:24px;height:24px;margin-left:4px;fill:#fff;transition:fill .3s}
+.vf-poster:hover .vf-play{border-color:#E8B960;background:rgba(232,185,96,.15);transform:scale(1.08)}
+.vf-poster:hover .vf-play svg{fill:#E8B960}
+.vf-caption{margin-top:14px;text-align:center;font-size:12px;color:#6B7A8A;letter-spacing:.05em}
+.vf-lightbox{position:fixed;inset:0;background:rgba(10,10,15,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:99999;display:none;align-items:center;justify-content:center;padding:48px}
+.vf-lightbox.open{display:flex}
+.vf-frame{position:relative;width:min(1400px,95vw);aspect-ratio:16/9;max-height:85vh}
+.vf-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:6px;display:block;background:#000}
+.vf-close{position:absolute;top:-44px;right:0;width:36px;height:36px;background:none;border:0;color:#fff;font-size:32px;line-height:1;cursor:pointer;opacity:.8}
+.vf-close:hover{opacity:1;color:#E8B960}
+</style>
+<div class="video-feature reveal">
+  <div class="vf-poster" id="vfPoster" role="button" tabindex="0" aria-label="Play video: The CEDP Story">
+    <img src="https://vumbnail.com/786939169.jpg" alt="The CEDP Story video poster" loading="lazy"/>
+    <div class="vf-overlay">
+      <div class="vf-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></div>
+    </div>
+  </div>
+  <div class="vf-caption">Watch: The CEDP Story</div>
+</div>
+<div class="vf-lightbox" id="vfLightbox" aria-hidden="true">
+  <div class="vf-frame">
+    <button class="vf-close" id="vfClose" aria-label="Close video">&times;</button>
+    <div id="vfPlayer"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var poster=document.getElementById('vfPoster');
+  var lb=document.getElementById('vfLightbox');
+  var closeBtn=document.getElementById('vfClose');
+  var player=document.getElementById('vfPlayer');
+  var SRC='https://player.vimeo.com/video/786939169?autoplay=1&title=0&byline=0&portrait=0';
+  function open(){
+    player.innerHTML='<iframe src="'+SRC+'" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    lb.classList.add('open');lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function close(){
+    lb.classList.remove('open');lb.setAttribute('aria-hidden','true');
+    player.innerHTML='';
+    document.body.style.overflow='';
+  }
+  poster.addEventListener('click',open);
+  poster.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  closeBtn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+})();
+</script>
+
+<section class="hlp reveal" id="hlpSection">
+<div class="sec-lab">How we can help</div>
+<h2>Facing a crisis? You're not alone.</h2>
+<p style="font-size:16px;color:#5A6B7A;line-height:1.7;font-weight:300;max-width:520px;font-family:var(--body)">One call connects you to everything you need &mdash; legal defense, financial aid, and a path forward.</p>
+
+<div class="bn">
+<div class="bc-m"><div class="bc-m-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=500&h=600&fit=crop" alt="Community support" loading="lazy"/></div><div class="bc-m-txt"><div><h3>Get help<br/>today</h3><p>Whether you're facing an eviction, foreclosure, or economic crisis &mdash; we provide free legal help and financial assistance.</p></div><div class="bc-m-bot"><div class="bc-stat">68,000+ Coloradans served &middot; 54 counties</div><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+<div class="bc-s"><div class="bc-s-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/2079234/pexels-photo-2079234.jpeg?auto=compress&cs=tinysrgb&w=400&h=350&fit=crop" alt="Apartment" loading="lazy"/></div><div class="bc-s-txt"><div class="bc-s-top"><h3>Eviction<br/>Defense</h3><p>Emergency rental assistance and free legal representation</p></div><div class="bc-s-bot"><div class="bc-stat">$280M+ in emergency assistance distributed</div><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+<div class="bc-s"><div class="bc-s-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=400&h=350&fit=crop" alt="Home" loading="lazy"/></div><div class="bc-s-txt"><div class="bc-s-top"><h3>Foreclosure</h3><p>Mortgage assistance and legal defense to protect homeowners</p></div><div class="bc-s-bot"><div class="bc-stat">Parallel model with emergency mortgage + legal aid</div><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+</div>
+
+<div class="bn2">
+<div class="bt"><div class="bt-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/5835359/pexels-photo-5835359.jpeg?auto=compress&cs=tinysrgb&w=350&h=300&fit=crop" alt="Cars" loading="lazy"/></div><div class="bt-bd"><div class="bt-top"><h3>Unjust<br/>Towing</h3><p>Recover your vehicle and fight predatory towing</p></div><div class="bt-bot"><div class="bc-stat">2 landmark laws &middot; $1M settlement</div><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+<div class="bt"><div class="bt-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=350&h=300&fit=crop" alt="Documents" loading="lazy"/></div><div class="bt-bd"><div class="bt-top"><h3>Debt<br/>Collection</h3><p>Legal guidance against aggressive debt collectors</p></div><div class="bt-bot"><div class="bc-stat">Defense across 59 counties</div><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+<div class="bt"><div class="bt-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/1739855/pexels-photo-1739855.jpeg?auto=compress&cs=tinysrgb&w=350&h=300&fit=crop" alt="Storm" loading="lazy"/></div><div class="bt-bd"><div class="bt-top"><h3>Disaster<br/>Relief</h3><p>Rapid financial aid for families affected by disasters</p></div><div class="bt-bot"><div class="bc-stat">$840K for Just Bus mobile aid</div><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+</div>
+</section>
+
+<div class="press"><div class="press-lab">Recognized by</div><div class="press-w"><div class="press-t"><img src="https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png" alt="The New York Times" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/1920px-CNN.svg.png" alt="CNN" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/The_Logo_of_The_Washington_Post_Newspaper.svg/3840px-The_Logo_of_The_Washington_Post_Newspaper.svg.png" alt="Washington Post" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/NPR_new_logo.svg/500px-NPR_new_logo.svg.png" alt="NPR" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/POLITICOLOGO.svg/960px-POLITICOLOGO.svg.png" alt="Politico" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_Denver_Post.svg/1280px-The_Denver_Post.svg.png" alt="The Denver Post" loading="lazy"/><img src="https://i0.wp.com/newspack-coloradosun.s3.amazonaws.com/wp-content/uploads/2024/11/cropped-black-text-transparent-bg.png?w=800&quality=80&ssl=1" alt="The Colorado Sun" class="logo-lg" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Reuters_Logo.svg/1280px-Reuters_Logo.svg.png" alt="Reuters" class="logo-mid" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/US-WhiteHouse-Logo.svg/250px-US-WhiteHouse-Logo.svg.png" alt="White House" class="logo-seal" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg/960px-Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg.png" alt="HUD" class="logo-seal" loading="lazy"/><img src="https://www.501c3.org/wp-content/uploads/2013/04/Urban_Institute-LOGO.png" alt="Urban Institute" class="logo-lg" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/7/77/The_New_York_Times_logo.png" alt="The New York Times" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/1920px-CNN.svg.png" alt="CNN" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/The_Logo_of_The_Washington_Post_Newspaper.svg/3840px-The_Logo_of_The_Washington_Post_Newspaper.svg.png" alt="Washington Post" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/NPR_new_logo.svg/500px-NPR_new_logo.svg.png" alt="NPR" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/POLITICOLOGO.svg/960px-POLITICOLOGO.svg.png" alt="Politico" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/The_Denver_Post.svg/1280px-The_Denver_Post.svg.png" alt="The Denver Post" loading="lazy"/><img src="https://i0.wp.com/newspack-coloradosun.s3.amazonaws.com/wp-content/uploads/2024/11/cropped-black-text-transparent-bg.png?w=800&quality=80&ssl=1" alt="The Colorado Sun" class="logo-lg" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Reuters_Logo.svg/1280px-Reuters_Logo.svg.png" alt="Reuters" class="logo-mid" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/US-WhiteHouse-Logo.svg/250px-US-WhiteHouse-Logo.svg.png" alt="White House" class="logo-seal" loading="lazy"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg/960px-Seal_of_the_United_States_Department_of_Housing_and_Urban_Development.svg.png" alt="HUD" class="logo-seal" loading="lazy"/><img src="https://www.501c3.org/wp-content/uploads/2013/04/Urban_Institute-LOGO.png" alt="Urban Institute" class="logo-lg" loading="lazy"/></div></div></div>
+
+<!-- SECTION 1: THE CEDP MODEL -->
+<section class="model reveal" id="modelSection">
+<div style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#E8B960;margin-bottom:12px;font-family:var(--body)">How we work</div>
+<h2>A financial emergency room</h2>
+<p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.7;max-width:560px;font-family:'Playfair Display',serif;font-style:italic">When someone comes to us in crisis, we don't send them to five different offices. We meet them where they are and stay with them through the solution.</p>
+<div class="model-steps">
+<div class="model-step"><div class="model-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><h4>Call Comes In</h4><p>Client reaches CARE Center via phone, chat, or walk-in</p><div class="model-connector"></div></div>
+<div class="model-step"><div class="model-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div><h4>Triage</h4><p>Navigator assesses urgency and identifies all needs</p><div class="model-connector"></div></div>
+<div class="model-step"><div class="model-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Legal Defense</h4><p>Housing lawyers provide free representation</p><div class="model-connector"></div></div>
+<div class="model-step"><div class="model-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 100 7h5a3.5 3.5 0 110 7H6"/></svg></div><h4>Financial Aid</h4><p>Emergency rental, mortgage, or towing assistance</p><div class="model-connector"></div></div>
+<div class="model-step"><div class="model-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h4>Navigation</h4><p>Connected to local resources and ongoing support</p><div class="model-connector"></div></div>
+<div class="model-step"><div class="model-icon"><svg viewBox="0 0 24 24"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5zM8.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5zM17.5 15.5a2.5 2.5 0 01-5 0M11.5 15.5a2.5 2.5 0 01-5 0M2 12h20M4.5 22v-4h15v4"/></svg></div><h4>Policy Change</h4><p>Client experiences inform legislation to prevent future harm</p></div>
+</div>
+</section>
+
+<!-- SECTION 2: WHERE WE'RE WORKING -->
+<!-- SECTION 3: IMPACT BENTO -->
+<section class="impact-bento reveal" id="impactSection">
+<div style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#C53030;margin-bottom:12px;font-family:var(--body)">Our impact</div>
+<h2>Five years of defending communities</h2>
+<p style="font-size:16px;color:#5A6B7A;line-height:1.7;max-width:560px;font-family:'Playfair Display',serif;font-style:italic">Since a Facebook post in March 2020, we've grown into one of the most comprehensive economic justice organizations in the country.</p>
+<div class="ib-grid">
+<div class="ib ib-navy"><div class="ib-label">People helped</div><div class="ib-num">68,000+</div><p>Low-income Coloradans served across 54 counties — from eviction defense to disaster relief</p><div class="ib-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ib ib-red"><div class="ib-label">Assistance distributed</div><div class="ib-num">$280M+</div><p>In emergency rental, mortgage, and financial assistance keeping families housed</p><div class="ib-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ib ib-gold"><div class="ib-label">Laws changed</div><div class="ib-num">12+</div><p>State laws passed to protect renters, stop predatory towing, and defend mobile home residents</p><div class="ib-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ib ib-slate"><div class="ib-label">Monthly reach</div><div class="ib-num">1,000+</div><p>Families receive legal aid, financial assistance, and resource navigation every month</p><div class="ib-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ib ib-navy2"><div class="ib-label">Our team</div><div class="ib-num">200</div><p>Housing lawyers, economists, data analysts, policy experts, organizers, and technologists</p><div class="ib-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+<div class="ib ib-red2"><div class="ib-label">Recognized by</div><div class="ib-num">White House</div><p>Cited as a national best practice by the White House, HUD, and the Urban Institute</p><div class="ib-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div>
+<div class="ib-link"><a href="#">See our full impact &rarr;</a></div>
+</section>
+
+<!-- UNIFIED ACCORDION -->
+<section class="accordion reveal">
+<div class="accordion-label">Explore more</div>
+<div class="accordion-rule"></div>
+
+<div class="acc-row">
+<div class="acc-header" onclick="toggleAcc(this.parentElement)"><h3>Where we're working</h3><div class="acc-plus">+</div></div>
+<div class="acc-content"><div class="acc-inner">
+<p style="font-size:15px;color:#5A6B7A;line-height:1.7;max-width:520px;font-family:'Libre Franklin',sans-serif;font-weight:300;margin-bottom:24px">Our teams are on the ground across Colorado right now — in courtrooms, communities, and the legislature.</p>
+<div class="working-grid">
+<div class="working-map"><div class="working-map-num">59</div><div class="working-map-of">of 64</div><div class="working-map-label">Colorado counties served</div><div class="working-map-offices"><span>Denver</span><span>Colorado Springs</span><span>Durango</span><span>Fort Morgan</span></div></div>
+<div class="working-cards">
+<div class="working-card"><div class="working-card-dot"></div><div><div class="working-card-tag">Launching 2025</div><h4>Just Bus Mobile Legal Aid</h4><p>$840K federally funded mobile office bringing legal aid to rural communities</p></div></div>
+<div class="working-card"><div class="working-card-dot"></div><div><div class="working-card-tag">This month</div><h4>1,000+ Families Served</h4><p>Eviction defense, foreclosure prevention, towing recovery across Colorado</p></div></div>
+<div class="working-card"><div class="working-card-dot"></div><div><div class="working-card-tag">Active legislation</div><h4>2026 Legislative Session <span class="ph-dark ph">PH</span></h4><p>Advocating for expanded renter protections and disaster preparedness</p></div></div>
+<div class="working-card"><div class="working-card-dot"></div><div><div class="working-card-tag">New expansion</div><h4>New Mexico Operations <span class="ph-dark ph">PH</span></h4><p>Extending CEDP's model beyond Colorado for the first time</p></div></div>
+</div>
+</div>
+</div></div>
+</div>
+
+<div class="acc-row">
+<div class="acc-header" onclick="toggleAcc(this.parentElement)"><h3>Stories of impact</h3><div class="acc-plus">+</div></div>
+<div class="acc-content"><div class="acc-inner">
+<div class="stories-grid" style="margin-top:0">
+<div class="story" style="background:rgba(27,40,56,.04);border:1px solid #E8E8E8"><img class="story-img" src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" alt="Family" loading="lazy"/><div class="story-body"><q style="color:#1B2838">I had three days before I was on the street with my kids. CEDP's legal team stopped the eviction and helped me get rental assistance.</q><div class="story-meta" style="border-color:#E8E8E8"><div class="story-name" style="color:#1B2838">Maria R., Denver <span class="ph">PH</span></div><div class="story-outcome" style="color:#C53030">Eviction prevented &middot; $4,200 in rental assistance</div></div></div></div>
+<div class="story" style="background:rgba(27,40,56,.04);border:1px solid #E8E8E8"><img class="story-img" src="https://images.pexels.com/photos/5673519/pexels-photo-5673519.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" alt="Consultation" loading="lazy"/><div class="story-body"><q style="color:#1B2838">They towed my car from my own parking spot. CEDP got my car back and helped change the law so it won't happen to others.</q><div class="story-meta" style="border-color:#E8E8E8"><div class="story-name" style="color:#1B2838">James T., Colorado Springs <span class="ph">PH</span></div><div class="story-outcome" style="color:#C53030">Vehicle recovered &middot; Contributed to HB24-1051</div></div></div></div>
+<div class="story" style="background:rgba(27,40,56,.04);border:1px solid #E8E8E8"><img class="story-img" src="https://images.pexels.com/photos/4214969/pexels-photo-4214969.jpeg?auto=compress&cs=tinysrgb&w=500&h=350&fit=crop" alt="Housing" loading="lazy"/><div class="story-body"><q style="color:#1B2838">After the Marshall Fire, CEDP was the first call we made. They helped us navigate insurance and find housing.</q><div class="story-meta" style="border-color:#E8E8E8"><div class="story-name" style="color:#1B2838">Sandra &amp; Luis K., Boulder County <span class="ph">PH</span></div><div class="story-outcome" style="color:#C53030">Marshall Fire response &middot; Emergency housing</div></div></div></div>
+</div>
+</div></div>
+</div>
+
+<div class="acc-row">
+<div class="acc-header" onclick="toggleAcc(this.parentElement)"><h3>Legislative wins</h3><div class="acc-plus">+</div></div>
+<div class="acc-content"><div class="acc-inner">
+<div class="tl-track" style="background:transparent">
+<div class="tl-item"><div class="tl-dot" style="border-color:#F8F8F8"></div><div class="tl-year" style="color:#C53030">2020</div><h4 style="color:#1B2838">Federal Eviction Moratorium</h4><p style="color:#6B7A8A">CEDP research underpinned the federal moratorium and the $46 billion national investment in emergency rental assistance</p></div>
+<div class="tl-item"><div class="tl-dot" style="border-color:#F8F8F8"></div><div class="tl-year" style="color:#C53030">2022</div><h4 style="color:#1B2838">Towing Bill of Rights</h4><p style="color:#6B7A8A">First statewide towing consumer protection law in Colorado</p></div>
+<div class="tl-item"><div class="tl-dot" style="border-color:#F8F8F8"></div><div class="tl-year" style="color:#C53030">2023</div><h4 style="color:#1B2838">Expanded Renters' Rights</h4><p style="color:#6B7A8A">Strengthened eviction protections including longer notice periods and right to cure</p></div>
+<div class="tl-item"><div class="tl-dot" style="border-color:#F8F8F8"></div><div class="tl-year" style="color:#C53030">2024</div><h4 style="color:#1B2838">Towing Reform &amp; Fair Housing</h4><p style="color:#6B7A8A">Banned automatic tows, established Fair Housing Unit. Wyatts Towing settled for $1M.</p></div>
+</div>
+<div class="tl-link"><a href="#" style="color:#C53030">View all legislative wins &rarr;</a></div>
+</div></div>
+</div>
+
+<div class="accordion-rule"></div>
+</section>
+
+<!-- SECTION 6: AUDIENCE PATHWAYS -->
+<section class="paths reveal" id="pathsSection">
+<div style="margin-bottom:40px">
+<div style="font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#E8B960;margin-bottom:12px;font-family:'Libre Franklin',sans-serif">How can we help you?</div>
+<h2>Find what you're looking for</h2>
+<p style="font-size:15px;color:rgba(255,255,255,.5);line-height:1.6;max-width:480px;font-family:'Libre Franklin',sans-serif;font-weight:300">Whether you need help now or want to support our mission, there's a place for you here.</p>
+</div>
+<div class="paths-grid">
+<div class="path-card path-red"><div><h4>I need<br/>help now</h4><p>Facing eviction, foreclosure, towing, debt, or economic crisis? Start here for immediate support.</p></div><div class="path-ar"><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+<div class="path-card"><div><h4>I want to<br/>join CEDP</h4><p>Explore careers in housing law, advocacy, policy, data, and community organizing.</p></div><div class="path-ar"><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+<div class="path-card"><div><h4>Press &amp;<br/>media</h4><p>Access impact data, leadership contacts, press materials, and media resources.</p></div><div class="path-ar"><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+<div class="path-card"><div><h4>Community<br/>partners</h4><p>Refer clients, learn about our services, and find the right point of contact.</p></div><div class="path-ar"><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+<div class="path-card"><div><h4>Government<br/>agencies</h4><p>Explore our model, research, policy work, and programmatic impact data.</p></div><div class="path-ar"><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+<div class="path-card"><div><h4>Funders &amp;<br/>donors</h4><p>See outcomes, explore investment opportunities, and support our mission.</p></div><div class="path-ar"><div class="ar"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div>
+</div>
+</section>
+
+<!-- SECTION 7: DONATE BENTO -->
+<section class="donate-bento reveal" id="donateSection">
+<div class="donate-bento-label">Support our mission</div>
+<h2>Get involved</h2>
+<div class="db-grid">
+
+<div class="db-main">
+<h3>Donate</h3>
+<p>Your $1,000 donation can keep a family housed for three months. Every dollar goes directly to defending Colorado communities.</p>
+<div class="db-amounts"><span>$1000</span><span>$250</span><span>$100</span><span>$50</span></div>
+<div class="db-custom"><input type="text" placeholder="$ Other Amount"/><button>Donate</button></div>
+<a href="#" class="db-faq">Frequently Asked Questions</a>
+<div class="db-main-bot"><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+</div>
+
+<div class="db-sm"><div class="db-sm-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=400&h=350&fit=crop" alt="Questions" loading="lazy"/></div><div class="db-sm-txt"><div><h3>Frequently<br/>Asked Questions</h3><p>How your donation is used, tax deductibility, recurring gifts, and more</p></div><div class="db-sm-bot"><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+<div class="db-sm"><div class="db-sm-inner"><div class="img-wrap"><img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400&h=350&fit=crop" alt="Events" loading="lazy"/></div><div class="db-sm-txt"><div><h3>Events &amp;<br/>Calendar</h3><p>Community events, fundraisers, advocacy days, and volunteer opportunities</p></div><div class="db-sm-bot"><div class="ar"><svg viewBox="0 0 24 24" class="arrow-svg"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div></div></div></div>
+
+</div>
+</section>
+
+<nav class="dot-nav" id="dotNav">
+<div class="dot-top" id="dotTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></div>
+<a href="#whoSection"><span class="dot-label">Who We Are</span><span class="dot"></span></a>
+<a href="#hlpSection"><span class="dot-label">How We Can Help</span><span class="dot"></span></a>
+<a href="#modelSection"><span class="dot-label">How We Work</span><span class="dot"></span></a>
+<a href="#impactSection"><span class="dot-label">Our Impact</span><span class="dot"></span></a>
+<a href="#pathsSection"><span class="dot-label">What You're Looking For</span><span class="dot"></span></a>
+<a href="#donateSection"><span class="dot-label">Donate</span><span class="dot"></span></a>
+</nav>
+
+<footer><div class="ft-warm"><span class="ft-warm-txt">You don't have to face this <em>alone.</em></span></div><div class="ft-actions"><a class="btn-d" href="#donateSection">Donate</a><a class="btn-h" href="/get-help" target="_parent">Get help</a></div><div class="ft-g"><div><div class="ft-b">Community Economic<br/><em>Defense Project</em></div><div class="ft-d">We partner with low-income and working people to build economic and racial equity by confronting economic abuse and investing in community wealth.</div><div class="ft-c">1600 N. Downing St., Suite 600<br/>Denver, CO 80218<br/>info@cedproject.org<br/>(303) 838-1200</div></div><div><h4>Get help</h4><a href="/get-help#eviction" target="_parent">Eviction</a><a href="/get-help#foreclosure" target="_parent">Foreclosure</a><a href="/get-help#towing" target="_parent">Towing</a><a href="/get-help#debt" target="_parent">Debt</a><a href="/our-work#programsGrid" target="_parent">Disaster relief</a></div><div><h4>About</h4><a href="/about" target="_parent">Our purpose</a><a href="/team" target="_parent">Our team</a><a href="/about#leadership" target="_parent">Leadership</a><a href="/careers" target="_parent">Careers</a><a href="/careers#positions" target="_parent">Join Us</a><a href="/ced-law" target="_parent">CED law</a><a href="mailto:info@cedproject.org" target="_parent">Contact</a></div><div><h4>Impact</h4><a href="/legislative-wins" target="_parent">Legislative wins</a><a href="/research" target="_parent">Research</a><a href="/news" target="_parent">News &amp; press</a><a href="/ced-law#faq" target="_parent">FAQ</a><a href="#donateSection">Donate</a><a href="/news" target="_parent">Events</a></div></div><div class="brand-mark"><img src="https://i0.wp.com/cedproject.org/wp-content/uploads/2022/10/cropped-CEDP_2022Logo_HouseIcons_RGBWeb-01.png?fit=270%2C270&quality=100&ssl=1" alt="CEDP"/><div class="brand-mark-text">Community<br/>Economic<br/>Defense Project</div></div><div class="ft-bt"><span>&copy; 2026 Community Economic Defense Project</span><span>Privacy policy &bull; Terms of use &bull; Accessibility</span></div></footer>
+
+<script>
+function toggleAcc(row){
+var isOpen=row.classList.contains('open');
+// Close all rows first
+var allRows=row.parentElement.querySelectorAll('.acc-row');
+allRows.forEach(function(r){r.classList.remove('open');r.querySelector('.acc-plus').textContent='+';});
+// Open clicked row if it was closed
+if(!isOpen){row.classList.add('open');row.querySelector('.acc-plus').textContent='+';}
+}
+// Stats gold observer
+(function(){
+var stats=document.getElementById('statsSection');
+if(!stats)return;
+var obs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){stats.classList.add('gold');}
+else{stats.classList.remove('gold');}
+});
+},{rootMargin:'0px 0px -80% 0px',threshold:0});
+obs.observe(stats);
+})();
+
+// Value word reveals - rapid-fire burst
+(function(){
+var v1=document.querySelector('.val.v1');
+var v2=document.querySelector('.val.v2');
+var v3=document.querySelector('.val.v3');
+if(!v1||!v2||!v3)return;
+setTimeout(function(){v1.classList.add('lit');setTimeout(function(){v1.classList.add('done');v1.classList.remove('lit');},200);},1500);
+setTimeout(function(){v2.classList.add('lit');setTimeout(function(){v2.classList.add('done');v2.classList.remove('lit');},200);},1900);
+setTimeout(function(){v3.classList.add('lit');setTimeout(function(){v3.classList.add('done');v3.classList.remove('lit');},200);},2300);
+})();
+(function(){
+var chevron=document.getElementById('dotTop');
+var hero=document.querySelector('.hero');
+if(!chevron||!hero)return;
+var obs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){chevron.classList.remove('show');}
+else{chevron.classList.add('show');}
+});
+},{threshold:0.1});
+obs.observe(hero);
+})();
+
+// Dot nav - sticky, track active section
+(function(){
+var dn=document.getElementById('dotNav');
+if(!dn)return;
+var ids=['whoSection','hlpSection','modelSection','impactSection','pathsSection','donateSection'];
+var links=dn.querySelectorAll('a');
+var secObs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+var idx=ids.indexOf(e.target.id);
+if(idx>-1){
+if(e.isIntersecting){links[idx].querySelector('.dot').style.background='#E8B960';links[idx].querySelector('.dot').style.transform='scale(1.4)';}
+else{links[idx].querySelector('.dot').style.background='#C53030';links[idx].querySelector('.dot').style.transform='scale(1)';}
+}
+});
+},{rootMargin:'-35% 0px -35% 0px',threshold:0});
+ids.forEach(function(id){var el=document.getElementById(id);if(el)secObs.observe(el);});
+})();
+
+// Scroll reveal for sections
+(function(){
+var reveals=document.querySelectorAll('.reveal');
+if(!reveals.length)return;
+var revObs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}
+});
+},{threshold:0.1});
+reveals.forEach(function(el){revObs.observe(el);});
+})();
+
+// Model connector animation on scroll
+(function(){
+var model=document.getElementById('modelSection');
+if(!model)return;
+var obs=new IntersectionObserver(function(entries){
+entries.forEach(function(e){
+if(e.isIntersecting){model.classList.add('animate');obs.unobserve(model);}
+});
+},{threshold:0.3});
+obs.observe(model);
+})();
+</script>
+
+<!-- LOVABLE-WIRING -->
+<style>
+html{scroll-padding-top:80px;scroll-behavior:smooth}
+.active-nav,.act{color:#C53030 !important;border-bottom:2px solid #C53030;padding-bottom:2px}
+body{opacity:0;transition:opacity .3s ease}
+body.page-loaded{opacity:1}
+</style>
+<script>
+(function(){
+function topNav(url){ try{ window.top.location.href = url; }catch(e){ window.location.href = url; } }
+var currentPath = '/';
+try { currentPath = window.top.location.pathname; } catch(e){}
+
+// Logo -> /
+var logoImg = document.querySelector('nav > div:first-child img');
+if(logoImg && !logoImg.closest('a')){
+  var la = document.createElement('a');
+  la.href='/'; la.target='_parent';
+  la.style.cssText='display:inline-block;cursor:pointer';
+  logoImg.parentNode.insertBefore(la, logoImg);
+  la.appendChild(logoImg);
+}
+
+// Top bar phone
+document.querySelectorAll('.tb a').forEach(function(a){
+  if(/\d{3}/.test(a.textContent)){ a.href='tel:3038381200'; a.target='_parent'; }
+});
+
+// Top-level nav items
+var navMap = {'About':'/about','Our work':'/our-work','Impact':'/impact','News':'/news','Careers':'/careers'};
+document.querySelectorAll('nav .ni > a').forEach(function(a){
+  var t = a.textContent.trim();
+  if(navMap[t]){
+    a.href = navMap[t]; a.target='_parent';
+    if(navMap[t]===currentPath) a.classList.add('active-nav');
+  }
+});
+
+// Mega menu sublinks
+document.querySelectorAll('nav .mega a').forEach(function(a){
+  a.target='_parent';
+  var t = a.textContent.trim().toLowerCase();
+  if(/career|open position|why cedp|culture/.test(t)) a.href='/careers';
+  else if(/press|news|media/.test(t)) a.href='/news';
+  else if(/legislative|impact|research/.test(t)) a.href='/impact';
+  else if(/our purpose|our team|contact|ced law/.test(t)) a.href='/about';
+  else if(/care center|just bus|statewide|programs/.test(t)) a.href='/our-work';
+  else a.href='/get-help';
+});
+
+// Donate / Get help buttons
+document.querySelectorAll('.btn-d').forEach(function(a){
+  if(currentPath==='/'){ a.href='#donateSection'; }
+  else { a.href='/#donateSection'; a.target='_parent'; }
+});
+document.querySelectorAll('.btn-h').forEach(function(a){ a.href='/get-help'; a.target='_parent'; });
+
+// Homepage: who section link
+document.querySelectorAll('.who-link').forEach(function(a){ a.href='/about'; a.target='_parent'; });
+
+// Homepage: main help bento card
+document.querySelectorAll('.bc-m').forEach(function(el){
+  el.style.cursor='pointer';
+  el.addEventListener('click',function(){ topNav('/get-help'); });
+});
+
+// Pathway cards
+var pathMap = [
+  [/^i need/, '/get-help'],
+  [/^i want/, '/careers'],
+  [/^press/, '/news'],
+  [/^community/, '/our-work'],
+  [/^government/, '/impact'],
+  [/^funders/, '#donateSection']
+];
+document.querySelectorAll('.path-card').forEach(function(el){
+  var h = el.querySelector('h4'); if(!h) return;
+  var t = h.textContent.trim().toLowerCase();
+  var dest=null;
+  pathMap.forEach(function(p){ if(p[0].test(t)) dest=p[1]; });
+  if(!dest) return;
+  el.style.cursor='pointer';
+  el.addEventListener('click',function(){
+    if(dest.charAt(0)==='#'){
+      var tgt=document.querySelector(dest); if(tgt) tgt.scrollIntoView({behavior:'smooth'});
+    } else { topNav(dest); }
+  });
+});
+
+// Donate bento main: scroll/donate button
+document.querySelectorAll('.db-main button').forEach(function(b){
+  b.addEventListener('click',function(e){
+    e.preventDefault();
+    var t=document.getElementById('donateSection'); if(t) t.scrollIntoView({behavior:'smooth'});
+  });
+});
+document.querySelectorAll('.db-faq').forEach(function(a){ a.href='/ced-law#faq'; a.target='_parent'; });
+
+// Donate bento small cards (FAQs, Events & Calendar)
+document.querySelectorAll('.db-sm').forEach(function(el){
+  var h = el.querySelector('h3'); if(!h) return;
+  var t = h.textContent.toLowerCase();
+  var dest = /faq|frequently/.test(t) ? '/ced-law#faq' : (/event|calendar/.test(t) ? '/news' : null);
+  if(!dest) return;
+  el.style.cursor='pointer';
+  el.addEventListener('click',function(){ topNav(dest); });
+});
+
+// Legislative wins / impact links
+document.querySelectorAll('.tl-link a, .growth-link a, .ib-link a').forEach(function(a){
+  a.href='/impact'; a.target='_parent';
+});
+
+// Footer columns
+var ftMap = [
+  null,
+  { _default: '/get-help' },
+  { 'Our purpose':'/about','Our team':'/team','Leadership':'/about#leadership','Careers':'/careers','Join Us':'/careers#positions','CED law':'/ced-law','Contact':'mailto:info@cedproject.org' },
+  { 'Legislative wins':'/legislative-wins','Research':'/research','News & press':'/news','Donate':'#donateSection','Events':'/news' }
+];
+document.querySelectorAll('footer .ft-g > div').forEach(function(col, i){
+  var m = ftMap[i]; if(!m) return;
+  col.querySelectorAll('a').forEach(function(a){
+    var t = a.textContent.trim();
+    var dest = m[t] || m._default;
+    if(!dest) return;
+    if(dest.charAt(0)==='#'){
+      if(currentPath==='/'){ a.href = dest; }
+      else { a.href = '/' + dest; a.target='_parent'; }
+    } else { a.href = dest; a.target='_parent'; }
+  });
+});
+
+// About page-specific
+document.querySelectorAll('.mission-btn-o').forEach(function(a){ a.href='/#modelSection'; a.target='_parent'; });
+document.querySelectorAll('.mission-btn-t').forEach(function(a){ a.href='/our-work'; a.target='_parent'; });
+
+// Smooth scroll for in-page hash links (intercept)
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var href = a.getAttribute('href');
+    if(!href || href === '#') return;
+    var id = href.slice(1); if(!id) return;
+    var tgt = document.getElementById(id);
+    if(tgt){ e.preventDefault(); tgt.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+// Fade in
+requestAnimationFrame(function(){ document.body.classList.add('page-loaded'); });
+})();
+</script>
+
+
+<!-- LOVABLE-MOBILE -->
+<style id="cedp-mobile">
+/* ============== MOBILE-FIRST OVERRIDES (base 0-1023px) ============== */
+html,body{overflow-x:hidden;max-width:100vw}
+img,video{max-width:100%;height:auto}
+input,textarea,select{font-size:16px !important}
+*{-webkit-tap-highlight-color:rgba(197,48,48,.15)}
+
+@media (max-width:1023px){
+  /* Section padding */
+  section, .sec, .hlp, .model, .impact-bento, .paths, .donate-bento, .who, .press, .ft-g{padding:40px 20px !important}
+  .who{display:block !important}
+  .who-img{width:100% !important;height:240px !important}
+  .who-img img{width:100% !important;height:240px !important;object-fit:cover}
+  .who-txt{padding:32px 0 0 !important;width:100% !important}
+
+  /* Top bar */
+  .tb{padding:6px 20px !important;font-size:12px}
+  .tb .lng,.tb .ab-tog{font-size:12px}
+
+  /* Nav -> hamburger */
+  nav{height:56px !important;padding:0 16px !important;display:flex !important;align-items:center;justify-content:space-between}
+  nav > div:first-child img{height:40px !important;width:auto}
+  nav .nl{display:none !important}
+  .mob-burger{display:flex !important;flex-direction:column;justify-content:space-between;width:28px;height:20px;padding:0;background:none;border:0;cursor:pointer;margin-left:auto}
+  .mob-burger span{display:block;height:2px;background:#1B2838;width:100%}
+  .mob-overlay{position:fixed;inset:0;background:#1B2838;z-index:9999;display:none;flex-direction:column;padding:24px 24px 32px}
+  .mob-overlay.open{display:flex}
+  .mob-close{align-self:flex-end;width:44px;height:44px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+  .mob-links{display:flex;flex-direction:column;margin-top:24px;flex:1}
+  .mob-links a{color:#fff;font-size:20px;font-weight:600;text-decoration:none;height:56px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);font-family:'Libre Franklin',sans-serif}
+  .mob-cta{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+  .mob-cta a{display:flex;align-items:center;justify-content:center;height:56px;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none}
+  .mob-cta .mob-donate{background:#fff;color:#1B2838}
+  .mob-cta .mob-get{background:#C53030;color:#fff}
+
+  /* Hero */
+  .hero{min-height:80vh !important;padding:0 !important}
+  .hero-c, .hero h1, .hero-text{padding:0 20px 48px !important}
+  .hero h1, .hero-c h1{font-size:clamp(48px,12vw,90px) !important;line-height:.95 !important;letter-spacing:1px !important}
+
+  /* Stats 2x2 */
+  .stats, .stats-row, .stat-grid{grid-template-columns:repeat(2,1fr) !important;display:grid !important;gap:16px}
+  .stat-num, .stat-n{font-size:36px !important}
+
+  /* Red action strip */
+  .red-strip, .red-bar{padding:24px 20px !important;display:flex !important;flex-direction:column;gap:16px;text-align:center}
+  .red-strip .phone, .red-bar .phone{font-size:clamp(28px,8vw,40px) !important}
+
+  /* Bento help cards single col */
+  .bn, .bn2{display:flex !important;flex-direction:column;gap:12px}
+  .bc-m, .bc-s, .bt{width:100% !important}
+
+  /* Press marquee */
+  .press-t img{height:36px !important}
+  .press-t img.logo-seal{height:40px !important}
+
+  /* Model: horizontal scroll */
+  .model-steps{display:flex !important;overflow-x:auto !important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:16px;padding-bottom:12px}
+  .model-step{min-width:220px;scroll-snap-align:center;flex:0 0 auto}
+  .model-connector{display:none !important}
+
+  /* Impact bento 2 col */
+  .impact-grid, .ib-grid{grid-template-columns:repeat(2,1fr) !important;gap:12px}
+
+  /* Accordion */
+  .acc, .accordion, .acc-item{padding:0 !important}
+  .acc-item, .acc-row{padding:20px !important}
+  .acc-toggle, .acc-plus, .acc-icon{width:56px !important;height:56px !important;font-size:32px !important}
+  .acc-body, .acc-content{padding:20px !important}
+
+  /* Pathways: 2 col, red full width */
+  .paths-grid{grid-template-columns:repeat(2,1fr) !important;gap:6px}
+  .path-card{padding:20px !important}
+  .path-card h4{font-size:clamp(22px,5vw,32px) !important}
+  .path-card.path-red{grid-column:1/-1 !important}
+
+  /* Donate bento stack */
+  .db-grid{grid-template-columns:1fr !important;grid-template-rows:auto !important;gap:12px}
+  .db-main{grid-row:auto !important;padding:32px 20px !important}
+  .db-amounts{display:grid !important;grid-template-columns:repeat(2,1fr) !important;gap:8px}
+  .db-amounts span{padding:14px 0 !important;text-align:center;min-height:44px}
+  .db-custom{flex-direction:column;gap:8px}
+  .db-custom input{width:100% !important}
+  .db-custom button{width:100%;min-height:48px}
+
+  /* Footer */
+  .ft-g{display:flex !important;flex-direction:column;gap:32px;text-align:center}
+  .ft-g > div{width:100%}
+  .ft-g > div:first-child .brand-mark, .brand-mark{justify-content:center;margin:0 auto}
+  footer h4{margin-top:0}
+  .ft-warm-txt{font-size:16px !important}
+  .ft-bt{flex-direction:column !important;text-align:center;gap:8px}
+
+  /* Dot nav hide */
+  .dot-nav, #dotNav{display:none !important}
+
+  /* About specific */
+  .mission, .mission-grid, .about-mission{display:flex !important;flex-direction:column}
+  .mission-img, .mission-photo{width:100% !important;height:240px !important;object-fit:cover}
+  .origin, .origin-c{padding:40px 20px !important;max-width:100% !important}
+  .founders-grid, .founder-grid{display:flex !important;flex-direction:column;gap:16px}
+  .founder-card{display:flex !important;flex-direction:row;width:100%}
+  .founder-card .founder-img, .founder-card img:first-child{width:35% !important;height:auto !important;object-fit:cover}
+  .founder-card .founder-txt{width:65% !important;padding:16px !important}
+  .growth-timeline, .timeline-row{display:flex !important;overflow-x:auto !important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px}
+  .timeline-item, .growth-item, .milestone{min-width:260px;scroll-snap-align:center;flex:0 0 auto}
+  .timeline-line, .growth-line{display:none !important}
+  .we-are-row, .wearedp-row{padding:24px 20px !important}
+  .we-are-row h2, .wearedp-row h2{font-size:clamp(32px,8vw,56px) !important}
+  .we-are-row .ar, .wearedp-row .ar{width:56px !important;height:56px !important}
+
+  /* Touch targets */
+  a.btn-d, a.btn-h, button{min-height:44px}
+}
+
+/* TABLET: restore some layouts */
+@media (min-width:768px) and (max-width:1023px){
+  .stats, .stats-row, .stat-grid{grid-template-columns:repeat(4,1fr) !important}
+  .who{display:grid !important;grid-template-columns:1fr 1fr;align-items:center}
+  .who-img{height:auto !important}
+  .who-img img{height:auto !important}
+  .paths-grid{grid-template-columns:repeat(2,1fr) !important}
+  .path-card.path-red{grid-column:auto !important}
+  .bn{display:grid !important;grid-template-columns:1fr 1fr;gap:12px}
+  .bn2{display:grid !important;grid-template-columns:repeat(3,1fr);gap:12px}
+  .ft-g{display:grid !important;grid-template-columns:1fr 1fr;text-align:left}
+  .founders-grid{display:grid !important;grid-template-columns:1fr 1fr}
+}
+</style>
+
+<script>
+(function(){
+  // Inject hamburger button & overlay into nav
+  var nav = document.querySelector('nav');
+  if(nav && !document.querySelector('.mob-burger')){
+    var burger = document.createElement('button');
+    burger.className='mob-burger'; burger.setAttribute('aria-label','Open menu');
+    burger.innerHTML='<span></span><span></span><span></span>';
+    nav.appendChild(burger);
+
+    var overlay = document.createElement('div');
+    overlay.className='mob-overlay';
+    overlay.innerHTML =
+      '<button class="mob-close" aria-label="Close menu">&times;</button>'+
+      '<div class="mob-links">'+
+        '<a href="/about" target="_parent">About</a>'+
+        '<a href="/our-work" target="_parent">Our Work</a>'+
+        '<a href="/impact" target="_parent">Impact</a>'+
+        '<a href="/news" target="_parent">News</a>'+
+        '<a href="/careers" target="_parent">Careers</a>'+
+      '</div>'+
+      '<div class="mob-cta">'+
+        '<a class="mob-donate" href="#donateSection">DONATE</a>'+
+        '<a class="mob-get" href="/get-help" target="_parent">GET HELP</a>'+
+      '</div>';
+    document.body.appendChild(overlay);
+
+    function open(){ overlay.classList.add('open'); document.body.style.overflow='hidden'; }
+    function close(){ overlay.classList.remove('open'); document.body.style.overflow=''; }
+    burger.addEventListener('click', open);
+    overlay.querySelector('.mob-close').addEventListener('click', close);
+    overlay.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var h = a.getAttribute('href');
+        if(h && h.charAt(0)==='#'){
+          e.preventDefault();
+          var t = document.querySelector(h);
+          close();
+          if(t) setTimeout(function(){ t.scrollIntoView({behavior:'smooth'}); }, 50);
+        } else { close(); }
+      });
+    });
+  }
+
+  // Tap-activated hover for bento cards & we-are rows (mobile only)
+  if(window.matchMedia('(max-width:1023px)').matches){
+    document.querySelectorAll('.bc-m,.bc-s,.bt,.db-sm,.path-card,.we-are-row,.wearedp-row,.founder-card').forEach(function(el){
+      el.addEventListener('touchstart',function(){ el.classList.add('hover'); }, {passive:true});
+      el.addEventListener('touchend',function(){ setTimeout(function(){ el.classList.remove('hover'); }, 400); }, {passive:true});
+    });
+  }
+})();
+</script>
+
+<!-- /LOVABLE-MOBILE -->
+<script src="/cedp-global.js"></script></body>
+</html>
