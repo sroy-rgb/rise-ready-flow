@@ -1,0 +1,56 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/cedp-about.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/cedp-careers.html"
+    },
+    {
+      "source": "/ced-law",
+      "destination": "/cedp-ced-law.html"
+    },
+    {
+      "source": "/events",
+      "destination": "/cedp-events.html"
+    },
+    {
+      "source": "/get-help",
+      "destination": "/cedp-gethelp.html"
+    },
+    {
+      "source": "/impact",
+      "destination": "/impact.html"
+    },
+    {
+      "source": "/intake-form",
+      "destination": "/cedp-intake-form.html"
+    },
+    {
+      "source": "/legislative-wins",
+      "destination": "/cedp-legislative-wins.html"
+    },
+    {
+      "source": "/news",
+      "destination": "/cedp-news.html"
+    },
+    {
+      "source": "/our-work",
+      "destination": "/cedp-our-work.html"
+    },
+    {
+      "source": "/research",
+      "destination": "/cedp-research.html"
+    },
+    {
+      "source": "/team",
+      "destination": "/cedp-team.html"
+    }
+  ]
+}
